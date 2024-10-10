@@ -1,0 +1,12 @@
+inputs:
+  message:
+    type: string
+  columns:
+    type: string
+    description: |
+      Columns definition following this format
+      |W| <variant> |W| <title> |W| <content>
+      |W| <variant> |W| <title> |W| <content>
+      |W| <variant> |W| <title> |W| <content>
+  webhook-url:
+    type: string

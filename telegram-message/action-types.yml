@@ -1,0 +1,18 @@
+inputs:
+  message:
+    type: string
+  columns:
+    type: string
+    description: |
+      Columns definition following this format
+      |W| <variant> |W| <title> |W| <content>
+      |W| <variant> |W| <title> |W| <content>
+      |W| <variant> |W| <title> |W| <content>
+  group:
+    type: string
+  token:
+    type: string
+    description: Telegram BOT token
+  topic:
+    type: string
+    description: Thread ID
