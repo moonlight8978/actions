@@ -1,0 +1,41 @@
+name: git-head-commit
+description: Git head commit info
+author: _MoonLight_ <moonlight8978@gmail.com>
+
+inputs:
+  strategy:
+    description: The type of detection strategy
+    required: true
+    default: head
+  head-format:
+    description: The format of the commit message
+    required: false
+    default: '%s%n%n%b'
+  merge-format:
+    description: The format of the merge commit message
+    required: false
+    default: '- %s (%h by %aN)'
+  limit:
+    description: The number of commits to output
+    required: false
+    default: '10'
+  working-directory:
+    description: The working directory to run the command in
+    required: false
+    default: '.'
+
+outputs:
+  message:
+    description: The commit message
+  author:
+    description: The author of the commit
+  sha-short:
+    description: The short sha of the commit
+  sha:
+    description: The sha of the commit
+  branch:
+    description: The branch of the commit
+
+runs:
+  using: node20
+  main: dist/index.js

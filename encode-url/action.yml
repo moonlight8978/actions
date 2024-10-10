@@ -1,0 +1,20 @@
+name: encode-url
+description: Encode URL
+author: _MoonLight_ <moonlight8978@gmail.com>
+
+inputs:
+  value:
+    required: true
+    description: URL to encode
+  action:
+    required: false
+    description: decode or encode
+    default: encode
+
+outputs:
+  value:
+    description: Encoded URL
+
+runs:
+  using: node20
+  main: dist/index.js

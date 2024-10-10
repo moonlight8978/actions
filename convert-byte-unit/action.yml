@@ -1,0 +1,24 @@
+name: convert-byte-unit
+description: Convert byte unit action
+author: _MoonLight_ <moonlight8978@gmail.com>
+
+inputs:
+  amount:
+    description: Input amount
+    required: true
+  unit:
+    description: Input unit
+    required: true
+  to-unit:
+    description: Output unit
+    required: true
+
+outputs:
+  unit:
+    description: The output unit
+  amount:
+    description: The output amount
+
+runs:
+  using: node20
+  main: dist/index.js

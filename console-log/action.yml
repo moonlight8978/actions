@@ -1,0 +1,11 @@
+name: console-log
+description: Console log action
+author: _MoonLight_ <moonlight8978@gmail.com>
+
+inputs:
+  message:
+    description: The message to log
+
+runs:
+  using: node20
+  main: dist/index.js

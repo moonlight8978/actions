@@ -1,0 +1,23 @@
+name: google-drive-prune
+description: Google Drive Prune folders that google-drive-upload creates
+author: _MoonLight_ <le.si.bich.biz@gmail.com>
+inputs:
+  folder:
+    required: true
+    description: Google Drive folder ID
+  service-account-base64:
+    required: true
+    description: Service account base64 encoded
+  workflow:
+    required: false
+    description: Workflow name, default to current workflow
+  github-token:
+    required: true
+    description: Github token with workflows read access
+  keep:
+    required: false
+    description: Number of artifacts to keep, default to 3
+    default: '3'
+runs:
+  using: 'node20'
+  main: 'dist/index.js'

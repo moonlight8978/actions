@@ -1,0 +1,40 @@
+name: discord-message
+description: Post message to Discord action
+author: _MoonLight_ <moonlight8978@gmail.com>
+
+inputs:
+  message:
+    description: Message to post
+    required: false
+    default: ''
+  color:
+    description: Message color
+    required: false
+    default: '50432'
+  columns:
+    description: |
+      Columns definition following this format
+      |W| <width> |W| <title> |W| <content>
+      |W| <width> |W| <title> |W| <content>
+      |W| <width> |W| <title> |W| <content>
+    required: false
+    default: ''
+  webhook-url:
+    description: Discord webhook url
+    required: true
+  thread-id:
+    description: Thread ID to post message
+    required: false
+    default: ''
+  token:
+    description: Discord bot token
+    required: false
+    default: ''
+  channel:
+    description: Channel ID to post message
+    required: false
+    default: ''
+
+runs:
+  using: node20
+  main: dist/index.js

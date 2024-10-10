@@ -1,0 +1,24 @@
+name: slack-message
+description: Post message to Slack action
+author: _MoonLight_ <moonlight8978@gmail.com>
+
+inputs:
+  message:
+    description: Message to post
+    required: false
+    default: ''
+  columns:
+    description: |
+      Columns definition following this format
+      |W| <variant> |W| <title> |W| <content>
+      |W| <variant> |W| <title> |W| <content>
+      |W| <variant> |W| <title> |W| <content>
+    required: false
+    default: ''
+  webhook-url:
+    description: Slack webhook url
+    required: true
+
+runs:
+  using: node20
+  main: dist/index.js

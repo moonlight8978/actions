@@ -1,0 +1,26 @@
+name: discord-message
+description: Post message to Discord action
+author: _MoonLight_ <moonlight8978@gmail.com>
+
+inputs:
+  message:
+    description: Check telegram-message-parse .message
+    required: false
+    default: ''
+  columns:
+    description: Check telegram-message-parse .columns
+    required: false
+    default: ''
+  group:
+    description: Telegram group ID
+    required: true
+  token:
+    description: Telegram BOT token
+    required: true
+  topic:
+    description: Telegram topic
+    required: false
+
+runs:
+  using: node16
+  main: dist/index.js

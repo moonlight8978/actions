@@ -1,0 +1,32 @@
+name: google-drive-upload
+description: Google Drive Upload Github Actions
+author: _MoonLight_ <le.si.bich.biz@gmail.com>
+inputs:
+  folder:
+    required: true
+    description: Google Drive folder ID
+  service-account-base64:
+    required: true
+    description: Service account base64 encoded
+  file:
+    required: true
+    description:
+      Local file path to upload, support glob pattern, use first match if
+      multiple files found
+  destination:
+    required: true
+    description: Destination file path
+outputs:
+  folder:
+    description: Google Drive folder ID to save the artifacts
+  file:
+    description: Google Drive file ID
+  file-url:
+    description: Google Drive file URL
+  file-size:
+    description: File size in Bytes
+  file-name:
+    description: Uploaded file name
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
