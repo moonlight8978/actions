@@ -3,26 +3,32 @@ import * as exec from '@actions/exec'
 import * as github from '@actions/github'
 import type { PushEvent } from '@octokit/webhooks-types'
 
-async function capture(
-  command: string,
-  args: string[],
-  fallback: () => string = () => ''
-): Promise<string> {
-  try {
-    const { exitCode, stdout } = await exec.getExecOutput(command, args)
-
-    if (exitCode === 0) {
-      return stdout.trim()
-    }
-
-    return (fallback() || '').trim()
-  } catch (err) {
-    return (fallback() || '').trim()
-  }
-}
-
 export async function run(): Promise<void> {
   const payload = github.context.payload
+
+  const workingDirectory = core.getInput('working-directory', {
+    required: true
+  })
+
+  async function capture(
+    command: string,
+    args: string[],
+    fallback: () => string = () => ''
+  ): Promise<string> {
+    try {
+      const { exitCode, stdout } = await exec.getExecOutput(command, args, {
+        cwd: workingDirectory
+      })
+
+      if (exitCode === 0) {
+        return stdout.trim()
+      }
+
+      return (fallback() || '').trim()
+    } catch (err) {
+      return (fallback() || '').trim()
+    }
+  }
 
   const strategy = core.getInput('strategy', { required: true }) as
     | 'head'

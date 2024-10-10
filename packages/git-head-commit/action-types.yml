@@ -10,3 +10,5 @@ inputs:
     type: string
   limit:
     type: number
+  working-directory:
+    type: string

@@ -19,6 +19,10 @@ inputs:
     description: The number of commits to output
     required: false
     default: '10'
+  working-directory:
+    description: The working directory to run the command in
+    required: false
+    default: '.'
 
 outputs:
   message:
