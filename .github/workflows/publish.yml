@@ -17,6 +17,13 @@ jobs:
         with:
           submodules: true
 
+      - uses: moonlight8978/actions/git-head-commit@latest
+        id: commit
+        with:
+          strategy: smart
+          head-format: '- %s (%h by %aN)'
+          merge-format: '- %s (%h by %an)'
+
       - uses: pnpm/action-setup@v2
         with:
           version: '9'
@@ -34,4 +41,4 @@ jobs:
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config user.name "github-actions-bot"
-          npx gh-pages --dist dist --branch latest
+          npx gh-pages --dist dist --branch latest --message "${{ steps.commit.outputs.message}}"

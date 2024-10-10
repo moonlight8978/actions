@@ -39,7 +39,6 @@ async function main() {
 
   const projects = fs.readdirSync('packages')
   for (const project of projects) {
-    fs.copyFileSync(`packages/${project}/action.yml`, 'template/action.yml')
     fs.rmSync('template/src', { recursive: true, force: true })
 
     fs.cpSync(`packages/${project}/src`, 'template/src', { recursive: true })
@@ -48,7 +47,16 @@ async function main() {
 
     fs.mkdirSync(`dist/${project}`, { recursive: true })
     fs.cpSync('template/dist', `dist/${project}/dist`, { recursive: true })
-    fs.cpSync('template/action.yml', `dist/${project}/action.yml`)
+    if (fs.existsSync(`packages/${project}/action-types.yml`)) {
+      fs.cpSync(
+        `packages/${project}/action-types.yml`,
+        `dist/${project}/action-types.yml`
+      )
+    }
+    fs.copyFileSync(
+      `packages/${project}/action.yml`,
+      `dist/${project}/action.yml`
+    )
   }
 }
 
