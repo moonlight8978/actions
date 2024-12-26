@@ -49295,12 +49295,7 @@ function htmlEscape(str) {
 }
 function columnsToMessage(columns) {
     const textColumns = columns.filter(c => c.variant !== 'mention');
-    const mentionColumns = columns.filter(c => c.variant === 'mention');
-    // use zero-width space to prevent mention from being shown
-    const mention = mentionColumns
-        .map(c => `<a href="tg://user?id=${c.content}">\u2060</a>`)
-        .join('');
-    const text = textColumns
+    return columns
         .map(column => {
         const content = htmlEscape(column.content);
         return column.variant === 'full'
@@ -49308,7 +49303,6 @@ function columnsToMessage(columns) {
             : `▪️ <b>${column.title}</b>: ${content}`;
     })
         .join(lineBreak);
-    return `${text}${mention}`;
 }
 async function run() {
     const schema = (0, yup_1.object)({
@@ -49325,11 +49319,18 @@ async function run() {
         token: core.getInput('token', { required: true }),
         topic: core.getInput('topic')
     });
+    const columns = (0, column_1.parseColumns)(inputs.columns);
+    const mentionColumns = columns.filter(c => c.variant === 'mention');
+    // use zero-width space to prevent mention from being shown
+    const mention = mentionColumns
+        .map(c => `<a href="tg://user?id=${c.content}">\u2060</a>`)
+        .join('');
     const message = [
         inputs.message,
         lineBreak,
         lineBreak,
-        columnsToMessage((0, column_1.parseColumns)(inputs.columns))
+        columnsToMessage(columns.filter(c => c.variant !== 'mention')),
+        mention ? `${lineBreak}🔔${mention}` : ''
     ].join('');
     console.log(message);
     try {
