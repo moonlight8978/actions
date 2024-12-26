@@ -20,13 +20,8 @@ export function htmlEscape(str: string) {
 
 export function columnsToMessage(columns: Column[]) {
   const textColumns = columns.filter(c => c.variant !== 'mention')
-  const mentionColumns = columns.filter(c => c.variant === 'mention')
 
-  // use zero-width space to prevent mention from being shown
-  const mention = mentionColumns
-    .map(c => `<a href="tg://user?id=${c.content}">\u2060</a>`)
-    .join('')
-  const text = textColumns
+  return columns
     .map(column => {
       const content = htmlEscape(column.content)
 
@@ -35,8 +30,6 @@ export function columnsToMessage(columns: Column[]) {
         : `▪️ <b>${column.title}</b>: ${content}`
     })
     .join(lineBreak)
-
-  return `${text}${mention}`
 }
 
 export async function run(): Promise<void> {
@@ -56,11 +49,21 @@ export async function run(): Promise<void> {
     topic: core.getInput('topic')
   })
 
+  const columns = parseColumns(inputs.columns)
+
+  const mentionColumns = columns.filter(c => c.variant === 'mention')
+
+  // use zero-width space to prevent mention from being shown
+  const mention = mentionColumns
+    .map(c => `<a href="tg://user?id=${c.content}">\u2060</a>`)
+    .join('')
+
   const message = [
     inputs.message,
     lineBreak,
     lineBreak,
-    columnsToMessage(parseColumns(inputs.columns))
+    columnsToMessage(columns.filter(c => c.variant !== 'mention')),
+    mention ? `${lineBreak}🔔${mention}` : ''
   ].join('')
 
   console.log(message)
