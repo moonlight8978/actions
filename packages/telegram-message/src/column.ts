@@ -10,18 +10,18 @@ export type Column = {
 export function parseColumns(columns: string) {
   const columnContentSchema = string().required()
   const columnVariantSchema = string().required()
-  const columnTitleSchema = string().required()
+  const columnTitleSchema = string().default('')
 
   return columns
     .split('|W|')
-    .map((col) => trim(col))
+    .map(col => trim(col))
     .slice(1)
     .reduce((acc, column, index) => {
       if (index % 3 === 0) {
         acc.push({
           content: '',
           title: '',
-          variant: '',
+          variant: ''
         })
       }
 

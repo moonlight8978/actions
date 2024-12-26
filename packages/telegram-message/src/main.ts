@@ -19,7 +19,14 @@ export function htmlEscape(str: string) {
 }
 
 export function columnsToMessage(columns: Column[]) {
-  return columns
+  const textColumns = columns.filter(c => c.variant !== 'mention')
+  const mentionColumns = columns.filter(c => c.variant === 'mention')
+
+  // use zero-width space to prevent mention from being shown
+  const mention = mentionColumns
+    .map(c => `<a href="tg://user?id=${c.content}">\u2060</a>`)
+    .join('')
+  const text = textColumns
     .map(column => {
       const content = htmlEscape(column.content)
 
@@ -28,6 +35,8 @@ export function columnsToMessage(columns: Column[]) {
         : `▪️ <b>${column.title}</b>: ${content}`
     })
     .join(lineBreak)
+
+  return `${text}${mention}`
 }
 
 export async function run(): Promise<void> {
