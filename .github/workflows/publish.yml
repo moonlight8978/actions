@@ -35,6 +35,8 @@ jobs:
 
       - run: npm run build
 
+      - run: cp -R .github/actions/* ./dist
+
       - env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
