@@ -1,0 +1,17 @@
+name: git-config-actions-bot
+
+description: Git config GitHub Actions bot user
+
+inputs:
+  name: 
+    default: github-actions-bot
+    description: Bot username
+
+runs:
+  using: composite
+  steps:
+    - name: Config github actions bot user
+      shell: bash
+      run: |
+        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git config user.name "${{ inputs.name }}"

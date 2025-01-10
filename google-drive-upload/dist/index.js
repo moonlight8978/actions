@@ -11152,7 +11152,7 @@ module.exports = typeof Reflect !== 'undefined' && Reflect && Reflect.apply;
 "use strict";
 
 
-var GetIntrinsic = __nccwpck_require__(3987);
+var GetIntrinsic = __nccwpck_require__(8402);
 
 var callBindBasic = __nccwpck_require__(2260);
 
@@ -14145,7 +14145,7 @@ __exportStar(__nccwpck_require__(2790), exports);
 
 /***/ }),
 
-/***/ 3987:
+/***/ 8402:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -14168,6 +14168,8 @@ var floor = __nccwpck_require__(422);
 var max = __nccwpck_require__(1378);
 var min = __nccwpck_require__(7388);
 var pow = __nccwpck_require__(526);
+var round = __nccwpck_require__(7816);
+var sign = __nccwpck_require__(9947);
 
 var $Function = Function;
 
@@ -14202,11 +14204,10 @@ var ThrowTypeError = $gOPD
 	: throwTypeError;
 
 var hasSymbols = __nccwpck_require__(9718)();
-var getDunderProto = __nccwpck_require__(9594);
 
-var getProto = (typeof Reflect === 'function' && Reflect.getPrototypeOf)
-	|| $Object.getPrototypeOf
-	|| getDunderProto;
+var getProto = __nccwpck_require__(9272);
+var $ObjectGPO = __nccwpck_require__(5932);
+var $ReflectGPO = __nccwpck_require__(3172);
 
 var $apply = __nccwpck_require__(5024);
 var $call = __nccwpck_require__(9570);
@@ -14288,11 +14289,15 @@ var INTRINSICS = {
 	'%Function.prototype.call%': $call,
 	'%Function.prototype.apply%': $apply,
 	'%Object.defineProperty%': $defineProperty,
+	'%Object.getPrototypeOf%': $ObjectGPO,
 	'%Math.abs%': abs,
 	'%Math.floor%': floor,
 	'%Math.max%': max,
 	'%Math.min%': min,
-	'%Math.pow%': pow
+	'%Math.pow%': pow,
+	'%Math.round%': round,
+	'%Math.sign%': sign,
+	'%Reflect.getPrototypeOf%': $ReflectGPO
 };
 
 if (getProto) {
@@ -14521,6 +14526,67 @@ module.exports = function GetIntrinsic(name, allowMissing) {
 	}
 	return value;
 };
+
+
+/***/ }),
+
+/***/ 5932:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+
+var $Object = __nccwpck_require__(7241);
+
+/** @type {import('./Object.getPrototypeOf')} */
+module.exports = $Object.getPrototypeOf || null;
+
+
+/***/ }),
+
+/***/ 3172:
+/***/ ((module) => {
+
+"use strict";
+
+
+/** @type {import('./Reflect.getPrototypeOf')} */
+module.exports = (typeof Reflect !== 'undefined' && Reflect.getPrototypeOf) || null;
+
+
+/***/ }),
+
+/***/ 9272:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+
+var reflectGetProto = __nccwpck_require__(3172);
+var originalGetProto = __nccwpck_require__(5932);
+
+var getDunderProto = __nccwpck_require__(9594);
+
+/** @type {import('.')} */
+module.exports = reflectGetProto
+	? function getProto(O) {
+		// @ts-expect-error TS can't narrow inside a closure, for some reason
+		return reflectGetProto(O);
+	}
+	: originalGetProto
+		? function getProto(O) {
+			if (!O || (typeof O !== 'object' && typeof O !== 'function')) {
+				throw new TypeError('getProto: not an object');
+			}
+			// @ts-expect-error TS can't narrow inside a closure, for some reason
+			return originalGetProto(O);
+		}
+		: getDunderProto
+			? function getProto(O) {
+				// @ts-expect-error TS can't narrow inside a closure, for some reason
+				return getDunderProto(O);
+			}
+			: null;
 
 
 /***/ }),
@@ -24306,6 +24372,20 @@ module.exports = Math.floor;
 
 /***/ }),
 
+/***/ 4021:
+/***/ ((module) => {
+
+"use strict";
+
+
+/** @type {import('./isNaN')} */
+module.exports = Number.isNaN || function isNaN(a) {
+	return a !== a;
+};
+
+
+/***/ }),
+
 /***/ 1378:
 /***/ ((module) => {
 
@@ -24338,6 +24418,37 @@ module.exports = Math.min;
 
 /** @type {import('./pow')} */
 module.exports = Math.pow;
+
+
+/***/ }),
+
+/***/ 7816:
+/***/ ((module) => {
+
+"use strict";
+
+
+/** @type {import('./round')} */
+module.exports = Math.round;
+
+
+/***/ }),
+
+/***/ 9947:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+
+var $isNaN = __nccwpck_require__(4021);
+
+/** @type {import('./sign')} */
+module.exports = function sign(number) {
+	if ($isNaN(number) || number === 0) {
+		return number;
+	}
+	return number < 0 ? -1 : +1;
+};
 
 
 /***/ }),
@@ -28222,7 +28333,7 @@ module.exports = function getSideChannelList() {
 "use strict";
 
 
-var GetIntrinsic = __nccwpck_require__(3987);
+var GetIntrinsic = __nccwpck_require__(8402);
 var callBound = __nccwpck_require__(5296);
 var inspect = __nccwpck_require__(9162);
 
@@ -28298,7 +28409,7 @@ module.exports = !!$Map && /** @type {Exclude<import('.'), false>} */ function g
 "use strict";
 
 
-var GetIntrinsic = __nccwpck_require__(3987);
+var GetIntrinsic = __nccwpck_require__(8402);
 var callBound = __nccwpck_require__(5296);
 var inspect = __nccwpck_require__(9162);
 var getSideChannelMap = __nccwpck_require__(7138);
