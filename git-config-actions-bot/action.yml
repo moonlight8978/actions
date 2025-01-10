@@ -6,12 +6,16 @@ inputs:
   name: 
     default: github-actions-bot
     description: Bot username
+  working-directory:
+    default: .
+    description: Path to working directory folder
 
 runs:
   using: composite
   steps:
     - name: Config github actions bot user
       shell: bash
+      working-directory: ${{ inputs.working-directory }}
       run: |
         git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
         git config user.name "${{ inputs.name }}"
