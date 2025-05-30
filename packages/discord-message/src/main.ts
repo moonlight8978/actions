@@ -186,6 +186,7 @@ export async function run(): Promise<void> {
     core.info('Message sent')
   } catch (err: any) {
     core.error(err.message)
+    core.error(err)
     core.setFailed(err.message)
   } finally {
     await client.terminate()
