@@ -1,9 +1,9 @@
 "use strict";
-exports.id = 93;
-exports.ids = [93];
+exports.id = 391;
+exports.ids = [391];
 exports.modules = {
 
-/***/ 7093:
+/***/ 6772:
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 
@@ -12,7 +12,7 @@ __webpack_require__.d(__webpack_exports__, {
   "default": () => (/* binding */ query_string)
 });
 
-// NAMESPACE OBJECT: ./node_modules/.pnpm/query-string@9.1.1/node_modules/query-string/base.js
+// NAMESPACE OBJECT: ./node_modules/.pnpm/query-string@9.2.0/node_modules/query-string/base.js
 var base_namespaceObject = {};
 __webpack_require__.r(base_namespaceObject);
 __webpack_require__.d(base_namespaceObject, {
@@ -175,7 +175,7 @@ function splitOnFirst(string, separator) {
 	];
 }
 
-;// CONCATENATED MODULE: ./node_modules/.pnpm/query-string@9.1.1/node_modules/query-string/base.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/query-string@9.2.0/node_modules/query-string/base.js
 
 
 
@@ -487,12 +487,28 @@ function parseValue(value, options, type) {
 		return type(value);
 	}
 
-	if (options.parseBooleans && value !== null && (value.toLowerCase() === 'true' || value.toLowerCase() === 'false')) {
+	if (type === 'boolean' && value !== null && (value.toLowerCase() === 'true' || value.toLowerCase() === 'false')) {
 		return value.toLowerCase() === 'true';
+	}
+
+	if (type === 'boolean' && value !== null && (value.toLowerCase() === '1' || value.toLowerCase() === '0')) {
+		return value.toLowerCase() === '1';
+	}
+
+	if (type === 'string[]' && options.arrayFormat !== 'none' && typeof value === 'string') {
+		return [value];
+	}
+
+	if (type === 'number[]' && options.arrayFormat !== 'none' && !Number.isNaN(Number(value)) && (typeof value === 'string' && value.trim() !== '')) {
+		return [Number(value)];
 	}
 
 	if (type === 'number' && !Number.isNaN(Number(value)) && (typeof value === 'string' && value.trim() !== '')) {
 		return Number(value);
+	}
+
+	if (options.parseBooleans && value !== null && (value.toLowerCase() === 'true' || value.toLowerCase() === 'false')) {
+		return value.toLowerCase() === 'true';
 	}
 
 	if (options.parseNumbers && !Number.isNaN(Number(value)) && (typeof value === 'string' && value.trim() !== '')) {
@@ -717,7 +733,7 @@ function exclude(input, filter, options) {
 	return pick(input, exclusionFilter, options);
 }
 
-;// CONCATENATED MODULE: ./node_modules/.pnpm/query-string@9.1.1/node_modules/query-string/index.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/query-string@9.2.0/node_modules/query-string/index.js
 
 
 /* harmony default export */ const query_string = (base_namespaceObject);
@@ -727,4 +743,4 @@ function exclude(input, filter, options) {
 
 };
 ;
-//# sourceMappingURL=93.index.js.map
+//# sourceMappingURL=391.index.js.map

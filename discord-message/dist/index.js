@@ -1,7 +1,7 @@
 require('./sourcemap-register.js');/******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 27294:
+/***/ 26272:
 /***/ ((module) => {
 
 function webpackEmptyContext(req) {
@@ -11,7 +11,7 @@ function webpackEmptyContext(req) {
 }
 webpackEmptyContext.keys = () => ([]);
 webpackEmptyContext.resolve = webpackEmptyContext;
-webpackEmptyContext.id = 27294;
+webpackEmptyContext.id = 26272;
 module.exports = webpackEmptyContext;
 
 /***/ }),
@@ -1997,7 +1997,7 @@ const http = __importStar(__nccwpck_require__(58611));
 const https = __importStar(__nccwpck_require__(65692));
 const pm = __importStar(__nccwpck_require__(77407));
 const tunnel = __importStar(__nccwpck_require__(16124));
-const undici_1 = __nccwpck_require__(71909);
+const undici_1 = __nccwpck_require__(40298);
 var HttpCodes;
 (function (HttpCodes) {
     HttpCodes[HttpCodes["OK"] = 200] = "OK";
@@ -3210,7 +3210,7 @@ function copyFile(srcFile, destFile, force) {
 
 /***/ }),
 
-/***/ 67951:
+/***/ 25722:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -3267,21 +3267,28 @@ __export(src_exports, {
   ChannelSelectMenuBuilder: () => ChannelSelectMenuBuilder,
   ComponentAssertions: () => Assertions_exports2,
   ComponentBuilder: () => ComponentBuilder,
-  ContextMenuCommandAssertions: () => Assertions_exports6,
+  ComponentsV2Assertions: () => Assertions_exports4,
+  ContainerBuilder: () => ContainerBuilder,
+  ContextMenuCommandAssertions: () => Assertions_exports7,
   ContextMenuCommandBuilder: () => ContextMenuCommandBuilder,
   EmbedAssertions: () => Assertions_exports,
   EmbedBuilder: () => EmbedBuilder,
+  FileBuilder: () => FileBuilder,
+  MediaGalleryBuilder: () => MediaGalleryBuilder,
+  MediaGalleryItemBuilder: () => MediaGalleryItemBuilder,
   MentionableSelectMenuBuilder: () => MentionableSelectMenuBuilder,
-  ModalAssertions: () => Assertions_exports4,
+  ModalAssertions: () => Assertions_exports5,
   ModalBuilder: () => ModalBuilder,
   RoleSelectMenuBuilder: () => RoleSelectMenuBuilder,
+  SectionBuilder: () => SectionBuilder,
   SelectMenuBuilder: () => StringSelectMenuBuilder,
   SelectMenuOptionBuilder: () => StringSelectMenuOptionBuilder,
+  SeparatorBuilder: () => SeparatorBuilder,
   SharedNameAndDescription: () => SharedNameAndDescription,
   SharedSlashCommand: () => SharedSlashCommand,
   SharedSlashCommandOptions: () => SharedSlashCommandOptions,
   SharedSlashCommandSubcommands: () => SharedSlashCommandSubcommands,
-  SlashCommandAssertions: () => Assertions_exports5,
+  SlashCommandAssertions: () => Assertions_exports6,
   SlashCommandAttachmentOption: () => SlashCommandAttachmentOption,
   SlashCommandBooleanOption: () => SlashCommandBooleanOption,
   SlashCommandBuilder: () => SlashCommandBuilder,
@@ -3296,8 +3303,10 @@ __export(src_exports, {
   SlashCommandUserOption: () => SlashCommandUserOption,
   StringSelectMenuBuilder: () => StringSelectMenuBuilder,
   StringSelectMenuOptionBuilder: () => StringSelectMenuOptionBuilder,
+  TextDisplayBuilder: () => TextDisplayBuilder,
   TextInputAssertions: () => Assertions_exports3,
   TextInputBuilder: () => TextInputBuilder,
+  ThumbnailBuilder: () => ThumbnailBuilder,
   UserSelectMenuBuilder: () => UserSelectMenuBuilder,
   createComponentBuilder: () => createComponentBuilder,
   disableValidators: () => disableValidators,
@@ -3305,6 +3314,7 @@ __export(src_exports, {
   enableValidators: () => enableValidators,
   isValidationEnabled: () => isValidationEnabled,
   normalizeArray: () => normalizeArray,
+  resolveBuilder: () => resolveBuilder,
   version: () => version
 });
 module.exports = __toCommonJS(src_exports);
@@ -3349,8 +3359,8 @@ function isValidationEnabled() {
 __name(isValidationEnabled, "isValidationEnabled");
 
 // src/messages/embed/Assertions.ts
-var fieldNamePredicate = import_shapeshift.s.string().lengthGreaterThanOrEqual(1).lengthLessThanOrEqual(256).setValidationEnabled(isValidationEnabled);
-var fieldValuePredicate = import_shapeshift.s.string().lengthGreaterThanOrEqual(1).lengthLessThanOrEqual(1024).setValidationEnabled(isValidationEnabled);
+var fieldNamePredicate = import_shapeshift.s.string().lengthLessThanOrEqual(256).setValidationEnabled(isValidationEnabled);
+var fieldValuePredicate = import_shapeshift.s.string().lengthLessThanOrEqual(1024).setValidationEnabled(isValidationEnabled);
 var fieldInlinePredicate = import_shapeshift.s.boolean().optional();
 var embedFieldPredicate = import_shapeshift.s.object({
   name: fieldNamePredicate,
@@ -3363,7 +3373,7 @@ function validateFieldLength(amountAdding, fields) {
   fieldLengthPredicate.parse((fields?.length ?? 0) + amountAdding);
 }
 __name(validateFieldLength, "validateFieldLength");
-var authorNamePredicate = fieldNamePredicate.nullable().setValidationEnabled(isValidationEnabled);
+var authorNamePredicate = fieldNamePredicate.lengthGreaterThanOrEqual(1).nullable().setValidationEnabled(isValidationEnabled);
 var imageURLPredicate = import_shapeshift.s.string().url({
   allowedProtocols: ["http:", "https:", "attachment:"]
 }).nullish().setValidationEnabled(isValidationEnabled);
@@ -3384,7 +3394,7 @@ var embedFooterPredicate = import_shapeshift.s.object({
   iconURL: imageURLPredicate
 }).setValidationEnabled(isValidationEnabled);
 var timestampPredicate = import_shapeshift.s.union([import_shapeshift.s.number(), import_shapeshift.s.date()]).nullable().setValidationEnabled(isValidationEnabled);
-var titlePredicate = fieldNamePredicate.nullable().setValidationEnabled(isValidationEnabled);
+var titlePredicate = fieldNamePredicate.lengthGreaterThanOrEqual(1).nullable().setValidationEnabled(isValidationEnabled);
 
 // src/util/normalizeArray.ts
 function normalizeArray(arr) {
@@ -3609,7 +3619,7 @@ var EmbedBuilder = class {
 };
 
 // src/index.ts
-__reExport(src_exports, __nccwpck_require__(48871), module.exports);
+__reExport(src_exports, __nccwpck_require__(71188), module.exports);
 
 // src/components/Assertions.ts
 var Assertions_exports2 = {};
@@ -3621,6 +3631,7 @@ __export(Assertions_exports2, {
   defaultValidator: () => defaultValidator,
   disabledValidator: () => disabledValidator,
   emojiValidator: () => emojiValidator,
+  idValidator: () => idValidator,
   jsonOptionValidator: () => jsonOptionValidator,
   labelValueDescriptionValidator: () => labelValueDescriptionValidator,
   minMaxValidator: () => minMaxValidator,
@@ -3634,7 +3645,7 @@ __export(Assertions_exports2, {
   validateRequiredSelectMenuParameters: () => validateRequiredSelectMenuParameters
 });
 var import_shapeshift2 = __nccwpck_require__(50141);
-var import_v10 = __nccwpck_require__(29244);
+var import_v10 = __nccwpck_require__(94104);
 
 // src/components/selectMenu/StringSelectMenuOption.ts
 var StringSelectMenuOptionBuilder = class {
@@ -3723,6 +3734,7 @@ var StringSelectMenuOptionBuilder = class {
 };
 
 // src/components/Assertions.ts
+var idValidator = import_shapeshift2.s.number().safeInt().greaterThanOrEqual(1).lessThan(4294967296).setValidationEnabled(isValidationEnabled);
 var customIdValidator = import_shapeshift2.s.string().lengthGreaterThanOrEqual(1).lengthLessThanOrEqual(100).setValidationEnabled(isValidationEnabled);
 var emojiValidator = import_shapeshift2.s.object({
   id: import_shapeshift2.s.string(),
@@ -3790,7 +3802,7 @@ function validateRequiredButtonParameters(style, label, emoji, customId, skuId, 
 __name(validateRequiredButtonParameters, "validateRequiredButtonParameters");
 
 // src/components/ActionRow.ts
-var import_v1011 = __nccwpck_require__(29244);
+var import_v1019 = __nccwpck_require__(94104);
 
 // src/components/Component.ts
 var ComponentBuilder = class {
@@ -3809,13 +3821,29 @@ var ComponentBuilder = class {
   constructor(data) {
     this.data = data;
   }
+  /**
+   * Sets the id (not the custom id) for this component.
+   *
+   * @param id - The id for this component
+   */
+  setId(id) {
+    this.data.id = idValidator.parse(id);
+    return this;
+  }
+  /**
+   * Clears the id of this component, defaulting to a default incremented id.
+   */
+  clearId() {
+    this.data.id = void 0;
+    return this;
+  }
 };
 
 // src/components/Components.ts
-var import_v1010 = __nccwpck_require__(29244);
+var import_v1018 = __nccwpck_require__(94104);
 
 // src/components/button/Button.ts
-var import_v102 = __nccwpck_require__(29244);
+var import_v102 = __nccwpck_require__(94104);
 var ButtonBuilder = class extends ComponentBuilder {
   static {
     __name(this, "ButtonBuilder");
@@ -3939,7 +3967,7 @@ var ButtonBuilder = class extends ComponentBuilder {
 };
 
 // src/components/selectMenu/ChannelSelectMenu.ts
-var import_v103 = __nccwpck_require__(29244);
+var import_v103 = __nccwpck_require__(94104);
 
 // src/components/selectMenu/BaseSelectMenu.ts
 var BaseSelectMenuBuilder = class extends ComponentBuilder {
@@ -4098,7 +4126,7 @@ var ChannelSelectMenuBuilder = class extends BaseSelectMenuBuilder {
 };
 
 // src/components/selectMenu/MentionableSelectMenu.ts
-var import_v104 = __nccwpck_require__(29244);
+var import_v104 = __nccwpck_require__(94104);
 var MentionableSelectMenuBuilder = class extends BaseSelectMenuBuilder {
   static {
     __name(this, "MentionableSelectMenuBuilder");
@@ -4188,7 +4216,7 @@ var MentionableSelectMenuBuilder = class extends BaseSelectMenuBuilder {
 };
 
 // src/components/selectMenu/RoleSelectMenu.ts
-var import_v105 = __nccwpck_require__(29244);
+var import_v105 = __nccwpck_require__(94104);
 var RoleSelectMenuBuilder = class extends BaseSelectMenuBuilder {
   static {
     __name(this, "RoleSelectMenuBuilder");
@@ -4252,7 +4280,7 @@ var RoleSelectMenuBuilder = class extends BaseSelectMenuBuilder {
 };
 
 // src/components/selectMenu/StringSelectMenu.ts
-var import_v106 = __nccwpck_require__(29244);
+var import_v106 = __nccwpck_require__(94104);
 var StringSelectMenuBuilder = class extends BaseSelectMenuBuilder {
   static {
     __name(this, "StringSelectMenuBuilder");
@@ -4374,7 +4402,7 @@ var StringSelectMenuBuilder = class extends BaseSelectMenuBuilder {
 };
 
 // src/components/selectMenu/UserSelectMenu.ts
-var import_v107 = __nccwpck_require__(29244);
+var import_v107 = __nccwpck_require__(94104);
 var UserSelectMenuBuilder = class extends BaseSelectMenuBuilder {
   static {
     __name(this, "UserSelectMenuBuilder");
@@ -4439,7 +4467,7 @@ var UserSelectMenuBuilder = class extends BaseSelectMenuBuilder {
 
 // src/components/textInput/TextInput.ts
 var import_util = __nccwpck_require__(1004);
-var import_v109 = __nccwpck_require__(29244);
+var import_v109 = __nccwpck_require__(94104);
 var import_fast_deep_equal = __toESM(__nccwpck_require__(4711));
 
 // src/components/textInput/Assertions.ts
@@ -4455,7 +4483,7 @@ __export(Assertions_exports3, {
   valueValidator: () => valueValidator
 });
 var import_shapeshift3 = __nccwpck_require__(50141);
-var import_v108 = __nccwpck_require__(29244);
+var import_v108 = __nccwpck_require__(94104);
 var textInputStyleValidator = import_shapeshift3.s.nativeEnum(import_v108.TextInputStyle);
 var minLengthValidator = import_shapeshift3.s.number().int().greaterThanOrEqual(0).lessThanOrEqual(4e3).setValidationEnabled(isValidationEnabled);
 var maxLengthValidator = import_shapeshift3.s.number().int().greaterThanOrEqual(1).lessThanOrEqual(4e3).setValidationEnabled(isValidationEnabled);
@@ -4593,33 +4621,827 @@ var TextInputBuilder = class extends ComponentBuilder {
   }
 };
 
+// src/components/v2/Container.ts
+var import_v1015 = __nccwpck_require__(94104);
+
+// src/components/v2/Assertions.ts
+var Assertions_exports4 = {};
+__export(Assertions_exports4, {
+  accessoryPredicate: () => accessoryPredicate,
+  assertReturnOfBuilder: () => assertReturnOfBuilder,
+  containerColorPredicate: () => containerColorPredicate,
+  descriptionPredicate: () => descriptionPredicate2,
+  dividerPredicate: () => dividerPredicate,
+  filePredicate: () => filePredicate,
+  spacingPredicate: () => spacingPredicate,
+  spoilerPredicate: () => spoilerPredicate,
+  textDisplayContentPredicate: () => textDisplayContentPredicate,
+  unfurledMediaItemPredicate: () => unfurledMediaItemPredicate,
+  validateComponentArray: () => validateComponentArray
+});
+var import_shapeshift4 = __nccwpck_require__(50141);
+var import_v1011 = __nccwpck_require__(94104);
+
+// src/components/v2/Thumbnail.ts
+var import_v1010 = __nccwpck_require__(94104);
+var ThumbnailBuilder = class extends ComponentBuilder {
+  static {
+    __name(this, "ThumbnailBuilder");
+  }
+  /**
+   * Creates a new thumbnail from API data.
+   *
+   * @param data - The API data to create this thumbnail with
+   * @example
+   * Creating a thumbnail from an API data object:
+   * ```ts
+   * const thumbnail = new ThumbnailBuilder({
+   * 	description: 'some text',
+   *  media: {
+   *      url: 'https://cdn.discordapp.com/embed/avatars/4.png',
+   *  },
+   * });
+   * ```
+   * @example
+   * Creating a thumbnail using setters and API data:
+   * ```ts
+   * const thumbnail = new ThumbnailBuilder({
+   * 	media: {
+   *      url: 'attachment://image.png',
+   *  },
+   * })
+   * 	.setDescription('alt text');
+   * ```
+   */
+  constructor(data = {}) {
+    super({
+      type: import_v1010.ComponentType.Thumbnail,
+      ...data,
+      media: data.media ? { url: data.media.url } : void 0
+    });
+  }
+  /**
+   * Sets the description of this thumbnail.
+   *
+   * @param description - The description to use
+   */
+  setDescription(description) {
+    this.data.description = descriptionPredicate2.parse(description);
+    return this;
+  }
+  /**
+   * Clears the description of this thumbnail.
+   */
+  clearDescription() {
+    this.data.description = void 0;
+    return this;
+  }
+  /**
+   * Sets the spoiler status of this thumbnail.
+   *
+   * @param spoiler - The spoiler status to use
+   */
+  setSpoiler(spoiler = true) {
+    this.data.spoiler = spoilerPredicate.parse(spoiler);
+    return this;
+  }
+  /**
+   * Sets the media URL of this thumbnail.
+   *
+   * @param url - The URL to use
+   */
+  setURL(url) {
+    this.data.media = unfurledMediaItemPredicate.parse({ url });
+    return this;
+  }
+  /**
+   * {@inheritdoc ComponentBuilder.toJSON}
+   */
+  toJSON() {
+    unfurledMediaItemPredicate.parse(this.data.media);
+    return { ...this.data };
+  }
+};
+
+// src/components/v2/Assertions.ts
+var unfurledMediaItemPredicate = import_shapeshift4.s.object({
+  url: import_shapeshift4.s.string().url(
+    { allowedProtocols: ["http:", "https:", "attachment:"] },
+    { message: "Invalid protocol for media URL. Must be http:, https:, or attachment:" }
+  )
+}).setValidationEnabled(isValidationEnabled);
+var descriptionPredicate2 = import_shapeshift4.s.string().lengthGreaterThanOrEqual(1).lengthLessThanOrEqual(1024).setValidationEnabled(isValidationEnabled);
+var filePredicate = import_shapeshift4.s.object({
+  url: import_shapeshift4.s.string().url({ allowedProtocols: ["attachment:"] }, { message: "Invalid protocol for file URL. Must be attachment:" })
+}).setValidationEnabled(isValidationEnabled);
+var spoilerPredicate = import_shapeshift4.s.boolean();
+var dividerPredicate = import_shapeshift4.s.boolean();
+var spacingPredicate = import_shapeshift4.s.nativeEnum(import_v1011.SeparatorSpacingSize);
+var textDisplayContentPredicate = import_shapeshift4.s.string().lengthGreaterThanOrEqual(1).lengthLessThanOrEqual(4e3).setValidationEnabled(isValidationEnabled);
+var accessoryPredicate = import_shapeshift4.s.instance(ButtonBuilder).or(import_shapeshift4.s.instance(ThumbnailBuilder)).setValidationEnabled(isValidationEnabled);
+var containerColorPredicate = colorPredicate.nullish();
+function assertReturnOfBuilder(input, ExpectedInstanceOf) {
+  import_shapeshift4.s.instance(ExpectedInstanceOf).setValidationEnabled(isValidationEnabled).parse(input);
+}
+__name(assertReturnOfBuilder, "assertReturnOfBuilder");
+function validateComponentArray(input, min, max, ExpectedInstanceOf) {
+  (ExpectedInstanceOf ? import_shapeshift4.s.instance(ExpectedInstanceOf) : import_shapeshift4.s.instance(ComponentBuilder)).array().lengthGreaterThanOrEqual(min).lengthLessThanOrEqual(max).setValidationEnabled(isValidationEnabled).parse(input);
+}
+__name(validateComponentArray, "validateComponentArray");
+
+// src/components/v2/File.ts
+var import_v1012 = __nccwpck_require__(94104);
+var FileBuilder = class extends ComponentBuilder {
+  static {
+    __name(this, "FileBuilder");
+  }
+  /**
+   * Creates a new file from API data.
+   *
+   * @param data - The API data to create this file with
+   * @example
+   * Creating a file from an API data object:
+   * ```ts
+   * const file = new FileBuilder({
+   * 	spoiler: true,
+   * 	file: {
+   * 		url: 'attachment://file.png',
+   * 	},
+   * });
+   * ```
+   * @example
+   * Creating a file using setters and API data:
+   * ```ts
+   * const file = new FileBuilder({
+   * 	file: {
+   * 		url: 'attachment://image.jpg',
+   * 	},
+   * })
+   * 	.setSpoiler(false);
+   * ```
+   */
+  constructor(data = {}) {
+    super({ type: import_v1012.ComponentType.File, ...data, file: data.file ? { url: data.file.url } : void 0 });
+  }
+  /**
+   * Sets the spoiler status of this file.
+   *
+   * @param spoiler - The spoiler status to use
+   */
+  setSpoiler(spoiler = true) {
+    this.data.spoiler = spoilerPredicate.parse(spoiler);
+    return this;
+  }
+  /**
+   * Sets the media URL of this file.
+   *
+   * @param url - The URL to use
+   */
+  setURL(url) {
+    this.data.file = filePredicate.parse({ url });
+    return this;
+  }
+  /**
+   * {@inheritDoc ComponentBuilder.toJSON}
+   */
+  toJSON() {
+    filePredicate.parse(this.data.file);
+    return { ...this.data, file: { ...this.data.file } };
+  }
+};
+
+// src/components/v2/Separator.ts
+var import_v1013 = __nccwpck_require__(94104);
+var SeparatorBuilder = class extends ComponentBuilder {
+  static {
+    __name(this, "SeparatorBuilder");
+  }
+  /**
+   * Creates a new separator from API data.
+   *
+   * @param data - The API data to create this separator with
+   * @example
+   * Creating a separator from an API data object:
+   * ```ts
+   * const separator = new SeparatorBuilder({
+   * 	spacing: SeparatorSpacingSize.Small,
+   *  divider: true,
+   * });
+   * ```
+   * @example
+   * Creating a separator using setters and API data:
+   * ```ts
+   * const separator = new SeparatorBuilder({
+   * 	spacing: SeparatorSpacingSize.Large,
+   * })
+   * 	.setDivider(false);
+   * ```
+   */
+  constructor(data = {}) {
+    super({
+      type: import_v1013.ComponentType.Separator,
+      ...data
+    });
+  }
+  /**
+   * Sets whether this separator should show a divider line.
+   *
+   * @param divider - Whether to show a divider line
+   */
+  setDivider(divider = true) {
+    this.data.divider = dividerPredicate.parse(divider);
+    return this;
+  }
+  /**
+   * Sets the spacing of this separator.
+   *
+   * @param spacing - The spacing to use
+   */
+  setSpacing(spacing) {
+    this.data.spacing = spacingPredicate.parse(spacing);
+    return this;
+  }
+  /**
+   * Clears the spacing of this separator.
+   */
+  clearSpacing() {
+    this.data.spacing = void 0;
+    return this;
+  }
+  /**
+   * {@inheritDoc ComponentBuilder.toJSON}
+   */
+  toJSON() {
+    return { ...this.data };
+  }
+};
+
+// src/components/v2/TextDisplay.ts
+var import_v1014 = __nccwpck_require__(94104);
+var TextDisplayBuilder = class extends ComponentBuilder {
+  static {
+    __name(this, "TextDisplayBuilder");
+  }
+  /**
+   * Creates a new text display from API data.
+   *
+   * @param data - The API data to create this text display with
+   * @example
+   * Creating a text display from an API data object:
+   * ```ts
+   * const textDisplay = new TextDisplayBuilder({
+   * 	content: 'some text',
+   * });
+   * ```
+   * @example
+   * Creating a text display using setters and API data:
+   * ```ts
+   * const textDisplay = new TextDisplayBuilder({
+   * 	content: 'old text',
+   * })
+   * 	.setContent('new text');
+   * ```
+   */
+  constructor(data = {}) {
+    super({
+      type: import_v1014.ComponentType.TextDisplay,
+      ...data
+    });
+  }
+  /**
+   * Sets the text of this text display.
+   *
+   * @param content - The text to use
+   */
+  setContent(content) {
+    this.data.content = textDisplayContentPredicate.parse(content);
+    return this;
+  }
+  /**
+   * {@inheritDoc ComponentBuilder.toJSON}
+   */
+  toJSON() {
+    textDisplayContentPredicate.parse(this.data.content);
+    return { ...this.data };
+  }
+};
+
+// src/components/v2/Container.ts
+var ContainerBuilder = class extends ComponentBuilder {
+  static {
+    __name(this, "ContainerBuilder");
+  }
+  /**
+   * The components within this container.
+   */
+  components;
+  /**
+   * Creates a new container from API data.
+   *
+   * @param data - The API data to create this container with
+   * @example
+   * Creating a container from an API data object:
+   * ```ts
+   * const container = new ContainerBuilder({
+   * 	components: [
+   * 		{
+   * 			content: "Some text here",
+   * 			type: ComponentType.TextDisplay,
+   * 		},
+   * 	],
+   * });
+   * ```
+   * @example
+   * Creating a container using setters and API data:
+   * ```ts
+   * const container = new ContainerBuilder({
+   * 	components: [
+   * 		{
+   * 			content: "# Heading",
+   * 			type: ComponentType.TextDisplay,
+   * 		},
+   * 	],
+   * })
+   * 	.addComponents(separator, section);
+   * ```
+   */
+  constructor({ components, ...data } = {}) {
+    super({ type: import_v1015.ComponentType.Container, ...data });
+    this.components = components?.map((component) => createComponentBuilder(component)) ?? [];
+  }
+  /**
+   * Sets the accent color of this container.
+   *
+   * @param color - The color to use
+   */
+  setAccentColor(color) {
+    containerColorPredicate.parse(color);
+    if (Array.isArray(color)) {
+      const [red, green, blue] = color;
+      this.data.accent_color = (red << 16) + (green << 8) + blue;
+      return this;
+    }
+    this.data.accent_color = color;
+    return this;
+  }
+  /**
+   * Clears the accent color of this container.
+   */
+  clearAccentColor() {
+    this.data.accent_color = void 0;
+    return this;
+  }
+  /**
+   * Adds action row components to this container.
+   *
+   * @param components - The action row components to add
+   */
+  addActionRowComponents(...components) {
+    this.components.push(
+      ...normalizeArray(components).map((component) => resolveBuilder(component, ActionRowBuilder))
+    );
+    return this;
+  }
+  /**
+   * Adds file components to this container.
+   *
+   * @param components - The file components to add
+   */
+  addFileComponents(...components) {
+    this.components.push(...normalizeArray(components).map((component) => resolveBuilder(component, FileBuilder)));
+    return this;
+  }
+  /**
+   * Adds media gallery components to this container.
+   *
+   * @param components - The media gallery components to add
+   */
+  addMediaGalleryComponents(...components) {
+    this.components.push(
+      ...normalizeArray(components).map((component) => resolveBuilder(component, MediaGalleryBuilder))
+    );
+    return this;
+  }
+  /**
+   * Adds section components to this container.
+   *
+   * @param components - The section components to add
+   */
+  addSectionComponents(...components) {
+    this.components.push(...normalizeArray(components).map((component) => resolveBuilder(component, SectionBuilder)));
+    return this;
+  }
+  /**
+   * Adds separator components to this container.
+   *
+   * @param components - The separator components to add
+   */
+  addSeparatorComponents(...components) {
+    this.components.push(...normalizeArray(components).map((component) => resolveBuilder(component, SeparatorBuilder)));
+    return this;
+  }
+  /**
+   * Adds text display components to this container.
+   *
+   * @param components - The text display components to add
+   */
+  addTextDisplayComponents(...components) {
+    this.components.push(
+      ...normalizeArray(components).map((component) => resolveBuilder(component, TextDisplayBuilder))
+    );
+    return this;
+  }
+  /**
+   * Removes, replaces, or inserts components for this container.
+   *
+   * @param index - The index to start removing, replacing or inserting components
+   * @param deleteCount - The amount of components to remove
+   * @param components - The components to set
+   */
+  spliceComponents(index, deleteCount, ...components) {
+    this.components.splice(
+      index,
+      deleteCount,
+      ...normalizeArray(components).map(
+        (component) => component instanceof ComponentBuilder ? component : createComponentBuilder(component)
+      )
+    );
+    return this;
+  }
+  /**
+   * Sets the spoiler status of this container.
+   *
+   * @param spoiler - The spoiler status to use
+   */
+  setSpoiler(spoiler = true) {
+    this.data.spoiler = spoilerPredicate.parse(spoiler);
+    return this;
+  }
+  /**
+   * {@inheritDoc ComponentBuilder.toJSON}
+   */
+  toJSON() {
+    return {
+      ...this.data,
+      components: this.components.map((component) => component.toJSON())
+    };
+  }
+};
+
+// src/components/v2/MediaGallery.ts
+var import_v1016 = __nccwpck_require__(94104);
+
+// src/components/v2/MediaGalleryItem.ts
+var MediaGalleryItemBuilder = class {
+  static {
+    __name(this, "MediaGalleryItemBuilder");
+  }
+  /**
+   * The API data associated with this media gallery item.
+   */
+  data;
+  /**
+   * Creates a new media gallery item from API data.
+   *
+   * @param data - The API data to create this media gallery item with
+   * @example
+   * Creating a media gallery item from an API data object:
+   * ```ts
+   * const item = new MediaGalleryItemBuilder({
+   * 	description: "Some text here",
+   * 	media: {
+   * 		url: 'https://cdn.discordapp.com/embed/avatars/2.png',
+   * 	},
+   * });
+   * ```
+   * @example
+   * Creating a media gallery item using setters and API data:
+   * ```ts
+   * const item = new MediaGalleryItemBuilder({
+   * 	media: {
+   * 		url: 'https://cdn.discordapp.com/embed/avatars/5.png',
+   * 	},
+   * })
+   * 	.setDescription("alt text");
+   * ```
+   */
+  constructor(data = {}) {
+    this.data = data;
+  }
+  /**
+   * Sets the description of this media gallery item.
+   *
+   * @param description - The description to use
+   */
+  setDescription(description) {
+    this.data.description = descriptionPredicate2.parse(description);
+    return this;
+  }
+  /**
+   * Clears the description of this media gallery item.
+   */
+  clearDescription() {
+    this.data.description = void 0;
+    return this;
+  }
+  /**
+   * Sets the spoiler status of this media gallery item.
+   *
+   * @param spoiler - The spoiler status to use
+   */
+  setSpoiler(spoiler = true) {
+    this.data.spoiler = spoilerPredicate.parse(spoiler);
+    return this;
+  }
+  /**
+   * Sets the media URL of this media gallery item.
+   *
+   * @param url - The URL to use
+   */
+  setURL(url) {
+    this.data.media = unfurledMediaItemPredicate.parse({ url });
+    return this;
+  }
+  /**
+   * Serializes this builder to API-compatible JSON data.
+   *
+   * @remarks
+   * This method runs validations on the data before serializing it.
+   * As such, it may throw an error if the data is invalid.
+   */
+  toJSON() {
+    unfurledMediaItemPredicate.parse(this.data.media);
+    return { ...this.data };
+  }
+};
+
+// src/components/v2/MediaGallery.ts
+var MediaGalleryBuilder = class extends ComponentBuilder {
+  static {
+    __name(this, "MediaGalleryBuilder");
+  }
+  /**
+   * The components within this container.
+   */
+  items;
+  /**
+   * Creates a new media gallery from API data.
+   *
+   * @param data - The API data to create this media gallery with
+   * @example
+   * Creating a media gallery from an API data object:
+   * ```ts
+   * const mediaGallery = new MediaGalleryBuilder({
+   * 	items: [
+   * 		{
+   * 			description: "Some text here",
+   * 			media: {
+   * 				url: 'https://cdn.discordapp.com/embed/avatars/2.png',
+   * 			},
+   * 		},
+   * 	],
+   * });
+   * ```
+   * @example
+   * Creating a media gallery using setters and API data:
+   * ```ts
+   * const mediaGallery = new MediaGalleryBuilder({
+   * 	items: [
+   * 		{
+   * 			description: "alt text",
+   * 			media: {
+   * 				url: 'https://cdn.discordapp.com/embed/avatars/5.png',
+   * 			},
+   * 		},
+   * 	],
+   * })
+   * 	.addItems(item2, item3);
+   * ```
+   */
+  constructor({ items, ...data } = {}) {
+    super({ type: import_v1016.ComponentType.MediaGallery, ...data });
+    this.items = items?.map((item) => new MediaGalleryItemBuilder(item)) ?? [];
+  }
+  /**
+   * Adds items to this media gallery.
+   *
+   * @param items - The items to add
+   */
+  addItems(...items) {
+    this.items.push(
+      ...normalizeArray(items).map((input) => {
+        const result = resolveBuilder(input, MediaGalleryItemBuilder);
+        assertReturnOfBuilder(result, MediaGalleryItemBuilder);
+        return result;
+      })
+    );
+    return this;
+  }
+  /**
+   * Removes, replaces, or inserts media gallery items for this media gallery.
+   *
+   * @param index - The index to start removing, replacing or inserting items
+   * @param deleteCount - The amount of items to remove
+   * @param items - The items to insert
+   */
+  spliceItems(index, deleteCount, ...items) {
+    this.items.splice(
+      index,
+      deleteCount,
+      ...normalizeArray(items).map((input) => {
+        const result = resolveBuilder(input, MediaGalleryItemBuilder);
+        assertReturnOfBuilder(result, MediaGalleryItemBuilder);
+        return result;
+      })
+    );
+    return this;
+  }
+  /**
+   * {@inheritDoc ComponentBuilder.toJSON}
+   */
+  toJSON() {
+    validateComponentArray(this.items, 1, 10, MediaGalleryItemBuilder);
+    return {
+      ...this.data,
+      items: this.items.map((item) => item.toJSON())
+    };
+  }
+};
+
+// src/components/v2/Section.ts
+var import_v1017 = __nccwpck_require__(94104);
+var SectionBuilder = class extends ComponentBuilder {
+  static {
+    __name(this, "SectionBuilder");
+  }
+  /**
+   * The components within this section.
+   */
+  components;
+  /**
+   * The accessory of this section.
+   */
+  accessory;
+  /**
+   * Creates a new section from API data.
+   *
+   * @param data - The API data to create this section with
+   * @example
+   * Creating a section from an API data object:
+   * ```ts
+   * const section = new SectionBuilder({
+   * 	components: [
+   * 		{
+   * 			content: "Some text here",
+   * 			type: ComponentType.TextDisplay,
+   * 		},
+   * 	],
+   *  accessory: {
+   *      media: {
+   *          url: 'https://cdn.discordapp.com/embed/avatars/3.png',
+   *      },
+   *  }
+   * });
+   * ```
+   * @example
+   * Creating a section using setters and API data:
+   * ```ts
+   * const section = new SectionBuilder({
+   * 	components: [
+   * 		{
+   * 			content: "# Heading",
+   * 			type: ComponentType.TextDisplay,
+   * 		},
+   * 	],
+   * })
+   * 	.setPrimaryButtonAccessory(button);
+   * ```
+   */
+  constructor({ components, accessory, ...data } = {}) {
+    super({ type: import_v1017.ComponentType.Section, ...data });
+    this.components = components?.map((component) => createComponentBuilder(component)) ?? [];
+    this.accessory = accessory ? createComponentBuilder(accessory) : void 0;
+  }
+  /**
+   * Sets the accessory of this section to a button.
+   *
+   * @param accessory - The accessory to use
+   */
+  setButtonAccessory(accessory) {
+    Reflect.set(this, "accessory", accessoryPredicate.parse(resolveBuilder(accessory, ButtonBuilder)));
+    return this;
+  }
+  /**
+   * Sets the accessory of this section to a thumbnail.
+   *
+   * @param accessory - The accessory to use
+   */
+  setThumbnailAccessory(accessory) {
+    Reflect.set(this, "accessory", accessoryPredicate.parse(resolveBuilder(accessory, ThumbnailBuilder)));
+    return this;
+  }
+  /**
+   * Adds text display components to this section.
+   *
+   * @param components - The text display components to add
+   */
+  addTextDisplayComponents(...components) {
+    this.components.push(
+      ...normalizeArray(components).map((input) => {
+        const result = resolveBuilder(input, TextDisplayBuilder);
+        assertReturnOfBuilder(result, TextDisplayBuilder);
+        return result;
+      })
+    );
+    return this;
+  }
+  /**
+   * Removes, replaces, or inserts text display components for this section.
+   *
+   * @param index - The index to start removing, replacing or inserting text display components
+   * @param deleteCount - The amount of text display components to remove
+   * @param components - The text display components to insert
+   */
+  spliceTextDisplayComponents(index, deleteCount, ...components) {
+    this.components.splice(
+      index,
+      deleteCount,
+      ...normalizeArray(components).map((input) => {
+        const result = resolveBuilder(input, TextDisplayBuilder);
+        assertReturnOfBuilder(result, TextDisplayBuilder);
+        return result;
+      })
+    );
+    return this;
+  }
+  /**
+   * {@inheritDoc ComponentBuilder.toJSON}
+   */
+  toJSON() {
+    validateComponentArray(this.components, 1, 3, TextDisplayBuilder);
+    return {
+      ...this.data,
+      components: this.components.map((component) => component.toJSON()),
+      accessory: accessoryPredicate.parse(this.accessory).toJSON()
+    };
+  }
+};
+
 // src/components/Components.ts
 function createComponentBuilder(data) {
   if (data instanceof ComponentBuilder) {
     return data;
   }
   switch (data.type) {
-    case import_v1010.ComponentType.ActionRow:
+    case import_v1018.ComponentType.ActionRow:
       return new ActionRowBuilder(data);
-    case import_v1010.ComponentType.Button:
+    case import_v1018.ComponentType.Button:
       return new ButtonBuilder(data);
-    case import_v1010.ComponentType.StringSelect:
+    case import_v1018.ComponentType.StringSelect:
       return new StringSelectMenuBuilder(data);
-    case import_v1010.ComponentType.TextInput:
+    case import_v1018.ComponentType.TextInput:
       return new TextInputBuilder(data);
-    case import_v1010.ComponentType.UserSelect:
+    case import_v1018.ComponentType.UserSelect:
       return new UserSelectMenuBuilder(data);
-    case import_v1010.ComponentType.RoleSelect:
+    case import_v1018.ComponentType.RoleSelect:
       return new RoleSelectMenuBuilder(data);
-    case import_v1010.ComponentType.MentionableSelect:
+    case import_v1018.ComponentType.MentionableSelect:
       return new MentionableSelectMenuBuilder(data);
-    case import_v1010.ComponentType.ChannelSelect:
+    case import_v1018.ComponentType.ChannelSelect:
       return new ChannelSelectMenuBuilder(data);
+    case import_v1018.ComponentType.File:
+      return new FileBuilder(data);
+    case import_v1018.ComponentType.Container:
+      return new ContainerBuilder(data);
+    case import_v1018.ComponentType.Section:
+      return new SectionBuilder(data);
+    case import_v1018.ComponentType.Separator:
+      return new SeparatorBuilder(data);
+    case import_v1018.ComponentType.TextDisplay:
+      return new TextDisplayBuilder(data);
+    case import_v1018.ComponentType.Thumbnail:
+      return new ThumbnailBuilder(data);
+    case import_v1018.ComponentType.MediaGallery:
+      return new MediaGalleryBuilder(data);
     default:
       throw new Error(`Cannot properly serialize component type: ${data.type}`);
   }
 }
 __name(createComponentBuilder, "createComponentBuilder");
+function isBuilder(builder, Constructor) {
+  return builder instanceof Constructor;
+}
+__name(isBuilder, "isBuilder");
+function resolveBuilder(builder, Constructor) {
+  if (isBuilder(builder, Constructor)) {
+    return builder;
+  }
+  if (typeof builder === "function") {
+    return builder(new Constructor());
+  }
+  return new Constructor(builder);
+}
+__name(resolveBuilder, "resolveBuilder");
 
 // src/components/ActionRow.ts
 var ActionRowBuilder = class extends ComponentBuilder {
@@ -4665,7 +5487,7 @@ var ActionRowBuilder = class extends ComponentBuilder {
    * ```
    */
   constructor({ components, ...data } = {}) {
-    super({ type: import_v1011.ComponentType.ActionRow, ...data });
+    super({ type: import_v1019.ComponentType.ActionRow, ...data });
     this.components = components?.map((component) => createComponentBuilder(component)) ?? [];
   }
   /**
@@ -4698,15 +5520,15 @@ var ActionRowBuilder = class extends ComponentBuilder {
 };
 
 // src/interactions/modals/Assertions.ts
-var Assertions_exports4 = {};
-__export(Assertions_exports4, {
+var Assertions_exports5 = {};
+__export(Assertions_exports5, {
   componentsValidator: () => componentsValidator,
   titleValidator: () => titleValidator,
   validateRequiredParameters: () => validateRequiredParameters2
 });
-var import_shapeshift4 = __nccwpck_require__(50141);
-var titleValidator = import_shapeshift4.s.string().lengthGreaterThanOrEqual(1).lengthLessThanOrEqual(45).setValidationEnabled(isValidationEnabled);
-var componentsValidator = import_shapeshift4.s.instance(ActionRowBuilder).array().lengthGreaterThanOrEqual(1).setValidationEnabled(isValidationEnabled);
+var import_shapeshift5 = __nccwpck_require__(50141);
+var titleValidator = import_shapeshift5.s.string().lengthGreaterThanOrEqual(1).lengthLessThanOrEqual(45).setValidationEnabled(isValidationEnabled);
+var componentsValidator = import_shapeshift5.s.instance(ActionRowBuilder).array().lengthGreaterThanOrEqual(1).setValidationEnabled(isValidationEnabled);
 function validateRequiredParameters2(customId, title, components) {
   customIdValidator.parse(customId);
   titleValidator.parse(title);
@@ -4789,9 +5611,9 @@ var ModalBuilder = class {
 };
 
 // src/interactions/slashCommands/Assertions.ts
-var Assertions_exports5 = {};
-__export(Assertions_exports5, {
-  assertReturnOfBuilder: () => assertReturnOfBuilder,
+var Assertions_exports6 = {};
+__export(Assertions_exports6, {
+  assertReturnOfBuilder: () => assertReturnOfBuilder2,
   contextsPredicate: () => contextsPredicate,
   integrationTypesPredicate: () => integrationTypesPredicate,
   localizationMapPredicate: () => localizationMapPredicate,
@@ -4808,20 +5630,20 @@ __export(Assertions_exports5, {
   validateRequired: () => validateRequired,
   validateRequiredParameters: () => validateRequiredParameters3
 });
-var import_shapeshift5 = __nccwpck_require__(50141);
-var import_v1012 = __nccwpck_require__(29244);
-var namePredicate = import_shapeshift5.s.string().lengthGreaterThanOrEqual(1).lengthLessThanOrEqual(32).regex(/^[\p{Ll}\p{Lm}\p{Lo}\p{N}\p{sc=Devanagari}\p{sc=Thai}_-]+$/u).setValidationEnabled(isValidationEnabled);
+var import_shapeshift6 = __nccwpck_require__(50141);
+var import_v1020 = __nccwpck_require__(94104);
+var namePredicate = import_shapeshift6.s.string().lengthGreaterThanOrEqual(1).lengthLessThanOrEqual(32).regex(/^[\p{Ll}\p{Lm}\p{Lo}\p{N}\p{sc=Devanagari}\p{sc=Thai}_-]+$/u).setValidationEnabled(isValidationEnabled);
 function validateName(name) {
   namePredicate.parse(name);
 }
 __name(validateName, "validateName");
-var descriptionPredicate2 = import_shapeshift5.s.string().lengthGreaterThanOrEqual(1).lengthLessThanOrEqual(100).setValidationEnabled(isValidationEnabled);
-var localePredicate = import_shapeshift5.s.nativeEnum(import_v1012.Locale);
+var descriptionPredicate3 = import_shapeshift6.s.string().lengthGreaterThanOrEqual(1).lengthLessThanOrEqual(100).setValidationEnabled(isValidationEnabled);
+var localePredicate = import_shapeshift6.s.nativeEnum(import_v1020.Locale);
 function validateDescription(description) {
-  descriptionPredicate2.parse(description);
+  descriptionPredicate3.parse(description);
 }
 __name(validateDescription, "validateDescription");
-var maxArrayLengthPredicate = import_shapeshift5.s.unknown().array().lengthLessThanOrEqual(25).setValidationEnabled(isValidationEnabled);
+var maxArrayLengthPredicate = import_shapeshift6.s.unknown().array().lengthLessThanOrEqual(25).setValidationEnabled(isValidationEnabled);
 function validateLocale(locale) {
   return localePredicate.parse(locale);
 }
@@ -4836,7 +5658,7 @@ function validateRequiredParameters3(name, description, options) {
   validateMaxOptionsLength(options);
 }
 __name(validateRequiredParameters3, "validateRequiredParameters");
-var booleanPredicate = import_shapeshift5.s.boolean();
+var booleanPredicate = import_shapeshift6.s.boolean();
 function validateDefaultPermission(value) {
   booleanPredicate.parse(value);
 }
@@ -4845,29 +5667,29 @@ function validateRequired(required) {
   booleanPredicate.parse(required);
 }
 __name(validateRequired, "validateRequired");
-var choicesLengthPredicate = import_shapeshift5.s.number().lessThanOrEqual(25).setValidationEnabled(isValidationEnabled);
+var choicesLengthPredicate = import_shapeshift6.s.number().lessThanOrEqual(25).setValidationEnabled(isValidationEnabled);
 function validateChoicesLength(amountAdding, choices) {
   choicesLengthPredicate.parse((choices?.length ?? 0) + amountAdding);
 }
 __name(validateChoicesLength, "validateChoicesLength");
-function assertReturnOfBuilder(input, ExpectedInstanceOf) {
-  import_shapeshift5.s.instance(ExpectedInstanceOf).parse(input);
+function assertReturnOfBuilder2(input, ExpectedInstanceOf) {
+  import_shapeshift6.s.instance(ExpectedInstanceOf).parse(input);
 }
-__name(assertReturnOfBuilder, "assertReturnOfBuilder");
-var localizationMapPredicate = import_shapeshift5.s.object(Object.fromEntries(Object.values(import_v1012.Locale).map((locale) => [locale, import_shapeshift5.s.string().nullish()]))).strict().nullish().setValidationEnabled(isValidationEnabled);
+__name(assertReturnOfBuilder2, "assertReturnOfBuilder");
+var localizationMapPredicate = import_shapeshift6.s.object(Object.fromEntries(Object.values(import_v1020.Locale).map((locale) => [locale, import_shapeshift6.s.string().nullish()]))).strict().nullish().setValidationEnabled(isValidationEnabled);
 function validateLocalizationMap(value) {
   localizationMapPredicate.parse(value);
 }
 __name(validateLocalizationMap, "validateLocalizationMap");
-var dmPermissionPredicate = import_shapeshift5.s.boolean().nullish();
+var dmPermissionPredicate = import_shapeshift6.s.boolean().nullish();
 function validateDMPermission(value) {
   dmPermissionPredicate.parse(value);
 }
 __name(validateDMPermission, "validateDMPermission");
-var memberPermissionPredicate = import_shapeshift5.s.union([
-  import_shapeshift5.s.bigint().transform((value) => value.toString()),
-  import_shapeshift5.s.number().safeInt().transform((value) => value.toString()),
-  import_shapeshift5.s.string().regex(/^\d+$/)
+var memberPermissionPredicate = import_shapeshift6.s.union([
+  import_shapeshift6.s.bigint().transform((value) => value.toString()),
+  import_shapeshift6.s.number().safeInt().transform((value) => value.toString()),
+  import_shapeshift6.s.string().regex(/^\d+$/)
 ]).nullish();
 function validateDefaultMemberPermissions(permissions) {
   return memberPermissionPredicate.parse(permissions);
@@ -4877,11 +5699,11 @@ function validateNSFW(value) {
   booleanPredicate.parse(value);
 }
 __name(validateNSFW, "validateNSFW");
-var contextsPredicate = import_shapeshift5.s.array(
-  import_shapeshift5.s.nativeEnum(import_v1012.InteractionContextType).setValidationEnabled(isValidationEnabled)
+var contextsPredicate = import_shapeshift6.s.array(
+  import_shapeshift6.s.nativeEnum(import_v1020.InteractionContextType).setValidationEnabled(isValidationEnabled)
 );
-var integrationTypesPredicate = import_shapeshift5.s.array(
-  import_shapeshift5.s.nativeEnum(import_v1012.ApplicationIntegrationType).setValidationEnabled(isValidationEnabled)
+var integrationTypesPredicate = import_shapeshift6.s.array(
+  import_shapeshift6.s.nativeEnum(import_v1020.ApplicationIntegrationType).setValidationEnabled(isValidationEnabled)
 );
 
 // src/interactions/slashCommands/SlashCommandBuilder.ts
@@ -5001,7 +5823,7 @@ var SharedNameAndDescription = class {
 };
 
 // src/interactions/slashCommands/mixins/SharedSlashCommand.ts
-var import_v1013 = __nccwpck_require__(29244);
+var import_v1021 = __nccwpck_require__(94104);
 var SharedSlashCommand = class {
   static {
     __name(this, "SharedSlashCommand");
@@ -5106,14 +5928,14 @@ var SharedSlashCommand = class {
     validateLocalizationMap(this.description_localizations);
     return {
       ...this,
-      type: import_v1013.ApplicationCommandType.ChatInput,
+      type: import_v1021.ApplicationCommandType.ChatInput,
       options: this.options.map((option) => option.toJSON())
     };
   }
 };
 
 // src/interactions/slashCommands/options/attachment.ts
-var import_v1014 = __nccwpck_require__(29244);
+var import_v1022 = __nccwpck_require__(94104);
 
 // src/interactions/slashCommands/mixins/ApplicationCommandOptionBase.ts
 var ApplicationCommandOptionBase = class extends SharedNameAndDescription {
@@ -5155,7 +5977,7 @@ var SlashCommandAttachmentOption = class extends ApplicationCommandOptionBase {
   /**
    * The type of this option.
    */
-  type = import_v1014.ApplicationCommandOptionType.Attachment;
+  type = import_v1022.ApplicationCommandOptionType.Attachment;
   /**
    * {@inheritDoc ApplicationCommandOptionBase.toJSON}
    */
@@ -5166,7 +5988,7 @@ var SlashCommandAttachmentOption = class extends ApplicationCommandOptionBase {
 };
 
 // src/interactions/slashCommands/options/boolean.ts
-var import_v1015 = __nccwpck_require__(29244);
+var import_v1023 = __nccwpck_require__(94104);
 var SlashCommandBooleanOption = class extends ApplicationCommandOptionBase {
   static {
     __name(this, "SlashCommandBooleanOption");
@@ -5174,7 +5996,7 @@ var SlashCommandBooleanOption = class extends ApplicationCommandOptionBase {
   /**
    * The type of this option.
    */
-  type = import_v1015.ApplicationCommandOptionType.Boolean;
+  type = import_v1023.ApplicationCommandOptionType.Boolean;
   /**
    * {@inheritDoc ApplicationCommandOptionBase.toJSON}
    */
@@ -5185,25 +6007,25 @@ var SlashCommandBooleanOption = class extends ApplicationCommandOptionBase {
 };
 
 // src/interactions/slashCommands/options/channel.ts
-var import_v1017 = __nccwpck_require__(29244);
+var import_v1025 = __nccwpck_require__(94104);
 var import_ts_mixer = __nccwpck_require__(41556);
 
 // src/interactions/slashCommands/mixins/ApplicationCommandOptionChannelTypesMixin.ts
-var import_shapeshift6 = __nccwpck_require__(50141);
-var import_v1016 = __nccwpck_require__(29244);
+var import_shapeshift7 = __nccwpck_require__(50141);
+var import_v1024 = __nccwpck_require__(94104);
 var allowedChannelTypes = [
-  import_v1016.ChannelType.GuildText,
-  import_v1016.ChannelType.GuildVoice,
-  import_v1016.ChannelType.GuildCategory,
-  import_v1016.ChannelType.GuildAnnouncement,
-  import_v1016.ChannelType.AnnouncementThread,
-  import_v1016.ChannelType.PublicThread,
-  import_v1016.ChannelType.PrivateThread,
-  import_v1016.ChannelType.GuildStageVoice,
-  import_v1016.ChannelType.GuildForum,
-  import_v1016.ChannelType.GuildMedia
+  import_v1024.ChannelType.GuildText,
+  import_v1024.ChannelType.GuildVoice,
+  import_v1024.ChannelType.GuildCategory,
+  import_v1024.ChannelType.GuildAnnouncement,
+  import_v1024.ChannelType.AnnouncementThread,
+  import_v1024.ChannelType.PublicThread,
+  import_v1024.ChannelType.PrivateThread,
+  import_v1024.ChannelType.GuildStageVoice,
+  import_v1024.ChannelType.GuildForum,
+  import_v1024.ChannelType.GuildMedia
 ];
-var channelTypesPredicate = import_shapeshift6.s.array(import_shapeshift6.s.union(allowedChannelTypes.map((type) => import_shapeshift6.s.literal(type))));
+var channelTypesPredicate = import_shapeshift7.s.array(import_shapeshift7.s.union(allowedChannelTypes.map((type) => import_shapeshift7.s.literal(type))));
 var ApplicationCommandOptionChannelTypesMixin = class {
   static {
     __name(this, "ApplicationCommandOptionChannelTypesMixin");
@@ -5231,7 +6053,7 @@ var SlashCommandChannelOption = class extends ApplicationCommandOptionBase {
   /**
    * The type of this option.
    */
-  type = import_v1017.ApplicationCommandOptionType.Channel;
+  type = import_v1025.ApplicationCommandOptionType.Channel;
   /**
    * {@inheritDoc ApplicationCommandOptionBase.toJSON}
    */
@@ -5246,8 +6068,8 @@ SlashCommandChannelOption = __decorateClass([
 ], SlashCommandChannelOption);
 
 // src/interactions/slashCommands/options/integer.ts
-var import_shapeshift9 = __nccwpck_require__(50141);
-var import_v1019 = __nccwpck_require__(29244);
+var import_shapeshift10 = __nccwpck_require__(50141);
+var import_v1027 = __nccwpck_require__(94104);
 var import_ts_mixer2 = __nccwpck_require__(41556);
 
 // src/interactions/slashCommands/mixins/ApplicationCommandNumericOptionMinMaxValueMixin.ts
@@ -5266,8 +6088,8 @@ var ApplicationCommandNumericOptionMinMaxValueMixin = class {
 };
 
 // src/interactions/slashCommands/mixins/ApplicationCommandOptionWithAutocompleteMixin.ts
-var import_shapeshift7 = __nccwpck_require__(50141);
-var booleanPredicate2 = import_shapeshift7.s.boolean();
+var import_shapeshift8 = __nccwpck_require__(50141);
+var booleanPredicate2 = import_shapeshift8.s.boolean();
 var ApplicationCommandOptionWithAutocompleteMixin = class {
   static {
     __name(this, "ApplicationCommandOptionWithAutocompleteMixin");
@@ -5298,14 +6120,14 @@ var ApplicationCommandOptionWithAutocompleteMixin = class {
 };
 
 // src/interactions/slashCommands/mixins/ApplicationCommandOptionWithChoicesMixin.ts
-var import_shapeshift8 = __nccwpck_require__(50141);
-var import_v1018 = __nccwpck_require__(29244);
-var stringPredicate = import_shapeshift8.s.string().lengthGreaterThanOrEqual(1).lengthLessThanOrEqual(100);
-var numberPredicate = import_shapeshift8.s.number().greaterThan(Number.NEGATIVE_INFINITY).lessThan(Number.POSITIVE_INFINITY);
-var choicesPredicate = import_shapeshift8.s.object({
+var import_shapeshift9 = __nccwpck_require__(50141);
+var import_v1026 = __nccwpck_require__(94104);
+var stringPredicate = import_shapeshift9.s.string().lengthGreaterThanOrEqual(1).lengthLessThanOrEqual(100);
+var numberPredicate = import_shapeshift9.s.number().greaterThan(Number.NEGATIVE_INFINITY).lessThan(Number.POSITIVE_INFINITY);
+var choicesPredicate = import_shapeshift9.s.object({
   name: stringPredicate,
   name_localizations: localizationMapPredicate,
-  value: import_shapeshift8.s.union([stringPredicate, numberPredicate])
+  value: import_shapeshift9.s.union([stringPredicate, numberPredicate])
 }).array();
 var ApplicationCommandOptionWithChoicesMixin = class {
   static {
@@ -5337,7 +6159,7 @@ var ApplicationCommandOptionWithChoicesMixin = class {
     }
     validateChoicesLength(normalizedChoices.length, this.choices);
     for (const { name, name_localizations, value } of normalizedChoices) {
-      if (this.type === import_v1018.ApplicationCommandOptionType.String) {
+      if (this.type === import_v1026.ApplicationCommandOptionType.String) {
         stringPredicate.parse(value);
       } else {
         numberPredicate.parse(value);
@@ -5364,12 +6186,12 @@ var ApplicationCommandOptionWithChoicesMixin = class {
 };
 
 // src/interactions/slashCommands/options/integer.ts
-var numberValidator = import_shapeshift9.s.number().int();
+var numberValidator = import_shapeshift10.s.number().int();
 var SlashCommandIntegerOption = class extends ApplicationCommandOptionBase {
   /**
    * The type of this option.
    */
-  type = import_v1019.ApplicationCommandOptionType.Integer;
+  type = import_v1027.ApplicationCommandOptionType.Integer;
   /**
    * {@inheritDoc ApplicationCommandNumericOptionMinMaxValueMixin.setMaxValue}
    */
@@ -5407,7 +6229,7 @@ SlashCommandIntegerOption = __decorateClass([
 ], SlashCommandIntegerOption);
 
 // src/interactions/slashCommands/options/mentionable.ts
-var import_v1020 = __nccwpck_require__(29244);
+var import_v1028 = __nccwpck_require__(94104);
 var SlashCommandMentionableOption = class extends ApplicationCommandOptionBase {
   static {
     __name(this, "SlashCommandMentionableOption");
@@ -5415,7 +6237,7 @@ var SlashCommandMentionableOption = class extends ApplicationCommandOptionBase {
   /**
    * The type of this option.
    */
-  type = import_v1020.ApplicationCommandOptionType.Mentionable;
+  type = import_v1028.ApplicationCommandOptionType.Mentionable;
   /**
    * {@inheritDoc ApplicationCommandOptionBase.toJSON}
    */
@@ -5426,15 +6248,15 @@ var SlashCommandMentionableOption = class extends ApplicationCommandOptionBase {
 };
 
 // src/interactions/slashCommands/options/number.ts
-var import_shapeshift10 = __nccwpck_require__(50141);
-var import_v1021 = __nccwpck_require__(29244);
+var import_shapeshift11 = __nccwpck_require__(50141);
+var import_v1029 = __nccwpck_require__(94104);
 var import_ts_mixer3 = __nccwpck_require__(41556);
-var numberValidator2 = import_shapeshift10.s.number();
+var numberValidator2 = import_shapeshift11.s.number();
 var SlashCommandNumberOption = class extends ApplicationCommandOptionBase {
   /**
    * The type of this option.
    */
-  type = import_v1021.ApplicationCommandOptionType.Number;
+  type = import_v1029.ApplicationCommandOptionType.Number;
   /**
    * {@inheritDoc ApplicationCommandNumericOptionMinMaxValueMixin.setMaxValue}
    */
@@ -5472,7 +6294,7 @@ SlashCommandNumberOption = __decorateClass([
 ], SlashCommandNumberOption);
 
 // src/interactions/slashCommands/options/role.ts
-var import_v1022 = __nccwpck_require__(29244);
+var import_v1030 = __nccwpck_require__(94104);
 var SlashCommandRoleOption = class extends ApplicationCommandOptionBase {
   static {
     __name(this, "SlashCommandRoleOption");
@@ -5480,7 +6302,7 @@ var SlashCommandRoleOption = class extends ApplicationCommandOptionBase {
   /**
    * The type of this option.
    */
-  type = import_v1022.ApplicationCommandOptionType.Role;
+  type = import_v1030.ApplicationCommandOptionType.Role;
   /**
    * {@inheritDoc ApplicationCommandOptionBase.toJSON}
    */
@@ -5491,16 +6313,16 @@ var SlashCommandRoleOption = class extends ApplicationCommandOptionBase {
 };
 
 // src/interactions/slashCommands/options/string.ts
-var import_shapeshift11 = __nccwpck_require__(50141);
-var import_v1023 = __nccwpck_require__(29244);
+var import_shapeshift12 = __nccwpck_require__(50141);
+var import_v1031 = __nccwpck_require__(94104);
 var import_ts_mixer4 = __nccwpck_require__(41556);
-var minLengthValidator2 = import_shapeshift11.s.number().greaterThanOrEqual(0).lessThanOrEqual(6e3);
-var maxLengthValidator2 = import_shapeshift11.s.number().greaterThanOrEqual(1).lessThanOrEqual(6e3);
+var minLengthValidator2 = import_shapeshift12.s.number().greaterThanOrEqual(0).lessThanOrEqual(6e3);
+var maxLengthValidator2 = import_shapeshift12.s.number().greaterThanOrEqual(1).lessThanOrEqual(6e3);
 var SlashCommandStringOption = class extends ApplicationCommandOptionBase {
   /**
    * The type of this option.
    */
-  type = import_v1023.ApplicationCommandOptionType.String;
+  type = import_v1031.ApplicationCommandOptionType.String;
   /**
    * The maximum length of this option.
    */
@@ -5546,7 +6368,7 @@ SlashCommandStringOption = __decorateClass([
 ], SlashCommandStringOption);
 
 // src/interactions/slashCommands/options/user.ts
-var import_v1024 = __nccwpck_require__(29244);
+var import_v1032 = __nccwpck_require__(94104);
 var SlashCommandUserOption = class extends ApplicationCommandOptionBase {
   static {
     __name(this, "SlashCommandUserOption");
@@ -5554,7 +6376,7 @@ var SlashCommandUserOption = class extends ApplicationCommandOptionBase {
   /**
    * The type of this option.
    */
-  type = import_v1024.ApplicationCommandOptionType.User;
+  type = import_v1032.ApplicationCommandOptionType.User;
   /**
    * {@inheritDoc ApplicationCommandOptionBase.toJSON}
    */
@@ -5653,14 +6475,14 @@ var SharedSlashCommandOptions = class {
     const { options } = this;
     validateMaxOptionsLength(options);
     const result = typeof input === "function" ? input(new Instance()) : input;
-    assertReturnOfBuilder(result, Instance);
+    assertReturnOfBuilder2(result, Instance);
     options.push(result);
     return this;
   }
 };
 
 // src/interactions/slashCommands/SlashCommandSubcommands.ts
-var import_v1025 = __nccwpck_require__(29244);
+var import_v1033 = __nccwpck_require__(94104);
 var import_ts_mixer5 = __nccwpck_require__(41556);
 var SlashCommandSubcommandGroupBuilder = class {
   /**
@@ -5684,7 +6506,7 @@ var SlashCommandSubcommandGroupBuilder = class {
     const { options } = this;
     validateMaxOptionsLength(options);
     const result = typeof input === "function" ? input(new SlashCommandSubcommandBuilder()) : input;
-    assertReturnOfBuilder(result, SlashCommandSubcommandBuilder);
+    assertReturnOfBuilder2(result, SlashCommandSubcommandBuilder);
     options.push(result);
     return this;
   }
@@ -5698,7 +6520,7 @@ var SlashCommandSubcommandGroupBuilder = class {
   toJSON() {
     validateRequiredParameters3(this.name, this.description, this.options);
     return {
-      type: import_v1025.ApplicationCommandOptionType.SubcommandGroup,
+      type: import_v1033.ApplicationCommandOptionType.SubcommandGroup,
       name: this.name,
       name_localizations: this.name_localizations,
       description: this.description,
@@ -5734,7 +6556,7 @@ var SlashCommandSubcommandBuilder = class {
   toJSON() {
     validateRequiredParameters3(this.name, this.description, this.options);
     return {
-      type: import_v1025.ApplicationCommandOptionType.Subcommand,
+      type: import_v1033.ApplicationCommandOptionType.Subcommand,
       name: this.name,
       name_localizations: this.name_localizations,
       description: this.description,
@@ -5763,7 +6585,7 @@ var SharedSlashCommandSubcommands = class {
     const { options } = this;
     validateMaxOptionsLength(options);
     const result = typeof input === "function" ? input(new SlashCommandSubcommandGroupBuilder()) : input;
-    assertReturnOfBuilder(result, SlashCommandSubcommandGroupBuilder);
+    assertReturnOfBuilder2(result, SlashCommandSubcommandGroupBuilder);
     options.push(result);
     return this;
   }
@@ -5776,7 +6598,7 @@ var SharedSlashCommandSubcommands = class {
     const { options } = this;
     validateMaxOptionsLength(options);
     const result = typeof input === "function" ? input(new SlashCommandSubcommandBuilder()) : input;
-    assertReturnOfBuilder(result, SlashCommandSubcommandBuilder);
+    assertReturnOfBuilder2(result, SlashCommandSubcommandBuilder);
     options.push(result);
     return this;
   }
@@ -5842,8 +6664,8 @@ SlashCommandBuilder = __decorateClass([
 ], SlashCommandBuilder);
 
 // src/interactions/contextMenuCommands/Assertions.ts
-var Assertions_exports6 = {};
-__export(Assertions_exports6, {
+var Assertions_exports7 = {};
+__export(Assertions_exports7, {
   contextsPredicate: () => contextsPredicate2,
   integrationTypesPredicate: () => integrationTypesPredicate2,
   validateDMPermission: () => validateDMPermission2,
@@ -5853,11 +6675,11 @@ __export(Assertions_exports6, {
   validateRequiredParameters: () => validateRequiredParameters4,
   validateType: () => validateType
 });
-var import_shapeshift12 = __nccwpck_require__(50141);
-var import_v1026 = __nccwpck_require__(29244);
-var namePredicate2 = import_shapeshift12.s.string().lengthGreaterThanOrEqual(1).lengthLessThanOrEqual(32).regex(/^( *[\p{P}\p{L}\p{N}\p{sc=Devanagari}\p{sc=Thai}]+ *)+$/u).setValidationEnabled(isValidationEnabled);
-var typePredicate = import_shapeshift12.s.union([import_shapeshift12.s.literal(import_v1026.ApplicationCommandType.User), import_shapeshift12.s.literal(import_v1026.ApplicationCommandType.Message)]).setValidationEnabled(isValidationEnabled);
-var booleanPredicate3 = import_shapeshift12.s.boolean();
+var import_shapeshift13 = __nccwpck_require__(50141);
+var import_v1034 = __nccwpck_require__(94104);
+var namePredicate2 = import_shapeshift13.s.string().lengthGreaterThanOrEqual(1).lengthLessThanOrEqual(32).regex(/^( *[\p{P}\p{L}\p{N}\p{sc=Devanagari}\p{sc=Thai}]+ *)+$/u).setValidationEnabled(isValidationEnabled);
+var typePredicate = import_shapeshift13.s.union([import_shapeshift13.s.literal(import_v1034.ApplicationCommandType.User), import_shapeshift13.s.literal(import_v1034.ApplicationCommandType.Message)]).setValidationEnabled(isValidationEnabled);
+var booleanPredicate3 = import_shapeshift13.s.boolean();
 function validateDefaultPermission2(value) {
   booleanPredicate3.parse(value);
 }
@@ -5875,25 +6697,25 @@ function validateRequiredParameters4(name, type) {
   validateType(type);
 }
 __name(validateRequiredParameters4, "validateRequiredParameters");
-var dmPermissionPredicate2 = import_shapeshift12.s.boolean().nullish();
+var dmPermissionPredicate2 = import_shapeshift13.s.boolean().nullish();
 function validateDMPermission2(value) {
   dmPermissionPredicate2.parse(value);
 }
 __name(validateDMPermission2, "validateDMPermission");
-var memberPermissionPredicate2 = import_shapeshift12.s.union([
-  import_shapeshift12.s.bigint().transform((value) => value.toString()),
-  import_shapeshift12.s.number().safeInt().transform((value) => value.toString()),
-  import_shapeshift12.s.string().regex(/^\d+$/)
+var memberPermissionPredicate2 = import_shapeshift13.s.union([
+  import_shapeshift13.s.bigint().transform((value) => value.toString()),
+  import_shapeshift13.s.number().safeInt().transform((value) => value.toString()),
+  import_shapeshift13.s.string().regex(/^\d+$/)
 ]).nullish();
 function validateDefaultMemberPermissions2(permissions) {
   return memberPermissionPredicate2.parse(permissions);
 }
 __name(validateDefaultMemberPermissions2, "validateDefaultMemberPermissions");
-var contextsPredicate2 = import_shapeshift12.s.array(
-  import_shapeshift12.s.nativeEnum(import_v1026.InteractionContextType).setValidationEnabled(isValidationEnabled)
+var contextsPredicate2 = import_shapeshift13.s.array(
+  import_shapeshift13.s.nativeEnum(import_v1034.InteractionContextType).setValidationEnabled(isValidationEnabled)
 );
-var integrationTypesPredicate2 = import_shapeshift12.s.array(
-  import_shapeshift12.s.nativeEnum(import_v1026.ApplicationIntegrationType).setValidationEnabled(isValidationEnabled)
+var integrationTypesPredicate2 = import_shapeshift13.s.array(
+  import_shapeshift13.s.nativeEnum(import_v1034.ApplicationIntegrationType).setValidationEnabled(isValidationEnabled)
 );
 
 // src/interactions/contextMenuCommands/ContextMenuCommandBuilder.ts
@@ -6074,7 +6896,7 @@ function embedLength(data) {
 __name(embedLength, "embedLength");
 
 // src/index.ts
-var version = "1.10.0";
+var version = "1.11.2";
 // Annotate the CommonJS export names for ESM import in node:
 0 && (0);
 //# sourceMappingURL=index.js.map
@@ -7199,7 +8021,7 @@ var version = "2.1.1";
 
 /***/ }),
 
-/***/ 48871:
+/***/ 71188:
 /***/ ((module) => {
 
 "use strict";
@@ -7607,14 +8429,14 @@ var GuildNavigationMentions = /* @__PURE__ */ ((GuildNavigationMentions2) => {
 })(GuildNavigationMentions || {});
 
 // src/index.ts
-var version = "0.6.0";
+var version = "0.6.1";
 // Annotate the CommonJS export names for ESM import in node:
 0 && (0);
 //# sourceMappingURL=index.js.map
 
 /***/ }),
 
-/***/ 18447:
+/***/ 81374:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -7665,7 +8487,7 @@ __export(src_exports, {
 module.exports = __toCommonJS(src_exports);
 var import_node_buffer = __nccwpck_require__(20181);
 var import_util2 = __nccwpck_require__(1004);
-var import_undici2 = __nccwpck_require__(83110);
+var import_undici2 = __nccwpck_require__(30794);
 
 // src/environment.ts
 var defaultStrategy;
@@ -7682,7 +8504,7 @@ __name(getDefaultStrategy, "getDefaultStrategy");
 var import_node_http = __nccwpck_require__(58611);
 var import_node_url = __nccwpck_require__(87016);
 var import_node_util = __nccwpck_require__(39023);
-var import_undici = __nccwpck_require__(83110);
+var import_undici = __nccwpck_require__(30794);
 async function makeRequest(url, init) {
   const options = {
     ...init,
@@ -7741,10 +8563,13 @@ async function resolveBody(body) {
 }
 __name(resolveBody, "resolveBody");
 
+// src/lib/CDN.ts
+var import_v102 = __nccwpck_require__(94104);
+
 // src/lib/utils/constants.ts
 var import_util = __nccwpck_require__(1004);
-var import_v10 = __nccwpck_require__(29244);
-var DefaultUserAgent = `DiscordBot (https://discord.js.org, 2.4.2)`;
+var import_v10 = __nccwpck_require__(94104);
+var DefaultUserAgent = `DiscordBot (https://discord.js.org, 2.5.0)`;
 var DefaultUserAgentAppendix = (0, import_util.getUserAgentAppendix)();
 var DefaultRestOptions = {
   agent: null,
@@ -7782,7 +8607,17 @@ var RESTEvents = /* @__PURE__ */ ((RESTEvents2) => {
 })(RESTEvents || {});
 var ALLOWED_EXTENSIONS = ["webp", "png", "jpg", "jpeg", "gif"];
 var ALLOWED_STICKER_EXTENSIONS = ["png", "json", "gif"];
-var ALLOWED_SIZES = [16, 32, 64, 128, 256, 512, 1024, 2048, 4096];
+var ALLOWED_SIZES = [
+  16,
+  32,
+  64,
+  128,
+  256,
+  512,
+  1024,
+  2048,
+  4096
+];
 var OverwrittenMimeTypes = {
   // https://github.com/discordjs/discord.js/issues/8557
   "image/apng": "image/png"
@@ -8143,6 +8978,14 @@ var CDN = class {
     return this.makeURL(`/guild-events/${scheduledEventId}/${coverHash}`, options);
   }
   /**
+   * Generates a URL for a soundboard sound.
+   *
+   * @param soundId - The soundboard sound id
+   */
+  soundboardSound(soundId) {
+    return `${this.cdn}${import_v102.CDNRoutes.soundboardSound(soundId)}`;
+  }
+  /**
    * Constructs the URL for the resource, checking whether or not `hash` starts with `a_` if `dynamic` is set to `true`.
    *
    * @param route - The base cdn route
@@ -8273,9 +9116,9 @@ var HTTPError = class _HTTPError extends Error {
 
 // src/lib/REST.ts
 var import_collection = __nccwpck_require__(61841);
-var import_snowflake = __nccwpck_require__(88062);
+var import_snowflake = __nccwpck_require__(65681);
 var import_async_event_emitter = __nccwpck_require__(54080);
-var import_magic_bytes = __nccwpck_require__(87795);
+var import_magic_bytes = __nccwpck_require__(33224);
 
 // src/lib/handlers/Shared.ts
 var invalidCount = 0;
@@ -9068,7 +9911,7 @@ var REST = class _REST extends import_async_event_emitter.AsyncEventEmitter {
 };
 
 // src/shared.ts
-var version = "2.4.2";
+var version = "2.5.0";
 
 // src/index.ts
 globalThis.FormData ??= import_undici2.FormData;
@@ -9221,7 +10064,7 @@ var version = "1.1.1";
 
 /***/ }),
 
-/***/ 65914:
+/***/ 83952:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -9505,7 +10348,7 @@ var WorkerShardingStrategy = class {
       return (0, import_node_path.resolve)(path);
     }
     try {
-      return /*require.resolve*/(__nccwpck_require__(27294).resolve(path));
+      return /*require.resolve*/(__nccwpck_require__(26272).resolve(path));
     } catch {
       return (0, import_node_path.resolve)(path);
     }
@@ -9691,14 +10534,14 @@ var import_collection5 = __nccwpck_require__(61841);
 var import_util2 = __nccwpck_require__(1004);
 var import_async_queue2 = __nccwpck_require__(83898);
 var import_async_event_emitter = __nccwpck_require__(54080);
-var import_v102 = __nccwpck_require__(29244);
-var import_ws = __nccwpck_require__(48099);
+var import_v102 = __nccwpck_require__(94104);
+var import_ws = __nccwpck_require__(54018);
 
 // src/utils/constants.ts
 var import_node_process = __toESM(__nccwpck_require__(932));
 var import_collection4 = __nccwpck_require__(61841);
 var import_util = __nccwpck_require__(1004);
-var import_v10 = __nccwpck_require__(29244);
+var import_v10 = __nccwpck_require__(94104);
 
 // src/throttling/SimpleIdentifyThrottler.ts
 var import_promises = __nccwpck_require__(16460);
@@ -9746,7 +10589,7 @@ var CompressionMethod = /* @__PURE__ */ ((CompressionMethod2) => {
   CompressionMethod2["ZlibStream"] = "zlib-stream";
   return CompressionMethod2;
 })(CompressionMethod || {});
-var DefaultDeviceProperty = `@discordjs/ws 1.2.0`;
+var DefaultDeviceProperty = `@discordjs/ws 1.2.2`;
 var getDefaultSessionStore = (0, import_util.lazy)(() => new import_collection4.Collection());
 var DefaultWebSocketManagerOptions = {
   async buildIdentifyThrottler(manager) {
@@ -10586,7 +11429,7 @@ var WorkerBootstrapper = class {
 var import_util3 = __nccwpck_require__(1004);
 var import_util4 = __nccwpck_require__(1004);
 var import_async_event_emitter2 = __nccwpck_require__(54080);
-var import_v103 = __nccwpck_require__(29244);
+var import_v103 = __nccwpck_require__(94104);
 (0, import_util4.polyfillDispose)();
 var WebSocketManager = class extends import_async_event_emitter2.AsyncEventEmitter {
   static {
@@ -10703,14 +11546,14 @@ var WebSocketManager = class extends import_async_event_emitter2.AsyncEventEmitt
 };
 
 // src/index.ts
-var version = "1.2.0";
+var version = "1.2.2";
 // Annotate the CommonJS export names for ESM import in node:
 0 && (0);
 //# sourceMappingURL=index.js.map
 
 /***/ }),
 
-/***/ 49105:
+/***/ 61261:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -10720,7 +11563,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 /***/ }),
 
-/***/ 79445:
+/***/ 3097:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -10744,10 +11587,10 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.VoiceChannelEffectSendAnimationType = exports.GatewayDispatchEvents = exports.GatewayIntentBits = exports.GatewayCloseCodes = exports.GatewayOpcodes = exports.GatewayVersion = void 0;
-__exportStar(__nccwpck_require__(49105), exports);
+__exportStar(__nccwpck_require__(61261), exports);
 exports.GatewayVersion = '10';
 /**
- * https://discord.com/developers/docs/topics/opcodes-and-status-codes#gateway-gateway-opcodes
+ * @see {@link https://discord.com/developers/docs/topics/opcodes-and-status-codes#gateway-gateway-opcodes}
  */
 var GatewayOpcodes;
 (function (GatewayOpcodes) {
@@ -10802,7 +11645,7 @@ var GatewayOpcodes;
     GatewayOpcodes[GatewayOpcodes["RequestSoundboardSounds"] = 31] = "RequestSoundboardSounds";
 })(GatewayOpcodes || (exports.GatewayOpcodes = GatewayOpcodes = {}));
 /**
- * https://discord.com/developers/docs/topics/opcodes-and-status-codes#gateway-gateway-close-event-codes
+ * @see {@link https://discord.com/developers/docs/topics/opcodes-and-status-codes#gateway-gateway-close-event-codes}
  */
 var GatewayCloseCodes;
 (function (GatewayCloseCodes) {
@@ -10813,25 +11656,25 @@ var GatewayCloseCodes;
     /**
      * You sent an invalid Gateway opcode or an invalid payload for an opcode. Don't do that!
      *
-     * See https://discord.com/developers/docs/topics/gateway-events#payload-structure
+     * @see {@link https://discord.com/developers/docs/topics/gateway-events#payload-structure}
      */
     GatewayCloseCodes[GatewayCloseCodes["UnknownOpcode"] = 4001] = "UnknownOpcode";
     /**
      * You sent an invalid payload to us. Don't do that!
      *
-     * See https://discord.com/developers/docs/topics/gateway#sending-events
+     * @see {@link https://discord.com/developers/docs/topics/gateway#sending-events}
      */
     GatewayCloseCodes[GatewayCloseCodes["DecodeError"] = 4002] = "DecodeError";
     /**
      * You sent us a payload prior to identifying
      *
-     * See https://discord.com/developers/docs/topics/gateway-events#identify
+     * @see {@link https://discord.com/developers/docs/topics/gateway-events#identify}
      */
     GatewayCloseCodes[GatewayCloseCodes["NotAuthenticated"] = 4003] = "NotAuthenticated";
     /**
      * The account token sent with your identify payload is incorrect
      *
-     * See https://discord.com/developers/docs/topics/gateway-events#identify
+     * @see {@link https://discord.com/developers/docs/topics/gateway-events#identify}
      */
     GatewayCloseCodes[GatewayCloseCodes["AuthenticationFailed"] = 4004] = "AuthenticationFailed";
     /**
@@ -10841,7 +11684,7 @@ var GatewayCloseCodes;
     /**
      * The sequence sent when resuming the session was invalid. Reconnect and start a new session
      *
-     * See https://discord.com/developers/docs/topics/gateway-events#resume
+     * @see {@link https://discord.com/developers/docs/topics/gateway-events#resume}
      */
     GatewayCloseCodes[GatewayCloseCodes["InvalidSeq"] = 4007] = "InvalidSeq";
     /**
@@ -10855,13 +11698,13 @@ var GatewayCloseCodes;
     /**
      * You sent us an invalid shard when identifying
      *
-     * See https://discord.com/developers/docs/topics/gateway#sharding
+     * @see {@link https://discord.com/developers/docs/topics/gateway#sharding}
      */
     GatewayCloseCodes[GatewayCloseCodes["InvalidShard"] = 4010] = "InvalidShard";
     /**
      * The session would have handled too many guilds - you are required to shard your connection in order to connect
      *
-     * See https://discord.com/developers/docs/topics/gateway#sharding
+     * @see {@link https://discord.com/developers/docs/topics/gateway#sharding}
      */
     GatewayCloseCodes[GatewayCloseCodes["ShardingRequired"] = 4011] = "ShardingRequired";
     /**
@@ -10871,21 +11714,20 @@ var GatewayCloseCodes;
     /**
      * You sent an invalid intent for a Gateway Intent. You may have incorrectly calculated the bitwise value
      *
-     * See https://discord.com/developers/docs/topics/gateway#gateway-intents
+     * @see {@link https://discord.com/developers/docs/topics/gateway#gateway-intents}
      */
     GatewayCloseCodes[GatewayCloseCodes["InvalidIntents"] = 4013] = "InvalidIntents";
     /**
      * You sent a disallowed intent for a Gateway Intent. You may have tried to specify an intent that you have not
      * enabled or are not whitelisted for
      *
-     * See https://discord.com/developers/docs/topics/gateway#gateway-intents
-     *
-     * See https://discord.com/developers/docs/topics/gateway#privileged-intents
+     * @see {@link https://discord.com/developers/docs/topics/gateway#gateway-intents}
+     * @see {@link https://discord.com/developers/docs/topics/gateway#privileged-intents}
      */
     GatewayCloseCodes[GatewayCloseCodes["DisallowedIntents"] = 4014] = "DisallowedIntents";
 })(GatewayCloseCodes || (exports.GatewayCloseCodes = GatewayCloseCodes = {}));
 /**
- * https://discord.com/developers/docs/topics/gateway#list-of-intents
+ * @see {@link https://discord.com/developers/docs/topics/gateway#list-of-intents}
  */
 var GatewayIntentBits;
 (function (GatewayIntentBits) {
@@ -10893,12 +11735,12 @@ var GatewayIntentBits;
     GatewayIntentBits[GatewayIntentBits["GuildMembers"] = 2] = "GuildMembers";
     GatewayIntentBits[GatewayIntentBits["GuildModeration"] = 4] = "GuildModeration";
     /**
-     * @deprecated This is the old name for {@apilink GatewayIntentBits#GuildModeration}
+     * @deprecated This is the old name for {@link GatewayIntentBits.GuildModeration}
      */
     GatewayIntentBits[GatewayIntentBits["GuildBans"] = 4] = "GuildBans";
     GatewayIntentBits[GatewayIntentBits["GuildExpressions"] = 8] = "GuildExpressions";
     /**
-     * @deprecated This is the old name for {@apilink GatewayIntentBits#GuildExpressions}
+     * @deprecated This is the old name for {@link GatewayIntentBits.GuildExpressions}
      */
     GatewayIntentBits[GatewayIntentBits["GuildEmojisAndStickers"] = 8] = "GuildEmojisAndStickers";
     GatewayIntentBits[GatewayIntentBits["GuildIntegrations"] = 16] = "GuildIntegrations";
@@ -10920,7 +11762,7 @@ var GatewayIntentBits;
     GatewayIntentBits[GatewayIntentBits["DirectMessagePolls"] = 33554432] = "DirectMessagePolls";
 })(GatewayIntentBits || (exports.GatewayIntentBits = GatewayIntentBits = {}));
 /**
- * https://discord.com/developers/docs/topics/gateway-events#receive-events
+ * @see {@link https://discord.com/developers/docs/topics/gateway-events#receive-events}
  */
 var GatewayDispatchEvents;
 (function (GatewayDispatchEvents) {
@@ -11001,7 +11843,7 @@ var GatewayDispatchEvents;
     GatewayDispatchEvents["WebhooksUpdate"] = "WEBHOOKS_UPDATE";
 })(GatewayDispatchEvents || (exports.GatewayDispatchEvents = GatewayDispatchEvents = {}));
 /**
- * https://discord.com/developers/docs/topics/gateway-events#voice-channel-effect-send-animation-types
+ * @see {@link https://discord.com/developers/docs/topics/gateway-events#voice-channel-effect-send-animation-types}
  */
 var VoiceChannelEffectSendAnimationType;
 (function (VoiceChannelEffectSendAnimationType) {
@@ -11019,7 +11861,7 @@ var VoiceChannelEffectSendAnimationType;
 
 /***/ }),
 
-/***/ 15663:
+/***/ 18979:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -11027,7 +11869,7 @@ var VoiceChannelEffectSendAnimationType;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.FormattingPatterns = void 0;
 /**
- * https://discord.com/developers/docs/reference#message-formatting-formats
+ * @see {@link https://discord.com/developers/docs/reference#message-formatting-formats}
  */
 exports.FormattingPatterns = {
     /**
@@ -11132,7 +11974,7 @@ Object.freeze(exports.FormattingPatterns);
 
 /***/ }),
 
-/***/ 60422:
+/***/ 93170:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -11140,7 +11982,7 @@ Object.freeze(exports.FormattingPatterns);
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.PermissionFlagsBits = void 0;
 /**
- * https://discord.com/developers/docs/topics/permissions#permissions-bitwise-permission-flags
+ * @see {@link https://discord.com/developers/docs/topics/permissions#permissions-bitwise-permission-flags}
  *
  * These flags are exported as `BigInt`s and NOT numbers. Wrapping them in `Number()`
  * may cause issues, try to use BigInts as much as possible or modules that can
@@ -11317,7 +12159,7 @@ exports.PermissionFlagsBits = {
     /**
      * Allows management and editing of emojis, stickers, and soundboard sounds
      *
-     * @deprecated This is the old name for {@apilink PermissionFlagsBits#ManageGuildExpressions}
+     * @deprecated This is the old name for {@link PermissionFlagsBits.ManageGuildExpressions}
      */
     ManageEmojisAndStickers: 1n << 30n,
     /**
@@ -11373,7 +12215,7 @@ exports.PermissionFlagsBits = {
      */
     SendMessagesInThreads: 1n << 38n,
     /**
-     * Allows for using Activities (applications with the {@apilink ApplicationFlags.Embedded} flag) in a voice channel
+     * Allows for using Activities (applications with the {@link ApplicationFlags.Embedded} flag) in a voice channel
      *
      * Applies to channel types: Voice
      */
@@ -11438,7 +12280,7 @@ Object.freeze(exports.PermissionFlagsBits);
 
 /***/ }),
 
-/***/ 53877:
+/***/ 15313:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -11448,7 +12290,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 /***/ }),
 
-/***/ 46229:
+/***/ 89769:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -11458,7 +12300,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 /***/ }),
 
-/***/ 68342:
+/***/ 66130:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -11468,7 +12310,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 /***/ }),
 
-/***/ 52521:
+/***/ 60413:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -11478,7 +12320,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 /***/ }),
 
-/***/ 30116:
+/***/ 33248:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -11488,7 +12330,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 /***/ }),
 
-/***/ 98776:
+/***/ 81308:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -11498,7 +12340,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 /***/ }),
 
-/***/ 42657:
+/***/ 73069:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -11508,7 +12350,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 /***/ }),
 
-/***/ 15296:
+/***/ 33924:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -11518,7 +12360,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 /***/ }),
 
-/***/ 95833:
+/***/ 56021:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -11526,7 +12368,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.ApplicationCommandOptionType = void 0;
 /**
- * https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-type
+ * @see {@link https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-type}
  */
 var ApplicationCommandOptionType;
 (function (ApplicationCommandOptionType) {
@@ -11546,7 +12388,7 @@ var ApplicationCommandOptionType;
 
 /***/ }),
 
-/***/ 18477:
+/***/ 81361:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -11556,7 +12398,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 /***/ }),
 
-/***/ 42647:
+/***/ 81843:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -11566,7 +12408,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 /***/ }),
 
-/***/ 53248:
+/***/ 4540:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -11576,7 +12418,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 /***/ }),
 
-/***/ 86219:
+/***/ 44951:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -11586,7 +12428,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 /***/ }),
 
-/***/ 4828:
+/***/ 11672:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -11606,24 +12448,24 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-__exportStar(__nccwpck_require__(53877), exports);
-__exportStar(__nccwpck_require__(46229), exports);
-__exportStar(__nccwpck_require__(68342), exports);
-__exportStar(__nccwpck_require__(52521), exports);
-__exportStar(__nccwpck_require__(30116), exports);
-__exportStar(__nccwpck_require__(98776), exports);
-__exportStar(__nccwpck_require__(42657), exports);
-__exportStar(__nccwpck_require__(15296), exports);
-__exportStar(__nccwpck_require__(95833), exports);
-__exportStar(__nccwpck_require__(18477), exports);
-__exportStar(__nccwpck_require__(42647), exports);
-__exportStar(__nccwpck_require__(53248), exports);
-__exportStar(__nccwpck_require__(86219), exports);
+__exportStar(__nccwpck_require__(15313), exports);
+__exportStar(__nccwpck_require__(89769), exports);
+__exportStar(__nccwpck_require__(66130), exports);
+__exportStar(__nccwpck_require__(60413), exports);
+__exportStar(__nccwpck_require__(33248), exports);
+__exportStar(__nccwpck_require__(81308), exports);
+__exportStar(__nccwpck_require__(73069), exports);
+__exportStar(__nccwpck_require__(33924), exports);
+__exportStar(__nccwpck_require__(56021), exports);
+__exportStar(__nccwpck_require__(81361), exports);
+__exportStar(__nccwpck_require__(81843), exports);
+__exportStar(__nccwpck_require__(4540), exports);
+__exportStar(__nccwpck_require__(44951), exports);
 //# sourceMappingURL=chatInput.js.map
 
 /***/ }),
 
-/***/ 76114:
+/***/ 88726:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -11633,7 +12475,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 /***/ }),
 
-/***/ 50582:
+/***/ 34522:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -11643,7 +12485,17 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 /***/ }),
 
-/***/ 43866:
+/***/ 2256:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+//# sourceMappingURL=internals.js.map
+
+/***/ }),
+
+/***/ 6502:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -11651,7 +12503,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.APIApplicationCommandPermissionsConstant = exports.ApplicationCommandPermissionType = void 0;
 /**
- * https://discord.com/developers/docs/interactions/application-commands#application-command-permissions-object-application-command-permission-type
+ * @see {@link https://discord.com/developers/docs/interactions/application-commands#application-command-permissions-object-application-command-permission-type}
  */
 var ApplicationCommandPermissionType;
 (function (ApplicationCommandPermissionType) {
@@ -11660,7 +12512,7 @@ var ApplicationCommandPermissionType;
     ApplicationCommandPermissionType[ApplicationCommandPermissionType["Channel"] = 3] = "Channel";
 })(ApplicationCommandPermissionType || (exports.ApplicationCommandPermissionType = ApplicationCommandPermissionType = {}));
 /**
- * https://discord.com/developers/docs/interactions/application-commands#application-command-permissions-object-application-command-permissions-constants
+ * @see {@link https://discord.com/developers/docs/interactions/application-commands#application-command-permissions-object-application-command-permissions-constants}
  */
 exports.APIApplicationCommandPermissionsConstant = {
     // eslint-disable-next-line unicorn/prefer-native-coercion-functions
@@ -11671,7 +12523,7 @@ exports.APIApplicationCommandPermissionsConstant = {
 
 /***/ }),
 
-/***/ 50840:
+/***/ 19292:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -11692,12 +12544,13 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.EntryPointCommandHandlerType = exports.InteractionContextType = exports.ApplicationIntegrationType = exports.ApplicationCommandType = void 0;
-__exportStar(__nccwpck_require__(4828), exports);
-__exportStar(__nccwpck_require__(76114), exports);
-__exportStar(__nccwpck_require__(43866), exports);
-__exportStar(__nccwpck_require__(50582), exports);
+__exportStar(__nccwpck_require__(11672), exports);
+__exportStar(__nccwpck_require__(88726), exports);
+__exportStar(__nccwpck_require__(6502), exports);
+__exportStar(__nccwpck_require__(34522), exports);
+__exportStar(__nccwpck_require__(2256), exports);
 /**
- * https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-types
+ * @see {@link https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-types}
  */
 var ApplicationCommandType;
 (function (ApplicationCommandType) {
@@ -11719,7 +12572,7 @@ var ApplicationCommandType;
     ApplicationCommandType[ApplicationCommandType["PrimaryEntryPoint"] = 4] = "PrimaryEntryPoint";
 })(ApplicationCommandType || (exports.ApplicationCommandType = ApplicationCommandType = {}));
 /**
- * https://discord.com/developers/docs/resources/application#application-object-application-integration-types
+ * @see {@link https://discord.com/developers/docs/resources/application#application-object-application-integration-types}
  */
 var ApplicationIntegrationType;
 (function (ApplicationIntegrationType) {
@@ -11733,7 +12586,7 @@ var ApplicationIntegrationType;
     ApplicationIntegrationType[ApplicationIntegrationType["UserInstall"] = 1] = "UserInstall";
 })(ApplicationIntegrationType || (exports.ApplicationIntegrationType = ApplicationIntegrationType = {}));
 /**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-context-types
+ * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-context-types}
  */
 var InteractionContextType;
 (function (InteractionContextType) {
@@ -11751,7 +12604,7 @@ var InteractionContextType;
     InteractionContextType[InteractionContextType["PrivateChannel"] = 2] = "PrivateChannel";
 })(InteractionContextType || (exports.InteractionContextType = InteractionContextType = {}));
 /**
- * https://discord.com/developers/docs/interactions/application-commands#application-command-object-entry-point-command-handler-types
+ * @see {@link https://discord.com/developers/docs/interactions/application-commands#application-command-object-entry-point-command-handler-types}
  */
 var EntryPointCommandHandlerType;
 (function (EntryPointCommandHandlerType) {
@@ -11769,7 +12622,7 @@ var EntryPointCommandHandlerType;
 
 /***/ }),
 
-/***/ 23398:
+/***/ 15170:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -11779,7 +12632,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 /***/ }),
 
-/***/ 84287:
+/***/ 7291:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -11789,7 +12642,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 /***/ }),
 
-/***/ 9775:
+/***/ 93251:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -11799,7 +12652,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 /***/ }),
 
-/***/ 99305:
+/***/ 30861:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -11809,7 +12662,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 /***/ }),
 
-/***/ 83970:
+/***/ 86230:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -11819,7 +12672,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 /***/ }),
 
-/***/ 16380:
+/***/ 77336:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -11827,7 +12680,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.InteractionResponseType = exports.InteractionType = void 0;
 /**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-type
+ * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-type}
  */
 var InteractionType;
 (function (InteractionType) {
@@ -11838,7 +12691,7 @@ var InteractionType;
     InteractionType[InteractionType["ModalSubmit"] = 5] = "ModalSubmit";
 })(InteractionType || (exports.InteractionType = InteractionType = {}));
 /**
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object-interaction-callback-type
+ * @see {@link https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object-interaction-callback-type}
  */
 var InteractionResponseType;
 (function (InteractionResponseType) {
@@ -11873,7 +12726,8 @@ var InteractionResponseType;
     /**
      * Respond to an interaction with an upgrade button, only available for apps with monetization enabled
      *
-     * @deprecated See https://discord.com/developers/docs/change-log#premium-apps-new-premium-button-style-deep-linking-url-schemes
+     * @deprecated Send a button with Premium type instead.
+     * {@link https://discord.com/developers/docs/change-log#premium-apps-new-premium-button-style-deep-linking-url-schemes | Learn more here}
      */
     InteractionResponseType[InteractionResponseType["PremiumRequired"] = 10] = "PremiumRequired";
     /**
@@ -11888,7 +12742,7 @@ var InteractionResponseType;
 
 /***/ }),
 
-/***/ 34265:
+/***/ 62837:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -11899,7 +12753,7 @@ var InteractionResponseType;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.ApplicationWebhookEventStatus = exports.ApplicationRoleConnectionMetadataType = exports.ApplicationFlags = void 0;
 /**
- * https://discord.com/developers/docs/resources/application#application-object-application-flags
+ * @see {@link https://discord.com/developers/docs/resources/application#application-object-application-flags}
  */
 var ApplicationFlags;
 (function (ApplicationFlags) {
@@ -11937,12 +12791,14 @@ var ApplicationFlags;
     ApplicationFlags[ApplicationFlags["GatewayPresenceLimited"] = 8192] = "GatewayPresenceLimited";
     /**
      * Intent required for bots in 100 or more servers to receive member-related events like `guild_member_add`.
-     * See list of member-related events [under `GUILD_MEMBERS`](https://discord.com/developers/docs/topics/gateway#list-of-intents)
+     *
+     * @see List of member-related events {@link https://discord.com/developers/docs/topics/gateway#list-of-intents | under `GUILD_MEMBERS`}
      */
     ApplicationFlags[ApplicationFlags["GatewayGuildMembers"] = 16384] = "GatewayGuildMembers";
     /**
      * Intent required for bots in under 100 servers to receive member-related events like `guild_member_add`, found in Bot Settings.
-     * See list of member-related events [under `GUILD_MEMBERS`](https://discord.com/developers/docs/topics/gateway#list-of-intents)
+     *
+     * @see List of member-related events {@link https://discord.com/developers/docs/topics/gateway#list-of-intents | under `GUILD_MEMBERS`}
      */
     ApplicationFlags[ApplicationFlags["GatewayGuildMembersLimited"] = 32768] = "GatewayGuildMembersLimited";
     /**
@@ -11954,11 +12810,11 @@ var ApplicationFlags;
      */
     ApplicationFlags[ApplicationFlags["Embedded"] = 131072] = "Embedded";
     /**
-     * Intent required for bots in 100 or more servers to receive [message content](https://support-dev.discord.com/hc/en-us/articles/4404772028055)
+     * Intent required for bots in 100 or more servers to receive {@link https://support-dev.discord.com/hc/articles/6207308062871 | message content}
      */
     ApplicationFlags[ApplicationFlags["GatewayMessageContent"] = 262144] = "GatewayMessageContent";
     /**
-     * Intent required for bots in under 100 servers to receive [message content](https://support-dev.discord.com/hc/en-us/articles/4404772028055),
+     * Intent required for bots in under 100 servers to receive {@link https://support-dev.discord.com/hc/articles/6207308062871 | message content},
      * found in Bot Settings
      */
     ApplicationFlags[ApplicationFlags["GatewayMessageContentLimited"] = 524288] = "GatewayMessageContentLimited";
@@ -11967,12 +12823,12 @@ var ApplicationFlags;
      */
     ApplicationFlags[ApplicationFlags["EmbeddedFirstParty"] = 1048576] = "EmbeddedFirstParty";
     /**
-     * Indicates if an app has registered global [application commands](https://discord.com/developers/docs/interactions/application-commands)
+     * Indicates if an app has registered global {@link https://discord.com/developers/docs/interactions/application-commands | application commands}
      */
     ApplicationFlags[ApplicationFlags["ApplicationCommandBadge"] = 8388608] = "ApplicationCommandBadge";
 })(ApplicationFlags || (exports.ApplicationFlags = ApplicationFlags = {}));
 /**
- * https://discord.com/developers/docs/resources/application-role-connection-metadata#application-role-connection-metadata-object-application-role-connection-metadata-type
+ * @see {@link https://discord.com/developers/docs/resources/application-role-connection-metadata#application-role-connection-metadata-object-application-role-connection-metadata-type}
  */
 var ApplicationRoleConnectionMetadataType;
 (function (ApplicationRoleConnectionMetadataType) {
@@ -12010,7 +12866,7 @@ var ApplicationRoleConnectionMetadataType;
     ApplicationRoleConnectionMetadataType[ApplicationRoleConnectionMetadataType["BooleanNotEqual"] = 8] = "BooleanNotEqual";
 })(ApplicationRoleConnectionMetadataType || (exports.ApplicationRoleConnectionMetadataType = ApplicationRoleConnectionMetadataType = {}));
 /**
- * https://discord.com/developers/docs/resources/application#application-object-application-event-webhook-status
+ * @see {@link https://discord.com/developers/docs/resources/application#application-object-application-event-webhook-status}
  */
 var ApplicationWebhookEventStatus;
 (function (ApplicationWebhookEventStatus) {
@@ -12031,7 +12887,7 @@ var ApplicationWebhookEventStatus;
 
 /***/ }),
 
-/***/ 81220:
+/***/ 88264:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -12042,7 +12898,7 @@ var ApplicationWebhookEventStatus;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.AuditLogOptionsType = exports.AuditLogEvent = void 0;
 /**
- * https://discord.com/developers/docs/resources/audit-log#audit-log-entry-object-audit-log-events
+ * @see {@link https://discord.com/developers/docs/resources/audit-log#audit-log-entry-object-audit-log-events}
  */
 var AuditLogEvent;
 (function (AuditLogEvent) {
@@ -12122,7 +12978,7 @@ var AuditLogOptionsType;
 
 /***/ }),
 
-/***/ 59884:
+/***/ 83040:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -12133,7 +12989,7 @@ var AuditLogOptionsType;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.AutoModerationActionType = exports.AutoModerationRuleEventType = exports.AutoModerationRuleKeywordPresetType = exports.AutoModerationRuleTriggerType = void 0;
 /**
- * https://discord.com/developers/docs/resources/auto-moderation#auto-moderation-rule-object-trigger-types
+ * @see {@link https://discord.com/developers/docs/resources/auto-moderation#auto-moderation-rule-object-trigger-types}
  */
 var AutoModerationRuleTriggerType;
 (function (AutoModerationRuleTriggerType) {
@@ -12159,7 +13015,7 @@ var AutoModerationRuleTriggerType;
     AutoModerationRuleTriggerType[AutoModerationRuleTriggerType["MemberProfile"] = 6] = "MemberProfile";
 })(AutoModerationRuleTriggerType || (exports.AutoModerationRuleTriggerType = AutoModerationRuleTriggerType = {}));
 /**
- * https://discord.com/developers/docs/resources/auto-moderation#auto-moderation-rule-object-keyword-preset-types
+ * @see {@link https://discord.com/developers/docs/resources/auto-moderation#auto-moderation-rule-object-keyword-preset-types}
  */
 var AutoModerationRuleKeywordPresetType;
 (function (AutoModerationRuleKeywordPresetType) {
@@ -12177,7 +13033,7 @@ var AutoModerationRuleKeywordPresetType;
     AutoModerationRuleKeywordPresetType[AutoModerationRuleKeywordPresetType["Slurs"] = 3] = "Slurs";
 })(AutoModerationRuleKeywordPresetType || (exports.AutoModerationRuleKeywordPresetType = AutoModerationRuleKeywordPresetType = {}));
 /**
- * https://discord.com/developers/docs/resources/auto-moderation#auto-moderation-rule-object-event-types
+ * @see {@link https://discord.com/developers/docs/resources/auto-moderation#auto-moderation-rule-object-event-types}
  */
 var AutoModerationRuleEventType;
 (function (AutoModerationRuleEventType) {
@@ -12191,7 +13047,7 @@ var AutoModerationRuleEventType;
     AutoModerationRuleEventType[AutoModerationRuleEventType["MemberUpdate"] = 2] = "MemberUpdate";
 })(AutoModerationRuleEventType || (exports.AutoModerationRuleEventType = AutoModerationRuleEventType = {}));
 /**
- * https://discord.com/developers/docs/resources/auto-moderation#auto-moderation-action-object-action-types
+ * @see {@link https://discord.com/developers/docs/resources/auto-moderation#auto-moderation-action-object-action-types}
  */
 var AutoModerationActionType;
 (function (AutoModerationActionType) {
@@ -12217,7 +13073,7 @@ var AutoModerationActionType;
 
 /***/ }),
 
-/***/ 8224:
+/***/ 57948:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -12226,9 +13082,9 @@ var AutoModerationActionType;
  * Types extracted from https://discord.com/developers/docs/resources/channel
  */
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ChannelFlags = exports.SelectMenuDefaultValueType = exports.TextInputStyle = exports.ButtonStyle = exports.ComponentType = exports.AllowedMentionsTypes = exports.AttachmentFlags = exports.EmbedType = exports.ThreadMemberFlags = exports.ThreadAutoArchiveDuration = exports.OverwriteType = exports.MessageFlags = exports.MessageReferenceType = exports.MessageActivityType = exports.MessageType = exports.VideoQualityMode = exports.ChannelType = exports.ForumLayoutType = exports.SortOrderType = void 0;
+exports.ChannelFlags = exports.SeparatorSpacingSize = exports.UnfurledMediaItemLoadingState = exports.SelectMenuDefaultValueType = exports.TextInputStyle = exports.ButtonStyle = exports.ComponentType = exports.AllowedMentionsTypes = exports.AttachmentFlags = exports.EmbedType = exports.ThreadMemberFlags = exports.ThreadAutoArchiveDuration = exports.OverwriteType = exports.MessageFlags = exports.MessageReferenceType = exports.MessageActivityType = exports.MessageType = exports.VideoQualityMode = exports.ChannelType = exports.ForumLayoutType = exports.SortOrderType = void 0;
 /**
- * https://discord.com/developers/docs/resources/channel/#channel-object-sort-order-types
+ * @see {@link https://discord.com/developers/docs/resources/channel/#channel-object-sort-order-types}
  */
 var SortOrderType;
 (function (SortOrderType) {
@@ -12242,7 +13098,7 @@ var SortOrderType;
     SortOrderType[SortOrderType["CreationDate"] = 1] = "CreationDate";
 })(SortOrderType || (exports.SortOrderType = SortOrderType = {}));
 /**
- * https://discord.com/developers/docs/resources/channel/#channel-object-forum-layout-types
+ * @see {@link https://discord.com/developers/docs/resources/channel/#channel-object-forum-layout-types}
  */
 var ForumLayoutType;
 (function (ForumLayoutType) {
@@ -12260,7 +13116,7 @@ var ForumLayoutType;
     ForumLayoutType[ForumLayoutType["GalleryView"] = 2] = "GalleryView";
 })(ForumLayoutType || (exports.ForumLayoutType = ForumLayoutType = {}));
 /**
- * https://discord.com/developers/docs/resources/channel#channel-object-channel-types
+ * @see {@link https://discord.com/developers/docs/resources/channel#channel-object-channel-types}
  */
 var ChannelType;
 (function (ChannelType) {
@@ -12283,13 +13139,13 @@ var ChannelType;
     /**
      * An organizational category that contains up to 50 channels
      *
-     * See https://support.discord.com/hc/articles/115001580171
+     * @see {@link https://support.discord.com/hc/articles/115001580171}
      */
     ChannelType[ChannelType["GuildCategory"] = 4] = "GuildCategory";
     /**
      * A channel that users can follow and crosspost into their own guild
      *
-     * See https://support.discord.com/hc/articles/360032008192
+     * @see {@link https://support.discord.com/hc/articles/360032008192}
      */
     ChannelType[ChannelType["GuildAnnouncement"] = 5] = "GuildAnnouncement";
     /**
@@ -12307,13 +13163,13 @@ var ChannelType;
     /**
      * A voice channel for hosting events with an audience
      *
-     * See https://support.discord.com/hc/articles/1500005513722
+     * @see {@link https://support.discord.com/hc/articles/1500005513722}
      */
     ChannelType[ChannelType["GuildStageVoice"] = 13] = "GuildStageVoice";
     /**
      * The channel in a Student Hub containing the listed servers
      *
-     * See https://support.discord.com/hc/articles/4406046651927
+     * @see {@link https://support.discord.com/hc/articles/4406046651927}
      */
     ChannelType[ChannelType["GuildDirectory"] = 14] = "GuildDirectory";
     /**
@@ -12323,35 +13179,34 @@ var ChannelType;
     /**
      * A channel like forum channels but contains media for server subscriptions
      *
-     * See https://creator-support.discord.com/hc/articles/14346342766743
+     * @see {@link https://creator-support.discord.com/hc/articles/14346342766743}
      */
     ChannelType[ChannelType["GuildMedia"] = 16] = "GuildMedia";
     // EVERYTHING BELOW THIS LINE SHOULD BE OLD NAMES FOR RENAMED ENUM MEMBERS //
     /**
      * A channel that users can follow and crosspost into their own guild
      *
-     * @deprecated This is the old name for {@apilink ChannelType#GuildAnnouncement}
-     *
-     * See https://support.discord.com/hc/articles/360032008192
+     * @deprecated This is the old name for {@link ChannelType.GuildAnnouncement}
+     * @see {@link https://support.discord.com/hc/articles/360032008192}
      */
     ChannelType[ChannelType["GuildNews"] = 5] = "GuildNews";
     /**
      * A temporary sub-channel within a Guild Announcement channel
      *
-     * @deprecated This is the old name for {@apilink ChannelType#AnnouncementThread}
+     * @deprecated This is the old name for {@link ChannelType.AnnouncementThread}
      */
     // eslint-disable-next-line @typescript-eslint/no-duplicate-enum-values
     ChannelType[ChannelType["GuildNewsThread"] = 10] = "GuildNewsThread";
     /**
      * A temporary sub-channel within a Guild Text channel
      *
-     * @deprecated This is the old name for {@apilink ChannelType#PublicThread}
+     * @deprecated This is the old name for {@link ChannelType.PublicThread}
      */
     ChannelType[ChannelType["GuildPublicThread"] = 11] = "GuildPublicThread";
     /**
      * A temporary sub-channel within a Guild Text channel that is only viewable by those invited and those with the Manage Threads permission
      *
-     * @deprecated This is the old name for {@apilink ChannelType#PrivateThread}
+     * @deprecated This is the old name for {@link ChannelType.PrivateThread}
      */
     ChannelType[ChannelType["GuildPrivateThread"] = 12] = "GuildPrivateThread";
 })(ChannelType || (exports.ChannelType = ChannelType = {}));
@@ -12367,7 +13222,7 @@ var VideoQualityMode;
     VideoQualityMode[VideoQualityMode["Full"] = 2] = "Full";
 })(VideoQualityMode || (exports.VideoQualityMode = VideoQualityMode = {}));
 /**
- * https://discord.com/developers/docs/resources/channel#message-object-message-types
+ * @see {@link https://discord.com/developers/docs/resources/channel#message-object-message-types}
  */
 var MessageType;
 (function (MessageType) {
@@ -12414,7 +13269,7 @@ var MessageType;
     MessageType[MessageType["PollResult"] = 46] = "PollResult";
 })(MessageType || (exports.MessageType = MessageType = {}));
 /**
- * https://discord.com/developers/docs/resources/channel#message-object-message-activity-types
+ * @see {@link https://discord.com/developers/docs/resources/channel#message-object-message-activity-types}
  */
 var MessageActivityType;
 (function (MessageActivityType) {
@@ -12424,7 +13279,7 @@ var MessageActivityType;
     MessageActivityType[MessageActivityType["JoinRequest"] = 5] = "JoinRequest";
 })(MessageActivityType || (exports.MessageActivityType = MessageActivityType = {}));
 /**
- * https://discord.com/developers/docs/resources/channel#message-reference-types
+ * @see {@link https://discord.com/developers/docs/resources/channel#message-reference-types}
  */
 var MessageReferenceType;
 (function (MessageReferenceType) {
@@ -12438,7 +13293,7 @@ var MessageReferenceType;
     MessageReferenceType[MessageReferenceType["Forward"] = 1] = "Forward";
 })(MessageReferenceType || (exports.MessageReferenceType = MessageReferenceType = {}));
 /**
- * https://discord.com/developers/docs/resources/channel#message-object-message-flags
+ * @see {@link https://discord.com/developers/docs/resources/channel#message-object-message-flags}
  */
 var MessageFlags;
 (function (MessageFlags) {
@@ -12490,6 +13345,16 @@ var MessageFlags;
      * This message is a voice message
      */
     MessageFlags[MessageFlags["IsVoiceMessage"] = 8192] = "IsVoiceMessage";
+    /**
+     * This message has a snapshot (via Message Forwarding)
+     */
+    MessageFlags[MessageFlags["HasSnapshot"] = 16384] = "HasSnapshot";
+    /**
+     * Allows you to create fully component-driven messages
+     *
+     * @see {@link https://discord.com/developers/docs/components/overview}
+     */
+    MessageFlags[MessageFlags["IsComponentsV2"] = 32768] = "IsComponentsV2";
 })(MessageFlags || (exports.MessageFlags = MessageFlags = {}));
 var OverwriteType;
 (function (OverwriteType) {
@@ -12523,9 +13388,7 @@ var ThreadMemberFlags;
     ThreadMemberFlags[ThreadMemberFlags["NoMessages"] = 8] = "NoMessages";
 })(ThreadMemberFlags || (exports.ThreadMemberFlags = ThreadMemberFlags = {}));
 /**
- * https://discord.com/developers/docs/resources/channel#embed-object-embed-types
- *
- * @deprecated *Embed types should be considered deprecated and might be removed in a future API version*
+ * @see {@link https://discord.com/developers/docs/resources/channel#embed-object-embed-types}
  */
 var EmbedType;
 (function (EmbedType) {
@@ -12565,7 +13428,7 @@ var EmbedType;
     EmbedType["PollResult"] = "poll_result";
 })(EmbedType || (exports.EmbedType = EmbedType = {}));
 /**
- * https://discord.com/developers/docs/resources/channel#attachment-object-attachment-structure-attachment-flags
+ * @see {@link https://discord.com/developers/docs/resources/channel#attachment-object-attachment-structure-attachment-flags}
  */
 var AttachmentFlags;
 (function (AttachmentFlags) {
@@ -12575,12 +13438,12 @@ var AttachmentFlags;
     AttachmentFlags[AttachmentFlags["IsRemix"] = 4] = "IsRemix";
 })(AttachmentFlags || (exports.AttachmentFlags = AttachmentFlags = {}));
 /**
- * https://discord.com/developers/docs/resources/channel#allowed-mentions-object-allowed-mention-types
+ * @see {@link https://discord.com/developers/docs/resources/channel#allowed-mentions-object-allowed-mention-types}
  */
 var AllowedMentionsTypes;
 (function (AllowedMentionsTypes) {
     /**
-     * Controls @everyone and @here mentions
+     * Controls `@everyone` and `@here` mentions
      */
     AllowedMentionsTypes["Everyone"] = "everyone";
     /**
@@ -12593,12 +13456,12 @@ var AllowedMentionsTypes;
     AllowedMentionsTypes["User"] = "users";
 })(AllowedMentionsTypes || (exports.AllowedMentionsTypes = AllowedMentionsTypes = {}));
 /**
- * https://discord.com/developers/docs/interactions/message-components#component-object-component-types
+ * @see {@link https://discord.com/developers/docs/components/reference#component-object-component-types}
  */
 var ComponentType;
 (function (ComponentType) {
     /**
-     * Action Row component
+     * Container to display a row of interactive components
      */
     ComponentType[ComponentType["ActionRow"] = 1] = "ActionRow";
     /**
@@ -12629,36 +13492,92 @@ var ComponentType;
      * Select menu for channels
      */
     ComponentType[ComponentType["ChannelSelect"] = 8] = "ChannelSelect";
+    /**
+     * Container to display text alongside an accessory component
+     */
+    ComponentType[ComponentType["Section"] = 9] = "Section";
+    /**
+     * Markdown text
+     */
+    ComponentType[ComponentType["TextDisplay"] = 10] = "TextDisplay";
+    /**
+     * Small image that can be used as an accessory
+     */
+    ComponentType[ComponentType["Thumbnail"] = 11] = "Thumbnail";
+    /**
+     * Display images and other media
+     */
+    ComponentType[ComponentType["MediaGallery"] = 12] = "MediaGallery";
+    /**
+     * Displays an attached file
+     */
+    ComponentType[ComponentType["File"] = 13] = "File";
+    /**
+     * Component to add vertical padding between other components
+     */
+    ComponentType[ComponentType["Separator"] = 14] = "Separator";
+    /**
+     * @unstable This component type is currently not documented by Discord but has a known value which we will try to keep up to date.
+     */
+    ComponentType[ComponentType["ContentInventoryEntry"] = 16] = "ContentInventoryEntry";
+    /**
+     * Container that visually groups a set of components
+     */
+    ComponentType[ComponentType["Container"] = 17] = "Container";
     // EVERYTHING BELOW THIS LINE SHOULD BE OLD NAMES FOR RENAMED ENUM MEMBERS //
     /**
      * Select menu for picking from defined text options
      *
-     * @deprecated This is the old name for {@apilink ComponentType#StringSelect}
+     * @deprecated This is the old name for {@link ComponentType.StringSelect}
      */
     ComponentType[ComponentType["SelectMenu"] = 3] = "SelectMenu";
 })(ComponentType || (exports.ComponentType = ComponentType = {}));
 /**
- * https://discord.com/developers/docs/interactions/message-components#button-object-button-styles
+ * @see {@link https://discord.com/developers/docs/components/reference#button-button-styles}
  */
 var ButtonStyle;
 (function (ButtonStyle) {
+    /**
+     * The most important or recommended action in a group of options
+     */
     ButtonStyle[ButtonStyle["Primary"] = 1] = "Primary";
+    /**
+     * Alternative or supporting actions
+     */
     ButtonStyle[ButtonStyle["Secondary"] = 2] = "Secondary";
+    /**
+     * Positive confirmation or completion actions
+     */
     ButtonStyle[ButtonStyle["Success"] = 3] = "Success";
+    /**
+     * An action with irreversible consequences
+     */
     ButtonStyle[ButtonStyle["Danger"] = 4] = "Danger";
+    /**
+     * Navigates to a URL
+     */
     ButtonStyle[ButtonStyle["Link"] = 5] = "Link";
+    /**
+     * Purchase
+     */
     ButtonStyle[ButtonStyle["Premium"] = 6] = "Premium";
 })(ButtonStyle || (exports.ButtonStyle = ButtonStyle = {}));
 /**
- * https://discord.com/developers/docs/interactions/message-components#text-inputs-text-input-styles
+ * @see {@link https://discord.com/developers/docs/components/reference#text-input-text-input-styles}
  */
 var TextInputStyle;
 (function (TextInputStyle) {
+    /**
+     * Single-line input
+     */
     TextInputStyle[TextInputStyle["Short"] = 1] = "Short";
+    /**
+     * Multi-line input
+     */
     TextInputStyle[TextInputStyle["Paragraph"] = 2] = "Paragraph";
 })(TextInputStyle || (exports.TextInputStyle = TextInputStyle = {}));
 /**
- * https://discord.com/developers/docs/interactions/message-components#select-menu-object-select-default-value-structure
+ * @see {@link https://discord.com/developers/docs/components/reference#user-select-select-default-value-structure}
  */
 var SelectMenuDefaultValueType;
 (function (SelectMenuDefaultValueType) {
@@ -12666,8 +13585,23 @@ var SelectMenuDefaultValueType;
     SelectMenuDefaultValueType["Role"] = "role";
     SelectMenuDefaultValueType["User"] = "user";
 })(SelectMenuDefaultValueType || (exports.SelectMenuDefaultValueType = SelectMenuDefaultValueType = {}));
+var UnfurledMediaItemLoadingState;
+(function (UnfurledMediaItemLoadingState) {
+    UnfurledMediaItemLoadingState[UnfurledMediaItemLoadingState["Unknown"] = 0] = "Unknown";
+    UnfurledMediaItemLoadingState[UnfurledMediaItemLoadingState["Loading"] = 1] = "Loading";
+    UnfurledMediaItemLoadingState[UnfurledMediaItemLoadingState["LoadedSuccess"] = 2] = "LoadedSuccess";
+    UnfurledMediaItemLoadingState[UnfurledMediaItemLoadingState["LoadedNotFound"] = 3] = "LoadedNotFound";
+})(UnfurledMediaItemLoadingState || (exports.UnfurledMediaItemLoadingState = UnfurledMediaItemLoadingState = {}));
 /**
- * https://discord.com/developers/docs/resources/channel#channel-object-channel-flags
+ * @see {@link https://discord.com/developers/docs/components/reference#separator}
+ */
+var SeparatorSpacingSize;
+(function (SeparatorSpacingSize) {
+    SeparatorSpacingSize[SeparatorSpacingSize["Small"] = 1] = "Small";
+    SeparatorSpacingSize[SeparatorSpacingSize["Large"] = 2] = "Large";
+})(SeparatorSpacingSize || (exports.SeparatorSpacingSize = SeparatorSpacingSize = {}));
+/**
+ * @see {@link https://discord.com/developers/docs/resources/channel#channel-object-channel-flags}
  */
 var ChannelFlags;
 (function (ChannelFlags) {
@@ -12713,7 +13647,7 @@ var ChannelFlags;
 
 /***/ }),
 
-/***/ 80529:
+/***/ 933:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -12726,7 +13660,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 /***/ }),
 
-/***/ 23593:
+/***/ 21765:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -12739,7 +13673,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.ActivityFlags = exports.ActivityType = exports.ActivityPlatform = exports.PresenceUpdateStatus = void 0;
 /**
- * https://discord.com/developers/docs/topics/gateway-events#update-presence-status-types
+ * @see {@link https://discord.com/developers/docs/topics/gateway-events#update-presence-status-types}
  */
 var PresenceUpdateStatus;
 (function (PresenceUpdateStatus) {
@@ -12768,37 +13702,37 @@ var ActivityPlatform;
     ActivityPlatform["PS5"] = "ps5";
 })(ActivityPlatform || (exports.ActivityPlatform = ActivityPlatform = {}));
 /**
- * https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-types
+ * @see {@link https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-types}
  */
 var ActivityType;
 (function (ActivityType) {
     /**
-     * Playing {game}
+     * Playing \{game\}
      */
     ActivityType[ActivityType["Playing"] = 0] = "Playing";
     /**
-     * Streaming {details}
+     * Streaming \{details\}
      */
     ActivityType[ActivityType["Streaming"] = 1] = "Streaming";
     /**
-     * Listening to {name}
+     * Listening to \{name\}
      */
     ActivityType[ActivityType["Listening"] = 2] = "Listening";
     /**
-     * Watching {details}
+     * Watching \{details\}
      */
     ActivityType[ActivityType["Watching"] = 3] = "Watching";
     /**
-     * {emoji} {state}
+     * \{emoji\} \{state\}
      */
     ActivityType[ActivityType["Custom"] = 4] = "Custom";
     /**
-     * Competing in {name}
+     * Competing in \{name\}
      */
     ActivityType[ActivityType["Competing"] = 5] = "Competing";
 })(ActivityType || (exports.ActivityType = ActivityType = {}));
 /**
- * https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-flags
+ * @see {@link https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-flags}
  */
 var ActivityFlags;
 (function (ActivityFlags) {
@@ -12816,7 +13750,7 @@ var ActivityFlags;
 
 /***/ }),
 
-/***/ 86888:
+/***/ 94260:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -12827,7 +13761,7 @@ var ActivityFlags;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.GuildOnboardingPromptType = exports.GuildOnboardingMode = exports.MembershipScreeningFieldType = exports.GuildWidgetStyle = exports.IntegrationExpireBehavior = exports.GuildMemberFlags = exports.GuildFeature = exports.GuildSystemChannelFlags = exports.GuildHubType = exports.GuildPremiumTier = exports.GuildVerificationLevel = exports.GuildNSFWLevel = exports.GuildMFALevel = exports.GuildExplicitContentFilter = exports.GuildDefaultMessageNotifications = void 0;
 /**
- * https://discord.com/developers/docs/resources/guild#guild-object-default-message-notification-level
+ * @see {@link https://discord.com/developers/docs/resources/guild#guild-object-default-message-notification-level}
  */
 var GuildDefaultMessageNotifications;
 (function (GuildDefaultMessageNotifications) {
@@ -12835,7 +13769,7 @@ var GuildDefaultMessageNotifications;
     GuildDefaultMessageNotifications[GuildDefaultMessageNotifications["OnlyMentions"] = 1] = "OnlyMentions";
 })(GuildDefaultMessageNotifications || (exports.GuildDefaultMessageNotifications = GuildDefaultMessageNotifications = {}));
 /**
- * https://discord.com/developers/docs/resources/guild#guild-object-explicit-content-filter-level
+ * @see {@link https://discord.com/developers/docs/resources/guild#guild-object-explicit-content-filter-level}
  */
 var GuildExplicitContentFilter;
 (function (GuildExplicitContentFilter) {
@@ -12844,7 +13778,7 @@ var GuildExplicitContentFilter;
     GuildExplicitContentFilter[GuildExplicitContentFilter["AllMembers"] = 2] = "AllMembers";
 })(GuildExplicitContentFilter || (exports.GuildExplicitContentFilter = GuildExplicitContentFilter = {}));
 /**
- * https://discord.com/developers/docs/resources/guild#guild-object-mfa-level
+ * @see {@link https://discord.com/developers/docs/resources/guild#guild-object-mfa-level}
  */
 var GuildMFALevel;
 (function (GuildMFALevel) {
@@ -12852,7 +13786,7 @@ var GuildMFALevel;
     GuildMFALevel[GuildMFALevel["Elevated"] = 1] = "Elevated";
 })(GuildMFALevel || (exports.GuildMFALevel = GuildMFALevel = {}));
 /**
- * https://discord.com/developers/docs/resources/guild#guild-object-guild-nsfw-level
+ * @see {@link https://discord.com/developers/docs/resources/guild#guild-object-guild-nsfw-level}
  */
 var GuildNSFWLevel;
 (function (GuildNSFWLevel) {
@@ -12862,7 +13796,7 @@ var GuildNSFWLevel;
     GuildNSFWLevel[GuildNSFWLevel["AgeRestricted"] = 3] = "AgeRestricted";
 })(GuildNSFWLevel || (exports.GuildNSFWLevel = GuildNSFWLevel = {}));
 /**
- * https://discord.com/developers/docs/resources/guild#guild-object-verification-level
+ * @see {@link https://discord.com/developers/docs/resources/guild#guild-object-verification-level}
  */
 var GuildVerificationLevel;
 (function (GuildVerificationLevel) {
@@ -12888,7 +13822,7 @@ var GuildVerificationLevel;
     GuildVerificationLevel[GuildVerificationLevel["VeryHigh"] = 4] = "VeryHigh";
 })(GuildVerificationLevel || (exports.GuildVerificationLevel = GuildVerificationLevel = {}));
 /**
- * https://discord.com/developers/docs/resources/guild#guild-object-premium-tier
+ * @see {@link https://discord.com/developers/docs/resources/guild#guild-object-premium-tier}
  */
 var GuildPremiumTier;
 (function (GuildPremiumTier) {
@@ -12904,7 +13838,7 @@ var GuildHubType;
     GuildHubType[GuildHubType["College"] = 2] = "College";
 })(GuildHubType || (exports.GuildHubType = GuildHubType = {}));
 /**
- * https://discord.com/developers/docs/resources/guild#guild-object-system-channel-flags
+ * @see {@link https://discord.com/developers/docs/resources/guild#guild-object-system-channel-flags}
  */
 var GuildSystemChannelFlags;
 (function (GuildSystemChannelFlags) {
@@ -12934,7 +13868,7 @@ var GuildSystemChannelFlags;
     GuildSystemChannelFlags[GuildSystemChannelFlags["SuppressRoleSubscriptionPurchaseNotificationReplies"] = 32] = "SuppressRoleSubscriptionPurchaseNotificationReplies";
 })(GuildSystemChannelFlags || (exports.GuildSystemChannelFlags = GuildSystemChannelFlags = {}));
 /**
- * https://discord.com/developers/docs/resources/guild#guild-object-guild-features
+ * @see {@link https://discord.com/developers/docs/resources/guild#guild-object-guild-features}
  */
 var GuildFeature;
 (function (GuildFeature) {
@@ -12949,7 +13883,7 @@ var GuildFeature;
     /**
      * Guild is using the old permissions configuration behavior
      *
-     * See https://discord.com/developers/docs/change-log#upcoming-application-command-permission-changes
+     * @see {@link https://discord.com/developers/docs/change-log#upcoming-application-command-permission-changes}
      */
     GuildFeature["ApplicationCommandPermissionsV2"] = "APPLICATION_COMMAND_PERMISSIONS_V2";
     /**
@@ -12991,8 +13925,7 @@ var GuildFeature;
     /**
      * Guild is a Student Hub
      *
-     * See https://support.discord.com/hc/articles/4406046651927
-     *
+     * @see {@link https://support.discord.com/hc/articles/4406046651927}
      * @unstable This feature is currently not documented by Discord, but has known value
      */
     GuildFeature["Hub"] = "HUB";
@@ -13007,8 +13940,7 @@ var GuildFeature;
     /**
      * Guild is in a Student Hub
      *
-     * See https://support.discord.com/hc/articles/4406046651927
-     *
+     * @see {@link https://support.discord.com/hc/articles/4406046651927}
      * @unstable This feature is currently not documented by Discord, but has known value
      */
     GuildFeature["LinkedToHub"] = "LINKED_TO_HUB";
@@ -13089,7 +14021,7 @@ var GuildFeature;
     GuildFeature["WelcomeScreenEnabled"] = "WELCOME_SCREEN_ENABLED";
 })(GuildFeature || (exports.GuildFeature = GuildFeature = {}));
 /**
- * https://discord.com/developers/docs/resources/guild#guild-member-object-guild-member-flags
+ * @see {@link https://discord.com/developers/docs/resources/guild#guild-member-object-guild-member-flags}
  */
 var GuildMemberFlags;
 (function (GuildMemberFlags) {
@@ -13127,6 +14059,7 @@ var GuildMemberFlags;
     GuildMemberFlags[GuildMemberFlags["AutomodQuarantinedUsernameOrGuildNickname"] = 128] = "AutomodQuarantinedUsernameOrGuildNickname";
     /**
      * @deprecated
+     * {@link https://github.com/discord/discord-api-docs/pull/7113 | discord-api-docs#7113}
      */
     GuildMemberFlags[GuildMemberFlags["AutomodQuarantinedBio"] = 256] = "AutomodQuarantinedBio";
     /**
@@ -13135,7 +14068,7 @@ var GuildMemberFlags;
     GuildMemberFlags[GuildMemberFlags["DmSettingsUpsellAcknowledged"] = 512] = "DmSettingsUpsellAcknowledged";
 })(GuildMemberFlags || (exports.GuildMemberFlags = GuildMemberFlags = {}));
 /**
- * https://discord.com/developers/docs/resources/guild#integration-object-integration-expire-behaviors
+ * @see {@link https://discord.com/developers/docs/resources/guild#integration-object-integration-expire-behaviors}
  */
 var IntegrationExpireBehavior;
 (function (IntegrationExpireBehavior) {
@@ -13143,7 +14076,7 @@ var IntegrationExpireBehavior;
     IntegrationExpireBehavior[IntegrationExpireBehavior["Kick"] = 1] = "Kick";
 })(IntegrationExpireBehavior || (exports.IntegrationExpireBehavior = IntegrationExpireBehavior = {}));
 /**
- * https://discord.com/developers/docs/resources/guild#get-guild-widget-image-widget-style-options
+ * @see {@link https://discord.com/developers/docs/resources/guild#get-guild-widget-image-widget-style-options}
  */
 var GuildWidgetStyle;
 (function (GuildWidgetStyle) {
@@ -13177,7 +14110,7 @@ var MembershipScreeningFieldType;
     MembershipScreeningFieldType["Terms"] = "TERMS";
 })(MembershipScreeningFieldType || (exports.MembershipScreeningFieldType = MembershipScreeningFieldType = {}));
 /**
- * https://discord.com/developers/docs/resources/guild#guild-onboarding-object-onboarding-mode
+ * @see {@link https://discord.com/developers/docs/resources/guild#guild-onboarding-object-onboarding-mode}
  */
 var GuildOnboardingMode;
 (function (GuildOnboardingMode) {
@@ -13191,7 +14124,7 @@ var GuildOnboardingMode;
     GuildOnboardingMode[GuildOnboardingMode["OnboardingAdvanced"] = 1] = "OnboardingAdvanced";
 })(GuildOnboardingMode || (exports.GuildOnboardingMode = GuildOnboardingMode = {}));
 /**
- * https://discord.com/developers/docs/resources/guild#guild-onboarding-object-prompt-types
+ * @see {@link https://discord.com/developers/docs/resources/guild#guild-onboarding-object-prompt-types}
  */
 var GuildOnboardingPromptType;
 (function (GuildOnboardingPromptType) {
@@ -13202,7 +14135,7 @@ var GuildOnboardingPromptType;
 
 /***/ }),
 
-/***/ 41705:
+/***/ 84749:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -13210,7 +14143,7 @@ var GuildOnboardingPromptType;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.GuildScheduledEventPrivacyLevel = exports.GuildScheduledEventStatus = exports.GuildScheduledEventEntityType = exports.GuildScheduledEventRecurrenceRuleMonth = exports.GuildScheduledEventRecurrenceRuleWeekday = exports.GuildScheduledEventRecurrenceRuleFrequency = void 0;
 /**
- * https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-recurrence-rule-object-guild-scheduled-event-recurrence-rule-frequency
+ * @see {@link https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-recurrence-rule-object-guild-scheduled-event-recurrence-rule-frequency}
  */
 var GuildScheduledEventRecurrenceRuleFrequency;
 (function (GuildScheduledEventRecurrenceRuleFrequency) {
@@ -13220,7 +14153,7 @@ var GuildScheduledEventRecurrenceRuleFrequency;
     GuildScheduledEventRecurrenceRuleFrequency[GuildScheduledEventRecurrenceRuleFrequency["Daily"] = 3] = "Daily";
 })(GuildScheduledEventRecurrenceRuleFrequency || (exports.GuildScheduledEventRecurrenceRuleFrequency = GuildScheduledEventRecurrenceRuleFrequency = {}));
 /**
- * https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-recurrence-rule-object-guild-scheduled-event-recurrence-rule-weekday
+ * @see {@link https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-recurrence-rule-object-guild-scheduled-event-recurrence-rule-weekday}
  */
 var GuildScheduledEventRecurrenceRuleWeekday;
 (function (GuildScheduledEventRecurrenceRuleWeekday) {
@@ -13233,7 +14166,7 @@ var GuildScheduledEventRecurrenceRuleWeekday;
     GuildScheduledEventRecurrenceRuleWeekday[GuildScheduledEventRecurrenceRuleWeekday["Sunday"] = 6] = "Sunday";
 })(GuildScheduledEventRecurrenceRuleWeekday || (exports.GuildScheduledEventRecurrenceRuleWeekday = GuildScheduledEventRecurrenceRuleWeekday = {}));
 /**
- * https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-recurrence-rule-object-guild-scheduled-event-recurrence-rule-month
+ * @see {@link https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-recurrence-rule-object-guild-scheduled-event-recurrence-rule-month}
  */
 var GuildScheduledEventRecurrenceRuleMonth;
 (function (GuildScheduledEventRecurrenceRuleMonth) {
@@ -13251,7 +14184,7 @@ var GuildScheduledEventRecurrenceRuleMonth;
     GuildScheduledEventRecurrenceRuleMonth[GuildScheduledEventRecurrenceRuleMonth["December"] = 12] = "December";
 })(GuildScheduledEventRecurrenceRuleMonth || (exports.GuildScheduledEventRecurrenceRuleMonth = GuildScheduledEventRecurrenceRuleMonth = {}));
 /**
- * https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-object-guild-scheduled-event-entity-types
+ * @see {@link https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-object-guild-scheduled-event-entity-types}
  */
 var GuildScheduledEventEntityType;
 (function (GuildScheduledEventEntityType) {
@@ -13260,7 +14193,7 @@ var GuildScheduledEventEntityType;
     GuildScheduledEventEntityType[GuildScheduledEventEntityType["External"] = 3] = "External";
 })(GuildScheduledEventEntityType || (exports.GuildScheduledEventEntityType = GuildScheduledEventEntityType = {}));
 /**
- * https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-object-guild-scheduled-event-status
+ * @see {@link https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-object-guild-scheduled-event-status}
  */
 var GuildScheduledEventStatus;
 (function (GuildScheduledEventStatus) {
@@ -13270,7 +14203,7 @@ var GuildScheduledEventStatus;
     GuildScheduledEventStatus[GuildScheduledEventStatus["Canceled"] = 4] = "Canceled";
 })(GuildScheduledEventStatus || (exports.GuildScheduledEventStatus = GuildScheduledEventStatus = {}));
 /**
- * https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-object-guild-scheduled-event-privacy-level
+ * @see {@link https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-object-guild-scheduled-event-privacy-level}
  */
 var GuildScheduledEventPrivacyLevel;
 (function (GuildScheduledEventPrivacyLevel) {
@@ -13283,7 +14216,7 @@ var GuildScheduledEventPrivacyLevel;
 
 /***/ }),
 
-/***/ 93947:
+/***/ 7839:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -13303,34 +14236,34 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-__exportStar(__nccwpck_require__(60422), exports);
-__exportStar(__nccwpck_require__(34265), exports);
-__exportStar(__nccwpck_require__(81220), exports);
-__exportStar(__nccwpck_require__(59884), exports);
-__exportStar(__nccwpck_require__(8224), exports);
-__exportStar(__nccwpck_require__(80529), exports);
-__exportStar(__nccwpck_require__(23593), exports);
-__exportStar(__nccwpck_require__(86888), exports);
-__exportStar(__nccwpck_require__(41705), exports);
-__exportStar(__nccwpck_require__(36002), exports);
-__exportStar(__nccwpck_require__(12650), exports);
-__exportStar(__nccwpck_require__(84634), exports);
-__exportStar(__nccwpck_require__(25548), exports);
-__exportStar(__nccwpck_require__(27091), exports);
-__exportStar(__nccwpck_require__(89966), exports);
-__exportStar(__nccwpck_require__(89046), exports);
-__exportStar(__nccwpck_require__(36826), exports);
-__exportStar(__nccwpck_require__(21700), exports);
-__exportStar(__nccwpck_require__(20113), exports);
-__exportStar(__nccwpck_require__(70309), exports);
-__exportStar(__nccwpck_require__(19312), exports);
-__exportStar(__nccwpck_require__(25653), exports);
-__exportStar(__nccwpck_require__(90810), exports);
+__exportStar(__nccwpck_require__(93170), exports);
+__exportStar(__nccwpck_require__(62837), exports);
+__exportStar(__nccwpck_require__(88264), exports);
+__exportStar(__nccwpck_require__(83040), exports);
+__exportStar(__nccwpck_require__(57948), exports);
+__exportStar(__nccwpck_require__(933), exports);
+__exportStar(__nccwpck_require__(21765), exports);
+__exportStar(__nccwpck_require__(94260), exports);
+__exportStar(__nccwpck_require__(84749), exports);
+__exportStar(__nccwpck_require__(918), exports);
+__exportStar(__nccwpck_require__(88062), exports);
+__exportStar(__nccwpck_require__(68862), exports);
+__exportStar(__nccwpck_require__(81880), exports);
+__exportStar(__nccwpck_require__(3359), exports);
+__exportStar(__nccwpck_require__(10602), exports);
+__exportStar(__nccwpck_require__(99178), exports);
+__exportStar(__nccwpck_require__(34974), exports);
+__exportStar(__nccwpck_require__(95536), exports);
+__exportStar(__nccwpck_require__(40133), exports);
+__exportStar(__nccwpck_require__(46025), exports);
+__exportStar(__nccwpck_require__(40468), exports);
+__exportStar(__nccwpck_require__(40633), exports);
+__exportStar(__nccwpck_require__(90534), exports);
 //# sourceMappingURL=index.js.map
 
 /***/ }),
 
-/***/ 36002:
+/***/ 918:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -13350,18 +14283,18 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-__exportStar(__nccwpck_require__(50840), exports);
-__exportStar(__nccwpck_require__(23398), exports);
-__exportStar(__nccwpck_require__(84287), exports);
-__exportStar(__nccwpck_require__(9775), exports);
-__exportStar(__nccwpck_require__(99305), exports);
-__exportStar(__nccwpck_require__(83970), exports);
-__exportStar(__nccwpck_require__(16380), exports);
+__exportStar(__nccwpck_require__(19292), exports);
+__exportStar(__nccwpck_require__(15170), exports);
+__exportStar(__nccwpck_require__(7291), exports);
+__exportStar(__nccwpck_require__(93251), exports);
+__exportStar(__nccwpck_require__(30861), exports);
+__exportStar(__nccwpck_require__(86230), exports);
+__exportStar(__nccwpck_require__(77336), exports);
 //# sourceMappingURL=interactions.js.map
 
 /***/ }),
 
-/***/ 12650:
+/***/ 88062:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -13372,7 +14305,7 @@ __exportStar(__nccwpck_require__(16380), exports);
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.InviteTargetType = exports.InviteType = void 0;
 /**
- * https://discord.com/developers/docs/resources/invite#invite-object-invite-types
+ * @see {@link https://discord.com/developers/docs/resources/invite#invite-object-invite-types}
  */
 var InviteType;
 (function (InviteType) {
@@ -13381,7 +14314,7 @@ var InviteType;
     InviteType[InviteType["Friend"] = 2] = "Friend";
 })(InviteType || (exports.InviteType = InviteType = {}));
 /**
- * https://discord.com/developers/docs/resources/invite#invite-object-invite-target-types
+ * @see {@link https://discord.com/developers/docs/resources/invite#invite-object-invite-target-types}
  */
 var InviteTargetType;
 (function (InviteTargetType) {
@@ -13392,7 +14325,7 @@ var InviteTargetType;
 
 /***/ }),
 
-/***/ 84634:
+/***/ 68862:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -13400,7 +14333,7 @@ var InviteTargetType;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.SubscriptionStatus = exports.SKUType = exports.SKUFlags = exports.EntitlementType = void 0;
 /**
- * https://discord.com/developers/docs/monetization/entitlements#entitlement-object-entitlement-types
+ * @see {@link https://discord.com/developers/docs/monetization/entitlements#entitlement-object-entitlement-types}
  */
 var EntitlementType;
 (function (EntitlementType) {
@@ -13438,7 +14371,7 @@ var EntitlementType;
     EntitlementType[EntitlementType["ApplicationSubscription"] = 8] = "ApplicationSubscription";
 })(EntitlementType || (exports.EntitlementType = EntitlementType = {}));
 /**
- * https://discord.com/developers/docs/monetization/skus#sku-object-sku-flags
+ * @see {@link https://discord.com/developers/docs/monetization/skus#sku-object-sku-flags}
  */
 var SKUFlags;
 (function (SKUFlags) {
@@ -13457,7 +14390,7 @@ var SKUFlags;
     SKUFlags[SKUFlags["UserSubscription"] = 256] = "UserSubscription";
 })(SKUFlags || (exports.SKUFlags = SKUFlags = {}));
 /**
- * https://discord.com/developers/docs/resources/sku#sku-object-sku-types
+ * @see {@link https://discord.com/developers/docs/resources/sku#sku-object-sku-types}
  */
 var SKUType;
 (function (SKUType) {
@@ -13479,7 +14412,7 @@ var SKUType;
     SKUType[SKUType["SubscriptionGroup"] = 6] = "SubscriptionGroup";
 })(SKUType || (exports.SKUType = SKUType = {}));
 /**
- * https://discord.com/developers/docs/resources/subscription#subscription-statuses
+ * @see {@link https://discord.com/developers/docs/resources/subscription#subscription-statuses}
  */
 var SubscriptionStatus;
 (function (SubscriptionStatus) {
@@ -13500,7 +14433,7 @@ var SubscriptionStatus;
 
 /***/ }),
 
-/***/ 25548:
+/***/ 81880:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -13517,10 +14450,10 @@ var OAuth2Scopes;
      */
     OAuth2Scopes["Bot"] = "bot";
     /**
-     * Allows [/users/@me/connections](https://discord.com/developers/docs/resources/user#get-user-connections)
+     * Allows {@link https://discord.com/developers/docs/resources/user#get-user-connections | `/users/@me/connections`}
      * to return linked third-party accounts
      *
-     * See https://discord.com/developers/docs/resources/user#get-user-connections
+     * @see {@link https://discord.com/developers/docs/resources/user#get-user-connections}
      */
     OAuth2Scopes["Connections"] = "connections";
     /**
@@ -13528,41 +14461,41 @@ var OAuth2Scopes;
      */
     OAuth2Scopes["DMChannelsRead"] = "dm_channels.read";
     /**
-     * Enables [/users/@me](https://discord.com/developers/docs/resources/user#get-current-user) to return an `email`
+     * Enables {@link https://discord.com/developers/docs/resources/user#get-current-user | `/users/@me`} to return an `email`
      *
-     * See https://discord.com/developers/docs/resources/user#get-current-user
+     * @see {@link https://discord.com/developers/docs/resources/user#get-current-user}
      */
     OAuth2Scopes["Email"] = "email";
     /**
-     * Allows [/users/@me](https://discord.com/developers/docs/resources/user#get-current-user) without `email`
+     * Allows {@link https://discord.com/developers/docs/resources/user#get-current-user | `/users/@me`} without `email`
      *
-     * See https://discord.com/developers/docs/resources/user#get-current-user
+     * @see {@link https://discord.com/developers/docs/resources/user#get-current-user}
      */
     OAuth2Scopes["Identify"] = "identify";
     /**
-     * Allows [/users/@me/guilds](https://discord.com/developers/docs/resources/user#get-current-user-guilds)
+     * Allows {@link https://discord.com/developers/docs/resources/user#get-current-user-guilds | `/users/@me/guilds`}
      * to return basic information about all of a user's guilds
      *
-     * See https://discord.com/developers/docs/resources/user#get-current-user-guilds
+     * @see {@link https://discord.com/developers/docs/resources/user#get-current-user-guilds}
      */
     OAuth2Scopes["Guilds"] = "guilds";
     /**
-     * Allows [/guilds/{guild.id}/members/{user.id}](https://discord.com/developers/docs/resources/guild#add-guild-member)
+     * Allows {@link https://discord.com/developers/docs/resources/guild#add-guild-member | `/guilds/[guild.id]/members/[user.id]`}
      * to be used for joining users to a guild
      *
-     * See https://discord.com/developers/docs/resources/guild#add-guild-member
+     * @see {@link https://discord.com/developers/docs/resources/guild#add-guild-member}
      */
     OAuth2Scopes["GuildsJoin"] = "guilds.join";
     /**
-     * Allows /users/@me/guilds/{guild.id}/member to return a user's member information in a guild
+     * Allows /users/\@me/guilds/\{guild.id\}/member to return a user's member information in a guild
      *
-     * See https://discord.com/developers/docs/resources/user#get-current-user-guild-member
+     * @see {@link https://discord.com/developers/docs/resources/user#get-current-user-guild-member}
      */
     OAuth2Scopes["GuildsMembersRead"] = "guilds.members.read";
     /**
      * Allows your app to join users to a group dm
      *
-     * See https://discord.com/developers/docs/resources/channel#group-dm-add-recipient
+     * @see {@link https://discord.com/developers/docs/resources/channel#group-dm-add-recipient}
      */
     OAuth2Scopes["GroupDMJoins"] = "gdm.join";
     /**
@@ -13578,6 +14511,18 @@ var OAuth2Scopes;
      * For local rpc server access, this allows you to control a user's local Discord client - requires Discord approval
      */
     OAuth2Scopes["RPC"] = "rpc";
+    /**
+     * For local rpc server access, this allows you to update a user's activity - requires Discord approval
+     */
+    OAuth2Scopes["RPCActivitiesWrite"] = "rpc.activities.write";
+    /**
+     * For local rpc server access, this allows you to read a user's voice settings and listen for voice events - requires Discord approval
+     */
+    OAuth2Scopes["RPCVoiceRead"] = "rpc.voice.read";
+    /**
+     * For local rpc server access, this allows you to update a user's voice settings - requires Discord approval
+     */
+    OAuth2Scopes["RPCVoiceWrite"] = "rpc.voice.write";
     /**
      * For local rpc server api access, this allows you to receive notifications pushed out to the user - requires Discord approval
      */
@@ -13617,25 +14562,25 @@ var OAuth2Scopes;
     /**
      * Allows your app to update a user's activity - requires Discord approval (NOT REQUIRED FOR GAMESDK ACTIVITY MANAGER)
      *
-     * See https://discord.com/developers/docs/game-sdk/activities
+     * @see {@link https://discord.com/developers/docs/game-sdk/activities}
      */
     OAuth2Scopes["ActivitiesWrite"] = "activities.write";
     /**
      * Allows your app to use Application Commands in a guild
      *
-     * See https://discord.com/developers/docs/interactions/application-commands
+     * @see {@link https://discord.com/developers/docs/interactions/application-commands}
      */
     OAuth2Scopes["ApplicationsCommands"] = "applications.commands";
     /**
      * Allows your app to update its Application Commands via this bearer token - client credentials grant only
      *
-     * See https://discord.com/developers/docs/interactions/application-commands
+     * @see {@link https://discord.com/developers/docs/interactions/application-commands}
      */
     OAuth2Scopes["ApplicationsCommandsUpdate"] = "applications.commands.update";
     /**
      * Allows your app to update permissions for its commands using a Bearer token - client credentials grant only
      *
-     * See https://discord.com/developers/docs/interactions/application-commands
+     * @see {@link https://discord.com/developers/docs/interactions/application-commands}
      */
     OAuth2Scopes["ApplicationCommandsPermissionsUpdate"] = "applications.commands.permissions.update";
 })(OAuth2Scopes || (exports.OAuth2Scopes = OAuth2Scopes = {}));
@@ -13643,7 +14588,7 @@ var OAuth2Scopes;
 
 /***/ }),
 
-/***/ 27091:
+/***/ 3359:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -13654,7 +14599,7 @@ var OAuth2Scopes;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.RoleFlags = void 0;
 /**
- * https://discord.com/developers/docs/topics/permissions#role-object-role-flags
+ * @see {@link https://discord.com/developers/docs/topics/permissions#role-object-role-flags}
  */
 var RoleFlags;
 (function (RoleFlags) {
@@ -13667,7 +14612,7 @@ var RoleFlags;
 
 /***/ }),
 
-/***/ 89966:
+/***/ 10602:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -13678,7 +14623,7 @@ var RoleFlags;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.PollLayoutType = void 0;
 /**
- * https://discord.com/developers/docs/resources/poll#layout-type
+ * @see {@link https://discord.com/developers/docs/resources/poll#layout-type}
  */
 var PollLayoutType;
 (function (PollLayoutType) {
@@ -13691,7 +14636,7 @@ var PollLayoutType;
 
 /***/ }),
 
-/***/ 89046:
+/***/ 99178:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -13704,7 +14649,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 /***/ }),
 
-/***/ 36826:
+/***/ 34974:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -13712,7 +14657,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.StageInstancePrivacyLevel = void 0;
 /**
- * https://discord.com/developers/docs/resources/stage-instance#stage-instance-object-privacy-level
+ * @see {@link https://discord.com/developers/docs/resources/stage-instance#stage-instance-object-privacy-level}
  */
 var StageInstancePrivacyLevel;
 (function (StageInstancePrivacyLevel) {
@@ -13720,6 +14665,7 @@ var StageInstancePrivacyLevel;
      * The stage instance is visible publicly, such as on stage discovery
      *
      * @deprecated
+     * {@link https://github.com/discord/discord-api-docs/pull/4296 | discord-api-docs#4296}
      */
     StageInstancePrivacyLevel[StageInstancePrivacyLevel["Public"] = 1] = "Public";
     /**
@@ -13731,7 +14677,7 @@ var StageInstancePrivacyLevel;
 
 /***/ }),
 
-/***/ 21700:
+/***/ 95536:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -13742,7 +14688,7 @@ var StageInstancePrivacyLevel;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.StickerFormatType = exports.StickerType = void 0;
 /**
- * https://discord.com/developers/docs/resources/sticker#sticker-object-sticker-types
+ * @see {@link https://discord.com/developers/docs/resources/sticker#sticker-object-sticker-types}
  */
 var StickerType;
 (function (StickerType) {
@@ -13756,7 +14702,7 @@ var StickerType;
     StickerType[StickerType["Guild"] = 2] = "Guild";
 })(StickerType || (exports.StickerType = StickerType = {}));
 /**
- * https://discord.com/developers/docs/resources/sticker#sticker-object-sticker-format-types
+ * @see {@link https://discord.com/developers/docs/resources/sticker#sticker-object-sticker-format-types}
  */
 var StickerFormatType;
 (function (StickerFormatType) {
@@ -13769,7 +14715,7 @@ var StickerFormatType;
 
 /***/ }),
 
-/***/ 20113:
+/***/ 40133:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -13780,7 +14726,7 @@ var StickerFormatType;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.TeamMemberRole = exports.TeamMemberMembershipState = void 0;
 /**
- * https://discord.com/developers/docs/topics/teams#data-models-membership-state-enum
+ * @see {@link https://discord.com/developers/docs/topics/teams#data-models-membership-state-enum}
  */
 var TeamMemberMembershipState;
 (function (TeamMemberMembershipState) {
@@ -13788,7 +14734,7 @@ var TeamMemberMembershipState;
     TeamMemberMembershipState[TeamMemberMembershipState["Accepted"] = 2] = "Accepted";
 })(TeamMemberMembershipState || (exports.TeamMemberMembershipState = TeamMemberMembershipState = {}));
 /**
- * https://discord.com/developers/docs/topics/teams#team-member-roles-team-member-role-types
+ * @see {@link https://discord.com/developers/docs/topics/teams#team-member-roles-team-member-role-types}
  */
 var TeamMemberRole;
 (function (TeamMemberRole) {
@@ -13800,7 +14746,7 @@ var TeamMemberRole;
 
 /***/ }),
 
-/***/ 70309:
+/***/ 46025:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -13813,7 +14759,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 /***/ }),
 
-/***/ 19312:
+/***/ 40468:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -13824,7 +14770,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.ConnectionVisibility = exports.ConnectionService = exports.UserPremiumType = exports.UserFlags = void 0;
 /**
- * https://discord.com/developers/docs/resources/user#user-object-user-flags
+ * @see {@link https://discord.com/developers/docs/resources/user#user-object-user-flags}
  */
 var UserFlags;
 (function (UserFlags) {
@@ -13869,7 +14815,7 @@ var UserFlags;
      */
     UserFlags[UserFlags["PremiumEarlySupporter"] = 512] = "PremiumEarlySupporter";
     /**
-     * User is a [team](https://discord.com/developers/docs/topics/teams)
+     * User is a {@link https://discord.com/developers/docs/topics/teams | team}
      */
     UserFlags[UserFlags["TeamPseudoUser"] = 1024] = "TeamPseudoUser";
     /**
@@ -13893,7 +14839,7 @@ var UserFlags;
      */
     UserFlags[UserFlags["CertifiedModerator"] = 262144] = "CertifiedModerator";
     /**
-     * Bot uses only [HTTP interactions](https://discord.com/developers/docs/interactions/receiving-and-responding#receiving-an-interaction) and is shown in the online member list
+     * Bot uses only {@link https://discord.com/developers/docs/interactions/receiving-and-responding#receiving-an-interaction | HTTP interactions} and is shown in the online member list
      */
     UserFlags[UserFlags["BotHTTPInteractions"] = 524288] = "BotHTTPInteractions";
     /**
@@ -13907,35 +14853,35 @@ var UserFlags;
      */
     UserFlags[UserFlags["DisablePremium"] = 2097152] = "DisablePremium";
     /**
-     * User is an [Active Developer](https://support-dev.discord.com/hc/articles/10113997751447)
+     * User is an {@link https://support-dev.discord.com/hc/articles/10113997751447 | Active Developer}
      */
     UserFlags[UserFlags["ActiveDeveloper"] = 4194304] = "ActiveDeveloper";
     /**
-     * User's account has been [quarantined](https://support.discord.com/hc/articles/6461420677527) based on recent activity
+     * User's account has been {@link https://support.discord.com/hc/articles/6461420677527 | quarantined} based on recent activity
      *
      * @unstable This user flag is currently not documented by Discord but has a known value which we will try to keep up to date.
      * @privateRemarks
      *
-     * This value would be 1 << 44, but bit shifting above 1 << 30 requires bigints
+     * This value would be `1 << 44`, but bit shifting above `1 << 30` requires bigints
      */
     UserFlags[UserFlags["Quarantined"] = 17592186044416] = "Quarantined";
     /**
      * @unstable This user flag is currently not documented by Discord but has a known value which we will try to keep up to date.
      * @privateRemarks
      *
-     * This value would be 1 << 50, but bit shifting above 1 << 30 requires bigints
+     * This value would be `1 << 50`, but bit shifting above `1 << 30` requires bigints
      */
     UserFlags[UserFlags["Collaborator"] = 1125899906842624] = "Collaborator";
     /**
      * @unstable This user flag is currently not documented by Discord but has a known value which we will try to keep up to date.
      * @privateRemarks
      *
-     * This value would be 1 << 51, but bit shifting above 1 << 30 requires bigints
+     * This value would be `1 << 51`, but bit shifting above `1 << 30` requires bigints
      */
     UserFlags[UserFlags["RestrictedCollaborator"] = 2251799813685248] = "RestrictedCollaborator";
 })(UserFlags || (exports.UserFlags = UserFlags = {}));
 /**
- * https://discord.com/developers/docs/resources/user#user-object-premium-types
+ * @see {@link https://discord.com/developers/docs/resources/user#user-object-premium-types}
  */
 var UserPremiumType;
 (function (UserPremiumType) {
@@ -13971,7 +14917,7 @@ var ConnectionService;
     ConnectionService["Twitch"] = "twitch";
     ConnectionService["X"] = "twitter";
     /**
-     * @deprecated This is the old name for {@apilink ConnectionService#X}
+     * @deprecated This is the old name for {@link ConnectionService.X}
      */
     ConnectionService["Twitter"] = "twitter";
     ConnectionService["Xbox"] = "xbox";
@@ -13992,7 +14938,7 @@ var ConnectionVisibility;
 
 /***/ }),
 
-/***/ 25653:
+/***/ 40633:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -14005,7 +14951,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 /***/ }),
 
-/***/ 90810:
+/***/ 90534:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -14016,7 +14962,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.WebhookType = exports.ApplicationWebhookEventType = exports.ApplicationWebhookType = void 0;
 /**
- * https://discord.com/developers/docs/events/webhook-events#webhook-types
+ * @see {@link https://discord.com/developers/docs/events/webhook-events#webhook-types}
  */
 var ApplicationWebhookType;
 (function (ApplicationWebhookType) {
@@ -14030,7 +14976,7 @@ var ApplicationWebhookType;
     ApplicationWebhookType[ApplicationWebhookType["Event"] = 1] = "Event";
 })(ApplicationWebhookType || (exports.ApplicationWebhookType = ApplicationWebhookType = {}));
 /**
- * https://discord.com/developers/docs/events/webhook-events#event-types
+ * @see {@link https://discord.com/developers/docs/events/webhook-events#event-types}
  */
 var ApplicationWebhookEventType;
 (function (ApplicationWebhookEventType) {
@@ -14048,7 +14994,7 @@ var ApplicationWebhookEventType;
     ApplicationWebhookEventType["QuestUserEnrollment"] = "QUEST_USER_ENROLLMENT";
 })(ApplicationWebhookEventType || (exports.ApplicationWebhookEventType = ApplicationWebhookEventType = {}));
 /**
- * https://discord.com/developers/docs/resources/webhook#webhook-object-webhook-types
+ * @see {@link https://discord.com/developers/docs/resources/webhook#webhook-object-webhook-types}
  */
 var WebhookType;
 (function (WebhookType) {
@@ -14069,7 +15015,7 @@ var WebhookType;
 
 /***/ }),
 
-/***/ 48129:
+/***/ 93765:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -14077,7 +15023,7 @@ var WebhookType;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.Locale = exports.RESTJSONErrorCodes = void 0;
 /**
- * https://discord.com/developers/docs/topics/opcodes-and-status-codes#json-json-error-codes
+ * @see {@link https://discord.com/developers/docs/topics/opcodes-and-status-codes#json-json-error-codes}
  */
 var RESTJSONErrorCodes;
 (function (RESTJSONErrorCodes) {
@@ -14307,7 +15253,7 @@ var RESTJSONErrorCodes;
     RESTJSONErrorCodes[RESTJSONErrorCodes["CannotExpireANonPollMessage"] = 520006] = "CannotExpireANonPollMessage";
 })(RESTJSONErrorCodes || (exports.RESTJSONErrorCodes = RESTJSONErrorCodes = {}));
 /**
- * https://discord.com/developers/docs/reference#locales
+ * @see {@link https://discord.com/developers/docs/reference#locales}
  */
 var Locale;
 (function (Locale) {
@@ -14348,7 +15294,7 @@ var Locale;
 
 /***/ }),
 
-/***/ 43700:
+/***/ 79608:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -14358,7 +15304,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 /***/ }),
 
-/***/ 20587:
+/***/ 53767:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -14368,7 +15314,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 /***/ }),
 
-/***/ 79419:
+/***/ 1079:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -14378,7 +15324,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 /***/ }),
 
-/***/ 94313:
+/***/ 32061:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -14386,7 +15332,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.ReactionType = void 0;
 /**
- * https://discord.com/developers/docs/resources/channel#get-reactions-reaction-types
+ * @see {@link https://discord.com/developers/docs/resources/channel#get-reactions-reaction-types}
  */
 var ReactionType;
 (function (ReactionType) {
@@ -14397,7 +15343,7 @@ var ReactionType;
 
 /***/ }),
 
-/***/ 99792:
+/***/ 49836:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -14407,7 +15353,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 /***/ }),
 
-/***/ 63796:
+/***/ 32568:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -14417,7 +15363,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 /***/ }),
 
-/***/ 10629:
+/***/ 75289:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -14427,7 +15373,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 /***/ }),
 
-/***/ 47408:
+/***/ 51564:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -14437,7 +15383,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 /***/ }),
 
-/***/ 43726:
+/***/ 1610:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -14458,28 +15404,28 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.OAuth2Routes = exports.RouteBases = exports.CDNRoutes = exports.ImageFormat = exports.StickerPackApplicationId = exports.Routes = exports.APIVersion = void 0;
-const internals_1 = __nccwpck_require__(25603);
-__exportStar(__nccwpck_require__(48129), exports);
-__exportStar(__nccwpck_require__(43700), exports);
-__exportStar(__nccwpck_require__(20587), exports);
-__exportStar(__nccwpck_require__(79419), exports);
-__exportStar(__nccwpck_require__(94313), exports);
-__exportStar(__nccwpck_require__(99792), exports);
-__exportStar(__nccwpck_require__(63796), exports);
-__exportStar(__nccwpck_require__(10629), exports);
-__exportStar(__nccwpck_require__(47408), exports);
-__exportStar(__nccwpck_require__(33797), exports);
-__exportStar(__nccwpck_require__(15173), exports);
-__exportStar(__nccwpck_require__(89897), exports);
-__exportStar(__nccwpck_require__(40443), exports);
-__exportStar(__nccwpck_require__(6433), exports);
-__exportStar(__nccwpck_require__(30593), exports);
-__exportStar(__nccwpck_require__(43407), exports);
-__exportStar(__nccwpck_require__(17317), exports);
-__exportStar(__nccwpck_require__(24998), exports);
-__exportStar(__nccwpck_require__(81355), exports);
-__exportStar(__nccwpck_require__(52864), exports);
-__exportStar(__nccwpck_require__(61735), exports);
+const internals_1 = __nccwpck_require__(45919);
+__exportStar(__nccwpck_require__(93765), exports);
+__exportStar(__nccwpck_require__(79608), exports);
+__exportStar(__nccwpck_require__(53767), exports);
+__exportStar(__nccwpck_require__(1079), exports);
+__exportStar(__nccwpck_require__(32061), exports);
+__exportStar(__nccwpck_require__(49836), exports);
+__exportStar(__nccwpck_require__(32568), exports);
+__exportStar(__nccwpck_require__(75289), exports);
+__exportStar(__nccwpck_require__(51564), exports);
+__exportStar(__nccwpck_require__(8897), exports);
+__exportStar(__nccwpck_require__(63025), exports);
+__exportStar(__nccwpck_require__(3157), exports);
+__exportStar(__nccwpck_require__(47311), exports);
+__exportStar(__nccwpck_require__(75877), exports);
+__exportStar(__nccwpck_require__(47229), exports);
+__exportStar(__nccwpck_require__(73547), exports);
+__exportStar(__nccwpck_require__(52073), exports);
+__exportStar(__nccwpck_require__(74338), exports);
+__exportStar(__nccwpck_require__(45015), exports);
+__exportStar(__nccwpck_require__(10188), exports);
+__exportStar(__nccwpck_require__(8139), exports);
 exports.APIVersion = '10';
 exports.Routes = {
     /**
@@ -14942,7 +15888,7 @@ exports.Routes = {
      * - GET   `/users/{user.id}`
      * - PATCH `/users/@me`
      *
-     * @param [userId] The user ID, defaulted to `@me`
+     * @param userId - The user ID, defaulted to `@me`
      */
     user(userId = '@me') {
         return `/users/${userId}`;
@@ -15285,6 +16231,13 @@ exports.Routes = {
     },
     /**
      * Route for:
+     * - PUT `/guilds/${guild.id}/incident-actions`
+     */
+    guildIncidentActions(guildId) {
+        return `/guilds/${guildId}/incident-actions`;
+    },
+    /**
+     * Route for:
      * - GET `/applications/@me`
      * - PATCH `/applications/@me`
      */
@@ -15485,7 +16438,7 @@ exports.CDNRoutes = {
      * Route for:
      * - GET `/embed/avatars/{index}.png`
      *
-     * The value for `index` parameter depends on whether the user is [migrated to the new username system](https://discord.com/developers/docs/change-log#unique-usernames-on-discord).
+     * The value for `index` parameter depends on whether the user is {@link https://discord.com/developers/docs/change-log#unique-usernames-on-discord | migrated to the new username system}.
      * For users on the new username system, `index` will be `(user.id >> 22) % 6`.
      * For users on the legacy username system, `index` will be `user.discriminator % 5`.
      *
@@ -15676,7 +16629,7 @@ exports.OAuth2Routes = {
     authorizationURL: `${exports.RouteBases.api}${exports.Routes.oauth2Authorization()}`,
     tokenURL: `${exports.RouteBases.api}${exports.Routes.oauth2TokenExchange()}`,
     /**
-     * See https://tools.ietf.org/html/rfc7009
+     * @see {@link https://tools.ietf.org/html/rfc7009}
      */
     tokenRevocationURL: `${exports.RouteBases.api}${exports.Routes.oauth2TokenRevocation()}`,
 };
@@ -15686,7 +16639,7 @@ Object.freeze(exports.OAuth2Routes);
 
 /***/ }),
 
-/***/ 33797:
+/***/ 8897:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -15696,7 +16649,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 /***/ }),
 
-/***/ 15173:
+/***/ 63025:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -15706,7 +16659,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 /***/ }),
 
-/***/ 89897:
+/***/ 3157:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -15714,7 +16667,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.EntitlementOwnerType = void 0;
 /**
- * https://discord.com/developers/docs/resources/entitlement#create-test-entitlement
+ * @see {@link https://discord.com/developers/docs/resources/entitlement#create-test-entitlement}
  */
 var EntitlementOwnerType;
 (function (EntitlementOwnerType) {
@@ -15725,7 +16678,7 @@ var EntitlementOwnerType;
 
 /***/ }),
 
-/***/ 40443:
+/***/ 47311:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -15735,7 +16688,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 /***/ }),
 
-/***/ 6433:
+/***/ 75877:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -15745,7 +16698,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 /***/ }),
 
-/***/ 30593:
+/***/ 47229:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -15755,7 +16708,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 /***/ }),
 
-/***/ 43407:
+/***/ 73547:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -15765,7 +16718,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 /***/ }),
 
-/***/ 17317:
+/***/ 52073:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -15775,7 +16728,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 /***/ }),
 
-/***/ 24998:
+/***/ 74338:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -15785,7 +16738,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 /***/ }),
 
-/***/ 81355:
+/***/ 45015:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -15795,7 +16748,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 /***/ }),
 
-/***/ 52864:
+/***/ 10188:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -15805,7 +16758,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 /***/ }),
 
-/***/ 61735:
+/***/ 8139:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -15815,52 +16768,254 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 /***/ }),
 
-/***/ 16930:
+/***/ 96542:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.RPCCloseEventCodes = exports.RPCErrorCodes = void 0;
+exports.RPCCloseEventCodes = exports.RPCErrorCodes = exports.RelationshipType = exports.VoiceConnectionStates = exports.RPCVoiceShortcutKeyComboKeyType = exports.RPCVoiceSettingsModeType = exports.RPCDeviceType = void 0;
+var RPCDeviceType;
+(function (RPCDeviceType) {
+    RPCDeviceType["AudioInput"] = "audioinput";
+    RPCDeviceType["AudioOutput"] = "audiooutput";
+    RPCDeviceType["VideoInput"] = "videoinput";
+})(RPCDeviceType || (exports.RPCDeviceType = RPCDeviceType = {}));
+var RPCVoiceSettingsModeType;
+(function (RPCVoiceSettingsModeType) {
+    RPCVoiceSettingsModeType["PushToTalk"] = "PUSH_TO_TALK";
+    RPCVoiceSettingsModeType["VoiceActivity"] = "VOICE_ACTIVITY";
+})(RPCVoiceSettingsModeType || (exports.RPCVoiceSettingsModeType = RPCVoiceSettingsModeType = {}));
 /**
- * https://discord.com/developers/docs/topics/opcodes-and-status-codes#rpc-rpc-error-codes
+ * @see {@link https://discord.com/developers/docs/topics/rpc#getvoicesettings-key-types}
+ */
+var RPCVoiceShortcutKeyComboKeyType;
+(function (RPCVoiceShortcutKeyComboKeyType) {
+    RPCVoiceShortcutKeyComboKeyType[RPCVoiceShortcutKeyComboKeyType["KeyboardKey"] = 0] = "KeyboardKey";
+    RPCVoiceShortcutKeyComboKeyType[RPCVoiceShortcutKeyComboKeyType["MouseButton"] = 1] = "MouseButton";
+    RPCVoiceShortcutKeyComboKeyType[RPCVoiceShortcutKeyComboKeyType["KeyboardModifierKey"] = 2] = "KeyboardModifierKey";
+    RPCVoiceShortcutKeyComboKeyType[RPCVoiceShortcutKeyComboKeyType["GamepadButton"] = 3] = "GamepadButton";
+})(RPCVoiceShortcutKeyComboKeyType || (exports.RPCVoiceShortcutKeyComboKeyType = RPCVoiceShortcutKeyComboKeyType = {}));
+var VoiceConnectionStates;
+(function (VoiceConnectionStates) {
+    /**
+     * TCP disconnected
+     */
+    VoiceConnectionStates["Disconnected"] = "DISCONNECTED";
+    /**
+     * Waiting for voice endpoint
+     */
+    VoiceConnectionStates["AwaitingEndpoint"] = "AWAITING_ENDPOINT";
+    /**
+     * TCP authenticating
+     */
+    VoiceConnectionStates["Authenticating"] = "AUTHENTICATING";
+    /**
+     * TCP connecting
+     */
+    VoiceConnectionStates["Connecting"] = "CONNECTING";
+    /**
+     * TCP connected
+     */
+    VoiceConnectionStates["Connected"] = "CONNECTED";
+    /**
+     * TCP connected, Voice disconnected
+     */
+    VoiceConnectionStates["VoiceDisconnected"] = "VOICE_DISCONNECTED";
+    /**
+     * TCP connected, Voice connecting
+     */
+    VoiceConnectionStates["VoiceConnecting"] = "VOICE_CONNECTING";
+    /**
+     * TCP connected, Voice connected
+     */
+    VoiceConnectionStates["VoiceConnected"] = "VOICE_CONNECTED";
+    /**
+     * No route to host
+     */
+    VoiceConnectionStates["NoRoute"] = "NO_ROUTE";
+    /**
+     * WebRTC ice checking
+     */
+    VoiceConnectionStates["IceChecking"] = "ICE_CHECKING";
+})(VoiceConnectionStates || (exports.VoiceConnectionStates = VoiceConnectionStates = {}));
+/**
+ * @unstable
+ */
+var RelationshipType;
+(function (RelationshipType) {
+    RelationshipType[RelationshipType["None"] = 0] = "None";
+    RelationshipType[RelationshipType["Friend"] = 1] = "Friend";
+    RelationshipType[RelationshipType["Blocked"] = 2] = "Blocked";
+    RelationshipType[RelationshipType["PendingIncoming"] = 3] = "PendingIncoming";
+    RelationshipType[RelationshipType["PendingOutgoing"] = 4] = "PendingOutgoing";
+    RelationshipType[RelationshipType["Implicit"] = 5] = "Implicit";
+})(RelationshipType || (exports.RelationshipType = RelationshipType = {}));
+/**
+ * @see {@link https://discord.com/developers/docs/topics/opcodes-and-status-codes#rpc-rpc-error-codes}
  */
 var RPCErrorCodes;
 (function (RPCErrorCodes) {
+    /**
+     * An unknown error occurred.
+     */
     RPCErrorCodes[RPCErrorCodes["UnknownError"] = 1000] = "UnknownError";
+    /**
+     * @unstable
+     */
+    RPCErrorCodes[RPCErrorCodes["ServiceUnavailable"] = 1001] = "ServiceUnavailable";
+    /**
+     * @unstable
+     */
+    RPCErrorCodes[RPCErrorCodes["TransactionAborted"] = 1002] = "TransactionAborted";
+    /**
+     * You sent an invalid payload.
+     */
     RPCErrorCodes[RPCErrorCodes["InvalidPayload"] = 4000] = "InvalidPayload";
+    /**
+     * Invalid command name specified.
+     */
     RPCErrorCodes[RPCErrorCodes["InvalidCommand"] = 4002] = "InvalidCommand";
+    /**
+     * Invalid guild ID specified.
+     */
     RPCErrorCodes[RPCErrorCodes["InvalidGuild"] = 4003] = "InvalidGuild";
+    /**
+     * Invalid event name specified.
+     */
     RPCErrorCodes[RPCErrorCodes["InvalidEvent"] = 4004] = "InvalidEvent";
+    /**
+     * Invalid channel ID specified.
+     */
     RPCErrorCodes[RPCErrorCodes["InvalidChannel"] = 4005] = "InvalidChannel";
+    /**
+     * You lack permissions to access the given resource.
+     */
     RPCErrorCodes[RPCErrorCodes["InvalidPermissions"] = 4006] = "InvalidPermissions";
+    /**
+     * An invalid OAuth2 application ID was used to authorize or authenticate with.
+     */
     RPCErrorCodes[RPCErrorCodes["InvalidClientId"] = 4007] = "InvalidClientId";
+    /**
+     * An invalid OAuth2 application origin was used to authorize or authenticate with.
+     */
     RPCErrorCodes[RPCErrorCodes["InvalidOrigin"] = 4008] = "InvalidOrigin";
+    /**
+     * An invalid OAuth2 token was used to authorize or authenticate with.
+     */
     RPCErrorCodes[RPCErrorCodes["InvalidToken"] = 4009] = "InvalidToken";
+    /**
+     * The specified user ID was invalid.
+     */
     RPCErrorCodes[RPCErrorCodes["InvalidUser"] = 4010] = "InvalidUser";
+    /**
+     * @unstable
+     */
+    RPCErrorCodes[RPCErrorCodes["InvalidInvite"] = 4011] = "InvalidInvite";
+    /**
+     * @unstable
+     */
+    RPCErrorCodes[RPCErrorCodes["InvalidActivityJoinRequest"] = 4012] = "InvalidActivityJoinRequest";
+    /**
+     * @unstable
+     */
+    RPCErrorCodes[RPCErrorCodes["InvalidEntitlement"] = 4013] = "InvalidEntitlement";
+    /**
+     * @unstable
+     */
+    RPCErrorCodes[RPCErrorCodes["InvalidGiftCode"] = 4014] = "InvalidGiftCode";
+    /**
+     * A standard OAuth2 error occurred; check the data object for the OAuth2 error details.
+     */
     RPCErrorCodes[RPCErrorCodes["OAuth2Error"] = 5000] = "OAuth2Error";
+    /**
+     * An asynchronous `SELECT_TEXT_CHANNEL`/`SELECT_VOICE_CHANNEL` command timed out.
+     */
     RPCErrorCodes[RPCErrorCodes["SelectChannelTimedOut"] = 5001] = "SelectChannelTimedOut";
+    /**
+     * An asynchronous `GET_GUILD` command timed out.
+     */
     RPCErrorCodes[RPCErrorCodes["GetGuildTimedOut"] = 5002] = "GetGuildTimedOut";
+    /**
+     * You tried to join a user to a voice channel but the user was already in one.
+     */
     RPCErrorCodes[RPCErrorCodes["SelectVoiceForceRequired"] = 5003] = "SelectVoiceForceRequired";
+    /**
+     * You tried to capture more than one shortcut key at once.
+     */
     RPCErrorCodes[RPCErrorCodes["CaptureShortcutAlreadyListening"] = 5004] = "CaptureShortcutAlreadyListening";
+    /**
+     * @unstable
+     */
+    RPCErrorCodes[RPCErrorCodes["InvalidActivitySecret"] = 5005] = "InvalidActivitySecret";
+    /**
+     * @unstable
+     */
+    RPCErrorCodes[RPCErrorCodes["NoEligibleActivity"] = 5006] = "NoEligibleActivity";
+    /**
+     * @unstable
+     */
+    RPCErrorCodes[RPCErrorCodes["PurchaseCanceled"] = 5007] = "PurchaseCanceled";
+    /**
+     * @unstable
+     */
+    RPCErrorCodes[RPCErrorCodes["PurchaseError"] = 5008] = "PurchaseError";
+    /**
+     * @unstable
+     */
+    RPCErrorCodes[RPCErrorCodes["UnauthorizedForAchievement"] = 5009] = "UnauthorizedForAchievement";
+    /**
+     * @unstable
+     */
+    RPCErrorCodes[RPCErrorCodes["RateLimited"] = 5010] = "RateLimited";
 })(RPCErrorCodes || (exports.RPCErrorCodes = RPCErrorCodes = {}));
 /**
- * https://discord.com/developers/docs/topics/opcodes-and-status-codes#rpc-rpc-close-event-codes
+ * @see {@link https://discord.com/developers/docs/topics/opcodes-and-status-codes#rpc-rpc-close-event-codes}
  */
 var RPCCloseEventCodes;
 (function (RPCCloseEventCodes) {
+    /**
+     * @unstable
+     */
+    RPCCloseEventCodes[RPCCloseEventCodes["CloseNormal"] = 1000] = "CloseNormal";
+    /**
+     * @unstable
+     */
+    RPCCloseEventCodes[RPCCloseEventCodes["CloseUnsupported"] = 1003] = "CloseUnsupported";
+    /**
+     * @unstable
+     */
+    RPCCloseEventCodes[RPCCloseEventCodes["CloseAbnormal"] = 1006] = "CloseAbnormal";
+    /**
+     * You connected to the RPC server with an invalid client ID.
+     */
     RPCCloseEventCodes[RPCCloseEventCodes["InvalidClientId"] = 4000] = "InvalidClientId";
+    /**
+     * You connected to the RPC server with an invalid origin.
+     */
     RPCCloseEventCodes[RPCCloseEventCodes["InvalidOrigin"] = 4001] = "InvalidOrigin";
+    /**
+     * You are being rate limited.
+     */
     RPCCloseEventCodes[RPCCloseEventCodes["RateLimited"] = 4002] = "RateLimited";
+    /**
+     * The OAuth2 token associated with a connection was revoked, get a new one!
+     */
     RPCCloseEventCodes[RPCCloseEventCodes["TokenRevoked"] = 4003] = "TokenRevoked";
+    /**
+     * The RPC Server version specified in the connection string was not valid.
+     */
     RPCCloseEventCodes[RPCCloseEventCodes["InvalidVersion"] = 4004] = "InvalidVersion";
+    /**
+     * The encoding specified in the connection string was not valid.
+     */
     RPCCloseEventCodes[RPCCloseEventCodes["InvalidEncoding"] = 4005] = "InvalidEncoding";
 })(RPCCloseEventCodes || (exports.RPCCloseEventCodes = RPCCloseEventCodes = {}));
 //# sourceMappingURL=common.js.map
 
 /***/ }),
 
-/***/ 1528:
+/***/ 26812:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -15880,19 +17035,301 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-__exportStar(__nccwpck_require__(16930), exports);
+exports.RPCEvents = exports.RPCCommands = exports.RPCVersion = void 0;
+__exportStar(__nccwpck_require__(96542), exports);
+exports.RPCVersion = '1';
+/**
+ * @see {@link https://discord.com/developers/docs/topics/rpc#commands-and-events-rpc-commands}
+ */
+var RPCCommands;
+(function (RPCCommands) {
+    /**
+     * @unstable
+     */
+    RPCCommands["AcceptActivityInvite"] = "ACCEPT_ACTIVITY_INVITE";
+    /**
+     * @unstable
+     */
+    RPCCommands["ActivityInviteUser"] = "ACTIVITY_INVITE_USER";
+    /**
+     * Used to authenticate an existing client with your app
+     */
+    RPCCommands["Authenticate"] = "AUTHENTICATE";
+    /**
+     * Used to authorize a new client with your app
+     */
+    RPCCommands["Authorize"] = "AUTHORIZE";
+    /**
+     * @unstable
+     */
+    RPCCommands["BraintreePopupBridgeCallback"] = "BRAINTREE_POPUP_BRIDGE_CALLBACK";
+    /**
+     * @unstable
+     */
+    RPCCommands["BrowserHandoff"] = "BROWSER_HANDOFF";
+    /**
+     * 	used to reject a Rich Presence Ask to Join request
+     *
+     * @unstable the documented similarly named command `CLOSE_ACTIVITY_REQUEST` does not exist, but `CLOSE_ACTIVITY_JOIN_REQUEST` does
+     */
+    RPCCommands["CloseActivityJoinRequest"] = "CLOSE_ACTIVITY_JOIN_REQUEST";
+    /**
+     * @unstable
+     */
+    RPCCommands["ConnectionsCallback"] = "CONNECTIONS_CALLBACK";
+    RPCCommands["CreateChannelInvite"] = "CREATE_CHANNEL_INVITE";
+    /**
+     * @unstable
+     */
+    RPCCommands["DeepLink"] = "DEEP_LINK";
+    /**
+     * Event dispatch
+     */
+    RPCCommands["Dispatch"] = "DISPATCH";
+    /**
+     * @unstable
+     */
+    RPCCommands["GetApplicationTicket"] = "GET_APPLICATION_TICKET";
+    /**
+     * Used to retrieve channel information from the client
+     */
+    RPCCommands["GetChannel"] = "GET_CHANNEL";
+    /**
+     * Used to retrieve a list of channels for a guild from the client
+     */
+    RPCCommands["GetChannels"] = "GET_CHANNELS";
+    /**
+     * @unstable
+     */
+    RPCCommands["GetEntitlementTicket"] = "GET_ENTITLEMENT_TICKET";
+    /**
+     * @unstable
+     */
+    RPCCommands["GetEntitlements"] = "GET_ENTITLEMENTS";
+    /**
+     * Used to retrieve guild information from the client
+     */
+    RPCCommands["GetGuild"] = "GET_GUILD";
+    /**
+     * Used to retrieve a list of guilds from the client
+     */
+    RPCCommands["GetGuilds"] = "GET_GUILDS";
+    /**
+     * @unstable
+     */
+    RPCCommands["GetImage"] = "GET_IMAGE";
+    /**
+     * @unstable
+     */
+    RPCCommands["GetNetworkingConfig"] = "GET_NETWORKING_CONFIG";
+    /**
+     * @unstable
+     */
+    RPCCommands["GetRelationships"] = "GET_RELATIONSHIPS";
+    /**
+     * Used to get the current voice channel the client is in
+     */
+    RPCCommands["GetSelectedVoiceChannel"] = "GET_SELECTED_VOICE_CHANNEL";
+    /**
+     * @unstable
+     */
+    RPCCommands["GetSkus"] = "GET_SKUS";
+    /**
+     * @unstable
+     */
+    RPCCommands["GetUser"] = "GET_USER";
+    /**
+     * Used to retrieve the client's voice settings
+     */
+    RPCCommands["GetVoiceSettings"] = "GET_VOICE_SETTINGS";
+    /**
+     * @unstable
+     */
+    RPCCommands["GiftCodeBrowser"] = "GIFT_CODE_BROWSER";
+    /**
+     * @unstable
+     */
+    RPCCommands["GuildTemplateBrowser"] = "GUILD_TEMPLATE_BROWSER";
+    /**
+     * @unstable
+     */
+    RPCCommands["InviteBrowser"] = "INVITE_BROWSER";
+    /**
+     * @unstable
+     */
+    RPCCommands["NetworkingCreateToken"] = "NETWORKING_CREATE_TOKEN";
+    /**
+     * @unstable
+     */
+    RPCCommands["NetworkingPeerMetrics"] = "NETWORKING_PEER_METRICS";
+    /**
+     * @unstable
+     */
+    RPCCommands["NetworkingSystemMetrics"] = "NETWORKING_SYSTEM_METRICS";
+    /**
+     * @unstable
+     */
+    RPCCommands["OpenOverlayActivityInvite"] = "OPEN_OVERLAY_ACTIVITY_INVITE";
+    /**
+     * @unstable
+     */
+    RPCCommands["OpenOverlayGuildInvite"] = "OPEN_OVERLAY_GUILD_INVITE";
+    /**
+     * @unstable
+     */
+    RPCCommands["OpenOverlayVoiceSettings"] = "OPEN_OVERLAY_VOICE_SETTINGS";
+    /**
+     * @unstable
+     */
+    RPCCommands["Overlay"] = "OVERLAY";
+    /**
+     * Used to join or leave a text channel, group dm, or dm
+     */
+    RPCCommands["SelectTextChannel"] = "SELECT_TEXT_CHANNEL";
+    /**
+     * Used to join or leave a voice channel, group dm, or dm
+     */
+    RPCCommands["SelectVoiceChannel"] = "SELECT_VOICE_CHANNEL";
+    /**
+     * Used to consent to a Rich Presence Ask to Join request
+     */
+    RPCCommands["SendActivityJoinInvite"] = "SEND_ACTIVITY_JOIN_INVITE";
+    /**
+     * Used to update a user's Rich Presence
+     */
+    RPCCommands["SetActivity"] = "SET_ACTIVITY";
+    /**
+     * Used to send info about certified hardware devices
+     */
+    RPCCommands["SetCertifiedDevices"] = "SET_CERTIFIED_DEVICES";
+    /**
+     * @unstable
+     */
+    RPCCommands["SetOverlayLocked"] = "SET_OVERLAY_LOCKED";
+    /**
+     * Used to change voice settings of users in voice channels
+     */
+    RPCCommands["SetUserVoiceSettings"] = "SET_USER_VOICE_SETTINGS";
+    RPCCommands["SetUserVoiceSettings2"] = "SET_USER_VOICE_SETTINGS_2";
+    /**
+     * Used to set the client's voice settings
+     */
+    RPCCommands["SetVoiceSettings"] = "SET_VOICE_SETTINGS";
+    RPCCommands["SetVoiceSettings2"] = "SET_VOICE_SETTINGS_2";
+    /**
+     * @unstable
+     */
+    RPCCommands["StartPurchase"] = "START_PURCHASE";
+    /**
+     * Used to subscribe to an RPC event
+     */
+    RPCCommands["Subscribe"] = "SUBSCRIBE";
+    /**
+     * Used to unsubscribe from an RPC event
+     */
+    RPCCommands["Unsubscribe"] = "UNSUBSCRIBE";
+    /**
+     * @unstable
+     */
+    RPCCommands["ValidateApplication"] = "VALIDATE_APPLICATION";
+})(RPCCommands || (exports.RPCCommands = RPCCommands = {}));
+/**
+ * @see {@link https://discord.com/developers/docs/topics/rpc#commands-and-events-rpc-events}
+ */
+var RPCEvents;
+(function (RPCEvents) {
+    /**
+     * @unstable
+     */
+    RPCEvents["ActivityInvite"] = "ACTIVITY_INVITE";
+    RPCEvents["ActivityJoin"] = "ACTIVITY_JOIN";
+    RPCEvents["ActivityJoinRequest"] = "ACTIVITY_JOIN_REQUEST";
+    RPCEvents["ActivitySpectate"] = "ACTIVITY_SPECTATE";
+    RPCEvents["ChannelCreate"] = "CHANNEL_CREATE";
+    RPCEvents["CurrentUserUpdate"] = "CURRENT_USER_UPDATE";
+    /**
+     * @unstable
+     */
+    RPCEvents["EntitlementCreate"] = "ENTITLEMENT_CREATE";
+    /**
+     * @unstable
+     */
+    RPCEvents["EntitlementDelete"] = "ENTITLEMENT_DELETE";
+    RPCEvents["Error"] = "ERROR";
+    /**
+     * @unstable
+     */
+    RPCEvents["GameJoin"] = "GAME_JOIN";
+    /**
+     * @unstable
+     */
+    RPCEvents["GameSpectate"] = "GAME_SPECTATE";
+    RPCEvents["GuildCreate"] = "GUILD_CREATE";
+    RPCEvents["GuildStatus"] = "GUILD_STATUS";
+    /**
+     * Dispatches message objects, with the exception of deletions, which only contains the id in the message object.
+     */
+    RPCEvents["MessageCreate"] = "MESSAGE_CREATE";
+    /**
+     * Dispatches message objects, with the exception of deletions, which only contains the id in the message object.
+     */
+    RPCEvents["MessageDelete"] = "MESSAGE_DELETE";
+    /**
+     * Dispatches message objects, with the exception of deletions, which only contains the id in the message object.
+     */
+    RPCEvents["MessageUpdate"] = "MESSAGE_UPDATE";
+    /**
+     * This event requires the `rpc.notifications.read` {@link https://discord.com/developers/docs/topics/oauth2#shared-resources-oauth2-scopes | OAuth2 scope}.
+     */
+    RPCEvents["NotificationCreate"] = "NOTIFICATION_CREATE";
+    /**
+     * @unstable
+     */
+    RPCEvents["Overlay"] = "OVERLAY";
+    /**
+     * @unstable
+     */
+    RPCEvents["OverlayUpdate"] = "OVERLAY_UPDATE";
+    RPCEvents["Ready"] = "READY";
+    /**
+     * @unstable
+     */
+    RPCEvents["RelationshipUpdate"] = "RELATIONSHIP_UPDATE";
+    RPCEvents["SpeakingStart"] = "SPEAKING_START";
+    RPCEvents["SpeakingStop"] = "SPEAKING_STOP";
+    RPCEvents["VoiceChannelSelect"] = "VOICE_CHANNEL_SELECT";
+    RPCEvents["VoiceConnectionStatus"] = "VOICE_CONNECTION_STATUS";
+    RPCEvents["VoiceSettingsUpdate"] = "VOICE_SETTINGS_UPDATE";
+    /**
+     * @unstable
+     */
+    RPCEvents["VoiceSettingsUpdate2"] = "VOICE_SETTINGS_UPDATE_2";
+    /**
+     * Dispatches channel voice state objects
+     */
+    RPCEvents["VoiceStateCreate"] = "VOICE_STATE_CREATE";
+    /**
+     * Dispatches channel voice state objects
+     */
+    RPCEvents["VoiceStateDelete"] = "VOICE_STATE_DELETE";
+    /**
+     * Dispatches channel voice state objects
+     */
+    RPCEvents["VoiceStateUpdate"] = "VOICE_STATE_UPDATE";
+})(RPCEvents || (exports.RPCEvents = RPCEvents = {}));
 //# sourceMappingURL=v10.js.map
 
 /***/ }),
 
-/***/ 25603:
+/***/ 45919:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.urlSafeCharacters = void 0;
-const pattern = /^[\d%A-Za-z-]+$/g;
+// eslint-disable-next-line unicorn/better-regex
+const pattern = /^[\d%A-Za-z-_]+$/g;
 exports.urlSafeCharacters = {
     test(input) {
         const result = pattern.test(input);
@@ -15904,7 +17341,7 @@ exports.urlSafeCharacters = {
 
 /***/ }),
 
-/***/ 98510:
+/***/ 19786:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
@@ -15923,12 +17360,12 @@ exports.isMessageComponentButtonInteraction = isMessageComponentButtonInteractio
 exports.isMessageComponentSelectMenuInteraction = isMessageComponentSelectMenuInteraction;
 exports.isChatInputApplicationCommandInteraction = isChatInputApplicationCommandInteraction;
 exports.isContextMenuApplicationCommandInteraction = isContextMenuApplicationCommandInteraction;
-const index_1 = __nccwpck_require__(93947);
+const index_1 = __nccwpck_require__(7839);
 // Interactions
 /**
  * A type-guard check for DM interactions
  *
- * @param interaction The interaction to check against
+ * @param interaction - The interaction to check against
  * @returns A boolean that indicates if the interaction was received in a DM channel
  */
 function isDMInteraction(interaction) {
@@ -15937,7 +17374,7 @@ function isDMInteraction(interaction) {
 /**
  * A type-guard check for guild interactions
  *
- * @param interaction The interaction to check against
+ * @param interaction - The interaction to check against
  * @returns A boolean that indicates if the interaction was received in a guild
  */
 function isGuildInteraction(interaction) {
@@ -15947,7 +17384,7 @@ function isGuildInteraction(interaction) {
 /**
  * A type-guard check for DM application command interactions
  *
- * @param interaction The application command interaction to check against
+ * @param interaction - The application command interaction to check against
  * @returns A boolean that indicates if the application command interaction was received in a DM channel
  */
 function isApplicationCommandDMInteraction(interaction) {
@@ -15956,7 +17393,7 @@ function isApplicationCommandDMInteraction(interaction) {
 /**
  * A type-guard check for guild application command interactions
  *
- * @param interaction The interaction to check against
+ * @param interaction - The interaction to check against
  * @returns A boolean that indicates if the application command interaction was received in a guild
  */
 function isApplicationCommandGuildInteraction(interaction) {
@@ -15966,7 +17403,7 @@ function isApplicationCommandGuildInteraction(interaction) {
 /**
  * A type-guard check for DM message component interactions
  *
- * @param interaction The message component interaction to check against
+ * @param interaction - The message component interaction to check against
  * @returns A boolean that indicates if the message component interaction was received in a DM channel
  */
 function isMessageComponentDMInteraction(interaction) {
@@ -15975,7 +17412,7 @@ function isMessageComponentDMInteraction(interaction) {
 /**
  * A type-guard check for guild message component interactions
  *
- * @param interaction The interaction to check against
+ * @param interaction - The interaction to check against
  * @returns A boolean that indicates if the message component interaction was received in a guild
  */
 function isMessageComponentGuildInteraction(interaction) {
@@ -15985,7 +17422,7 @@ function isMessageComponentGuildInteraction(interaction) {
 /**
  * A type-guard check for buttons that have a `url` attached to them.
  *
- * @param component The button to check against
+ * @param component - The button to check against
  * @returns A boolean that indicates if the button has a `url` attached to it
  */
 function isLinkButton(component) {
@@ -15994,7 +17431,7 @@ function isLinkButton(component) {
 /**
  * A type-guard check for buttons that have a `custom_id` attached to them.
  *
- * @param component The button to check against
+ * @param component - The button to check against
  * @returns A boolean that indicates if the button has a `custom_id` attached to it
  */
 function isInteractionButton(component) {
@@ -16004,7 +17441,7 @@ function isInteractionButton(component) {
 /**
  * A type-guard check for message component interactions
  *
- * @param interaction The interaction to check against
+ * @param interaction - The interaction to check against
  * @returns A boolean that indicates if the interaction is a message component
  */
 function isMessageComponentInteraction(interaction) {
@@ -16013,7 +17450,7 @@ function isMessageComponentInteraction(interaction) {
 /**
  * A type-guard check for button message component interactions
  *
- * @param interaction The message component interaction to check against
+ * @param interaction - The message component interaction to check against
  * @returns A boolean that indicates if the message component is a button
  */
 function isMessageComponentButtonInteraction(interaction) {
@@ -16022,7 +17459,7 @@ function isMessageComponentButtonInteraction(interaction) {
 /**
  * A type-guard check for select menu message component interactions
  *
- * @param interaction The message component interaction to check against
+ * @param interaction - The message component interaction to check against
  * @returns A boolean that indicates if the message component is a select menu
  */
 function isMessageComponentSelectMenuInteraction(interaction) {
@@ -16038,7 +17475,7 @@ function isMessageComponentSelectMenuInteraction(interaction) {
 /**
  * A type-guard check for chat input application commands.
  *
- * @param interaction The interaction to check against
+ * @param interaction - The interaction to check against
  * @returns A boolean that indicates if the interaction is a chat input application command
  */
 function isChatInputApplicationCommandInteraction(interaction) {
@@ -16047,7 +17484,7 @@ function isChatInputApplicationCommandInteraction(interaction) {
 /**
  * A type-guard check for context menu application commands.
  *
- * @param interaction The interaction to check against
+ * @param interaction - The interaction to check against
  * @returns A boolean that indicates if the interaction is a context menu application command
  */
 function isContextMenuApplicationCommandInteraction(interaction) {
@@ -16058,7 +17495,7 @@ function isContextMenuApplicationCommandInteraction(interaction) {
 
 /***/ }),
 
-/***/ 29244:
+/***/ 94104:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -16079,28 +17516,29 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.Utils = void 0;
-__exportStar(__nccwpck_require__(79445), exports);
-__exportStar(__nccwpck_require__(15663), exports);
-__exportStar(__nccwpck_require__(93947), exports);
-__exportStar(__nccwpck_require__(43726), exports);
-__exportStar(__nccwpck_require__(1528), exports);
-exports.Utils = __nccwpck_require__(98510);
+__exportStar(__nccwpck_require__(3097), exports);
+__exportStar(__nccwpck_require__(18979), exports);
+__exportStar(__nccwpck_require__(7839), exports);
+__exportStar(__nccwpck_require__(1610), exports);
+__exportStar(__nccwpck_require__(26812), exports);
+__exportStar(__nccwpck_require__(45919), exports);
+exports.Utils = __nccwpck_require__(19786);
 //# sourceMappingURL=v10.js.map
 
 /***/ }),
 
-/***/ 44931:
+/***/ 31037:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const EventEmitter = __nccwpck_require__(78474);
-const { REST } = __nccwpck_require__(18447);
-const { Routes } = __nccwpck_require__(29244);
-const { DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(22097);
-const Options = __nccwpck_require__(4264);
-const { flatten } = __nccwpck_require__(29800);
+const { REST } = __nccwpck_require__(81374);
+const { Routes } = __nccwpck_require__(94104);
+const { DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(6119);
+const Options = __nccwpck_require__(61710);
+const { flatten } = __nccwpck_require__(21754);
 
 /**
  * The base class for all clients.
@@ -16217,7 +17655,7 @@ module.exports = BaseClient;
 
 /***/ }),
 
-/***/ 30222:
+/***/ 16896:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -16225,34 +17663,35 @@ module.exports = BaseClient;
 
 const process = __nccwpck_require__(1708);
 const { Collection } = __nccwpck_require__(41514);
-const { makeURLSearchParams } = __nccwpck_require__(18447);
-const { OAuth2Scopes, Routes } = __nccwpck_require__(29244);
-const BaseClient = __nccwpck_require__(44931);
-const ActionsManager = __nccwpck_require__(71659);
-const ClientVoiceManager = __nccwpck_require__(38876);
-const WebSocketManager = __nccwpck_require__(57571);
-const { DiscordjsError, DiscordjsTypeError, DiscordjsRangeError, ErrorCodes } = __nccwpck_require__(22097);
-const BaseGuildEmojiManager = __nccwpck_require__(35539);
-const ChannelManager = __nccwpck_require__(92326);
-const GuildManager = __nccwpck_require__(27658);
-const UserManager = __nccwpck_require__(45080);
-const ShardClientUtil = __nccwpck_require__(2573);
-const ClientPresence = __nccwpck_require__(21748);
-const GuildPreview = __nccwpck_require__(69607);
-const GuildTemplate = __nccwpck_require__(73769);
-const Invite = __nccwpck_require__(50491);
-const { Sticker } = __nccwpck_require__(95967);
-const StickerPack = __nccwpck_require__(87626);
-const VoiceRegion = __nccwpck_require__(16118);
-const Webhook = __nccwpck_require__(62509);
-const Widget = __nccwpck_require__(91042);
-const { resolveInviteCode, resolveGuildTemplateCode } = __nccwpck_require__(9242);
-const Events = __nccwpck_require__(69573);
-const IntentsBitField = __nccwpck_require__(69156);
-const Options = __nccwpck_require__(4264);
-const PermissionsBitField = __nccwpck_require__(92103);
-const Status = __nccwpck_require__(34714);
-const Sweepers = __nccwpck_require__(98312);
+const { makeURLSearchParams } = __nccwpck_require__(81374);
+const { OAuth2Scopes, Routes } = __nccwpck_require__(94104);
+const BaseClient = __nccwpck_require__(31037);
+const ActionsManager = __nccwpck_require__(37181);
+const ClientVoiceManager = __nccwpck_require__(24510);
+const WebSocketManager = __nccwpck_require__(14149);
+const { DiscordjsError, DiscordjsTypeError, DiscordjsRangeError, ErrorCodes } = __nccwpck_require__(6119);
+const BaseGuildEmojiManager = __nccwpck_require__(75873);
+const ChannelManager = __nccwpck_require__(88280);
+const GuildManager = __nccwpck_require__(57892);
+const UserManager = __nccwpck_require__(77330);
+const ShardClientUtil = __nccwpck_require__(65163);
+const ClientPresence = __nccwpck_require__(78282);
+const GuildPreview = __nccwpck_require__(1973);
+const GuildTemplate = __nccwpck_require__(44439);
+const Invite = __nccwpck_require__(33225);
+const { SoundboardSound } = __nccwpck_require__(39082);
+const { Sticker } = __nccwpck_require__(97633);
+const StickerPack = __nccwpck_require__(25724);
+const VoiceRegion = __nccwpck_require__(8812);
+const Webhook = __nccwpck_require__(11683);
+const Widget = __nccwpck_require__(30048);
+const { resolveInviteCode, resolveGuildTemplateCode } = __nccwpck_require__(80176);
+const Events = __nccwpck_require__(88131);
+const IntentsBitField = __nccwpck_require__(51142);
+const Options = __nccwpck_require__(61710);
+const PermissionsBitField = __nccwpck_require__(57613);
+const Status = __nccwpck_require__(20852);
+const Sweepers = __nccwpck_require__(14610);
 
 let deprecationEmittedForPremiumStickerPacks = false;
 
@@ -16614,6 +18053,19 @@ class Client extends BaseClient {
   }
 
   /**
+   * Obtains the list of default soundboard sounds.
+   * @returns {Promise<Collection<string, SoundboardSound>>}
+   * @example
+   * client.fetchDefaultSoundboardSounds()
+   *  .then(sounds => console.log(`Available soundboard sounds are: ${sounds.map(sound => sound.name).join(', ')}`))
+   *  .catch(console.error);
+   */
+  async fetchDefaultSoundboardSounds() {
+    const data = await this.rest.get(Routes.soundboardDefaultSounds());
+    return new Collection(data.map(sound => [sound.sound_id, new SoundboardSound(this, sound)]));
+  }
+
+  /**
    * Obtains a guild preview from Discord, available for all guilds the bot is in and all Discoverable guilds.
    * @param {GuildResolvable} guild The guild to fetch the preview for
    * @returns {Promise<GuildPreview>}
@@ -16856,16 +18308,16 @@ module.exports = Client;
 
 /***/ }),
 
-/***/ 94463:
+/***/ 29729:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const BaseClient = __nccwpck_require__(44931);
-const { DiscordjsError, ErrorCodes } = __nccwpck_require__(22097);
-const Webhook = __nccwpck_require__(62509);
-const { parseWebhookURL } = __nccwpck_require__(29800);
+const BaseClient = __nccwpck_require__(31037);
+const { DiscordjsError, ErrorCodes } = __nccwpck_require__(6119);
+const Webhook = __nccwpck_require__(11683);
+const { parseWebhookURL } = __nccwpck_require__(21754);
 
 /**
  * The webhook client.
@@ -16967,13 +18419,13 @@ module.exports = WebhookClient;
 
 /***/ }),
 
-/***/ 31075:
+/***/ 12605:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Partials = __nccwpck_require__(13238);
+const Partials = __nccwpck_require__(43056);
 
 /*
 
@@ -17085,6 +18537,10 @@ class GenericAction {
     return this.getPayload({ user_id: id }, manager, id, Partials.ThreadMember, false);
   }
 
+  getSoundboardSound(data, guild) {
+    return this.getPayload(data, guild.soundboardSounds, data.sound_id, Partials.SoundboardSound);
+  }
+
   spreadInjectedData(data) {
     return Object.fromEntries(Object.getOwnPropertySymbols(data).map(symbol => [symbol, data[symbol]]));
   }
@@ -17095,7 +18551,7 @@ module.exports = GenericAction;
 
 /***/ }),
 
-/***/ 71659:
+/***/ 37181:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -17112,69 +18568,70 @@ class ActionsManager {
   constructor(client) {
     this.client = client;
 
-    this.register(__nccwpck_require__(17117));
-    this.register(__nccwpck_require__(98088));
-    this.register(__nccwpck_require__(85711));
-    this.register(__nccwpck_require__(48435));
-    this.register(__nccwpck_require__(1337));
-    this.register(__nccwpck_require__(27170));
-    this.register(__nccwpck_require__(34977));
-    this.register(__nccwpck_require__(26815));
-    this.register(__nccwpck_require__(54546));
-    this.register(__nccwpck_require__(82865));
-    this.register(__nccwpck_require__(46415));
-    this.register(__nccwpck_require__(55389));
-    this.register(__nccwpck_require__(60258));
-    this.register(__nccwpck_require__(44145));
-    this.register(__nccwpck_require__(65012));
-    this.register(__nccwpck_require__(45177));
-    this.register(__nccwpck_require__(47458));
-    this.register(__nccwpck_require__(32769));
-    this.register(__nccwpck_require__(54047));
-    this.register(__nccwpck_require__(78404));
-    this.register(__nccwpck_require__(61300));
-    this.register(__nccwpck_require__(42968));
-    this.register(__nccwpck_require__(73137));
-    this.register(__nccwpck_require__(64590));
-    this.register(__nccwpck_require__(52405));
-    this.register(__nccwpck_require__(73971));
-    this.register(__nccwpck_require__(74131));
-    this.register(__nccwpck_require__(58967));
-    this.register(__nccwpck_require__(52540));
-    this.register(__nccwpck_require__(13190));
-    this.register(__nccwpck_require__(6013));
-    this.register(__nccwpck_require__(21400));
-    this.register(__nccwpck_require__(24611));
-    this.register(__nccwpck_require__(27584));
-    this.register(__nccwpck_require__(22186));
-    this.register(__nccwpck_require__(43263));
-    this.register(__nccwpck_require__(24263));
-    this.register(__nccwpck_require__(61397));
-    this.register(__nccwpck_require__(74524));
-    this.register(__nccwpck_require__(21843));
-    this.register(__nccwpck_require__(34534));
-    this.register(__nccwpck_require__(13085));
-    this.register(__nccwpck_require__(76105));
-    this.register(__nccwpck_require__(51972));
-    this.register(__nccwpck_require__(39491));
-    this.register(__nccwpck_require__(40594));
-    this.register(__nccwpck_require__(39169));
-    this.register(__nccwpck_require__(26702));
-    this.register(__nccwpck_require__(19759));
-    this.register(__nccwpck_require__(52619));
-    this.register(__nccwpck_require__(88821));
-    this.register(__nccwpck_require__(48));
-    this.register(__nccwpck_require__(11439));
-    this.register(__nccwpck_require__(87013));
-    this.register(__nccwpck_require__(22969));
-    this.register(__nccwpck_require__(29694));
-    this.register(__nccwpck_require__(43990));
-    this.register(__nccwpck_require__(27966));
-    this.register(__nccwpck_require__(26987));
-    this.register(__nccwpck_require__(1408));
-    this.register(__nccwpck_require__(38191));
-    this.register(__nccwpck_require__(57867));
-    this.register(__nccwpck_require__(54766));
+    this.register(__nccwpck_require__(31503));
+    this.register(__nccwpck_require__(22182));
+    this.register(__nccwpck_require__(54394));
+    this.register(__nccwpck_require__(27817));
+    this.register(__nccwpck_require__(8919));
+    this.register(__nccwpck_require__(64072));
+    this.register(__nccwpck_require__(20215));
+    this.register(__nccwpck_require__(79069));
+    this.register(__nccwpck_require__(49284));
+    this.register(__nccwpck_require__(68651));
+    this.register(__nccwpck_require__(353));
+    this.register(__nccwpck_require__(82551));
+    this.register(__nccwpck_require__(76088));
+    this.register(__nccwpck_require__(53623));
+    this.register(__nccwpck_require__(71218));
+    this.register(__nccwpck_require__(16207));
+    this.register(__nccwpck_require__(91348));
+    this.register(__nccwpck_require__(95579));
+    this.register(__nccwpck_require__(95889));
+    this.register(__nccwpck_require__(59222));
+    this.register(__nccwpck_require__(8226));
+    this.register(__nccwpck_require__(40962));
+    this.register(__nccwpck_require__(42143));
+    this.register(__nccwpck_require__(81391));
+    this.register(__nccwpck_require__(34195));
+    this.register(__nccwpck_require__(88889));
+    this.register(__nccwpck_require__(59753));
+    this.register(__nccwpck_require__(51813));
+    this.register(__nccwpck_require__(6962));
+    this.register(__nccwpck_require__(36244));
+    this.register(__nccwpck_require__(62863));
+    this.register(__nccwpck_require__(88738));
+    this.register(__nccwpck_require__(55553));
+    this.register(__nccwpck_require__(37725));
+    this.register(__nccwpck_require__(24506));
+    this.register(__nccwpck_require__(58284));
+    this.register(__nccwpck_require__(55009));
+    this.register(__nccwpck_require__(65925));
+    this.register(__nccwpck_require__(28299));
+    this.register(__nccwpck_require__(62850));
+    this.register(__nccwpck_require__(70657));
+    this.register(__nccwpck_require__(73236));
+    this.register(__nccwpck_require__(90587));
+    this.register(__nccwpck_require__(61807));
+    this.register(__nccwpck_require__(9474));
+    this.register(__nccwpck_require__(95185));
+    this.register(__nccwpck_require__(30820));
+    this.register(__nccwpck_require__(30435));
+    this.register(__nccwpck_require__(80076));
+    this.register(__nccwpck_require__(34221));
+    this.register(__nccwpck_require__(33841));
+    this.register(__nccwpck_require__(11611));
+    this.register(__nccwpck_require__(86738));
+    this.register(__nccwpck_require__(15057));
+    this.register(__nccwpck_require__(78607));
+    this.register(__nccwpck_require__(48387));
+    this.register(__nccwpck_require__(20608));
+    this.register(__nccwpck_require__(35408));
+    this.register(__nccwpck_require__(28736));
+    this.register(__nccwpck_require__(32269));
+    this.register(__nccwpck_require__(96898));
+    this.register(__nccwpck_require__(21581));
+    this.register(__nccwpck_require__(81297));
+    this.register(__nccwpck_require__(70964));
   }
 
   register(Action) {
@@ -17187,14 +18644,14 @@ module.exports = ActionsManager;
 
 /***/ }),
 
-/***/ 17117:
+/***/ 31503:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Action = __nccwpck_require__(31075);
-const Events = __nccwpck_require__(69573);
+const Action = __nccwpck_require__(12605);
+const Events = __nccwpck_require__(88131);
 
 /**
  * The data received in the {@link Client#event:applicationCommandPermissionsUpdate} event
@@ -17229,15 +18686,15 @@ module.exports = ApplicationCommandPermissionsUpdateAction;
 
 /***/ }),
 
-/***/ 98088:
+/***/ 22182:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Action = __nccwpck_require__(31075);
-const AutoModerationActionExecution = __nccwpck_require__(35289);
-const Events = __nccwpck_require__(69573);
+const Action = __nccwpck_require__(12605);
+const AutoModerationActionExecution = __nccwpck_require__(16231);
+const Events = __nccwpck_require__(88131);
 
 class AutoModerationActionExecutionAction extends Action {
   handle(data) {
@@ -17263,14 +18720,14 @@ module.exports = AutoModerationActionExecutionAction;
 
 /***/ }),
 
-/***/ 85711:
+/***/ 54394:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Action = __nccwpck_require__(31075);
-const Events = __nccwpck_require__(69573);
+const Action = __nccwpck_require__(12605);
+const Events = __nccwpck_require__(88131);
 
 class AutoModerationRuleCreateAction extends Action {
   handle(data) {
@@ -17298,14 +18755,14 @@ module.exports = AutoModerationRuleCreateAction;
 
 /***/ }),
 
-/***/ 48435:
+/***/ 27817:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Action = __nccwpck_require__(31075);
-const Events = __nccwpck_require__(69573);
+const Action = __nccwpck_require__(12605);
+const Events = __nccwpck_require__(88131);
 
 class AutoModerationRuleDeleteAction extends Action {
   handle(data) {
@@ -17337,14 +18794,14 @@ module.exports = AutoModerationRuleDeleteAction;
 
 /***/ }),
 
-/***/ 1337:
+/***/ 8919:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Action = __nccwpck_require__(31075);
-const Events = __nccwpck_require__(69573);
+const Action = __nccwpck_require__(12605);
+const Events = __nccwpck_require__(88131);
 
 class AutoModerationRuleUpdateAction extends Action {
   handle(data) {
@@ -17374,14 +18831,14 @@ module.exports = AutoModerationRuleUpdateAction;
 
 /***/ }),
 
-/***/ 27170:
+/***/ 64072:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Action = __nccwpck_require__(31075);
-const Events = __nccwpck_require__(69573);
+const Action = __nccwpck_require__(12605);
+const Events = __nccwpck_require__(88131);
 
 class ChannelCreateAction extends Action {
   handle(data) {
@@ -17405,14 +18862,14 @@ module.exports = ChannelCreateAction;
 
 /***/ }),
 
-/***/ 34977:
+/***/ 20215:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Action = __nccwpck_require__(31075);
-const Events = __nccwpck_require__(69573);
+const Action = __nccwpck_require__(12605);
+const Events = __nccwpck_require__(88131);
 
 class ChannelDeleteAction extends Action {
   handle(data) {
@@ -17436,14 +18893,14 @@ module.exports = ChannelDeleteAction;
 
 /***/ }),
 
-/***/ 26815:
+/***/ 79069:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Action = __nccwpck_require__(31075);
-const { createChannel } = __nccwpck_require__(96756);
+const Action = __nccwpck_require__(12605);
+const { createChannel } = __nccwpck_require__(30966);
 
 class ChannelUpdateAction extends Action {
   handle(data) {
@@ -17486,14 +18943,14 @@ module.exports = ChannelUpdateAction;
 
 /***/ }),
 
-/***/ 54546:
+/***/ 49284:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Action = __nccwpck_require__(31075);
-const Events = __nccwpck_require__(69573);
+const Action = __nccwpck_require__(12605);
+const Events = __nccwpck_require__(88131);
 
 class EntitlementCreateAction extends Action {
   handle(data) {
@@ -17517,14 +18974,14 @@ module.exports = EntitlementCreateAction;
 
 /***/ }),
 
-/***/ 82865:
+/***/ 68651:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Action = __nccwpck_require__(31075);
-const Events = __nccwpck_require__(69573);
+const Action = __nccwpck_require__(12605);
+const Events = __nccwpck_require__(88131);
 
 class EntitlementDeleteAction extends Action {
   handle(data) {
@@ -17552,14 +19009,14 @@ module.exports = EntitlementDeleteAction;
 
 /***/ }),
 
-/***/ 46415:
+/***/ 353:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Action = __nccwpck_require__(31075);
-const Events = __nccwpck_require__(69573);
+const Action = __nccwpck_require__(12605);
+const Events = __nccwpck_require__(88131);
 
 class EntitlementUpdateAction extends Action {
   handle(data) {
@@ -17585,15 +19042,15 @@ module.exports = EntitlementUpdateAction;
 
 /***/ }),
 
-/***/ 55389:
+/***/ 82551:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Action = __nccwpck_require__(31075);
-const GuildAuditLogsEntry = __nccwpck_require__(7843);
-const Events = __nccwpck_require__(69573);
+const Action = __nccwpck_require__(12605);
+const GuildAuditLogsEntry = __nccwpck_require__(22797);
+const Events = __nccwpck_require__(88131);
 
 class GuildAuditLogEntryCreateAction extends Action {
   handle(data) {
@@ -17622,14 +19079,14 @@ module.exports = GuildAuditLogEntryCreateAction;
 
 /***/ }),
 
-/***/ 60258:
+/***/ 76088:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Action = __nccwpck_require__(31075);
-const Events = __nccwpck_require__(69573);
+const Action = __nccwpck_require__(12605);
+const Events = __nccwpck_require__(88131);
 
 class GuildBanAdd extends Action {
   handle(data) {
@@ -17650,15 +19107,15 @@ module.exports = GuildBanAdd;
 
 /***/ }),
 
-/***/ 44145:
+/***/ 53623:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Action = __nccwpck_require__(31075);
-const GuildBan = __nccwpck_require__(85254);
-const Events = __nccwpck_require__(69573);
+const Action = __nccwpck_require__(12605);
+const GuildBan = __nccwpck_require__(54096);
+const Events = __nccwpck_require__(88131);
 
 class GuildBanRemove extends Action {
   handle(data) {
@@ -17683,13 +19140,13 @@ module.exports = GuildBanRemove;
 
 /***/ }),
 
-/***/ 65012:
+/***/ 71218:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Action = __nccwpck_require__(31075);
+const Action = __nccwpck_require__(12605);
 
 class GuildChannelsPositionUpdate extends Action {
   handle(data) {
@@ -17712,14 +19169,14 @@ module.exports = GuildChannelsPositionUpdate;
 
 /***/ }),
 
-/***/ 45177:
+/***/ 16207:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Action = __nccwpck_require__(31075);
-const Events = __nccwpck_require__(69573);
+const Action = __nccwpck_require__(12605);
+const Events = __nccwpck_require__(88131);
 
 class GuildDeleteAction extends Action {
   handle(data) {
@@ -17764,14 +19221,14 @@ module.exports = GuildDeleteAction;
 
 /***/ }),
 
-/***/ 47458:
+/***/ 91348:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Action = __nccwpck_require__(31075);
-const Events = __nccwpck_require__(69573);
+const Action = __nccwpck_require__(12605);
+const Events = __nccwpck_require__(88131);
 
 class GuildEmojiCreateAction extends Action {
   handle(guild, createdEmoji) {
@@ -17792,14 +19249,14 @@ module.exports = GuildEmojiCreateAction;
 
 /***/ }),
 
-/***/ 32769:
+/***/ 95579:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Action = __nccwpck_require__(31075);
-const Events = __nccwpck_require__(69573);
+const Action = __nccwpck_require__(12605);
+const Events = __nccwpck_require__(88131);
 
 class GuildEmojiDeleteAction extends Action {
   handle(emoji) {
@@ -17819,14 +19276,14 @@ module.exports = GuildEmojiDeleteAction;
 
 /***/ }),
 
-/***/ 54047:
+/***/ 95889:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Action = __nccwpck_require__(31075);
-const Events = __nccwpck_require__(69573);
+const Action = __nccwpck_require__(12605);
+const Events = __nccwpck_require__(88131);
 
 class GuildEmojiUpdateAction extends Action {
   handle(current, data) {
@@ -17847,13 +19304,13 @@ module.exports = GuildEmojiUpdateAction;
 
 /***/ }),
 
-/***/ 78404:
+/***/ 59222:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Action = __nccwpck_require__(31075);
+const Action = __nccwpck_require__(12605);
 
 class GuildEmojisUpdateAction extends Action {
   handle(data) {
@@ -17889,14 +19346,14 @@ module.exports = GuildEmojisUpdateAction;
 
 /***/ }),
 
-/***/ 61300:
+/***/ 8226:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Action = __nccwpck_require__(31075);
-const Events = __nccwpck_require__(69573);
+const Action = __nccwpck_require__(12605);
+const Events = __nccwpck_require__(88131);
 
 class GuildIntegrationsUpdate extends Action {
   handle(data) {
@@ -17916,15 +19373,15 @@ module.exports = GuildIntegrationsUpdate;
 
 /***/ }),
 
-/***/ 42968:
+/***/ 40962:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Action = __nccwpck_require__(31075);
-const Events = __nccwpck_require__(69573);
-const Status = __nccwpck_require__(34714);
+const Action = __nccwpck_require__(12605);
+const Events = __nccwpck_require__(88131);
+const Status = __nccwpck_require__(20852);
 
 class GuildMemberRemoveAction extends Action {
   handle(data, shard) {
@@ -17955,15 +19412,15 @@ module.exports = GuildMemberRemoveAction;
 
 /***/ }),
 
-/***/ 73137:
+/***/ 42143:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Action = __nccwpck_require__(31075);
-const Events = __nccwpck_require__(69573);
-const Status = __nccwpck_require__(34714);
+const Action = __nccwpck_require__(12605);
+const Events = __nccwpck_require__(88131);
+const Status = __nccwpck_require__(20852);
 
 class GuildMemberUpdateAction extends Action {
   handle(data, shard) {
@@ -18007,14 +19464,14 @@ module.exports = GuildMemberUpdateAction;
 
 /***/ }),
 
-/***/ 64590:
+/***/ 81391:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Action = __nccwpck_require__(31075);
-const Events = __nccwpck_require__(69573);
+const Action = __nccwpck_require__(12605);
+const Events = __nccwpck_require__(88131);
 
 class GuildRoleCreate extends Action {
   handle(data) {
@@ -18040,14 +19497,14 @@ module.exports = GuildRoleCreate;
 
 /***/ }),
 
-/***/ 52405:
+/***/ 34195:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Action = __nccwpck_require__(31075);
-const Events = __nccwpck_require__(69573);
+const Action = __nccwpck_require__(12605);
+const Events = __nccwpck_require__(88131);
 
 class GuildRoleDeleteAction extends Action {
   handle(data) {
@@ -18077,14 +19534,14 @@ module.exports = GuildRoleDeleteAction;
 
 /***/ }),
 
-/***/ 73971:
+/***/ 88889:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Action = __nccwpck_require__(31075);
-const Events = __nccwpck_require__(69573);
+const Action = __nccwpck_require__(12605);
+const Events = __nccwpck_require__(88131);
 
 class GuildRoleUpdateAction extends Action {
   handle(data) {
@@ -18124,13 +19581,13 @@ module.exports = GuildRoleUpdateAction;
 
 /***/ }),
 
-/***/ 74131:
+/***/ 59753:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Action = __nccwpck_require__(31075);
+const Action = __nccwpck_require__(12605);
 
 class GuildRolesPositionUpdate extends Action {
   handle(data) {
@@ -18153,14 +19610,14 @@ module.exports = GuildRolesPositionUpdate;
 
 /***/ }),
 
-/***/ 58967:
+/***/ 51813:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Action = __nccwpck_require__(31075);
-const Events = __nccwpck_require__(69573);
+const Action = __nccwpck_require__(12605);
+const Events = __nccwpck_require__(88131);
 
 class GuildScheduledEventCreateAction extends Action {
   handle(data) {
@@ -18188,14 +19645,14 @@ module.exports = GuildScheduledEventCreateAction;
 
 /***/ }),
 
-/***/ 52540:
+/***/ 6962:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Action = __nccwpck_require__(31075);
-const Events = __nccwpck_require__(69573);
+const Action = __nccwpck_require__(12605);
+const Events = __nccwpck_require__(88131);
 
 class GuildScheduledEventDeleteAction extends Action {
   handle(data) {
@@ -18227,14 +19684,14 @@ module.exports = GuildScheduledEventDeleteAction;
 
 /***/ }),
 
-/***/ 13190:
+/***/ 36244:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Action = __nccwpck_require__(31075);
-const Events = __nccwpck_require__(69573);
+const Action = __nccwpck_require__(12605);
+const Events = __nccwpck_require__(88131);
 
 class GuildScheduledEventUpdateAction extends Action {
   handle(data) {
@@ -18265,14 +19722,14 @@ module.exports = GuildScheduledEventUpdateAction;
 
 /***/ }),
 
-/***/ 6013:
+/***/ 62863:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Action = __nccwpck_require__(31075);
-const Events = __nccwpck_require__(69573);
+const Action = __nccwpck_require__(12605);
+const Events = __nccwpck_require__(88131);
 
 class GuildScheduledEventUserAddAction extends Action {
   handle(data) {
@@ -18305,14 +19762,14 @@ module.exports = GuildScheduledEventUserAddAction;
 
 /***/ }),
 
-/***/ 21400:
+/***/ 88738:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Action = __nccwpck_require__(31075);
-const Events = __nccwpck_require__(69573);
+const Action = __nccwpck_require__(12605);
+const Events = __nccwpck_require__(88131);
 
 class GuildScheduledEventUserRemoveAction extends Action {
   handle(data) {
@@ -18345,14 +19802,51 @@ module.exports = GuildScheduledEventUserRemoveAction;
 
 /***/ }),
 
-/***/ 24611:
+/***/ 55553:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Action = __nccwpck_require__(31075);
-const Events = __nccwpck_require__(69573);
+const Action = __nccwpck_require__(12605);
+const Events = __nccwpck_require__(88131);
+
+class GuildSoundboardSoundDeleteAction extends Action {
+  handle(data) {
+    const guild = this.client.guilds.cache.get(data.guild_id);
+
+    if (!guild) return {};
+
+    const soundboardSound = this.getSoundboardSound(data, guild);
+
+    if (soundboardSound) {
+      guild.soundboardSounds.cache.delete(soundboardSound.soundId);
+
+      /**
+       * Emitted whenever a soundboard sound is deleted in a guild.
+       * @event Client#guildSoundboardSoundDelete
+       * @param {SoundboardSound} soundboardSound The soundboard sound that was deleted
+       */
+      this.client.emit(Events.GuildSoundboardSoundDelete, soundboardSound);
+    }
+
+    return { soundboardSound };
+  }
+}
+
+module.exports = GuildSoundboardSoundDeleteAction;
+
+
+/***/ }),
+
+/***/ 37725:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+
+const Action = __nccwpck_require__(12605);
+const Events = __nccwpck_require__(88131);
 
 class GuildStickerCreateAction extends Action {
   handle(guild, createdSticker) {
@@ -18373,14 +19867,14 @@ module.exports = GuildStickerCreateAction;
 
 /***/ }),
 
-/***/ 27584:
+/***/ 24506:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Action = __nccwpck_require__(31075);
-const Events = __nccwpck_require__(69573);
+const Action = __nccwpck_require__(12605);
+const Events = __nccwpck_require__(88131);
 
 class GuildStickerDeleteAction extends Action {
   handle(sticker) {
@@ -18400,14 +19894,14 @@ module.exports = GuildStickerDeleteAction;
 
 /***/ }),
 
-/***/ 22186:
+/***/ 58284:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Action = __nccwpck_require__(31075);
-const Events = __nccwpck_require__(69573);
+const Action = __nccwpck_require__(12605);
+const Events = __nccwpck_require__(88131);
 
 class GuildStickerUpdateAction extends Action {
   handle(current, data) {
@@ -18428,13 +19922,13 @@ module.exports = GuildStickerUpdateAction;
 
 /***/ }),
 
-/***/ 43263:
+/***/ 55009:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Action = __nccwpck_require__(31075);
+const Action = __nccwpck_require__(12605);
 
 class GuildStickersUpdateAction extends Action {
   handle(data) {
@@ -18470,14 +19964,14 @@ module.exports = GuildStickersUpdateAction;
 
 /***/ }),
 
-/***/ 24263:
+/***/ 65925:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Action = __nccwpck_require__(31075);
-const Events = __nccwpck_require__(69573);
+const Action = __nccwpck_require__(12605);
+const Events = __nccwpck_require__(88131);
 
 class GuildUpdateAction extends Action {
   handle(data) {
@@ -18511,26 +20005,26 @@ module.exports = GuildUpdateAction;
 
 /***/ }),
 
-/***/ 61397:
+/***/ 28299:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { InteractionType, ComponentType, ApplicationCommandType } = __nccwpck_require__(29244);
-const Action = __nccwpck_require__(31075);
-const AutocompleteInteraction = __nccwpck_require__(44708);
-const ButtonInteraction = __nccwpck_require__(79544);
-const ChannelSelectMenuInteraction = __nccwpck_require__(542);
-const ChatInputCommandInteraction = __nccwpck_require__(35461);
-const MentionableSelectMenuInteraction = __nccwpck_require__(62209);
-const MessageContextMenuCommandInteraction = __nccwpck_require__(55960);
-const ModalSubmitInteraction = __nccwpck_require__(22557);
-const RoleSelectMenuInteraction = __nccwpck_require__(4229);
-const StringSelectMenuInteraction = __nccwpck_require__(58514);
-const UserContextMenuCommandInteraction = __nccwpck_require__(87262);
-const UserSelectMenuInteraction = __nccwpck_require__(60036);
-const Events = __nccwpck_require__(69573);
+const { InteractionType, ComponentType, ApplicationCommandType } = __nccwpck_require__(94104);
+const Action = __nccwpck_require__(12605);
+const AutocompleteInteraction = __nccwpck_require__(12094);
+const ButtonInteraction = __nccwpck_require__(13594);
+const ChannelSelectMenuInteraction = __nccwpck_require__(1200);
+const ChatInputCommandInteraction = __nccwpck_require__(72119);
+const MentionableSelectMenuInteraction = __nccwpck_require__(95399);
+const MessageContextMenuCommandInteraction = __nccwpck_require__(62970);
+const ModalSubmitInteraction = __nccwpck_require__(61363);
+const RoleSelectMenuInteraction = __nccwpck_require__(52079);
+const StringSelectMenuInteraction = __nccwpck_require__(26972);
+const UserContextMenuCommandInteraction = __nccwpck_require__(36960);
+const UserSelectMenuInteraction = __nccwpck_require__(31750);
+const Events = __nccwpck_require__(88131);
 
 class InteractionCreateAction extends Action {
   handle(data) {
@@ -18620,14 +20114,14 @@ module.exports = InteractionCreateAction;
 
 /***/ }),
 
-/***/ 74524:
+/***/ 62850:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Action = __nccwpck_require__(31075);
-const Events = __nccwpck_require__(69573);
+const Action = __nccwpck_require__(12605);
+const Events = __nccwpck_require__(88131);
 
 class InviteCreateAction extends Action {
   handle(data) {
@@ -18655,15 +20149,15 @@ module.exports = InviteCreateAction;
 
 /***/ }),
 
-/***/ 21843:
+/***/ 70657:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Action = __nccwpck_require__(31075);
-const Invite = __nccwpck_require__(50491);
-const Events = __nccwpck_require__(69573);
+const Action = __nccwpck_require__(12605);
+const Invite = __nccwpck_require__(33225);
+const Events = __nccwpck_require__(88131);
 
 class InviteDeleteAction extends Action {
   handle(data) {
@@ -18692,14 +20186,14 @@ module.exports = InviteDeleteAction;
 
 /***/ }),
 
-/***/ 34534:
+/***/ 73236:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Action = __nccwpck_require__(31075);
-const Events = __nccwpck_require__(69573);
+const Action = __nccwpck_require__(12605);
+const Events = __nccwpck_require__(88131);
 
 class MessageCreateAction extends Action {
   handle(data) {
@@ -18741,14 +20235,14 @@ module.exports = MessageCreateAction;
 
 /***/ }),
 
-/***/ 13085:
+/***/ 90587:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Action = __nccwpck_require__(31075);
-const Events = __nccwpck_require__(69573);
+const Action = __nccwpck_require__(12605);
+const Events = __nccwpck_require__(88131);
 
 class MessageDeleteAction extends Action {
   handle(data) {
@@ -18781,15 +20275,15 @@ module.exports = MessageDeleteAction;
 
 /***/ }),
 
-/***/ 76105:
+/***/ 61807:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { Collection } = __nccwpck_require__(41514);
-const Action = __nccwpck_require__(31075);
-const Events = __nccwpck_require__(69573);
+const Action = __nccwpck_require__(12605);
+const Events = __nccwpck_require__(88131);
 
 class MessageDeleteBulkAction extends Action {
   handle(data) {
@@ -18836,14 +20330,14 @@ module.exports = MessageDeleteBulkAction;
 
 /***/ }),
 
-/***/ 51972:
+/***/ 9474:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Action = __nccwpck_require__(31075);
-const Events = __nccwpck_require__(69573);
+const Action = __nccwpck_require__(12605);
+const Events = __nccwpck_require__(88131);
 
 class MessagePollVoteAddAction extends Action {
   handle(data) {
@@ -18877,14 +20371,14 @@ module.exports = MessagePollVoteAddAction;
 
 /***/ }),
 
-/***/ 39491:
+/***/ 95185:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Action = __nccwpck_require__(31075);
-const Events = __nccwpck_require__(69573);
+const Action = __nccwpck_require__(12605);
+const Events = __nccwpck_require__(88131);
 
 class MessagePollVoteRemoveAction extends Action {
   handle(data) {
@@ -18918,15 +20412,15 @@ module.exports = MessagePollVoteRemoveAction;
 
 /***/ }),
 
-/***/ 40594:
+/***/ 30820:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Action = __nccwpck_require__(31075);
-const Events = __nccwpck_require__(69573);
-const Partials = __nccwpck_require__(13238);
+const Action = __nccwpck_require__(12605);
+const Events = __nccwpck_require__(88131);
+const Partials = __nccwpck_require__(43056);
 
 /*
 { user_id: 'id',
@@ -18996,14 +20490,14 @@ module.exports = MessageReactionAdd;
 
 /***/ }),
 
-/***/ 39169:
+/***/ 30435:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Action = __nccwpck_require__(31075);
-const Events = __nccwpck_require__(69573);
+const Action = __nccwpck_require__(12605);
+const Events = __nccwpck_require__(88131);
 
 /*
 { user_id: 'id',
@@ -19054,14 +20548,14 @@ module.exports = MessageReactionRemove;
 
 /***/ }),
 
-/***/ 26702:
+/***/ 80076:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Action = __nccwpck_require__(31075);
-const Events = __nccwpck_require__(69573);
+const Action = __nccwpck_require__(12605);
+const Events = __nccwpck_require__(88131);
 
 class MessageReactionRemoveAll extends Action {
   handle(data) {
@@ -19095,14 +20589,14 @@ module.exports = MessageReactionRemoveAll;
 
 /***/ }),
 
-/***/ 19759:
+/***/ 34221:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Action = __nccwpck_require__(31075);
-const Events = __nccwpck_require__(69573);
+const Action = __nccwpck_require__(12605);
+const Events = __nccwpck_require__(88131);
 
 class MessageReactionRemoveEmoji extends Action {
   handle(data) {
@@ -19131,13 +20625,13 @@ module.exports = MessageReactionRemoveEmoji;
 
 /***/ }),
 
-/***/ 52619:
+/***/ 33841:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Action = __nccwpck_require__(31075);
+const Action = __nccwpck_require__(12605);
 
 class MessageUpdateAction extends Action {
   handle(data) {
@@ -19165,19 +20659,22 @@ module.exports = MessageUpdateAction;
 
 /***/ }),
 
-/***/ 88821:
+/***/ 11611:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Action = __nccwpck_require__(31075);
-const Events = __nccwpck_require__(69573);
+const Action = __nccwpck_require__(12605);
+const Events = __nccwpck_require__(88131);
+const Partials = __nccwpck_require__(43056);
 
 class PresenceUpdateAction extends Action {
   handle(data) {
     let user = this.client.users.cache.get(data.user.id);
-    if (!user && data.user.username) user = this.client.users._add(data.user);
+    if (!user && ('username' in data.user || this.client.options.partials.includes(Partials.User))) {
+      user = this.client.users._add(data.user);
+    }
     if (!user) return;
 
     if (data.user.username) {
@@ -19215,14 +20712,14 @@ module.exports = PresenceUpdateAction;
 
 /***/ }),
 
-/***/ 48:
+/***/ 86738:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Action = __nccwpck_require__(31075);
-const Events = __nccwpck_require__(69573);
+const Action = __nccwpck_require__(12605);
+const Events = __nccwpck_require__(88131);
 
 class StageInstanceCreateAction extends Action {
   handle(data) {
@@ -19251,14 +20748,14 @@ module.exports = StageInstanceCreateAction;
 
 /***/ }),
 
-/***/ 11439:
+/***/ 15057:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Action = __nccwpck_require__(31075);
-const Events = __nccwpck_require__(69573);
+const Action = __nccwpck_require__(12605);
+const Events = __nccwpck_require__(88131);
 
 class StageInstanceDeleteAction extends Action {
   handle(data) {
@@ -19290,14 +20787,14 @@ module.exports = StageInstanceDeleteAction;
 
 /***/ }),
 
-/***/ 87013:
+/***/ 78607:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Action = __nccwpck_require__(31075);
-const Events = __nccwpck_require__(69573);
+const Action = __nccwpck_require__(12605);
+const Events = __nccwpck_require__(88131);
 
 class StageInstanceUpdateAction extends Action {
   handle(data) {
@@ -19328,14 +20825,14 @@ module.exports = StageInstanceUpdateAction;
 
 /***/ }),
 
-/***/ 22969:
+/***/ 48387:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Action = __nccwpck_require__(31075);
-const Events = __nccwpck_require__(69573);
+const Action = __nccwpck_require__(12605);
+const Events = __nccwpck_require__(88131);
 
 class ThreadCreateAction extends Action {
   handle(data) {
@@ -19360,14 +20857,14 @@ module.exports = ThreadCreateAction;
 
 /***/ }),
 
-/***/ 29694:
+/***/ 20608:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Action = __nccwpck_require__(31075);
-const Events = __nccwpck_require__(69573);
+const Action = __nccwpck_require__(12605);
+const Events = __nccwpck_require__(88131);
 
 class ThreadDeleteAction extends Action {
   handle(data) {
@@ -19394,15 +20891,15 @@ module.exports = ThreadDeleteAction;
 
 /***/ }),
 
-/***/ 43990:
+/***/ 35408:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { Collection } = __nccwpck_require__(41514);
-const Action = __nccwpck_require__(31075);
-const Events = __nccwpck_require__(69573);
+const Action = __nccwpck_require__(12605);
+const Events = __nccwpck_require__(88131);
 
 class ThreadListSyncAction extends Action {
   handle(data) {
@@ -19462,14 +20959,14 @@ module.exports = ThreadListSyncAction;
 
 /***/ }),
 
-/***/ 27966:
+/***/ 28736:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Action = __nccwpck_require__(31075);
-const Events = __nccwpck_require__(69573);
+const Action = __nccwpck_require__(12605);
+const Events = __nccwpck_require__(88131);
 
 class ThreadMemberUpdateAction extends Action {
   handle(data) {
@@ -19500,15 +20997,15 @@ module.exports = ThreadMemberUpdateAction;
 
 /***/ }),
 
-/***/ 26987:
+/***/ 32269:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { Collection } = __nccwpck_require__(41514);
-const Action = __nccwpck_require__(31075);
-const Events = __nccwpck_require__(69573);
+const Action = __nccwpck_require__(12605);
+const Events = __nccwpck_require__(88131);
 
 class ThreadMembersUpdateAction extends Action {
   handle(data) {
@@ -19555,15 +21052,15 @@ module.exports = ThreadMembersUpdateAction;
 
 /***/ }),
 
-/***/ 1408:
+/***/ 96898:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Action = __nccwpck_require__(31075);
-const Typing = __nccwpck_require__(47181);
-const Events = __nccwpck_require__(69573);
+const Action = __nccwpck_require__(12605);
+const Typing = __nccwpck_require__(86219);
+const Events = __nccwpck_require__(88131);
 
 class TypingStart extends Action {
   handle(data) {
@@ -19592,14 +21089,14 @@ module.exports = TypingStart;
 
 /***/ }),
 
-/***/ 38191:
+/***/ 21581:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Action = __nccwpck_require__(31075);
-const Events = __nccwpck_require__(69573);
+const Action = __nccwpck_require__(12605);
+const Events = __nccwpck_require__(88131);
 
 class UserUpdateAction extends Action {
   handle(data) {
@@ -19636,15 +21133,15 @@ module.exports = UserUpdateAction;
 
 /***/ }),
 
-/***/ 57867:
+/***/ 81297:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Action = __nccwpck_require__(31075);
-const VoiceState = __nccwpck_require__(87961);
-const Events = __nccwpck_require__(69573);
+const Action = __nccwpck_require__(12605);
+const VoiceState = __nccwpck_require__(68903);
+const Events = __nccwpck_require__(88131);
 
 class VoiceStateUpdate extends Action {
   handle(data) {
@@ -19687,14 +21184,14 @@ module.exports = VoiceStateUpdate;
 
 /***/ }),
 
-/***/ 54766:
+/***/ 70964:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const process = __nccwpck_require__(1708);
-const Action = __nccwpck_require__(31075);
+const Action = __nccwpck_require__(12605);
 
 let deprecationEmitted = false;
 
@@ -19732,13 +21229,13 @@ module.exports = WebhooksUpdate;
 
 /***/ }),
 
-/***/ 38876:
+/***/ 24510:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Events = __nccwpck_require__(69573);
+const Events = __nccwpck_require__(88131);
 
 /**
  * Manages voice connections for the client
@@ -19784,7 +21281,7 @@ module.exports = ClientVoiceManager;
 
 /***/ }),
 
-/***/ 57571:
+/***/ 14149:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -19799,14 +21296,14 @@ const {
   WebSocketShardEvents: WSWebSocketShardEvents,
   CompressionMethod,
   CloseCodes,
-} = __nccwpck_require__(65914);
-const { GatewayCloseCodes, GatewayDispatchEvents } = __nccwpck_require__(29244);
-const WebSocketShard = __nccwpck_require__(16808);
-const PacketHandlers = __nccwpck_require__(79375);
-const { DiscordjsError, ErrorCodes } = __nccwpck_require__(22097);
-const Events = __nccwpck_require__(69573);
-const Status = __nccwpck_require__(34714);
-const WebSocketShardEvents = __nccwpck_require__(77524);
+} = __nccwpck_require__(83952);
+const { GatewayCloseCodes, GatewayDispatchEvents } = __nccwpck_require__(94104);
+const WebSocketShard = __nccwpck_require__(26934);
+const PacketHandlers = __nccwpck_require__(36665);
+const { DiscordjsError, ErrorCodes } = __nccwpck_require__(6119);
+const Events = __nccwpck_require__(88131);
+const Status = __nccwpck_require__(20852);
+const WebSocketShardEvents = __nccwpck_require__(38090);
 
 let zlib;
 
@@ -19826,10 +21323,13 @@ const BeforeReadyWhitelist = [
 
 const WaitingForGuildEvents = [GatewayDispatchEvents.GuildCreate, GatewayDispatchEvents.GuildDelete];
 
-const UNRESUMABLE_CLOSE_CODES = [
-  CloseCodes.Normal,
-  GatewayCloseCodes.AlreadyAuthenticated,
-  GatewayCloseCodes.InvalidSeq,
+const UNRECOVERABLE_CLOSE_CODES = [
+  GatewayCloseCodes.AuthenticationFailed,
+  GatewayCloseCodes.InvalidShard,
+  GatewayCloseCodes.ShardingRequired,
+  GatewayCloseCodes.InvalidAPIVersion,
+  GatewayCloseCodes.InvalidIntents,
+  GatewayCloseCodes.DisallowedIntents,
 ];
 
 const reasonIsDeprecated = 'the reason property is deprecated, use the code property to determine the reason';
@@ -20032,7 +21532,7 @@ class WebSocketManager extends EventEmitter {
     this._ws.on(WSWebSocketShardEvents.Closed, ({ code, shardId }) => {
       const shard = this.shards.get(shardId);
       shard.emit(WebSocketShardEvents.Close, { code, reason: reasonIsDeprecated, wasClean: true });
-      if (UNRESUMABLE_CLOSE_CODES.includes(code) && this.destroyed) {
+      if (UNRECOVERABLE_CLOSE_CODES.includes(code)) {
         shard.status = Status.Disconnected;
         /**
          * Emitted when a shard's WebSocket disconnects and will no longer reconnect.
@@ -20041,7 +21541,7 @@ class WebSocketManager extends EventEmitter {
          * @param {number} id The shard id that disconnected
          */
         this.client.emit(Events.ShardDisconnect, { code, reason: reasonIsDeprecated, wasClean: true }, shardId);
-        this.debug([`Shard not resumable: ${code} (${GatewayCloseCodes[code] ?? CloseCodes[code]})`], shardId);
+        this.debug([`Shard not recoverable: ${code} (${GatewayCloseCodes[code] ?? CloseCodes[code]})`], shardId);
         return;
       }
 
@@ -20179,7 +21679,7 @@ module.exports = WebSocketManager;
 
 /***/ }),
 
-/***/ 16808:
+/***/ 26934:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -20188,9 +21688,9 @@ module.exports = WebSocketManager;
 const EventEmitter = __nccwpck_require__(78474);
 const process = __nccwpck_require__(1708);
 const { setTimeout, clearTimeout } = __nccwpck_require__(87997);
-const { GatewayIntentBits } = __nccwpck_require__(29244);
-const Status = __nccwpck_require__(34714);
-const WebSocketShardEvents = __nccwpck_require__(77524);
+const { GatewayIntentBits } = __nccwpck_require__(94104);
+const Status = __nccwpck_require__(20852);
+const WebSocketShardEvents = __nccwpck_require__(38090);
 
 let deprecationEmittedForImportant = false;
 /**
@@ -20421,7 +21921,7 @@ module.exports = WebSocketShard;
 
 /***/ }),
 
-/***/ 61178:
+/***/ 99992:
 /***/ ((module) => {
 
 "use strict";
@@ -20434,7 +21934,7 @@ module.exports = (client, packet) => {
 
 /***/ }),
 
-/***/ 13109:
+/***/ 8791:
 /***/ ((module) => {
 
 "use strict";
@@ -20447,7 +21947,7 @@ module.exports = (client, packet) => {
 
 /***/ }),
 
-/***/ 28003:
+/***/ 27493:
 /***/ ((module) => {
 
 "use strict";
@@ -20460,7 +21960,7 @@ module.exports = (client, packet) => {
 
 /***/ }),
 
-/***/ 36288:
+/***/ 75474:
 /***/ ((module) => {
 
 "use strict";
@@ -20473,7 +21973,7 @@ module.exports = (client, packet) => {
 
 /***/ }),
 
-/***/ 49162:
+/***/ 3380:
 /***/ ((module) => {
 
 "use strict";
@@ -20486,7 +21986,7 @@ module.exports = (client, packet) => {
 
 /***/ }),
 
-/***/ 23651:
+/***/ 13701:
 /***/ ((module) => {
 
 "use strict";
@@ -20499,7 +21999,7 @@ module.exports = (client, packet) => {
 
 /***/ }),
 
-/***/ 63936:
+/***/ 12690:
 /***/ ((module) => {
 
 "use strict";
@@ -20512,13 +22012,13 @@ module.exports = (client, packet) => {
 
 /***/ }),
 
-/***/ 66631:
+/***/ 46745:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Events = __nccwpck_require__(69573);
+const Events = __nccwpck_require__(88131);
 
 module.exports = (client, { d: data }) => {
   const channel = client.channels.cache.get(data.channel_id);
@@ -20542,13 +22042,13 @@ module.exports = (client, { d: data }) => {
 
 /***/ }),
 
-/***/ 97194:
+/***/ 79476:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Events = __nccwpck_require__(69573);
+const Events = __nccwpck_require__(88131);
 
 module.exports = (client, packet) => {
   const { old, updated } = client.actions.ChannelUpdate.handle(packet.d);
@@ -20566,7 +22066,7 @@ module.exports = (client, packet) => {
 
 /***/ }),
 
-/***/ 30863:
+/***/ 73509:
 /***/ ((module) => {
 
 "use strict";
@@ -20579,7 +22079,7 @@ module.exports = (client, packet) => {
 
 /***/ }),
 
-/***/ 57220:
+/***/ 22194:
 /***/ ((module) => {
 
 "use strict";
@@ -20592,7 +22092,7 @@ module.exports = (client, packet) => {
 
 /***/ }),
 
-/***/ 57086:
+/***/ 52852:
 /***/ ((module) => {
 
 "use strict";
@@ -20605,7 +22105,7 @@ module.exports = (client, packet) => {
 
 /***/ }),
 
-/***/ 36457:
+/***/ 29551:
 /***/ ((module) => {
 
 "use strict";
@@ -20618,7 +22118,7 @@ module.exports = (client, packet) => {
 
 /***/ }),
 
-/***/ 62314:
+/***/ 75676:
 /***/ ((module) => {
 
 "use strict";
@@ -20631,7 +22131,7 @@ module.exports = (client, packet) => {
 
 /***/ }),
 
-/***/ 44137:
+/***/ 28747:
 /***/ ((module) => {
 
 "use strict";
@@ -20644,14 +22144,14 @@ module.exports = (client, packet) => {
 
 /***/ }),
 
-/***/ 91:
+/***/ 48653:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Events = __nccwpck_require__(69573);
-const Status = __nccwpck_require__(34714);
+const Events = __nccwpck_require__(88131);
+const Status = __nccwpck_require__(20852);
 
 module.exports = (client, { d: data }, shard) => {
   let guild = client.guilds.cache.get(data.id);
@@ -20685,7 +22185,7 @@ module.exports = (client, { d: data }, shard) => {
 
 /***/ }),
 
-/***/ 42408:
+/***/ 99530:
 /***/ ((module) => {
 
 "use strict";
@@ -20698,7 +22198,7 @@ module.exports = (client, packet) => {
 
 /***/ }),
 
-/***/ 24722:
+/***/ 25480:
 /***/ ((module) => {
 
 "use strict";
@@ -20711,7 +22211,7 @@ module.exports = (client, packet) => {
 
 /***/ }),
 
-/***/ 44006:
+/***/ 20512:
 /***/ ((module) => {
 
 "use strict";
@@ -20724,14 +22224,14 @@ module.exports = (client, packet) => {
 
 /***/ }),
 
-/***/ 32570:
+/***/ 53972:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { Collection } = __nccwpck_require__(41514);
-const Events = __nccwpck_require__(69573);
+const Events = __nccwpck_require__(88131);
 
 module.exports = (client, { d: data }) => {
   const guild = client.guilds.cache.get(data.guild_id);
@@ -20771,14 +22271,14 @@ module.exports = (client, { d: data }) => {
 
 /***/ }),
 
-/***/ 91333:
+/***/ 91003:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Events = __nccwpck_require__(69573);
-const Status = __nccwpck_require__(34714);
+const Events = __nccwpck_require__(88131);
+const Status = __nccwpck_require__(20852);
 
 module.exports = (client, { d: data }, shard) => {
   const guild = client.guilds.cache.get(data.guild_id);
@@ -20799,7 +22299,7 @@ module.exports = (client, { d: data }, shard) => {
 
 /***/ }),
 
-/***/ 81808:
+/***/ 46574:
 /***/ ((module) => {
 
 "use strict";
@@ -20812,7 +22312,7 @@ module.exports = (client, packet, shard) => {
 
 /***/ }),
 
-/***/ 9833:
+/***/ 52595:
 /***/ ((module) => {
 
 "use strict";
@@ -20825,7 +22325,7 @@ module.exports = (client, packet, shard) => {
 
 /***/ }),
 
-/***/ 95406:
+/***/ 48088:
 /***/ ((module) => {
 
 "use strict";
@@ -20838,7 +22338,7 @@ module.exports = (client, packet) => {
 
 /***/ }),
 
-/***/ 54805:
+/***/ 77159:
 /***/ ((module) => {
 
 "use strict";
@@ -20851,7 +22351,7 @@ module.exports = (client, packet) => {
 
 /***/ }),
 
-/***/ 10579:
+/***/ 98029:
 /***/ ((module) => {
 
 "use strict";
@@ -20864,7 +22364,7 @@ module.exports = (client, packet) => {
 
 /***/ }),
 
-/***/ 8738:
+/***/ 76564:
 /***/ ((module) => {
 
 "use strict";
@@ -20877,7 +22377,7 @@ module.exports = (client, packet) => {
 
 /***/ }),
 
-/***/ 19521:
+/***/ 22075:
 /***/ ((module) => {
 
 "use strict";
@@ -20890,7 +22390,7 @@ module.exports = (client, packet) => {
 
 /***/ }),
 
-/***/ 73663:
+/***/ 6289:
 /***/ ((module) => {
 
 "use strict";
@@ -20903,7 +22403,7 @@ module.exports = (client, packet) => {
 
 /***/ }),
 
-/***/ 73945:
+/***/ 20799:
 /***/ ((module) => {
 
 "use strict";
@@ -20916,7 +22416,7 @@ module.exports = (client, packet) => {
 
 /***/ }),
 
-/***/ 53607:
+/***/ 32370:
 /***/ ((module) => {
 
 "use strict";
@@ -20929,7 +22429,106 @@ module.exports = (client, packet) => {
 
 /***/ }),
 
-/***/ 17295:
+/***/ 62947:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+
+const { Collection } = __nccwpck_require__(41514);
+const Events = __nccwpck_require__(88131);
+
+module.exports = (client, { d: data }) => {
+  const guild = client.guilds.cache.get(data.guild_id);
+
+  if (!guild) return;
+
+  const soundboardSounds = new Collection();
+
+  for (const soundboardSound of data.soundboard_sounds) {
+    soundboardSounds.set(soundboardSound.sound_id, guild.soundboardSounds._add(soundboardSound));
+  }
+
+  /**
+   * Emitted whenever multiple guild soundboard sounds are updated.
+   * @event Client#guildSoundboardSoundsUpdate
+   * @param {Collection<Snowflake, SoundboardSound>} soundboardSounds The updated soundboard sounds
+   * @param {Guild} guild The guild that the soundboard sounds are from
+   */
+  client.emit(Events.GuildSoundboardSoundsUpdate, soundboardSounds, guild);
+};
+
+
+/***/ }),
+
+/***/ 86831:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+
+const Events = __nccwpck_require__(88131);
+
+module.exports = (client, { d: data }) => {
+  const guild = client.guilds.cache.get(data.guild_id);
+
+  if (!guild) return;
+
+  const soundboardSound = guild.soundboardSounds._add(data);
+
+  /**
+   * Emitted whenever a guild soundboard sound is created.
+   * @event Client#guildSoundboardSoundCreate
+   * @param {SoundboardSound} soundboardSound The created guild soundboard sound
+   */
+  client.emit(Events.GuildSoundboardSoundCreate, soundboardSound);
+};
+
+
+/***/ }),
+
+/***/ 30084:
+/***/ ((module) => {
+
+"use strict";
+
+
+module.exports = (client, { d: data }) => {
+  client.actions.GuildSoundboardSoundDelete.handle(data);
+};
+
+
+/***/ }),
+
+/***/ 88830:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+
+const Events = __nccwpck_require__(88131);
+
+module.exports = (client, { d: data }) => {
+  const guild = client.guilds.cache.get(data.guild_id);
+
+  if (!guild) return;
+
+  const oldGuildSoundboardSound = guild.soundboardSounds.cache.get(data.sound_id)?._clone() ?? null;
+  const newGuildSoundboardSound = guild.soundboardSounds._add(data);
+
+  /**
+   * Emitted whenever a guild soundboard sound is updated.
+   * @event Client#guildSoundboardSoundUpdate
+   * @param {?SoundboardSound} oldGuildSoundboardSound The guild soundboard sound before the update
+   * @param {SoundboardSound} newGuildSoundboardSound The guild soundboard sound after the update
+   */
+  client.emit(Events.GuildSoundboardSoundUpdate, oldGuildSoundboardSound, newGuildSoundboardSound);
+};
+
+
+/***/ }),
+
+/***/ 20165:
 /***/ ((module) => {
 
 "use strict";
@@ -20942,7 +22541,7 @@ module.exports = (client, packet) => {
 
 /***/ }),
 
-/***/ 68834:
+/***/ 76092:
 /***/ ((module) => {
 
 "use strict";
@@ -20955,7 +22554,7 @@ module.exports = (client, packet) => {
 
 /***/ }),
 
-/***/ 56602:
+/***/ 86356:
 /***/ ((module) => {
 
 "use strict";
@@ -20968,7 +22567,7 @@ module.exports = (client, packet) => {
 
 /***/ }),
 
-/***/ 59277:
+/***/ 43823:
 /***/ ((module) => {
 
 "use strict";
@@ -20981,7 +22580,7 @@ module.exports = (client, packet) => {
 
 /***/ }),
 
-/***/ 71562:
+/***/ 26756:
 /***/ ((module) => {
 
 "use strict";
@@ -20994,7 +22593,7 @@ module.exports = (client, packet) => {
 
 /***/ }),
 
-/***/ 5455:
+/***/ 75737:
 /***/ ((module) => {
 
 "use strict";
@@ -21007,7 +22606,7 @@ module.exports = (client, packet) => {
 
 /***/ }),
 
-/***/ 48708:
+/***/ 93854:
 /***/ ((module) => {
 
 "use strict";
@@ -21020,7 +22619,7 @@ module.exports = (client, packet) => {
 
 /***/ }),
 
-/***/ 75307:
+/***/ 50781:
 /***/ ((module) => {
 
 "use strict";
@@ -21033,7 +22632,7 @@ module.exports = (client, packet) => {
 
 /***/ }),
 
-/***/ 67777:
+/***/ 91763:
 /***/ ((module) => {
 
 "use strict";
@@ -21046,7 +22645,7 @@ module.exports = (client, packet) => {
 
 /***/ }),
 
-/***/ 71212:
+/***/ 52822:
 /***/ ((module) => {
 
 "use strict";
@@ -21059,7 +22658,7 @@ module.exports = (client, packet) => {
 
 /***/ }),
 
-/***/ 16520:
+/***/ 598:
 /***/ ((module) => {
 
 "use strict";
@@ -21072,7 +22671,7 @@ module.exports = (client, packet) => {
 
 /***/ }),
 
-/***/ 36135:
+/***/ 30085:
 /***/ ((module) => {
 
 "use strict";
@@ -21085,7 +22684,7 @@ module.exports = (client, packet) => {
 
 /***/ }),
 
-/***/ 88131:
+/***/ 61613:
 /***/ ((module) => {
 
 "use strict";
@@ -21098,7 +22697,7 @@ module.exports = (client, packet) => {
 
 /***/ }),
 
-/***/ 20478:
+/***/ 60832:
 /***/ ((module) => {
 
 "use strict";
@@ -21111,13 +22710,13 @@ module.exports = (client, packet) => {
 
 /***/ }),
 
-/***/ 91102:
+/***/ 21792:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Events = __nccwpck_require__(69573);
+const Events = __nccwpck_require__(88131);
 
 module.exports = (client, packet) => {
   const { old, updated } = client.actions.MessageUpdate.handle(packet.d);
@@ -21135,7 +22734,7 @@ module.exports = (client, packet) => {
 
 /***/ }),
 
-/***/ 712:
+/***/ 47898:
 /***/ ((module) => {
 
 "use strict";
@@ -21148,20 +22747,20 @@ module.exports = (client, packet) => {
 
 /***/ }),
 
-/***/ 94547:
+/***/ 89074:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const ClientApplication = __nccwpck_require__(49495);
+const ClientApplication = __nccwpck_require__(56981);
 let ClientUser;
 
 module.exports = (client, { d: data }, shard) => {
   if (client.user) {
     client.user._patch(data.user);
   } else {
-    ClientUser ??= __nccwpck_require__(86406);
+    ClientUser ??= __nccwpck_require__(73172);
     client.user = new ClientUser(client, data.user);
     client.users.cache.set(client.user.id, client.user);
   }
@@ -21183,13 +22782,13 @@ module.exports = (client, { d: data }, shard) => {
 
 /***/ }),
 
-/***/ 59938:
+/***/ 1720:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Events = __nccwpck_require__(69573);
+const Events = __nccwpck_require__(88131);
 
 module.exports = (client, packet, shard) => {
   const replayed = shard.sessionInfo.sequence - shard.closeSequence;
@@ -21205,7 +22804,39 @@ module.exports = (client, packet, shard) => {
 
 /***/ }),
 
-/***/ 27650:
+/***/ 16731:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+
+const { Collection } = __nccwpck_require__(41514);
+const Events = __nccwpck_require__(88131);
+
+module.exports = (client, { d: data }) => {
+  const guild = client.guilds.cache.get(data.guild_id);
+
+  if (!guild) return;
+
+  const soundboardSounds = new Collection();
+
+  for (const soundboardSound of data.soundboard_sounds) {
+    soundboardSounds.set(soundboardSound.sound_id, guild.soundboardSounds._add(soundboardSound));
+  }
+
+  /**
+   * Emitted whenever soundboard sounds are received (all soundboard sounds come from the same guild).
+   * @event Client#soundboardSounds
+   * @param {Collection<Snowflake, SoundboardSound>} soundboardSounds The sounds received
+   * @param {Guild} guild The guild that the soundboard sounds are from
+   */
+  client.emit(Events.SoundboardSounds, soundboardSounds, guild);
+};
+
+
+/***/ }),
+
+/***/ 56736:
 /***/ ((module) => {
 
 "use strict";
@@ -21218,7 +22849,7 @@ module.exports = (client, packet) => {
 
 /***/ }),
 
-/***/ 14209:
+/***/ 96703:
 /***/ ((module) => {
 
 "use strict";
@@ -21231,7 +22862,7 @@ module.exports = (client, packet) => {
 
 /***/ }),
 
-/***/ 52511:
+/***/ 69557:
 /***/ ((module) => {
 
 "use strict";
@@ -21244,13 +22875,13 @@ module.exports = (client, packet) => {
 
 /***/ }),
 
-/***/ 56589:
+/***/ 2611:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Events = __nccwpck_require__(69573);
+const Events = __nccwpck_require__(88131);
 
 module.exports = (client, { d: data }) => {
   const subscription = client.application.subscriptions._add(data);
@@ -21266,13 +22897,13 @@ module.exports = (client, { d: data }) => {
 
 /***/ }),
 
-/***/ 7466:
+/***/ 71120:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Events = __nccwpck_require__(69573);
+const Events = __nccwpck_require__(88131);
 
 module.exports = (client, { d: data }) => {
   const subscription = client.application.subscriptions._add(data, false);
@@ -21290,13 +22921,13 @@ module.exports = (client, { d: data }) => {
 
 /***/ }),
 
-/***/ 67676:
+/***/ 58522:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Events = __nccwpck_require__(69573);
+const Events = __nccwpck_require__(88131);
 
 module.exports = (client, { d: data }) => {
   const oldSubscription = client.application.subscriptions.cache.get(data.id)?._clone() ?? null;
@@ -21314,7 +22945,7 @@ module.exports = (client, { d: data }) => {
 
 /***/ }),
 
-/***/ 64066:
+/***/ 12472:
 /***/ ((module) => {
 
 "use strict";
@@ -21327,7 +22958,7 @@ module.exports = (client, packet) => {
 
 /***/ }),
 
-/***/ 68353:
+/***/ 41543:
 /***/ ((module) => {
 
 "use strict";
@@ -21340,7 +22971,7 @@ module.exports = (client, packet) => {
 
 /***/ }),
 
-/***/ 69262:
+/***/ 652:
 /***/ ((module) => {
 
 "use strict";
@@ -21353,7 +22984,7 @@ module.exports = (client, packet) => {
 
 /***/ }),
 
-/***/ 55111:
+/***/ 80237:
 /***/ ((module) => {
 
 "use strict";
@@ -21366,7 +22997,7 @@ module.exports = (client, packet) => {
 
 /***/ }),
 
-/***/ 35098:
+/***/ 21056:
 /***/ ((module) => {
 
 "use strict";
@@ -21379,13 +23010,13 @@ module.exports = (client, packet) => {
 
 /***/ }),
 
-/***/ 23487:
+/***/ 78765:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Events = __nccwpck_require__(69573);
+const Events = __nccwpck_require__(88131);
 
 module.exports = (client, packet) => {
   const { old, updated } = client.actions.ChannelUpdate.handle(packet.d);
@@ -21403,7 +23034,7 @@ module.exports = (client, packet) => {
 
 /***/ }),
 
-/***/ 83987:
+/***/ 79217:
 /***/ ((module) => {
 
 "use strict";
@@ -21416,7 +23047,7 @@ module.exports = (client, packet) => {
 
 /***/ }),
 
-/***/ 41602:
+/***/ 69708:
 /***/ ((module) => {
 
 "use strict";
@@ -21429,14 +23060,14 @@ module.exports = (client, packet) => {
 
 /***/ }),
 
-/***/ 14650:
+/***/ 97544:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const VoiceChannelEffect = __nccwpck_require__(91478);
-const Events = __nccwpck_require__(69573);
+const VoiceChannelEffect = __nccwpck_require__(70048);
+const Events = __nccwpck_require__(88131);
 
 module.exports = (client, { d: data }) => {
   const guild = client.guilds.cache.get(data.guild_id);
@@ -21453,7 +23084,7 @@ module.exports = (client, { d: data }) => {
 
 /***/ }),
 
-/***/ 5368:
+/***/ 85421:
 /***/ ((module) => {
 
 "use strict";
@@ -21467,7 +23098,7 @@ module.exports = (client, packet) => {
 
 /***/ }),
 
-/***/ 72351:
+/***/ 86537:
 /***/ ((module) => {
 
 "use strict";
@@ -21480,7 +23111,7 @@ module.exports = (client, packet) => {
 
 /***/ }),
 
-/***/ 26825:
+/***/ 21419:
 /***/ ((module) => {
 
 "use strict";
@@ -21493,80 +23124,85 @@ module.exports = (client, packet) => {
 
 /***/ }),
 
-/***/ 79375:
+/***/ 36665:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const handlers = Object.fromEntries([
-  ['APPLICATION_COMMAND_PERMISSIONS_UPDATE', __nccwpck_require__(61178)],
-  ['AUTO_MODERATION_ACTION_EXECUTION', __nccwpck_require__(13109)],
-  ['AUTO_MODERATION_RULE_CREATE', __nccwpck_require__(28003)],
-  ['AUTO_MODERATION_RULE_DELETE', __nccwpck_require__(36288)],
-  ['AUTO_MODERATION_RULE_UPDATE', __nccwpck_require__(49162)],
-  ['CHANNEL_CREATE', __nccwpck_require__(23651)],
-  ['CHANNEL_DELETE', __nccwpck_require__(63936)],
-  ['CHANNEL_PINS_UPDATE', __nccwpck_require__(66631)],
-  ['CHANNEL_UPDATE', __nccwpck_require__(97194)],
-  ['ENTITLEMENT_CREATE', __nccwpck_require__(30863)],
-  ['ENTITLEMENT_DELETE', __nccwpck_require__(57220)],
-  ['ENTITLEMENT_UPDATE', __nccwpck_require__(57086)],
-  ['GUILD_AUDIT_LOG_ENTRY_CREATE', __nccwpck_require__(36457)],
-  ['GUILD_BAN_ADD', __nccwpck_require__(62314)],
-  ['GUILD_BAN_REMOVE', __nccwpck_require__(44137)],
-  ['GUILD_CREATE', __nccwpck_require__(91)],
-  ['GUILD_DELETE', __nccwpck_require__(42408)],
-  ['GUILD_EMOJIS_UPDATE', __nccwpck_require__(24722)],
-  ['GUILD_INTEGRATIONS_UPDATE', __nccwpck_require__(44006)],
-  ['GUILD_MEMBERS_CHUNK', __nccwpck_require__(32570)],
-  ['GUILD_MEMBER_ADD', __nccwpck_require__(91333)],
-  ['GUILD_MEMBER_REMOVE', __nccwpck_require__(81808)],
-  ['GUILD_MEMBER_UPDATE', __nccwpck_require__(9833)],
-  ['GUILD_ROLE_CREATE', __nccwpck_require__(95406)],
-  ['GUILD_ROLE_DELETE', __nccwpck_require__(54805)],
-  ['GUILD_ROLE_UPDATE', __nccwpck_require__(10579)],
-  ['GUILD_SCHEDULED_EVENT_CREATE', __nccwpck_require__(8738)],
-  ['GUILD_SCHEDULED_EVENT_DELETE', __nccwpck_require__(19521)],
-  ['GUILD_SCHEDULED_EVENT_UPDATE', __nccwpck_require__(73663)],
-  ['GUILD_SCHEDULED_EVENT_USER_ADD', __nccwpck_require__(73945)],
-  ['GUILD_SCHEDULED_EVENT_USER_REMOVE', __nccwpck_require__(53607)],
-  ['GUILD_STICKERS_UPDATE', __nccwpck_require__(17295)],
-  ['GUILD_UPDATE', __nccwpck_require__(68834)],
-  ['INTERACTION_CREATE', __nccwpck_require__(56602)],
-  ['INVITE_CREATE', __nccwpck_require__(59277)],
-  ['INVITE_DELETE', __nccwpck_require__(71562)],
-  ['MESSAGE_CREATE', __nccwpck_require__(5455)],
-  ['MESSAGE_DELETE', __nccwpck_require__(48708)],
-  ['MESSAGE_DELETE_BULK', __nccwpck_require__(75307)],
-  ['MESSAGE_POLL_VOTE_ADD', __nccwpck_require__(67777)],
-  ['MESSAGE_POLL_VOTE_REMOVE', __nccwpck_require__(71212)],
-  ['MESSAGE_REACTION_ADD', __nccwpck_require__(16520)],
-  ['MESSAGE_REACTION_REMOVE', __nccwpck_require__(36135)],
-  ['MESSAGE_REACTION_REMOVE_ALL', __nccwpck_require__(88131)],
-  ['MESSAGE_REACTION_REMOVE_EMOJI', __nccwpck_require__(20478)],
-  ['MESSAGE_UPDATE', __nccwpck_require__(91102)],
-  ['PRESENCE_UPDATE', __nccwpck_require__(712)],
-  ['READY', __nccwpck_require__(94547)],
-  ['RESUMED', __nccwpck_require__(59938)],
-  ['STAGE_INSTANCE_CREATE', __nccwpck_require__(27650)],
-  ['STAGE_INSTANCE_DELETE', __nccwpck_require__(14209)],
-  ['STAGE_INSTANCE_UPDATE', __nccwpck_require__(52511)],
-  ['SUBSCRIPTION_CREATE', __nccwpck_require__(56589)],
-  ['SUBSCRIPTION_DELETE', __nccwpck_require__(7466)],
-  ['SUBSCRIPTION_UPDATE', __nccwpck_require__(67676)],
-  ['THREAD_CREATE', __nccwpck_require__(64066)],
-  ['THREAD_DELETE', __nccwpck_require__(68353)],
-  ['THREAD_LIST_SYNC', __nccwpck_require__(69262)],
-  ['THREAD_MEMBERS_UPDATE', __nccwpck_require__(55111)],
-  ['THREAD_MEMBER_UPDATE', __nccwpck_require__(35098)],
-  ['THREAD_UPDATE', __nccwpck_require__(23487)],
-  ['TYPING_START', __nccwpck_require__(83987)],
-  ['USER_UPDATE', __nccwpck_require__(41602)],
-  ['VOICE_CHANNEL_EFFECT_SEND', __nccwpck_require__(14650)],
-  ['VOICE_SERVER_UPDATE', __nccwpck_require__(5368)],
-  ['VOICE_STATE_UPDATE', __nccwpck_require__(72351)],
-  ['WEBHOOKS_UPDATE', __nccwpck_require__(26825)],
+  ['APPLICATION_COMMAND_PERMISSIONS_UPDATE', __nccwpck_require__(99992)],
+  ['AUTO_MODERATION_ACTION_EXECUTION', __nccwpck_require__(8791)],
+  ['AUTO_MODERATION_RULE_CREATE', __nccwpck_require__(27493)],
+  ['AUTO_MODERATION_RULE_DELETE', __nccwpck_require__(75474)],
+  ['AUTO_MODERATION_RULE_UPDATE', __nccwpck_require__(3380)],
+  ['CHANNEL_CREATE', __nccwpck_require__(13701)],
+  ['CHANNEL_DELETE', __nccwpck_require__(12690)],
+  ['CHANNEL_PINS_UPDATE', __nccwpck_require__(46745)],
+  ['CHANNEL_UPDATE', __nccwpck_require__(79476)],
+  ['ENTITLEMENT_CREATE', __nccwpck_require__(73509)],
+  ['ENTITLEMENT_DELETE', __nccwpck_require__(22194)],
+  ['ENTITLEMENT_UPDATE', __nccwpck_require__(52852)],
+  ['GUILD_AUDIT_LOG_ENTRY_CREATE', __nccwpck_require__(29551)],
+  ['GUILD_BAN_ADD', __nccwpck_require__(75676)],
+  ['GUILD_BAN_REMOVE', __nccwpck_require__(28747)],
+  ['GUILD_CREATE', __nccwpck_require__(48653)],
+  ['GUILD_DELETE', __nccwpck_require__(99530)],
+  ['GUILD_EMOJIS_UPDATE', __nccwpck_require__(25480)],
+  ['GUILD_INTEGRATIONS_UPDATE', __nccwpck_require__(20512)],
+  ['GUILD_MEMBERS_CHUNK', __nccwpck_require__(53972)],
+  ['GUILD_MEMBER_ADD', __nccwpck_require__(91003)],
+  ['GUILD_MEMBER_REMOVE', __nccwpck_require__(46574)],
+  ['GUILD_MEMBER_UPDATE', __nccwpck_require__(52595)],
+  ['GUILD_ROLE_CREATE', __nccwpck_require__(48088)],
+  ['GUILD_ROLE_DELETE', __nccwpck_require__(77159)],
+  ['GUILD_ROLE_UPDATE', __nccwpck_require__(98029)],
+  ['GUILD_SCHEDULED_EVENT_CREATE', __nccwpck_require__(76564)],
+  ['GUILD_SCHEDULED_EVENT_DELETE', __nccwpck_require__(22075)],
+  ['GUILD_SCHEDULED_EVENT_UPDATE', __nccwpck_require__(6289)],
+  ['GUILD_SCHEDULED_EVENT_USER_ADD', __nccwpck_require__(20799)],
+  ['GUILD_SCHEDULED_EVENT_USER_REMOVE', __nccwpck_require__(32370)],
+  ['GUILD_SOUNDBOARD_SOUNDS_UPDATE', __nccwpck_require__(62947)],
+  ['GUILD_SOUNDBOARD_SOUND_CREATE', __nccwpck_require__(86831)],
+  ['GUILD_SOUNDBOARD_SOUND_DELETE', __nccwpck_require__(30084)],
+  ['GUILD_SOUNDBOARD_SOUND_UPDATE', __nccwpck_require__(88830)],
+  ['GUILD_STICKERS_UPDATE', __nccwpck_require__(20165)],
+  ['GUILD_UPDATE', __nccwpck_require__(76092)],
+  ['INTERACTION_CREATE', __nccwpck_require__(86356)],
+  ['INVITE_CREATE', __nccwpck_require__(43823)],
+  ['INVITE_DELETE', __nccwpck_require__(26756)],
+  ['MESSAGE_CREATE', __nccwpck_require__(75737)],
+  ['MESSAGE_DELETE', __nccwpck_require__(93854)],
+  ['MESSAGE_DELETE_BULK', __nccwpck_require__(50781)],
+  ['MESSAGE_POLL_VOTE_ADD', __nccwpck_require__(91763)],
+  ['MESSAGE_POLL_VOTE_REMOVE', __nccwpck_require__(52822)],
+  ['MESSAGE_REACTION_ADD', __nccwpck_require__(598)],
+  ['MESSAGE_REACTION_REMOVE', __nccwpck_require__(30085)],
+  ['MESSAGE_REACTION_REMOVE_ALL', __nccwpck_require__(61613)],
+  ['MESSAGE_REACTION_REMOVE_EMOJI', __nccwpck_require__(60832)],
+  ['MESSAGE_UPDATE', __nccwpck_require__(21792)],
+  ['PRESENCE_UPDATE', __nccwpck_require__(47898)],
+  ['READY', __nccwpck_require__(89074)],
+  ['RESUMED', __nccwpck_require__(1720)],
+  ['SOUNDBOARD_SOUNDS', __nccwpck_require__(16731)],
+  ['STAGE_INSTANCE_CREATE', __nccwpck_require__(56736)],
+  ['STAGE_INSTANCE_DELETE', __nccwpck_require__(96703)],
+  ['STAGE_INSTANCE_UPDATE', __nccwpck_require__(69557)],
+  ['SUBSCRIPTION_CREATE', __nccwpck_require__(2611)],
+  ['SUBSCRIPTION_DELETE', __nccwpck_require__(71120)],
+  ['SUBSCRIPTION_UPDATE', __nccwpck_require__(58522)],
+  ['THREAD_CREATE', __nccwpck_require__(12472)],
+  ['THREAD_DELETE', __nccwpck_require__(41543)],
+  ['THREAD_LIST_SYNC', __nccwpck_require__(652)],
+  ['THREAD_MEMBERS_UPDATE', __nccwpck_require__(80237)],
+  ['THREAD_MEMBER_UPDATE', __nccwpck_require__(21056)],
+  ['THREAD_UPDATE', __nccwpck_require__(78765)],
+  ['TYPING_START', __nccwpck_require__(79217)],
+  ['USER_UPDATE', __nccwpck_require__(69708)],
+  ['VOICE_CHANNEL_EFFECT_SEND', __nccwpck_require__(97544)],
+  ['VOICE_SERVER_UPDATE', __nccwpck_require__(85421)],
+  ['VOICE_STATE_UPDATE', __nccwpck_require__(86537)],
+  ['WEBHOOKS_UPDATE', __nccwpck_require__(21419)],
 ]);
 
 module.exports = handlers;
@@ -21574,15 +23210,15 @@ module.exports = handlers;
 
 /***/ }),
 
-/***/ 78846:
+/***/ 62548:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 // Heavily inspired by node's `internal/errors` module
-const ErrorCodes = __nccwpck_require__(29737);
-const Messages = __nccwpck_require__(33625);
+const ErrorCodes = __nccwpck_require__(459);
+const Messages = __nccwpck_require__(27463);
 
 /**
  * Extend an error of some sort into a DiscordjsError.
@@ -21630,7 +23266,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 29737:
+/***/ 459:
 /***/ ((module) => {
 
 "use strict";
@@ -21742,6 +23378,7 @@ module.exports = {
  * @property {'GuildChannelUnowned'} GuildChannelUnowned
  * @property {'GuildOwned'} GuildOwned
  * @property {'GuildMembersTimeout'} GuildMembersTimeout
+ * @property {'GuildSoundboardSoundsTimeout'} GuildSoundboardSoundsTimeout
  * @property {'GuildUncachedMe'} GuildUncachedMe
  * @property {'ChannelNotCached'} ChannelNotCached
  * @property {'StageChannelResolve'} StageChannelResolve
@@ -21767,6 +23404,8 @@ module.exports = {
  * @property {'MissingManageEmojisAndStickersPermission'} MissingManageEmojisAndStickersPermission
  * <warn>This property is deprecated. Use `MissingManageGuildExpressionsPermission` instead.</warn>
  *
+
+ * @property {'NotGuildSoundboardSound'} NotGuildSoundboardSound
  * @property {'NotGuildSticker'} NotGuildSticker
 
  * @property {'ReactionResolveUser'} ReactionResolveUser
@@ -21902,6 +23541,7 @@ const keys = [
   'GuildChannelUnowned',
   'GuildOwned',
   'GuildMembersTimeout',
+  'GuildSoundboardSoundsTimeout',
   'GuildUncachedMe',
   'ChannelNotCached',
   'StageChannelResolve',
@@ -21926,6 +23566,7 @@ const keys = [
   'MissingManageGuildExpressionsPermission',
   'MissingManageEmojisAndStickersPermission',
 
+  'NotGuildSoundboardSound',
   'NotGuildSticker',
 
   'ReactionResolveUser',
@@ -21985,13 +23626,13 @@ module.exports = Object.fromEntries(keys.map(key => [key, key]));
 
 /***/ }),
 
-/***/ 33625:
+/***/ 27463:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const DjsErrorCodes = __nccwpck_require__(29737);
+const DjsErrorCodes = __nccwpck_require__(459);
 
 const Messages = {
   [DjsErrorCodes.ClientInvalidOption]: (prop, must) => `The ${prop} option must be ${must}`,
@@ -22082,11 +23723,13 @@ const Messages = {
   [DjsErrorCodes.GuildChannelUnowned]: "The fetched channel does not belong to this manager's guild.",
   [DjsErrorCodes.GuildOwned]: 'Guild is owned by the client.',
   [DjsErrorCodes.GuildMembersTimeout]: "Members didn't arrive in time.",
+  [DjsErrorCodes.GuildSoundboardSoundsTimeout]: "Soundboard sounds didn't arrive in time.",
   [DjsErrorCodes.GuildUncachedMe]: 'The client user as a member of this guild is uncached.',
   [DjsErrorCodes.ChannelNotCached]: 'Could not find the channel where this message came from in the cache!',
   [DjsErrorCodes.StageChannelResolve]: 'Could not resolve channel to a stage channel.',
   [DjsErrorCodes.GuildScheduledEventResolve]: 'Could not resolve the guild scheduled event.',
-  [DjsErrorCodes.FetchOwnerId]: type => `Couldn't resolve the ${type} ownerId to fetch the ${type} member.`,
+  [DjsErrorCodes.FetchOwnerId]: type =>
+    `Couldn't resolve the ${type} ownerId to fetch the ${type} ${type === 'group DM' ? 'owner' : 'member'}.`,
 
   [DjsErrorCodes.InvalidType]: (name, expected, an = false) => `Supplied ${name} is not a${an ? 'n' : ''} ${expected}.`,
   [DjsErrorCodes.InvalidElement]: (type, name, elem) => `Supplied ${type} ${name} includes an invalid element: ${elem}`,
@@ -22108,6 +23751,8 @@ const Messages = {
   [DjsErrorCodes.MissingManageEmojisAndStickersPermission]: guild =>
     `Client must have Manage Emojis and Stickers permission in guild ${guild} to see emoji authors.`,
 
+  [DjsErrorCodes.NotGuildSoundboardSound]: action =>
+    `Soundboard sound is a default (non-guild) soundboard sound and can't be ${action}.`,
   [DjsErrorCodes.NotGuildSticker]: 'Sticker is a standard (non-guild) sticker and has no author.',
 
   [DjsErrorCodes.ReactionResolveUser]: "Couldn't resolve the user id to remove from the reaction.",
@@ -22171,20 +23816,20 @@ module.exports = Messages;
 
 /***/ }),
 
-/***/ 22097:
+/***/ 6119:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-module.exports = __nccwpck_require__(78846);
-module.exports.ErrorCodes = __nccwpck_require__(29737);
-module.exports.Messages = __nccwpck_require__(33625);
+module.exports = __nccwpck_require__(62548);
+module.exports.ErrorCodes = __nccwpck_require__(459);
+module.exports.Messages = __nccwpck_require__(27463);
 
 
 /***/ }),
 
-/***/ 12381:
+/***/ 12183:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
@@ -22196,255 +23841,265 @@ const { __exportStar } = __nccwpck_require__(31577);
 polyfillDispose();
 
 // "Root" classes (starting points)
-exports.BaseClient = __nccwpck_require__(44931);
-exports.Client = __nccwpck_require__(30222);
-exports.Shard = __nccwpck_require__(36734);
-exports.ShardClientUtil = __nccwpck_require__(2573);
-exports.ShardingManager = __nccwpck_require__(36741);
-exports.WebhookClient = __nccwpck_require__(94463);
+exports.BaseClient = __nccwpck_require__(31037);
+exports.Client = __nccwpck_require__(16896);
+exports.Shard = __nccwpck_require__(74540);
+exports.ShardClientUtil = __nccwpck_require__(65163);
+exports.ShardingManager = __nccwpck_require__(215);
+exports.WebhookClient = __nccwpck_require__(29729);
 
 // Errors
-exports.DiscordjsError = __nccwpck_require__(78846).DiscordjsError;
-exports.DiscordjsTypeError = __nccwpck_require__(78846).DiscordjsTypeError;
-exports.DiscordjsRangeError = __nccwpck_require__(78846).DiscordjsRangeError;
-exports.DiscordjsErrorCodes = __nccwpck_require__(29737);
+exports.DiscordjsError = __nccwpck_require__(62548).DiscordjsError;
+exports.DiscordjsTypeError = __nccwpck_require__(62548).DiscordjsTypeError;
+exports.DiscordjsRangeError = __nccwpck_require__(62548).DiscordjsRangeError;
+exports.DiscordjsErrorCodes = __nccwpck_require__(459);
 
 // Utilities
-exports.ActivityFlagsBitField = __nccwpck_require__(69655);
-exports.ApplicationFlagsBitField = __nccwpck_require__(13528);
-exports.AttachmentFlagsBitField = __nccwpck_require__(10235);
-exports.BaseManager = __nccwpck_require__(70714);
-exports.BitField = __nccwpck_require__(50449);
-exports.ChannelFlagsBitField = __nccwpck_require__(54407);
+exports.ActivityFlagsBitField = __nccwpck_require__(55433);
+exports.ApplicationFlagsBitField = __nccwpck_require__(67922);
+exports.AttachmentFlagsBitField = __nccwpck_require__(48877);
+exports.BaseManager = __nccwpck_require__(86780);
+exports.BitField = __nccwpck_require__(82267);
+exports.ChannelFlagsBitField = __nccwpck_require__(90913);
 exports.Collection = __nccwpck_require__(41514).Collection;
-exports.Constants = __nccwpck_require__(38855);
-exports.Colors = __nccwpck_require__(77836);
-__exportStar(__nccwpck_require__(9242), exports);
-exports.Events = __nccwpck_require__(69573);
-exports.Formatters = __nccwpck_require__(38300);
-exports.GuildMemberFlagsBitField = __nccwpck_require__(44777).GuildMemberFlagsBitField;
-exports.IntentsBitField = __nccwpck_require__(69156);
-exports.LimitedCollection = __nccwpck_require__(40464);
-exports.MessageFlagsBitField = __nccwpck_require__(51831);
-exports.Options = __nccwpck_require__(4264);
-exports.Partials = __nccwpck_require__(13238);
-exports.PermissionsBitField = __nccwpck_require__(92103);
-exports.RoleFlagsBitField = __nccwpck_require__(85068);
-exports.ShardEvents = __nccwpck_require__(99223);
-exports.SKUFlagsBitField = __nccwpck_require__(13533).SKUFlagsBitField;
-exports.Status = __nccwpck_require__(34714);
-exports.SnowflakeUtil = __nccwpck_require__(88062).DiscordSnowflake;
-exports.Sweepers = __nccwpck_require__(98312);
-exports.SystemChannelFlagsBitField = __nccwpck_require__(45902);
-exports.ThreadMemberFlagsBitField = __nccwpck_require__(18970);
-exports.UserFlagsBitField = __nccwpck_require__(27553);
-__exportStar(__nccwpck_require__(29800), exports);
-exports.WebSocketShardEvents = __nccwpck_require__(77524);
-exports.version = __nccwpck_require__(38276).version;
+exports.Constants = __nccwpck_require__(92645);
+exports.Colors = __nccwpck_require__(1874);
+exports.Events = __nccwpck_require__(88131);
+exports.Formatters = __nccwpck_require__(3061);
+exports.GuildMemberFlagsBitField = __nccwpck_require__(6971).GuildMemberFlagsBitField;
+exports.IntentsBitField = __nccwpck_require__(51142);
+exports.LimitedCollection = __nccwpck_require__(79826);
+exports.MessageFlagsBitField = __nccwpck_require__(35377);
+exports.Options = __nccwpck_require__(61710);
+exports.Partials = __nccwpck_require__(43056);
+exports.PermissionsBitField = __nccwpck_require__(57613);
+exports.RoleFlagsBitField = __nccwpck_require__(14550);
+exports.ShardEvents = __nccwpck_require__(69745);
+exports.SKUFlagsBitField = __nccwpck_require__(72107).SKUFlagsBitField;
+exports.Status = __nccwpck_require__(20852);
+exports.SnowflakeUtil = __nccwpck_require__(65681).DiscordSnowflake;
+exports.Sweepers = __nccwpck_require__(14610);
+exports.SystemChannelFlagsBitField = __nccwpck_require__(8024);
+exports.ThreadMemberFlagsBitField = __nccwpck_require__(22752);
+exports.UserFlagsBitField = __nccwpck_require__(26387);
+__exportStar(__nccwpck_require__(21754), exports);
+exports.WebSocketShardEvents = __nccwpck_require__(38090);
+exports.version = __nccwpck_require__(27638).version;
 
 // Managers
-exports.ApplicationCommandManager = __nccwpck_require__(2792);
-exports.ApplicationEmojiManager = __nccwpck_require__(97733);
-exports.ApplicationCommandPermissionsManager = __nccwpck_require__(8132);
-exports.AutoModerationRuleManager = __nccwpck_require__(41114);
-exports.BaseGuildEmojiManager = __nccwpck_require__(35539);
-exports.CachedManager = __nccwpck_require__(33011);
-exports.ChannelManager = __nccwpck_require__(92326);
-exports.ClientVoiceManager = __nccwpck_require__(38876);
-exports.DataManager = __nccwpck_require__(96905);
-exports.DMMessageManager = __nccwpck_require__(15629);
-exports.EntitlementManager = __nccwpck_require__(84766).EntitlementManager;
-exports.GuildApplicationCommandManager = __nccwpck_require__(27927);
-exports.GuildBanManager = __nccwpck_require__(10497);
-exports.GuildChannelManager = __nccwpck_require__(65299);
-exports.GuildEmojiManager = __nccwpck_require__(72960);
-exports.GuildEmojiRoleManager = __nccwpck_require__(16944);
-exports.GuildForumThreadManager = __nccwpck_require__(25477);
-exports.GuildInviteManager = __nccwpck_require__(46109);
-exports.GuildManager = __nccwpck_require__(27658);
-exports.GuildMemberManager = __nccwpck_require__(53968);
-exports.GuildMemberRoleManager = __nccwpck_require__(65280);
-exports.GuildMessageManager = __nccwpck_require__(42295);
-exports.GuildScheduledEventManager = __nccwpck_require__(38437);
-exports.GuildStickerManager = __nccwpck_require__(91691);
-exports.GuildTextThreadManager = __nccwpck_require__(60387);
-exports.MessageManager = __nccwpck_require__(35942);
-exports.PermissionOverwriteManager = __nccwpck_require__(91051);
-exports.PresenceManager = __nccwpck_require__(40334);
-exports.ReactionManager = __nccwpck_require__(54872);
-exports.ReactionUserManager = __nccwpck_require__(27889);
-exports.RoleManager = __nccwpck_require__(92949);
-exports.StageInstanceManager = __nccwpck_require__(2820);
-exports.SubscriptionManager = __nccwpck_require__(46114).SubscriptionManager;
-exports.ThreadManager = __nccwpck_require__(43113);
-exports.ThreadMemberManager = __nccwpck_require__(66675);
-exports.UserManager = __nccwpck_require__(45080);
-exports.VoiceStateManager = __nccwpck_require__(25200);
-exports.WebSocketManager = __nccwpck_require__(57571);
-exports.WebSocketShard = __nccwpck_require__(16808);
+exports.ApplicationCommandManager = __nccwpck_require__(37386);
+exports.ApplicationEmojiManager = __nccwpck_require__(14307);
+exports.ApplicationCommandPermissionsManager = __nccwpck_require__(42882);
+exports.AutoModerationRuleManager = __nccwpck_require__(66836);
+exports.BaseGuildEmojiManager = __nccwpck_require__(75873);
+exports.CachedManager = __nccwpck_require__(501);
+exports.ChannelManager = __nccwpck_require__(88280);
+exports.ClientVoiceManager = __nccwpck_require__(24510);
+exports.DataManager = __nccwpck_require__(26915);
+exports.DMMessageManager = __nccwpck_require__(38055);
+exports.EntitlementManager = __nccwpck_require__(58372).EntitlementManager;
+exports.GuildApplicationCommandManager = __nccwpck_require__(13377);
+exports.GuildBanManager = __nccwpck_require__(67271);
+exports.GuildChannelManager = __nccwpck_require__(44941);
+exports.GuildEmojiManager = __nccwpck_require__(25782);
+exports.GuildEmojiRoleManager = __nccwpck_require__(67574);
+exports.GuildForumThreadManager = __nccwpck_require__(59491);
+exports.GuildInviteManager = __nccwpck_require__(12127);
+exports.GuildManager = __nccwpck_require__(57892);
+exports.GuildMemberManager = __nccwpck_require__(66090);
+exports.GuildMemberRoleManager = __nccwpck_require__(78082);
+exports.GuildMessageManager = __nccwpck_require__(41641);
+exports.GuildScheduledEventManager = __nccwpck_require__(89415);
+exports.GuildSoundboardSoundManager = __nccwpck_require__(68328).GuildSoundboardSoundManager;
+exports.GuildStickerManager = __nccwpck_require__(99033);
+exports.GuildTextThreadManager = __nccwpck_require__(62993);
+exports.MessageManager = __nccwpck_require__(87128);
+exports.PermissionOverwriteManager = __nccwpck_require__(28041);
+exports.PresenceManager = __nccwpck_require__(55488);
+exports.ReactionManager = __nccwpck_require__(13546);
+exports.ReactionUserManager = __nccwpck_require__(57803);
+exports.RoleManager = __nccwpck_require__(87167);
+exports.StageInstanceManager = __nccwpck_require__(30746);
+exports.SubscriptionManager = __nccwpck_require__(61312).SubscriptionManager;
+exports.ThreadManager = __nccwpck_require__(47735);
+exports.ThreadMemberManager = __nccwpck_require__(76345);
+exports.UserManager = __nccwpck_require__(77330);
+exports.VoiceStateManager = __nccwpck_require__(21434);
+exports.WebSocketManager = __nccwpck_require__(14149);
+exports.WebSocketShard = __nccwpck_require__(26934);
 
 // Structures
-exports.ActionRow = __nccwpck_require__(16330);
-exports.ActionRowBuilder = __nccwpck_require__(41155);
-exports.Activity = __nccwpck_require__(3943).Activity;
-exports.AnonymousGuild = __nccwpck_require__(79798);
-exports.Application = __nccwpck_require__(61723);
-exports.ApplicationCommand = __nccwpck_require__(18065);
-exports.ApplicationEmoji = __nccwpck_require__(96474);
-exports.ApplicationRoleConnectionMetadata = __nccwpck_require__(79899).ApplicationRoleConnectionMetadata;
-exports.AutocompleteInteraction = __nccwpck_require__(44708);
-exports.AutoModerationActionExecution = __nccwpck_require__(35289);
-exports.AutoModerationRule = __nccwpck_require__(45899);
-exports.Base = __nccwpck_require__(94691);
-exports.BaseGuild = __nccwpck_require__(49628);
-exports.BaseGuildEmoji = __nccwpck_require__(72104);
-exports.BaseGuildTextChannel = __nccwpck_require__(15288);
-exports.BaseGuildVoiceChannel = __nccwpck_require__(98341);
-exports.ButtonBuilder = __nccwpck_require__(98439);
-exports.ButtonComponent = __nccwpck_require__(15279);
-exports.ButtonInteraction = __nccwpck_require__(79544);
-exports.CategoryChannel = __nccwpck_require__(835);
-exports.BaseChannel = __nccwpck_require__(16836).BaseChannel;
-exports.ChatInputCommandInteraction = __nccwpck_require__(35461);
-exports.ClientApplication = __nccwpck_require__(49495);
-exports.ClientPresence = __nccwpck_require__(21748);
-exports.ClientUser = __nccwpck_require__(86406);
-exports.CommandInteraction = __nccwpck_require__(33009);
-exports.Collector = __nccwpck_require__(66926);
-exports.CommandInteractionOptionResolver = __nccwpck_require__(99886);
-exports.Component = __nccwpck_require__(34091);
-exports.ContextMenuCommandInteraction = __nccwpck_require__(47891);
-exports.DMChannel = __nccwpck_require__(41898);
-exports.Embed = __nccwpck_require__(56341);
-exports.EmbedBuilder = __nccwpck_require__(63222);
-exports.Emoji = __nccwpck_require__(67034).Emoji;
-exports.Entitlement = __nccwpck_require__(91531).Entitlement;
-exports.ForumChannel = __nccwpck_require__(79302);
-exports.Guild = __nccwpck_require__(42219).Guild;
-exports.GuildAuditLogs = __nccwpck_require__(22743);
-exports.GuildAuditLogsEntry = __nccwpck_require__(7843);
-exports.GuildBan = __nccwpck_require__(85254);
-exports.GuildChannel = __nccwpck_require__(81340);
-exports.GuildEmoji = __nccwpck_require__(33253);
-exports.GuildMember = __nccwpck_require__(35985).GuildMember;
-exports.GuildOnboarding = __nccwpck_require__(82902).GuildOnboarding;
-exports.GuildOnboardingPrompt = __nccwpck_require__(32488).GuildOnboardingPrompt;
-exports.GuildOnboardingPromptOption = __nccwpck_require__(88633).GuildOnboardingPromptOption;
-exports.GuildPreview = __nccwpck_require__(69607);
-exports.GuildPreviewEmoji = __nccwpck_require__(42465);
-exports.GuildScheduledEvent = __nccwpck_require__(81390).GuildScheduledEvent;
-exports.GuildTemplate = __nccwpck_require__(73769);
-exports.Integration = __nccwpck_require__(18634);
-exports.IntegrationApplication = __nccwpck_require__(31114);
-exports.InteractionCallback = __nccwpck_require__(7447);
-exports.InteractionCallbackResource = __nccwpck_require__(66323);
-exports.InteractionCallbackResponse = __nccwpck_require__(65476);
-exports.BaseInteraction = __nccwpck_require__(76459);
-exports.InteractionCollector = __nccwpck_require__(2917);
-exports.InteractionResponse = __nccwpck_require__(97923);
-exports.InteractionWebhook = __nccwpck_require__(32927);
-exports.Invite = __nccwpck_require__(50491);
-exports.InviteStageInstance = __nccwpck_require__(49294);
-exports.InviteGuild = __nccwpck_require__(13860);
-exports.Message = __nccwpck_require__(25799).Message;
-exports.Attachment = __nccwpck_require__(65843);
-exports.AttachmentBuilder = __nccwpck_require__(80264);
-exports.ModalBuilder = __nccwpck_require__(78630);
-exports.MediaChannel = __nccwpck_require__(77417);
-exports.MessageCollector = __nccwpck_require__(80460);
-exports.MessageComponentInteraction = __nccwpck_require__(5006);
-exports.MessageContextMenuCommandInteraction = __nccwpck_require__(55960);
-exports.MessageMentions = __nccwpck_require__(88608);
-exports.MessagePayload = __nccwpck_require__(63185);
-exports.MessageReaction = __nccwpck_require__(66296);
-exports.ModalSubmitInteraction = __nccwpck_require__(22557);
-exports.ModalSubmitFields = __nccwpck_require__(17916);
-exports.NewsChannel = __nccwpck_require__(23542);
-exports.OAuth2Guild = __nccwpck_require__(64154);
-exports.PartialGroupDMChannel = __nccwpck_require__(62418);
-exports.PermissionOverwrites = __nccwpck_require__(97927);
-exports.Poll = __nccwpck_require__(67075).Poll;
-exports.PollAnswer = __nccwpck_require__(3345).PollAnswer;
-exports.Presence = __nccwpck_require__(3943).Presence;
-exports.ReactionCollector = __nccwpck_require__(39878);
-exports.ReactionEmoji = __nccwpck_require__(11239);
-exports.RichPresenceAssets = __nccwpck_require__(3943).RichPresenceAssets;
-exports.Role = __nccwpck_require__(53390).Role;
-exports.SelectMenuBuilder = __nccwpck_require__(97386);
-exports.ChannelSelectMenuBuilder = __nccwpck_require__(96753);
-exports.MentionableSelectMenuBuilder = __nccwpck_require__(14442);
-exports.RoleSelectMenuBuilder = __nccwpck_require__(37390);
-exports.StringSelectMenuBuilder = __nccwpck_require__(40533);
-exports.UserSelectMenuBuilder = __nccwpck_require__(35331);
-exports.BaseSelectMenuComponent = __nccwpck_require__(44081);
-exports.SelectMenuComponent = __nccwpck_require__(51350);
-exports.ChannelSelectMenuComponent = __nccwpck_require__(61333);
-exports.MentionableSelectMenuComponent = __nccwpck_require__(76598);
-exports.RoleSelectMenuComponent = __nccwpck_require__(66146);
-exports.StringSelectMenuComponent = __nccwpck_require__(63345);
-exports.UserSelectMenuComponent = __nccwpck_require__(28307);
-exports.SelectMenuInteraction = __nccwpck_require__(17505);
-exports.ChannelSelectMenuInteraction = __nccwpck_require__(542);
-exports.MentionableSelectMenuInteraction = __nccwpck_require__(62209);
-exports.MentionableSelectMenuInteraction = __nccwpck_require__(62209);
-exports.RoleSelectMenuInteraction = __nccwpck_require__(4229);
-exports.StringSelectMenuInteraction = __nccwpck_require__(58514);
-exports.UserSelectMenuInteraction = __nccwpck_require__(60036);
-exports.SelectMenuOptionBuilder = __nccwpck_require__(17589);
-exports.SKU = __nccwpck_require__(70905).SKU;
-exports.StringSelectMenuOptionBuilder = __nccwpck_require__(3786);
-exports.StageChannel = __nccwpck_require__(44767);
-exports.StageInstance = __nccwpck_require__(58217).StageInstance;
-exports.Subscription = __nccwpck_require__(91895).Subscription;
-exports.Sticker = __nccwpck_require__(95967).Sticker;
-exports.StickerPack = __nccwpck_require__(87626);
-exports.Team = __nccwpck_require__(67471);
-exports.TeamMember = __nccwpck_require__(72741);
-exports.TextChannel = __nccwpck_require__(35454);
-exports.TextInputBuilder = __nccwpck_require__(94794);
-exports.TextInputComponent = __nccwpck_require__(22262);
-exports.ThreadChannel = __nccwpck_require__(81251);
-exports.ThreadMember = __nccwpck_require__(69960);
-exports.ThreadOnlyChannel = __nccwpck_require__(78433);
-exports.Typing = __nccwpck_require__(47181);
-exports.User = __nccwpck_require__(2993);
-exports.UserContextMenuCommandInteraction = __nccwpck_require__(87262);
-exports.VoiceChannelEffect = __nccwpck_require__(91478);
-exports.VoiceChannel = __nccwpck_require__(4731);
-exports.VoiceRegion = __nccwpck_require__(16118);
-exports.VoiceState = __nccwpck_require__(87961);
-exports.Webhook = __nccwpck_require__(62509);
-exports.Widget = __nccwpck_require__(91042);
-exports.WidgetMember = __nccwpck_require__(67828);
-exports.WelcomeChannel = __nccwpck_require__(66297);
-exports.WelcomeScreen = __nccwpck_require__(19624);
+exports.ActionRow = __nccwpck_require__(7868);
+exports.ActionRowBuilder = __nccwpck_require__(67513);
+exports.Activity = __nccwpck_require__(88101).Activity;
+exports.AnonymousGuild = __nccwpck_require__(54236);
+exports.Application = __nccwpck_require__(45805);
+exports.ApplicationCommand = __nccwpck_require__(11159);
+exports.ApplicationEmoji = __nccwpck_require__(81068);
+exports.ApplicationRoleConnectionMetadata = __nccwpck_require__(22149).ApplicationRoleConnectionMetadata;
+exports.AutocompleteInteraction = __nccwpck_require__(12094);
+exports.AutoModerationActionExecution = __nccwpck_require__(16231);
+exports.AutoModerationRule = __nccwpck_require__(2593);
+exports.Base = __nccwpck_require__(7441);
+exports.BaseGuild = __nccwpck_require__(8506);
+exports.BaseGuildEmoji = __nccwpck_require__(30402);
+exports.BaseGuildTextChannel = __nccwpck_require__(45590);
+exports.BaseGuildVoiceChannel = __nccwpck_require__(56115);
+exports.ButtonBuilder = __nccwpck_require__(68653);
+exports.ButtonComponent = __nccwpck_require__(56921);
+exports.ButtonInteraction = __nccwpck_require__(13594);
+exports.CategoryChannel = __nccwpck_require__(3113);
+exports.BaseChannel = __nccwpck_require__(25234).BaseChannel;
+exports.ChatInputCommandInteraction = __nccwpck_require__(72119);
+exports.ClientApplication = __nccwpck_require__(56981);
+exports.ClientPresence = __nccwpck_require__(78282);
+exports.ClientUser = __nccwpck_require__(73172);
+exports.CommandInteraction = __nccwpck_require__(59343);
+exports.Collector = __nccwpck_require__(79840);
+exports.CommandInteractionOptionResolver = __nccwpck_require__(76676);
+exports.Component = __nccwpck_require__(72329);
+exports.ContainerComponent = __nccwpck_require__(44318);
+exports.ContextMenuCommandInteraction = __nccwpck_require__(37717);
+exports.DMChannel = __nccwpck_require__(18176);
+exports.Embed = __nccwpck_require__(68883);
+exports.EmbedBuilder = __nccwpck_require__(13864);
+exports.Emoji = __nccwpck_require__(79268).Emoji;
+exports.Entitlement = __nccwpck_require__(88237).Entitlement;
+exports.FileComponent = __nccwpck_require__(18559);
+exports.ForumChannel = __nccwpck_require__(37772);
+exports.Guild = __nccwpck_require__(27473).Guild;
+exports.GuildAuditLogs = __nccwpck_require__(37285);
+exports.GuildAuditLogsEntry = __nccwpck_require__(22797);
+exports.GuildBan = __nccwpck_require__(54096);
+exports.GuildChannel = __nccwpck_require__(31442);
+exports.GuildEmoji = __nccwpck_require__(67935);
+exports.GuildMember = __nccwpck_require__(10159).GuildMember;
+exports.GuildOnboarding = __nccwpck_require__(43640).GuildOnboarding;
+exports.GuildOnboardingPrompt = __nccwpck_require__(87058).GuildOnboardingPrompt;
+exports.GuildOnboardingPromptOption = __nccwpck_require__(92391).GuildOnboardingPromptOption;
+exports.GuildPreview = __nccwpck_require__(1973);
+exports.GuildPreviewEmoji = __nccwpck_require__(76979);
+exports.GuildScheduledEvent = __nccwpck_require__(82548).GuildScheduledEvent;
+exports.GuildTemplate = __nccwpck_require__(44439);
+exports.Integration = __nccwpck_require__(50264);
+exports.IntegrationApplication = __nccwpck_require__(67280);
+exports.InteractionCallback = __nccwpck_require__(78213);
+exports.InteractionCallbackResource = __nccwpck_require__(99245);
+exports.InteractionCallbackResponse = __nccwpck_require__(38486);
+exports.BaseInteraction = __nccwpck_require__(56881);
+exports.InteractionCollector = __nccwpck_require__(22683);
+exports.InteractionResponse = __nccwpck_require__(38125);
+exports.InteractionWebhook = __nccwpck_require__(69701);
+exports.Invite = __nccwpck_require__(33225);
+exports.InviteStageInstance = __nccwpck_require__(81816);
+exports.InviteGuild = __nccwpck_require__(30914);
+exports.Message = __nccwpck_require__(12053).Message;
+exports.Attachment = __nccwpck_require__(22217);
+exports.AttachmentBuilder = __nccwpck_require__(7234);
+exports.ModalBuilder = __nccwpck_require__(34856);
+exports.MediaChannel = __nccwpck_require__(76867);
+exports.MediaGalleryComponent = __nccwpck_require__(70095);
+exports.MediaGalleryItem = __nccwpck_require__(27369);
+exports.MessageCollector = __nccwpck_require__(48634);
+exports.MessageComponentInteraction = __nccwpck_require__(5044);
+exports.MessageContextMenuCommandInteraction = __nccwpck_require__(62970);
+exports.MessageMentions = __nccwpck_require__(1742);
+exports.MessagePayload = __nccwpck_require__(99143);
+exports.MessageReaction = __nccwpck_require__(40486);
+exports.ModalSubmitInteraction = __nccwpck_require__(61363);
+exports.ModalSubmitFields = __nccwpck_require__(92618);
+exports.NewsChannel = __nccwpck_require__(46464);
+exports.OAuth2Guild = __nccwpck_require__(68424);
+exports.PartialGroupDMChannel = __nccwpck_require__(76728);
+exports.PermissionOverwrites = __nccwpck_require__(86625);
+exports.Poll = __nccwpck_require__(37597).Poll;
+exports.PollAnswer = __nccwpck_require__(20667).PollAnswer;
+exports.Presence = __nccwpck_require__(88101).Presence;
+exports.ReactionCollector = __nccwpck_require__(19492);
+exports.ReactionEmoji = __nccwpck_require__(7449);
+exports.RichPresenceAssets = __nccwpck_require__(88101).RichPresenceAssets;
+exports.Role = __nccwpck_require__(7788).Role;
+exports.SectionComponent = __nccwpck_require__(72766);
+exports.SelectMenuBuilder = __nccwpck_require__(27072);
+exports.ChannelSelectMenuBuilder = __nccwpck_require__(911);
+exports.MentionableSelectMenuBuilder = __nccwpck_require__(80820);
+exports.RoleSelectMenuBuilder = __nccwpck_require__(99180);
+exports.StringSelectMenuBuilder = __nccwpck_require__(76011);
+exports.UserSelectMenuBuilder = __nccwpck_require__(32777);
+exports.BaseSelectMenuComponent = __nccwpck_require__(14771);
+exports.SelectMenuComponent = __nccwpck_require__(86200);
+exports.ChannelSelectMenuComponent = __nccwpck_require__(95591);
+exports.MentionableSelectMenuComponent = __nccwpck_require__(45524);
+exports.RoleSelectMenuComponent = __nccwpck_require__(8540);
+exports.StringSelectMenuComponent = __nccwpck_require__(81963);
+exports.UserSelectMenuComponent = __nccwpck_require__(46429);
+exports.SelectMenuInteraction = __nccwpck_require__(79651);
+exports.ChannelSelectMenuInteraction = __nccwpck_require__(1200);
+exports.MentionableSelectMenuInteraction = __nccwpck_require__(95399);
+exports.MentionableSelectMenuInteraction = __nccwpck_require__(95399);
+exports.RoleSelectMenuInteraction = __nccwpck_require__(52079);
+exports.StringSelectMenuInteraction = __nccwpck_require__(26972);
+exports.UserSelectMenuInteraction = __nccwpck_require__(31750);
+exports.SelectMenuOptionBuilder = __nccwpck_require__(13583);
+exports.SeparatorComponent = __nccwpck_require__(76030);
+exports.SKU = __nccwpck_require__(275).SKU;
+exports.SoundboardSound = __nccwpck_require__(39082).SoundboardSound;
+exports.StringSelectMenuOptionBuilder = __nccwpck_require__(6788);
+exports.StageChannel = __nccwpck_require__(15409);
+exports.StageInstance = __nccwpck_require__(51347).StageInstance;
+exports.Subscription = __nccwpck_require__(82097).Subscription;
+exports.Sticker = __nccwpck_require__(97633).Sticker;
+exports.StickerPack = __nccwpck_require__(25724);
+exports.Team = __nccwpck_require__(17941);
+exports.TeamMember = __nccwpck_require__(58979);
+exports.TextChannel = __nccwpck_require__(12548);
+exports.TextDisplayComponent = __nccwpck_require__(92818);
+exports.TextInputBuilder = __nccwpck_require__(24908);
+exports.TextInputComponent = __nccwpck_require__(29948);
+exports.ThreadChannel = __nccwpck_require__(1669);
+exports.ThreadMember = __nccwpck_require__(19642);
+exports.ThreadOnlyChannel = __nccwpck_require__(24339);
+exports.ThumbnailComponent = __nccwpck_require__(30699);
+exports.Typing = __nccwpck_require__(86219);
+exports.UnfurledMediaItem = __nccwpck_require__(61622);
+exports.User = __nccwpck_require__(40287);
+exports.UserContextMenuCommandInteraction = __nccwpck_require__(36960);
+exports.VoiceChannelEffect = __nccwpck_require__(70048);
+exports.VoiceChannel = __nccwpck_require__(56089);
+exports.VoiceRegion = __nccwpck_require__(8812);
+exports.VoiceState = __nccwpck_require__(68903);
+exports.Webhook = __nccwpck_require__(11683);
+exports.Widget = __nccwpck_require__(30048);
+exports.WidgetMember = __nccwpck_require__(70402);
+exports.WelcomeChannel = __nccwpck_require__(39095);
+exports.WelcomeScreen = __nccwpck_require__(25302);
 
 // External
-__exportStar(__nccwpck_require__(29244), exports);
-__exportStar(__nccwpck_require__(67951), exports);
-__exportStar(__nccwpck_require__(48871), exports);
-__exportStar(__nccwpck_require__(18447), exports);
+__exportStar(__nccwpck_require__(94104), exports);
+__exportStar(__nccwpck_require__(25722), exports);
+__exportStar(__nccwpck_require__(71188), exports);
+__exportStar(__nccwpck_require__(81374), exports);
 __exportStar(__nccwpck_require__(1004), exports);
-__exportStar(__nccwpck_require__(65914), exports);
+__exportStar(__nccwpck_require__(83952), exports);
 
 
 /***/ }),
 
-/***/ 2792:
+/***/ 37386:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { Collection } = __nccwpck_require__(41514);
-const { makeURLSearchParams } = __nccwpck_require__(18447);
+const { makeURLSearchParams } = __nccwpck_require__(81374);
 const { isJSONEncodable } = __nccwpck_require__(1004);
-const { Routes } = __nccwpck_require__(29244);
-const ApplicationCommandPermissionsManager = __nccwpck_require__(8132);
-const CachedManager = __nccwpck_require__(33011);
-const { DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(22097);
-const ApplicationCommand = __nccwpck_require__(18065);
-const PermissionsBitField = __nccwpck_require__(92103);
+const { Routes } = __nccwpck_require__(94104);
+const ApplicationCommandPermissionsManager = __nccwpck_require__(42882);
+const CachedManager = __nccwpck_require__(501);
+const { DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(6119);
+const ApplicationCommand = __nccwpck_require__(11159);
+const PermissionsBitField = __nccwpck_require__(57613);
 
 /**
  * Manages API methods for application commands and stores their cache.
@@ -22706,16 +24361,16 @@ module.exports = ApplicationCommandManager;
 
 /***/ }),
 
-/***/ 8132:
+/***/ 42882:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { Collection } = __nccwpck_require__(41514);
-const { ApplicationCommandPermissionType, RESTJSONErrorCodes, Routes } = __nccwpck_require__(29244);
-const BaseManager = __nccwpck_require__(70714);
-const { DiscordjsError, DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(22097);
+const { ApplicationCommandPermissionType, RESTJSONErrorCodes, Routes } = __nccwpck_require__(94104);
+const BaseManager = __nccwpck_require__(86780);
+const { DiscordjsError, DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(6119);
 
 /**
  * Manages API methods for permissions of Application Commands.
@@ -23142,18 +24797,18 @@ module.exports = ApplicationCommandPermissionsManager;
 
 /***/ }),
 
-/***/ 97733:
+/***/ 14307:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { Collection } = __nccwpck_require__(41514);
-const { Routes } = __nccwpck_require__(29244);
-const CachedManager = __nccwpck_require__(33011);
-const { DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(22097);
-const ApplicationEmoji = __nccwpck_require__(96474);
-const { resolveImage } = __nccwpck_require__(9242);
+const { Routes } = __nccwpck_require__(94104);
+const CachedManager = __nccwpck_require__(501);
+const { DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(6119);
+const ApplicationEmoji = __nccwpck_require__(81068);
+const { resolveImage } = __nccwpck_require__(80176);
 
 /**
  * Manages API methods for ApplicationEmojis and stores their cache.
@@ -23292,16 +24947,16 @@ module.exports = ApplicationEmojiManager;
 
 /***/ }),
 
-/***/ 41114:
+/***/ 66836:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { Collection } = __nccwpck_require__(41514);
-const { Routes } = __nccwpck_require__(29244);
-const CachedManager = __nccwpck_require__(33011);
-const AutoModerationRule = __nccwpck_require__(45899);
+const { Routes } = __nccwpck_require__(94104);
+const CachedManager = __nccwpck_require__(501);
+const AutoModerationRule = __nccwpck_require__(2593);
 
 /**
  * Manages API methods for auto moderation rules and stores their cache.
@@ -23592,17 +25247,17 @@ module.exports = AutoModerationRuleManager;
 
 /***/ }),
 
-/***/ 35539:
+/***/ 75873:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const CachedManager = __nccwpck_require__(33011);
-const ApplicationEmoji = __nccwpck_require__(96474);
-const GuildEmoji = __nccwpck_require__(33253);
-const ReactionEmoji = __nccwpck_require__(11239);
-const { parseEmoji } = __nccwpck_require__(29800);
+const CachedManager = __nccwpck_require__(501);
+const ApplicationEmoji = __nccwpck_require__(81068);
+const GuildEmoji = __nccwpck_require__(67935);
+const ReactionEmoji = __nccwpck_require__(7449);
+const { parseEmoji } = __nccwpck_require__(21754);
 
 /**
  * Holds methods to resolve GuildEmojis and stores their cache.
@@ -23685,7 +25340,7 @@ module.exports = BaseGuildEmojiManager;
 
 /***/ }),
 
-/***/ 70714:
+/***/ 86780:
 /***/ ((module) => {
 
 "use strict";
@@ -23712,14 +25367,14 @@ module.exports = BaseManager;
 
 /***/ }),
 
-/***/ 33011:
+/***/ 501:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const DataManager = __nccwpck_require__(96905);
-const { MakeCacheOverrideSymbol } = __nccwpck_require__(25379);
+const DataManager = __nccwpck_require__(26915);
+const { MakeCacheOverrideSymbol } = __nccwpck_require__(32049);
 
 /**
  * Manages the API methods of a data model with a mutable cache of instances.
@@ -23784,14 +25439,14 @@ module.exports = CachedManager;
 
 /***/ }),
 
-/***/ 86844:
+/***/ 7134:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const DataManager = __nccwpck_require__(96905);
-const GuildChannel = __nccwpck_require__(81340);
+const DataManager = __nccwpck_require__(26915);
+const GuildChannel = __nccwpck_require__(31442);
 
 /**
  * Manages API methods for CategoryChannels' children.
@@ -23871,19 +25526,19 @@ module.exports = CategoryChannelChildManager;
 
 /***/ }),
 
-/***/ 92326:
+/***/ 88280:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const process = __nccwpck_require__(1708);
-const { Routes } = __nccwpck_require__(29244);
-const CachedManager = __nccwpck_require__(33011);
-const { BaseChannel } = __nccwpck_require__(16836);
-const { createChannel } = __nccwpck_require__(96756);
-const { ThreadChannelTypes } = __nccwpck_require__(38855);
-const Events = __nccwpck_require__(69573);
+const { Routes } = __nccwpck_require__(94104);
+const CachedManager = __nccwpck_require__(501);
+const { BaseChannel } = __nccwpck_require__(25234);
+const { createChannel } = __nccwpck_require__(30966);
+const { ThreadChannelTypes } = __nccwpck_require__(92645);
+const Events = __nccwpck_require__(88131);
 
 let cacheWarningEmitted = false;
 
@@ -24007,13 +25662,13 @@ module.exports = ChannelManager;
 
 /***/ }),
 
-/***/ 15629:
+/***/ 38055:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const MessageManager = __nccwpck_require__(35942);
+const MessageManager = __nccwpck_require__(87128);
 
 /**
  * Manages API methods for messages in direct message channels and holds their cache.
@@ -24032,14 +25687,14 @@ module.exports = DMMessageManager;
 
 /***/ }),
 
-/***/ 96905:
+/***/ 26915:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const BaseManager = __nccwpck_require__(70714);
-const { DiscordjsError, ErrorCodes } = __nccwpck_require__(22097);
+const BaseManager = __nccwpck_require__(86780);
+const { DiscordjsError, ErrorCodes } = __nccwpck_require__(6119);
 
 /**
  * Manages the API methods of a data model along with a collection of instances.
@@ -24101,19 +25756,19 @@ module.exports = DataManager;
 
 /***/ }),
 
-/***/ 84766:
+/***/ 58372:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { Collection } = __nccwpck_require__(41514);
-const { makeURLSearchParams } = __nccwpck_require__(18447);
-const { Routes, EntitlementOwnerType } = __nccwpck_require__(29244);
-const CachedManager = __nccwpck_require__(33011);
-const { ErrorCodes, DiscordjsTypeError } = __nccwpck_require__(22097);
-const { Entitlement } = __nccwpck_require__(91531);
-const { resolveSKUId } = __nccwpck_require__(29800);
+const { makeURLSearchParams } = __nccwpck_require__(81374);
+const { Routes, EntitlementOwnerType } = __nccwpck_require__(94104);
+const CachedManager = __nccwpck_require__(501);
+const { ErrorCodes, DiscordjsTypeError } = __nccwpck_require__(6119);
+const { Entitlement } = __nccwpck_require__(88237);
+const { resolveSKUId } = __nccwpck_require__(21754);
 
 /**
  * Manages API methods for entitlements and stores their cache.
@@ -24283,14 +25938,14 @@ exports.EntitlementManager = EntitlementManager;
 
 /***/ }),
 
-/***/ 27927:
+/***/ 13377:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const ApplicationCommandManager = __nccwpck_require__(2792);
-const ApplicationCommandPermissionsManager = __nccwpck_require__(8132);
+const ApplicationCommandManager = __nccwpck_require__(37386);
+const ApplicationCommandPermissionsManager = __nccwpck_require__(42882);
 
 /**
  * An extension for guild-specific application commands.
@@ -24319,7 +25974,7 @@ module.exports = GuildApplicationCommandManager;
 
 /***/ }),
 
-/***/ 10497:
+/***/ 67271:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -24327,12 +25982,12 @@ module.exports = GuildApplicationCommandManager;
 
 const process = __nccwpck_require__(1708);
 const { Collection } = __nccwpck_require__(41514);
-const { makeURLSearchParams } = __nccwpck_require__(18447);
-const { Routes } = __nccwpck_require__(29244);
-const CachedManager = __nccwpck_require__(33011);
-const { DiscordjsTypeError, DiscordjsError, ErrorCodes } = __nccwpck_require__(22097);
-const GuildBan = __nccwpck_require__(85254);
-const { GuildMember } = __nccwpck_require__(35985);
+const { makeURLSearchParams } = __nccwpck_require__(81374);
+const { Routes } = __nccwpck_require__(94104);
+const CachedManager = __nccwpck_require__(501);
+const { DiscordjsTypeError, DiscordjsError, ErrorCodes } = __nccwpck_require__(6119);
+const GuildBan = __nccwpck_require__(54096);
+const { GuildMember } = __nccwpck_require__(10159);
 
 let deprecationEmittedForDeleteMessageDays = false;
 
@@ -24422,14 +26077,14 @@ class GuildBanManager extends CachedManager {
    *   .then(console.log)
    *   .catch(console.error);
    */
-  fetch(options) {
+  async fetch(options) {
     if (!options) return this._fetchMany();
     const { user, cache, force, limit, before, after } = options;
     const resolvedUser = this.client.users.resolveId(user ?? options);
     if (resolvedUser) return this._fetchSingle({ user: resolvedUser, cache, force });
 
     if (!before && !after && !limit && cache === undefined) {
-      return Promise.reject(new DiscordjsError(ErrorCodes.FetchBanResolveId));
+      throw new DiscordjsError(ErrorCodes.FetchBanResolveId);
     }
 
     return this._fetchMany(options);
@@ -24576,7 +26231,7 @@ module.exports = GuildBanManager;
 
 /***/ }),
 
-/***/ 65299:
+/***/ 44941:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -24584,19 +26239,19 @@ module.exports = GuildBanManager;
 
 const process = __nccwpck_require__(1708);
 const { Collection } = __nccwpck_require__(41514);
-const { ChannelType, Routes } = __nccwpck_require__(29244);
-const CachedManager = __nccwpck_require__(33011);
-const GuildTextThreadManager = __nccwpck_require__(60387);
-const { DiscordjsError, DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(22097);
-const GuildChannel = __nccwpck_require__(81340);
-const PermissionOverwrites = __nccwpck_require__(97927);
-const ThreadChannel = __nccwpck_require__(81251);
-const Webhook = __nccwpck_require__(62509);
-const ChannelFlagsBitField = __nccwpck_require__(54407);
-const { transformGuildForumTag, transformGuildDefaultReaction } = __nccwpck_require__(96756);
-const { ThreadChannelTypes } = __nccwpck_require__(38855);
-const { resolveImage } = __nccwpck_require__(9242);
-const { setPosition } = __nccwpck_require__(29800);
+const { ChannelType, Routes } = __nccwpck_require__(94104);
+const CachedManager = __nccwpck_require__(501);
+const GuildTextThreadManager = __nccwpck_require__(62993);
+const { DiscordjsError, DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(6119);
+const GuildChannel = __nccwpck_require__(31442);
+const PermissionOverwrites = __nccwpck_require__(86625);
+const ThreadChannel = __nccwpck_require__(1669);
+const Webhook = __nccwpck_require__(11683);
+const ChannelFlagsBitField = __nccwpck_require__(90913);
+const { transformGuildForumTag, transformGuildDefaultReaction } = __nccwpck_require__(30966);
+const { ThreadChannelTypes } = __nccwpck_require__(92645);
+const { resolveImage } = __nccwpck_require__(80176);
+const { setPosition } = __nccwpck_require__(21754);
 
 let cacheWarningEmitted = false;
 
@@ -25103,17 +26758,17 @@ module.exports = GuildChannelManager;
 
 /***/ }),
 
-/***/ 72960:
+/***/ 25782:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { Collection } = __nccwpck_require__(41514);
-const { Routes, PermissionFlagsBits } = __nccwpck_require__(29244);
-const BaseGuildEmojiManager = __nccwpck_require__(35539);
-const { DiscordjsError, DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(22097);
-const { resolveImage } = __nccwpck_require__(9242);
+const { Routes, PermissionFlagsBits } = __nccwpck_require__(94104);
+const BaseGuildEmojiManager = __nccwpck_require__(75873);
+const { DiscordjsError, DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(6119);
+const { resolveImage } = __nccwpck_require__(80176);
 
 /**
  * Manages API methods for GuildEmojis and stores their cache.
@@ -25285,16 +26940,16 @@ module.exports = GuildEmojiManager;
 
 /***/ }),
 
-/***/ 16944:
+/***/ 67574:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { Collection } = __nccwpck_require__(41514);
-const DataManager = __nccwpck_require__(96905);
-const { DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(22097);
-const { Role } = __nccwpck_require__(53390);
+const DataManager = __nccwpck_require__(26915);
+const { DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(6119);
+const { Role } = __nccwpck_require__(7788);
 
 /**
  * Manages API methods for roles belonging to emojis and stores their cache.
@@ -25330,14 +26985,14 @@ class GuildEmojiRoleManager extends DataManager {
    * @param {RoleResolvable|RoleResolvable[]|Collection<Snowflake, Role>} roleOrRoles The role or roles to add
    * @returns {Promise<GuildEmoji>}
    */
-  add(roleOrRoles) {
+  async add(roleOrRoles) {
     if (!Array.isArray(roleOrRoles) && !(roleOrRoles instanceof Collection)) roleOrRoles = [roleOrRoles];
 
     const resolvedRoles = [];
     for (const role of roleOrRoles.values()) {
       const resolvedRole = this.guild.roles.resolveId(role);
       if (!resolvedRole) {
-        return Promise.reject(new DiscordjsTypeError(ErrorCodes.InvalidElement, 'Array or Collection', 'roles', role));
+        throw new DiscordjsTypeError(ErrorCodes.InvalidElement, 'Array or Collection', 'roles', role);
       }
       resolvedRoles.push(resolvedRole);
     }
@@ -25351,14 +27006,14 @@ class GuildEmojiRoleManager extends DataManager {
    * @param {RoleResolvable|RoleResolvable[]|Collection<Snowflake, Role>} roleOrRoles The role or roles to remove
    * @returns {Promise<GuildEmoji>}
    */
-  remove(roleOrRoles) {
+  async remove(roleOrRoles) {
     if (!Array.isArray(roleOrRoles) && !(roleOrRoles instanceof Collection)) roleOrRoles = [roleOrRoles];
 
     const resolvedRoleIds = [];
     for (const role of roleOrRoles.values()) {
       const roleId = this.guild.roles.resolveId(role);
       if (!roleId) {
-        return Promise.reject(new DiscordjsTypeError(ErrorCodes.InvalidElement, 'Array or Collection', 'roles', role));
+        throw new DiscordjsTypeError(ErrorCodes.InvalidElement, 'Array or Collection', 'roles', role);
       }
       resolvedRoleIds.push(roleId);
     }
@@ -25411,16 +27066,16 @@ module.exports = GuildEmojiRoleManager;
 
 /***/ }),
 
-/***/ 25477:
+/***/ 59491:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { Routes } = __nccwpck_require__(29244);
-const ThreadManager = __nccwpck_require__(43113);
-const { DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(22097);
-const MessagePayload = __nccwpck_require__(63185);
+const { Routes } = __nccwpck_require__(94104);
+const ThreadManager = __nccwpck_require__(47735);
+const { DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(6119);
+const MessagePayload = __nccwpck_require__(99143);
 
 /**
  * Manages API methods for threads in forum channels and stores their cache.
@@ -25502,18 +27157,18 @@ module.exports = GuildForumThreadManager;
 
 /***/ }),
 
-/***/ 46109:
+/***/ 12127:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { Collection } = __nccwpck_require__(41514);
-const { Routes } = __nccwpck_require__(29244);
-const CachedManager = __nccwpck_require__(33011);
-const { DiscordjsError, ErrorCodes } = __nccwpck_require__(22097);
-const Invite = __nccwpck_require__(50491);
-const { resolveInviteCode } = __nccwpck_require__(9242);
+const { Routes } = __nccwpck_require__(94104);
+const CachedManager = __nccwpck_require__(501);
+const { DiscordjsError, ErrorCodes } = __nccwpck_require__(6119);
+const Invite = __nccwpck_require__(33225);
+const { resolveInviteCode } = __nccwpck_require__(80176);
 
 /**
  * Manages API methods for GuildInvites and stores their cache.
@@ -25629,22 +27284,22 @@ class GuildInviteManager extends CachedManager {
    *   .then(console.log)
    *   .catch(console.error);
    */
-  fetch(options) {
+  async fetch(options) {
     if (!options) return this._fetchMany();
     if (typeof options === 'string') {
       const code = resolveInviteCode(options);
-      if (!code) return Promise.reject(new DiscordjsError(ErrorCodes.InviteResolveCode));
+      if (!code) throw new DiscordjsError(ErrorCodes.InviteResolveCode);
       return this._fetchSingle({ code, cache: true });
     }
     if (!options.code) {
       if (options.channelId) {
         const id = this.guild.channels.resolveId(options.channelId);
-        if (!id) return Promise.reject(new DiscordjsError(ErrorCodes.GuildChannelResolve));
+        if (!id) throw new DiscordjsError(ErrorCodes.GuildChannelResolve);
         return this._fetchChannelMany(id, options.cache);
       }
 
       if ('cache' in options) return this._fetchMany(options.cache);
-      return Promise.reject(new DiscordjsError(ErrorCodes.InviteResolveCode));
+      throw new DiscordjsError(ErrorCodes.InviteResolveCode);
     }
     return this._fetchSingle({
       ...options,
@@ -25725,7 +27380,7 @@ module.exports = GuildInviteManager;
 
 /***/ }),
 
-/***/ 27658:
+/***/ 57892:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -25734,22 +27389,24 @@ module.exports = GuildInviteManager;
 const process = __nccwpck_require__(1708);
 const { setTimeout, clearTimeout } = __nccwpck_require__(87997);
 const { Collection } = __nccwpck_require__(41514);
-const { makeURLSearchParams } = __nccwpck_require__(18447);
-const { Routes, RouteBases } = __nccwpck_require__(29244);
-const CachedManager = __nccwpck_require__(33011);
-const ShardClientUtil = __nccwpck_require__(2573);
-const { Guild } = __nccwpck_require__(42219);
-const GuildChannel = __nccwpck_require__(81340);
-const GuildEmoji = __nccwpck_require__(33253);
-const { GuildMember } = __nccwpck_require__(35985);
-const Invite = __nccwpck_require__(50491);
-const OAuth2Guild = __nccwpck_require__(64154);
-const { Role } = __nccwpck_require__(53390);
-const { resolveImage } = __nccwpck_require__(9242);
-const Events = __nccwpck_require__(69573);
-const PermissionsBitField = __nccwpck_require__(92103);
-const SystemChannelFlagsBitField = __nccwpck_require__(45902);
-const { resolveColor } = __nccwpck_require__(29800);
+const { makeURLSearchParams } = __nccwpck_require__(81374);
+const { GatewayOpcodes, Routes, RouteBases } = __nccwpck_require__(94104);
+const CachedManager = __nccwpck_require__(501);
+const { ErrorCodes, DiscordjsError } = __nccwpck_require__(6119);
+const ShardClientUtil = __nccwpck_require__(65163);
+const { Guild } = __nccwpck_require__(27473);
+const GuildChannel = __nccwpck_require__(31442);
+const GuildEmoji = __nccwpck_require__(67935);
+const { GuildMember } = __nccwpck_require__(10159);
+const Invite = __nccwpck_require__(33225);
+const OAuth2Guild = __nccwpck_require__(68424);
+const { Role } = __nccwpck_require__(7788);
+const { resolveImage } = __nccwpck_require__(80176);
+const Events = __nccwpck_require__(88131);
+const PermissionsBitField = __nccwpck_require__(57613);
+const SystemChannelFlagsBitField = __nccwpck_require__(8024);
+const { _transformAPIIncidentsData } = __nccwpck_require__(86138);
+const { resolveColor } = __nccwpck_require__(21754);
 
 let cacheWarningEmitted = false;
 
@@ -26013,6 +27670,112 @@ class GuildManager extends CachedManager {
   }
 
   /**
+   * @typedef {Object} FetchSoundboardSoundsOptions
+   * @param {Snowflake[]} guildIds The ids of the guilds to fetch soundboard sounds for
+   * @param {number} [time=10_000] The timeout for receipt of the soundboard sounds
+   */
+
+  /**
+   * Fetches soundboard sounds for the specified guilds.
+   * @param {FetchSoundboardSoundsOptions} options The options for fetching soundboard sounds
+   * @returns {Promise<Collection<Snowflake, Collection<Snowflake, SoundboardSound>>>}
+   * @example
+   * // Fetch soundboard sounds for multiple guilds
+   * const soundboardSounds = await client.guilds.fetchSoundboardSounds({
+   *  guildIds: ['123456789012345678', '987654321098765432'],
+   * })
+   *
+   * console.log(soundboardSounds.get('123456789012345678'));
+   */
+  async fetchSoundboardSounds({ guildIds, time = 10_000 }) {
+    const shardCount = this.client.options.shardCount;
+    const shardIds = new Map();
+
+    for (const guildId of guildIds) {
+      const shardId = ShardClientUtil.shardIdForGuildId(guildId, shardCount);
+      const group = shardIds.get(shardId);
+
+      if (group) group.push(guildId);
+      else shardIds.set(shardId, [guildId]);
+    }
+
+    for (const [shardId, shardGuildIds] of shardIds) {
+      this.client.ws.shards.get(shardId).send({
+        op: GatewayOpcodes.RequestSoundboardSounds,
+        d: {
+          guild_ids: shardGuildIds,
+        },
+      });
+    }
+
+    return new Promise((resolve, reject) => {
+      const remainingGuildIds = new Set(guildIds);
+
+      const fetchedSoundboardSounds = new Collection();
+
+      const handler = (soundboardSounds, guild) => {
+        timeout.refresh();
+
+        if (!remainingGuildIds.has(guild.id)) return;
+
+        fetchedSoundboardSounds.set(guild.id, soundboardSounds);
+
+        remainingGuildIds.delete(guild.id);
+
+        if (remainingGuildIds.size === 0) {
+          clearTimeout(timeout);
+          this.client.removeListener(Events.SoundboardSounds, handler);
+          this.client.decrementMaxListeners();
+
+          resolve(fetchedSoundboardSounds);
+        }
+      };
+
+      const timeout = setTimeout(() => {
+        this.client.removeListener(Events.SoundboardSounds, handler);
+        this.client.decrementMaxListeners();
+        reject(new DiscordjsError(ErrorCodes.GuildSoundboardSoundsTimeout));
+      }, time).unref();
+
+      this.client.incrementMaxListeners();
+      this.client.on(Events.SoundboardSounds, handler);
+    });
+  }
+
+  /**
+   * Options used to set incident actions. Supplying `null` to any option will disable the action.
+   * @typedef {Object} IncidentActionsEditOptions
+   * @property {?DateResolvable} [invitesDisabledUntil] When invites should be enabled again
+   * @property {?DateResolvable} [dmsDisabledUntil] When direct messages should be enabled again
+   */
+
+  /**
+   * Sets the incident actions for a guild.
+   * @param {GuildResolvable} guild The guild
+   * @param {IncidentActionsEditOptions} incidentActions The incident actions to set
+   * @returns {Promise<IncidentActions>}
+   */
+  async setIncidentActions(guild, { invitesDisabledUntil, dmsDisabledUntil }) {
+    const guildId = this.resolveId(guild);
+
+    const data = await this.client.rest.put(Routes.guildIncidentActions(guildId), {
+      body: {
+        invites_disabled_until: invitesDisabledUntil && new Date(invitesDisabledUntil).toISOString(),
+        dms_disabled_until: dmsDisabledUntil && new Date(dmsDisabledUntil).toISOString(),
+      },
+    });
+
+    const parsedData = _transformAPIIncidentsData(data);
+    const resolvedGuild = this.resolve(guild);
+
+    if (resolvedGuild) {
+      resolvedGuild.incidentsData = parsedData;
+    }
+
+    return parsedData;
+  }
+
+  /**
    * Returns a URL for the PNG widget of a guild.
    * @param {GuildResolvable} guild The guild of the widget image
    * @param {GuildWidgetStyle} [style] The style for the widget image
@@ -26032,7 +27795,7 @@ module.exports = GuildManager;
 
 /***/ }),
 
-/***/ 53968:
+/***/ 66090:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -26040,17 +27803,17 @@ module.exports = GuildManager;
 
 const { setTimeout, clearTimeout } = __nccwpck_require__(87997);
 const { Collection } = __nccwpck_require__(41514);
-const { makeURLSearchParams } = __nccwpck_require__(18447);
-const { DiscordSnowflake } = __nccwpck_require__(88062);
-const { Routes, GatewayOpcodes } = __nccwpck_require__(29244);
-const CachedManager = __nccwpck_require__(33011);
-const { DiscordjsError, DiscordjsTypeError, DiscordjsRangeError, ErrorCodes } = __nccwpck_require__(22097);
-const BaseGuildVoiceChannel = __nccwpck_require__(98341);
-const { GuildMember } = __nccwpck_require__(35985);
-const { Role } = __nccwpck_require__(53390);
-const Events = __nccwpck_require__(69573);
-const { GuildMemberFlagsBitField } = __nccwpck_require__(44777);
-const Partials = __nccwpck_require__(13238);
+const { makeURLSearchParams } = __nccwpck_require__(81374);
+const { DiscordSnowflake } = __nccwpck_require__(65681);
+const { Routes, GatewayOpcodes } = __nccwpck_require__(94104);
+const CachedManager = __nccwpck_require__(501);
+const { DiscordjsError, DiscordjsTypeError, DiscordjsRangeError, ErrorCodes } = __nccwpck_require__(6119);
+const BaseGuildVoiceChannel = __nccwpck_require__(56115);
+const { GuildMember } = __nccwpck_require__(10159);
+const { Role } = __nccwpck_require__(7788);
+const Events = __nccwpck_require__(88131);
+const { GuildMemberFlagsBitField } = __nccwpck_require__(6971);
+const Partials = __nccwpck_require__(43056);
 
 /**
  * Manages API methods for GuildMembers and stores their cache.
@@ -26261,7 +28024,7 @@ class GuildMemberManager extends CachedManager {
     return this._add(data, cache);
   }
 
-  _fetchMany({
+  async _fetchMany({
     limit = 0,
     withPresences: presences,
     users,
@@ -26269,7 +28032,7 @@ class GuildMemberManager extends CachedManager {
     time = 120e3,
     nonce = DiscordSnowflake.generate().toString(),
   } = {}) {
-    if (nonce.length > 32) return Promise.reject(new DiscordjsRangeError(ErrorCodes.MemberFetchNonceLength));
+    if (nonce.length > 32) throw new DiscordjsRangeError(ErrorCodes.MemberFetchNonceLength);
 
     return new Promise((resolve, reject) => {
       if (!query && !users) query = '';
@@ -26499,7 +28262,7 @@ class GuildMemberManager extends CachedManager {
    */
   async kick(user, reason) {
     const id = this.client.users.resolveId(user);
-    if (!id) return Promise.reject(new DiscordjsTypeError(ErrorCodes.InvalidType, 'user', 'UserResolvable'));
+    if (!id) throw new DiscordjsTypeError(ErrorCodes.InvalidType, 'user', 'UserResolvable');
 
     await this.client.rest.delete(Routes.guildMember(this.guild.id, id), { reason });
 
@@ -26600,17 +28363,17 @@ module.exports = GuildMemberManager;
 
 /***/ }),
 
-/***/ 65280:
+/***/ 78082:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { Collection } = __nccwpck_require__(41514);
-const { Routes } = __nccwpck_require__(29244);
-const DataManager = __nccwpck_require__(96905);
-const { DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(22097);
-const { Role } = __nccwpck_require__(53390);
+const { Routes } = __nccwpck_require__(94104);
+const DataManager = __nccwpck_require__(26915);
+const { DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(6119);
+const { Role } = __nccwpck_require__(7788);
 
 /**
  * Manages API methods for roles of a GuildMember and stores their cache.
@@ -26816,13 +28579,13 @@ module.exports = GuildMemberRoleManager;
 
 /***/ }),
 
-/***/ 42295:
+/***/ 41641:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const MessageManager = __nccwpck_require__(35942);
+const MessageManager = __nccwpck_require__(87128);
 
 /**
  * Manages API methods for messages in a guild and holds their cache.
@@ -26841,20 +28604,20 @@ module.exports = GuildMessageManager;
 
 /***/ }),
 
-/***/ 38437:
+/***/ 89415:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { Collection } = __nccwpck_require__(41514);
-const { makeURLSearchParams } = __nccwpck_require__(18447);
-const { GuildScheduledEventEntityType, Routes } = __nccwpck_require__(29244);
-const CachedManager = __nccwpck_require__(33011);
-const { DiscordjsTypeError, DiscordjsError, ErrorCodes } = __nccwpck_require__(22097);
-const { GuildScheduledEvent } = __nccwpck_require__(81390);
-const { resolveImage } = __nccwpck_require__(9242);
-const { _transformGuildScheduledEventRecurrenceRule } = __nccwpck_require__(75008);
+const { makeURLSearchParams } = __nccwpck_require__(81374);
+const { GuildScheduledEventEntityType, Routes } = __nccwpck_require__(94104);
+const CachedManager = __nccwpck_require__(501);
+const { DiscordjsTypeError, DiscordjsError, ErrorCodes } = __nccwpck_require__(6119);
+const { GuildScheduledEvent } = __nccwpck_require__(82548);
+const { resolveImage } = __nccwpck_require__(80176);
+const { _transformGuildScheduledEventRecurrenceRule } = __nccwpck_require__(86138);
 
 /**
  * Manages API methods for GuildScheduledEvents and stores their cache.
@@ -26888,15 +28651,12 @@ class GuildScheduledEventManager extends CachedManager {
    * Options for setting a recurrence rule for a guild scheduled event.
    * @typedef {Object} GuildScheduledEventRecurrenceRuleOptions
    * @property {DateResolvable} startAt The time the recurrence rule interval starts at
-   * @property {?DateResolvable} endAt The time the recurrence rule interval ends at
    * @property {GuildScheduledEventRecurrenceRuleFrequency} frequency How often the event occurs
    * @property {number} interval The spacing between the events
    * @property {?GuildScheduledEventRecurrenceRuleWeekday[]} byWeekday The days within a week to recur on
    * @property {?GuildScheduledEventRecurrenceRuleNWeekday[]} byNWeekday The days within a week to recur on
    * @property {?GuildScheduledEventRecurrenceRuleMonth[]} byMonth The months to recur on
    * @property {?number[]} byMonthDay The days within a month to recur on
-   * @property {?number[]} byYearDay The days within a year to recur on
-   * @property {?number} count The total amount of times the event is allowed to recur before stopping
    */
 
   /**
@@ -27167,18 +28927,240 @@ module.exports = GuildScheduledEventManager;
 
 /***/ }),
 
-/***/ 91691:
+/***/ 68328:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+
+const { Collection } = __nccwpck_require__(41514);
+const { lazy } = __nccwpck_require__(1004);
+const { Routes } = __nccwpck_require__(94104);
+const CachedManager = __nccwpck_require__(501);
+const { DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(6119);
+const { SoundboardSound } = __nccwpck_require__(39082);
+const { resolveBase64, resolveFile } = __nccwpck_require__(80176);
+
+const fileTypeMime = lazy(() => (__nccwpck_require__(33224).filetypemime));
+
+/**
+ * Manages API methods for Soundboard Sounds and stores their cache.
+ * @extends {CachedManager}
+ */
+class GuildSoundboardSoundManager extends CachedManager {
+  constructor(guild, iterable) {
+    super(guild.client, SoundboardSound, iterable);
+
+    /**
+     * The guild this manager belongs to
+     * @type {Guild}
+     */
+    this.guild = guild;
+  }
+
+  /**
+   * The cache of Soundboard Sounds
+   * @type {Collection<Snowflake, SoundboardSound>}
+   * @name GuildSoundboardSoundManager#cache
+   */
+
+  _add(data, cache) {
+    return super._add(data, cache, { extras: [this.guild], id: data.sound_id });
+  }
+
+  /**
+   * Data that resolves to give a SoundboardSound object. This can be:
+   * * A SoundboardSound object
+   * * A Snowflake
+   * @typedef {SoundboardSound|Snowflake} SoundboardSoundResolvable
+   */
+
+  /**
+   * Resolves a SoundboardSoundResolvable to a SoundboardSound object.
+   * @method resolve
+   * @memberof GuildSoundboardSoundManager
+   * @instance
+   * @param {SoundboardSoundResolvable} soundboardSound The SoundboardSound resolvable to identify
+   * @returns {?SoundboardSound}
+   */
+
+  /**
+   * Resolves a {@link SoundboardSoundResolvable} to a {@link SoundboardSound} id.
+   * @param {SoundboardSoundResolvable} soundboardSound The soundboard sound resolvable to resolve
+   * @returns {?Snowflake}
+   */
+  resolveId(soundboardSound) {
+    if (soundboardSound instanceof this.holds) return soundboardSound.soundId;
+    if (typeof soundboardSound === 'string') return soundboardSound;
+    return null;
+  }
+
+  /**
+   * Options used to create a soundboard sound in a guild.
+   * @typedef {Object} GuildSoundboardSoundCreateOptions
+   * @property {BufferResolvable|Stream} file The file for the soundboard sound
+   * @property {string} name The name for the soundboard sound
+   * @property {string} [contentType] The content type for the soundboard sound file
+   * @property {number} [volume] The volume (a double) for the soundboard sound, from 0 (inclusive) to 1. Defaults to 1
+   * @property {Snowflake} [emojiId] The emoji id for the soundboard sound
+   * @property {string} [emojiName] The emoji name for the soundboard sound
+   * @property {string} [reason] The reason for creating the soundboard sound
+   */
+
+  /**
+   * Creates a new guild soundboard sound.
+   * @param {GuildSoundboardSoundCreateOptions} options Options for creating a guild soundboard sound
+   * @returns {Promise<SoundboardSound>} The created soundboard sound
+   * @example
+   * // Create a new soundboard sound from a file on your computer
+   * guild.soundboardSounds.create({ file: './sound.mp3', name: 'sound' })
+   *   .then(sound => console.log(`Created new soundboard sound with name ${sound.name}!`))
+   *   .catch(console.error);
+   */
+  async create({ contentType, emojiId, emojiName, file, name, reason, volume }) {
+    const resolvedFile = await resolveFile(file);
+
+    const resolvedContentType = contentType ?? resolvedFile.contentType ?? fileTypeMime()(resolvedFile.data)[0];
+
+    const sound = resolveBase64(resolvedFile.data, resolvedContentType);
+
+    const body = { emoji_id: emojiId, emoji_name: emojiName, name, sound, volume };
+
+    const soundboardSound = await this.client.rest.post(Routes.guildSoundboardSounds(this.guild.id), {
+      body,
+      reason,
+    });
+
+    return this._add(soundboardSound);
+  }
+
+  /**
+   * Data for editing a soundboard sound.
+   * @typedef {Object} GuildSoundboardSoundEditOptions
+   * @property {string} [name] The name of the soundboard sound
+   * @property {?number} [volume] The volume (a double) of the soundboard sound, from 0 (inclusive) to 1
+   * @property {?Snowflake} [emojiId] The emoji id of the soundboard sound
+   * @property {?string} [emojiName] The emoji name of the soundboard sound
+   * @property {string} [reason] The reason for editing the soundboard sound
+   */
+
+  /**
+   * Edits a soundboard sound.
+   * @param {SoundboardSoundResolvable} soundboardSound The soundboard sound to edit
+   * @param {GuildSoundboardSoundEditOptions} [options={}] The new data for the soundboard sound
+   * @returns {Promise<SoundboardSound>}
+   */
+  async edit(soundboardSound, options = {}) {
+    const soundId = this.resolveId(soundboardSound);
+
+    if (!soundId) throw new DiscordjsTypeError(ErrorCodes.InvalidType, 'soundboardSound', 'SoundboardSoundResolvable');
+
+    const { emojiId, emojiName, name, reason, volume } = options;
+
+    const body = { emoji_id: emojiId, emoji_name: emojiName, name, volume };
+
+    const data = await this.client.rest.patch(Routes.guildSoundboardSound(this.guild.id, soundId), {
+      body,
+      reason,
+    });
+
+    const existing = this.cache.get(soundId);
+
+    if (existing) {
+      const clone = existing._clone();
+
+      clone._patch(data);
+      return clone;
+    }
+
+    return this._add(data);
+  }
+
+  /**
+   * Deletes a soundboard sound.
+   * @param {SoundboardSoundResolvable} soundboardSound The soundboard sound to delete
+   * @param {string} [reason] Reason for deleting this soundboard sound
+   * @returns {Promise<void>}
+   */
+  async delete(soundboardSound, reason) {
+    const soundId = this.resolveId(soundboardSound);
+
+    if (!soundId) throw new DiscordjsTypeError(ErrorCodes.InvalidType, 'soundboardSound', 'SoundboardSoundResolvable');
+
+    await this.client.rest.delete(Routes.guildSoundboardSound(this.guild.id, soundId), { reason });
+  }
+
+  /**
+   * Options used to fetch a soundboard sound.
+   * @typedef {BaseFetchOptions} FetchSoundboardSoundOptions
+   * @property {SoundboardSoundResolvable} soundboardSound The soundboard sound to fetch
+   */
+
+  /**
+   * Options used to fetch soundboard sounds from Discord
+   * @typedef {Object} FetchGuildSoundboardSoundsOptions
+   * @property {boolean} [cache] Whether to cache the fetched soundboard sounds
+   */
+
+  /* eslint-disable max-len */
+  /**
+   * Obtains one or more soundboard sounds from Discord, or the soundboard sound cache if they're already available.
+   * @param {SoundboardSoundResolvable|FetchSoundboardSoundOptions|FetchGuildSoundboardSoundsOptions} [options] Options for fetching soundboard sound(s)
+   * @returns {Promise<SoundboardSound|Collection<Snowflake, SoundboardSound>>}
+   * @example
+   * // Fetch a single soundboard sound
+   * guild.soundboardSounds.fetch('222078108977594368')
+   *   .then(sound => console.log(`The soundboard sound name is: ${sound.name}`))
+   *   .catch(console.error);
+   * @example
+   * // Fetch all soundboard sounds from the guild
+   * guild.soundboardSounds.fetch()
+   *   .then(sounds => console.log(`There are ${sounds.size} soundboard sounds.`))
+   *   .catch(console.error);
+   */
+  /* eslint-enable max-len */
+  async fetch(options) {
+    if (!options) return this._fetchMany();
+    const { cache, force, soundboardSound } = options;
+    const resolvedSoundboardSound = this.resolveId(soundboardSound ?? options);
+    if (resolvedSoundboardSound) return this._fetchSingle({ cache, force, soundboardSound: resolvedSoundboardSound });
+    return this._fetchMany({ cache });
+  }
+
+  async _fetchSingle({ cache, force, soundboardSound } = {}) {
+    if (!force) {
+      const existing = this.cache.get(soundboardSound);
+      if (existing) return existing;
+    }
+
+    const data = await this.client.rest.get(Routes.guildSoundboardSound(this.guild.id, soundboardSound));
+    return this._add(data, cache);
+  }
+
+  async _fetchMany({ cache } = {}) {
+    const data = await this.client.rest.get(Routes.guildSoundboardSounds(this.guild.id));
+
+    return data.items.reduce((coll, sound) => coll.set(sound.sound_id, this._add(sound, cache)), new Collection());
+  }
+}
+
+exports.GuildSoundboardSoundManager = GuildSoundboardSoundManager;
+
+
+/***/ }),
+
+/***/ 99033:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { Collection } = __nccwpck_require__(41514);
-const { Routes } = __nccwpck_require__(29244);
-const CachedManager = __nccwpck_require__(33011);
-const { DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(22097);
-const MessagePayload = __nccwpck_require__(63185);
-const { Sticker } = __nccwpck_require__(95967);
+const { Routes } = __nccwpck_require__(94104);
+const CachedManager = __nccwpck_require__(501);
+const { DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(6119);
+const MessagePayload = __nccwpck_require__(99143);
+const { Sticker } = __nccwpck_require__(97633);
 
 /**
  * Manages API methods for Guild Stickers and stores their cache.
@@ -27357,15 +29339,15 @@ module.exports = GuildStickerManager;
 
 /***/ }),
 
-/***/ 60387:
+/***/ 62993:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { ChannelType, Routes } = __nccwpck_require__(29244);
-const ThreadManager = __nccwpck_require__(43113);
-const { DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(22097);
+const { ChannelType, Routes } = __nccwpck_require__(94104);
+const ThreadManager = __nccwpck_require__(47735);
+const { DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(6119);
 
 /**
  * Manages API methods for {@link ThreadChannel} objects and stores their cache.
@@ -27456,21 +29438,21 @@ module.exports = GuildTextThreadManager;
 
 /***/ }),
 
-/***/ 35942:
+/***/ 87128:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { Collection } = __nccwpck_require__(41514);
-const { makeURLSearchParams } = __nccwpck_require__(18447);
-const { Routes } = __nccwpck_require__(29244);
-const CachedManager = __nccwpck_require__(33011);
-const { DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(22097);
-const { Message } = __nccwpck_require__(25799);
-const MessagePayload = __nccwpck_require__(63185);
-const { MakeCacheOverrideSymbol } = __nccwpck_require__(25379);
-const { resolvePartialEmoji } = __nccwpck_require__(29800);
+const { makeURLSearchParams } = __nccwpck_require__(81374);
+const { Routes } = __nccwpck_require__(94104);
+const CachedManager = __nccwpck_require__(501);
+const { DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(6119);
+const { Message } = __nccwpck_require__(12053);
+const MessagePayload = __nccwpck_require__(99143);
+const { MakeCacheOverrideSymbol } = __nccwpck_require__(32049);
+const { resolvePartialEmoji } = __nccwpck_require__(21754);
 
 /**
  * Manages API methods for Messages and holds their cache.
@@ -27765,13 +29747,13 @@ module.exports = MessageManager;
 
 /***/ }),
 
-/***/ 81949:
+/***/ 3431:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const MessageManager = __nccwpck_require__(35942);
+const MessageManager = __nccwpck_require__(87128);
 
 /**
  * Manages API methods for messages in group direct message channels and holds their cache.
@@ -27790,7 +29772,7 @@ module.exports = PartialGroupDMMessageManager;
 
 /***/ }),
 
-/***/ 91051:
+/***/ 28041:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -27798,11 +29780,11 @@ module.exports = PartialGroupDMMessageManager;
 
 const process = __nccwpck_require__(1708);
 const { Collection } = __nccwpck_require__(41514);
-const { OverwriteType, Routes } = __nccwpck_require__(29244);
-const CachedManager = __nccwpck_require__(33011);
-const { DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(22097);
-const PermissionOverwrites = __nccwpck_require__(97927);
-const { Role } = __nccwpck_require__(53390);
+const { OverwriteType, Routes } = __nccwpck_require__(94104);
+const CachedManager = __nccwpck_require__(501);
+const { DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(6119);
+const PermissionOverwrites = __nccwpck_require__(86625);
+const { Role } = __nccwpck_require__(7788);
 
 let cacheWarningEmitted = false;
 
@@ -27858,15 +29840,13 @@ class PermissionOverwriteManager extends CachedManager {
    *   },
    * ], 'Needed to change permissions');
    */
-  set(overwrites, reason) {
+  async set(overwrites, reason) {
     if (!Array.isArray(overwrites) && !(overwrites instanceof Collection)) {
-      return Promise.reject(
-        new DiscordjsTypeError(
-          ErrorCodes.InvalidType,
-          'overwrites',
-          'Array or Collection of Permission Overwrites',
-          true,
-        ),
+      throw new DiscordjsTypeError(
+        ErrorCodes.InvalidType,
+        'overwrites',
+        'Array or Collection of Permission Overwrites',
+        true,
       );
     }
     return this.channel.edit({ permissionOverwrites: overwrites, reason });
@@ -27966,14 +29946,14 @@ module.exports = PermissionOverwriteManager;
 
 /***/ }),
 
-/***/ 40334:
+/***/ 55488:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const CachedManager = __nccwpck_require__(33011);
-const { Presence } = __nccwpck_require__(3943);
+const CachedManager = __nccwpck_require__(501);
+const { Presence } = __nccwpck_require__(88101);
 
 /**
  * Manages API methods for Presences and holds their cache.
@@ -28032,15 +30012,15 @@ module.exports = PresenceManager;
 
 /***/ }),
 
-/***/ 54872:
+/***/ 13546:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { Routes } = __nccwpck_require__(29244);
-const CachedManager = __nccwpck_require__(33011);
-const MessageReaction = __nccwpck_require__(66296);
+const { Routes } = __nccwpck_require__(94104);
+const CachedManager = __nccwpck_require__(501);
+const MessageReaction = __nccwpck_require__(40486);
 
 /**
  * Manages API methods for reactions and holds their cache.
@@ -28108,18 +30088,18 @@ module.exports = ReactionManager;
 
 /***/ }),
 
-/***/ 27889:
+/***/ 57803:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { Collection } = __nccwpck_require__(41514);
-const { makeURLSearchParams } = __nccwpck_require__(18447);
-const { ReactionType, Routes } = __nccwpck_require__(29244);
-const CachedManager = __nccwpck_require__(33011);
-const { DiscordjsError, ErrorCodes } = __nccwpck_require__(22097);
-const User = __nccwpck_require__(2993);
+const { makeURLSearchParams } = __nccwpck_require__(81374);
+const { ReactionType, Routes } = __nccwpck_require__(94104);
+const CachedManager = __nccwpck_require__(501);
+const { DiscordjsError, ErrorCodes } = __nccwpck_require__(6119);
+const User = __nccwpck_require__(40287);
 
 /**
  * Manages API methods for users who reacted to a reaction and stores their cache.
@@ -28194,7 +30174,7 @@ module.exports = ReactionUserManager;
 
 /***/ }),
 
-/***/ 92949:
+/***/ 87167:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -28202,14 +30182,14 @@ module.exports = ReactionUserManager;
 
 const process = __nccwpck_require__(1708);
 const { Collection } = __nccwpck_require__(41514);
-const { DiscordAPIError } = __nccwpck_require__(18447);
-const { RESTJSONErrorCodes, Routes } = __nccwpck_require__(29244);
-const CachedManager = __nccwpck_require__(33011);
-const { DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(22097);
-const { Role } = __nccwpck_require__(53390);
-const { resolveImage } = __nccwpck_require__(9242);
-const PermissionsBitField = __nccwpck_require__(92103);
-const { setPosition, resolveColor } = __nccwpck_require__(29800);
+const { DiscordAPIError } = __nccwpck_require__(81374);
+const { RESTJSONErrorCodes, Routes } = __nccwpck_require__(94104);
+const CachedManager = __nccwpck_require__(501);
+const { DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(6119);
+const { Role } = __nccwpck_require__(7788);
+const { resolveImage } = __nccwpck_require__(80176);
+const PermissionsBitField = __nccwpck_require__(57613);
+const { setPosition, resolveColor } = __nccwpck_require__(21754);
 
 let cacheWarningEmitted = false;
 
@@ -28576,16 +30556,16 @@ module.exports = RoleManager;
 
 /***/ }),
 
-/***/ 2820:
+/***/ 30746:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { Routes } = __nccwpck_require__(29244);
-const CachedManager = __nccwpck_require__(33011);
-const { DiscordjsTypeError, DiscordjsError, ErrorCodes } = __nccwpck_require__(22097);
-const { StageInstance } = __nccwpck_require__(58217);
+const { Routes } = __nccwpck_require__(94104);
+const CachedManager = __nccwpck_require__(501);
+const { DiscordjsTypeError, DiscordjsError, ErrorCodes } = __nccwpck_require__(6119);
+const { StageInstance } = __nccwpck_require__(51347);
 
 /**
  * Manages API methods for {@link StageInstance} objects and holds their cache.
@@ -28743,19 +30723,19 @@ module.exports = StageInstanceManager;
 
 /***/ }),
 
-/***/ 46114:
+/***/ 61312:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { Collection } = __nccwpck_require__(41514);
-const { makeURLSearchParams } = __nccwpck_require__(18447);
-const { Routes } = __nccwpck_require__(29244);
-const CachedManager = __nccwpck_require__(33011);
-const { DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(22097);
-const { Subscription } = __nccwpck_require__(91895);
-const { resolveSKUId } = __nccwpck_require__(29800);
+const { makeURLSearchParams } = __nccwpck_require__(81374);
+const { Routes } = __nccwpck_require__(94104);
+const CachedManager = __nccwpck_require__(501);
+const { DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(6119);
+const { Subscription } = __nccwpck_require__(82097);
+const { resolveSKUId } = __nccwpck_require__(21754);
 
 /**
  * Manages API methods for subscriptions and stores their cache.
@@ -28832,19 +30812,19 @@ exports.SubscriptionManager = SubscriptionManager;
 
 /***/ }),
 
-/***/ 43113:
+/***/ 47735:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { Collection } = __nccwpck_require__(41514);
-const { makeURLSearchParams } = __nccwpck_require__(18447);
-const { Routes } = __nccwpck_require__(29244);
-const CachedManager = __nccwpck_require__(33011);
-const { DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(22097);
-const ThreadChannel = __nccwpck_require__(81251);
-const { MakeCacheOverrideSymbol } = __nccwpck_require__(25379);
+const { makeURLSearchParams } = __nccwpck_require__(81374);
+const { Routes } = __nccwpck_require__(94104);
+const CachedManager = __nccwpck_require__(501);
+const { DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(6119);
+const ThreadChannel = __nccwpck_require__(1669);
+const { MakeCacheOverrideSymbol } = __nccwpck_require__(32049);
 
 /**
  * Manages API methods for thread-based channels and stores their cache.
@@ -28935,7 +30915,7 @@ class ThreadManager extends CachedManager {
    * Data that can be resolved to a Date object. This can be:
    * * A Date object
    * * A number representing a timestamp
-   * * An [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) string
+   * * An {@link https://en.wikipedia.org/wiki/ISO_8601 ISO 8601} string
    * @typedef {Date|number|string} DateResolvable
    */
 
@@ -29033,7 +31013,7 @@ module.exports = ThreadManager;
 
 /***/ }),
 
-/***/ 66675:
+/***/ 76345:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -29041,12 +31021,12 @@ module.exports = ThreadManager;
 
 const process = __nccwpck_require__(1708);
 const { Collection } = __nccwpck_require__(41514);
-const { makeURLSearchParams } = __nccwpck_require__(18447);
-const { Routes } = __nccwpck_require__(29244);
-const CachedManager = __nccwpck_require__(33011);
-const { DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(22097);
-const ThreadMember = __nccwpck_require__(69960);
-const { emitDeprecationWarningForRemoveThreadMember } = __nccwpck_require__(29800);
+const { makeURLSearchParams } = __nccwpck_require__(81374);
+const { Routes } = __nccwpck_require__(94104);
+const CachedManager = __nccwpck_require__(501);
+const { DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(6119);
+const ThreadMember = __nccwpck_require__(19642);
+const { emitDeprecationWarningForRemoveThreadMember } = __nccwpck_require__(21754);
 
 let deprecationEmittedForAdd = false;
 
@@ -29245,20 +31225,20 @@ module.exports = ThreadMemberManager;
 
 /***/ }),
 
-/***/ 45080:
+/***/ 77330:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { ChannelType, Routes } = __nccwpck_require__(29244);
-const CachedManager = __nccwpck_require__(33011);
-const { DiscordjsError, ErrorCodes } = __nccwpck_require__(22097);
-const { GuildMember } = __nccwpck_require__(35985);
-const { Message } = __nccwpck_require__(25799);
-const ThreadMember = __nccwpck_require__(69960);
-const User = __nccwpck_require__(2993);
-const { emitDeprecationWarningForUserFetchFlags } = __nccwpck_require__(29800);
+const { ChannelType, Routes } = __nccwpck_require__(94104);
+const CachedManager = __nccwpck_require__(501);
+const { DiscordjsError, ErrorCodes } = __nccwpck_require__(6119);
+const { GuildMember } = __nccwpck_require__(10159);
+const { Message } = __nccwpck_require__(12053);
+const ThreadMember = __nccwpck_require__(19642);
+const User = __nccwpck_require__(40287);
+const { emitDeprecationWarningForUserFetchFlags } = __nccwpck_require__(21754);
 
 /**
  * Manages API methods for users and stores their cache.
@@ -29399,15 +31379,15 @@ module.exports = UserManager;
 
 /***/ }),
 
-/***/ 25200:
+/***/ 21434:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { Routes } = __nccwpck_require__(29244);
-const CachedManager = __nccwpck_require__(33011);
-const VoiceState = __nccwpck_require__(87961);
+const { Routes } = __nccwpck_require__(94104);
+const CachedManager = __nccwpck_require__(501);
+const VoiceState = __nccwpck_require__(68903);
 
 /**
  * Manages API methods for VoiceStates and stores their cache.
@@ -29466,7 +31446,7 @@ module.exports = VoiceStateManager;
 
 /***/ }),
 
-/***/ 36734:
+/***/ 74540:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -29478,9 +31458,9 @@ const process = __nccwpck_require__(1708);
 const { setTimeout, clearTimeout } = __nccwpck_require__(87997);
 const { setTimeout: sleep } = __nccwpck_require__(58500);
 const { SHARE_ENV } = __nccwpck_require__(75919);
-const { DiscordjsError, ErrorCodes } = __nccwpck_require__(22097);
-const ShardEvents = __nccwpck_require__(99223);
-const { makeError, makePlainError } = __nccwpck_require__(29800);
+const { DiscordjsError, ErrorCodes } = __nccwpck_require__(6119);
+const ShardEvents = __nccwpck_require__(69745);
+const { makeError, makePlainError } = __nccwpck_require__(21754);
 
 let childProcess = null;
 let Worker = null;
@@ -29592,7 +31572,7 @@ class Shard extends EventEmitter {
    * before resolving (`-1` or `Infinity` for no wait)
    * @returns {Promise<ChildProcess>}
    */
-  spawn(timeout = 30_000) {
+  async spawn(timeout = 30_000) {
     if (this.process) throw new DiscordjsError(ErrorCodes.ShardingProcessExists, this.id);
     if (this.worker) throw new DiscordjsError(ErrorCodes.ShardingWorkerExists, this.id);
 
@@ -29633,7 +31613,7 @@ class Shard extends EventEmitter {
      */
     this.emit(ShardEvents.Spawn, child);
 
-    if (timeout === -1 || timeout === Infinity) return Promise.resolve(child);
+    if (timeout === -1 || timeout === Infinity) return child;
     return new Promise((resolve, reject) => {
       const cleanup = () => {
         clearTimeout(spawnTimeoutTimer);
@@ -29732,10 +31712,10 @@ class Shard extends EventEmitter {
    *   .then(count => console.log(`${count} guilds in shard ${shard.id}`))
    *   .catch(console.error);
    */
-  fetchClientValue(prop) {
+  async fetchClientValue(prop) {
     // Shard is dead (maybe respawning), don't cache anything and error immediately
     if (!this.process && !this.worker) {
-      return Promise.reject(new DiscordjsError(ErrorCodes.ShardingNoChildExists, this.id));
+      throw new DiscordjsError(ErrorCodes.ShardingNoChildExists, this.id);
     }
 
     // Cached promise from previous call
@@ -29774,13 +31754,13 @@ class Shard extends EventEmitter {
    * @param {*} [context] The context for the eval
    * @returns {Promise<*>} Result of the script execution
    */
-  eval(script, context) {
+  async eval(script, context) {
     // Stringify the script if it's a Function
     const _eval = typeof script === 'function' ? `(${script})(this, ${JSON.stringify(context)})` : script;
 
     // Shard is dead (maybe respawning), don't cache anything and error immediately
     if (!this.process && !this.worker) {
-      return Promise.reject(new DiscordjsError(ErrorCodes.ShardingNoChildExists, this.id));
+      throw new DiscordjsError(ErrorCodes.ShardingNoChildExists, this.id);
     }
 
     // Cached promise from previous call
@@ -29956,7 +31936,7 @@ module.exports = Shard;
 
 /***/ }),
 
-/***/ 2573:
+/***/ 65163:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -29964,9 +31944,9 @@ module.exports = Shard;
 
 const process = __nccwpck_require__(1708);
 const { calculateShardId } = __nccwpck_require__(1004);
-const { DiscordjsError, DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(22097);
-const Events = __nccwpck_require__(69573);
-const { makeError, makePlainError } = __nccwpck_require__(29800);
+const { DiscordjsError, DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(6119);
+const Events = __nccwpck_require__(88131);
+const { makeError, makePlainError } = __nccwpck_require__(21754);
 
 /**
  * Helper class for sharded clients spawned as a child process/worker, such as from a {@link ShardingManager}.
@@ -30187,7 +32167,8 @@ class ShardClientUtil {
        * Emitted when the client encounters an error.
        * <warn>Errors thrown within this event do not have a catch handler, it is
        * recommended to not use async functions as `error` event handlers. See the
-       * [Node.js docs](https://nodejs.org/api/events.html#capture-rejections-of-promises) for details.</warn>
+       * {@link https://nodejs.org/api/events.html#capture-rejections-of-promises Node.js documentation}
+       * for details.)</warn>
        * @event Client#error
        * @param {Error} error The error encountered
        */
@@ -30255,7 +32236,7 @@ module.exports = ShardClientUtil;
 
 /***/ }),
 
-/***/ 36741:
+/***/ 215:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -30267,9 +32248,9 @@ const path = __nccwpck_require__(76760);
 const process = __nccwpck_require__(1708);
 const { setTimeout: sleep } = __nccwpck_require__(58500);
 const { Collection } = __nccwpck_require__(41514);
-const Shard = __nccwpck_require__(36734);
-const { DiscordjsError, DiscordjsTypeError, DiscordjsRangeError, ErrorCodes } = __nccwpck_require__(22097);
-const { fetchRecommendedShardCount } = __nccwpck_require__(29800);
+const Shard = __nccwpck_require__(74540);
+const { DiscordjsError, DiscordjsTypeError, DiscordjsRangeError, ErrorCodes } = __nccwpck_require__(6119);
+const { fetchRecommendedShardCount } = __nccwpck_require__(21754);
 
 /**
  * This is a utility class that makes multi-process sharding of a bot an easy and painless experience.
@@ -30517,9 +32498,9 @@ class ShardingManager extends EventEmitter {
    * @param {BroadcastEvalOptions} [options={}] The options for the broadcast
    * @returns {Promise<*|Array<*>>} Results of the script execution
    */
-  broadcastEval(script, options = {}) {
+  async broadcastEval(script, options = {}) {
     if (typeof script !== 'function') {
-      return Promise.reject(new DiscordjsTypeError(ErrorCodes.ShardingInvalidEvalBroadcast));
+      throw new DiscordjsTypeError(ErrorCodes.ShardingInvalidEvalBroadcast);
     }
     return this._performOnShards('eval', [`(${script})(this, ${JSON.stringify(options.context)})`], options.shard);
   }
@@ -30546,16 +32527,16 @@ class ShardingManager extends EventEmitter {
    * @returns {Promise<*|Array<*>>} Results of the method execution
    * @private
    */
-  _performOnShards(method, args, shard) {
-    if (this.shards.size === 0) return Promise.reject(new DiscordjsError(ErrorCodes.ShardingNoShards));
+  async _performOnShards(method, args, shard) {
+    if (this.shards.size === 0) throw new DiscordjsError(ErrorCodes.ShardingNoShards);
 
     if (typeof shard === 'number') {
       if (this.shards.has(shard)) return this.shards.get(shard)[method](...args);
-      return Promise.reject(new DiscordjsError(ErrorCodes.ShardingShardNotFound, shard));
+      throw new DiscordjsError(ErrorCodes.ShardingShardNotFound, shard);
     }
 
     if (this.shards.size !== this.shardList.length) {
-      return Promise.reject(new DiscordjsError(ErrorCodes.ShardingInProcess));
+      throw new DiscordjsError(ErrorCodes.ShardingInProcess);
     }
 
     const promises = [];
@@ -30594,7 +32575,7 @@ module.exports = ShardingManager;
 
 /***/ }),
 
-/***/ 16330:
+/***/ 7868:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -30602,8 +32583,8 @@ module.exports = ShardingManager;
 
 const { deprecate } = __nccwpck_require__(57975);
 const { isJSONEncodable } = __nccwpck_require__(1004);
-const Component = __nccwpck_require__(34091);
-const { createComponent } = __nccwpck_require__(44872);
+const Component = __nccwpck_require__(72329);
+const { createComponent } = __nccwpck_require__(76506);
 
 /**
  * Represents an action row
@@ -30648,16 +32629,16 @@ module.exports = ActionRow;
 
 /***/ }),
 
-/***/ 41155:
+/***/ 67513:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { ActionRowBuilder: BuildersActionRow } = __nccwpck_require__(67951);
+const { ActionRowBuilder: BuildersActionRow } = __nccwpck_require__(25722);
 const { isJSONEncodable } = __nccwpck_require__(1004);
-const { createComponentBuilder } = __nccwpck_require__(44872);
-const { toSnakeCase } = __nccwpck_require__(75008);
+const { createComponentBuilder } = __nccwpck_require__(76506);
+const { toSnakeCase } = __nccwpck_require__(86138);
 
 /**
  * Represents an action row builder.
@@ -30691,13 +32672,13 @@ module.exports = ActionRowBuilder;
 
 /***/ }),
 
-/***/ 79798:
+/***/ 54236:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const BaseGuild = __nccwpck_require__(49628);
+const BaseGuild = __nccwpck_require__(8506);
 
 /**
  * Bundles common attributes and methods between {@link Guild} and {@link InviteGuild}
@@ -30796,18 +32777,18 @@ module.exports = AnonymousGuild;
 
 /***/ }),
 
-/***/ 18065:
+/***/ 11159:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { DiscordSnowflake } = __nccwpck_require__(88062);
-const { ApplicationCommandOptionType } = __nccwpck_require__(29244);
+const { DiscordSnowflake } = __nccwpck_require__(65681);
+const { ApplicationCommandOptionType } = __nccwpck_require__(94104);
 const isEqual = __nccwpck_require__(4711);
-const Base = __nccwpck_require__(94691);
-const ApplicationCommandPermissionsManager = __nccwpck_require__(8132);
-const PermissionsBitField = __nccwpck_require__(92103);
+const Base = __nccwpck_require__(7441);
+const ApplicationCommandPermissionsManager = __nccwpck_require__(42882);
+const PermissionsBitField = __nccwpck_require__(57613);
 
 /**
  * Represents an application command.
@@ -31425,13 +33406,13 @@ module.exports = ApplicationCommand;
 
 /***/ }),
 
-/***/ 96474:
+/***/ 81068:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { Emoji } = __nccwpck_require__(67034);
+const { Emoji } = __nccwpck_require__(79268);
 
 /**
  * Represents a custom emoji.
@@ -31551,7 +33532,7 @@ module.exports = ApplicationEmoji;
 
 /***/ }),
 
-/***/ 79899:
+/***/ 22149:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -31605,14 +33586,14 @@ exports.ApplicationRoleConnectionMetadata = ApplicationRoleConnectionMetadata;
 
 /***/ }),
 
-/***/ 65843:
+/***/ 22217:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const AttachmentFlagsBitField = __nccwpck_require__(10235);
-const { basename, flatten } = __nccwpck_require__(29800);
+const AttachmentFlagsBitField = __nccwpck_require__(48877);
+const { basename, flatten } = __nccwpck_require__(21754);
 
 /**
  * @typedef {Object} AttachmentPayload
@@ -31776,13 +33757,13 @@ module.exports = Attachment;
 
 /***/ }),
 
-/***/ 80264:
+/***/ 7234:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { basename, flatten } = __nccwpck_require__(29800);
+const { basename, flatten } = __nccwpck_require__(21754);
 
 /**
  * Represents an attachment builder
@@ -31895,13 +33876,13 @@ module.exports = AttachmentBuilder;
 
 /***/ }),
 
-/***/ 35289:
+/***/ 16231:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { _transformAPIAutoModerationAction } = __nccwpck_require__(75008);
+const { _transformAPIAutoModerationAction } = __nccwpck_require__(86138);
 
 /**
  * Represents the structure of an executed action when an {@link AutoModerationRule} is triggered.
@@ -32019,15 +34000,15 @@ module.exports = AutoModerationActionExecution;
 
 /***/ }),
 
-/***/ 45899:
+/***/ 2593:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { Collection } = __nccwpck_require__(41514);
-const Base = __nccwpck_require__(94691);
-const { _transformAPIAutoModerationAction } = __nccwpck_require__(75008);
+const Base = __nccwpck_require__(7441);
+const { _transformAPIAutoModerationAction } = __nccwpck_require__(86138);
 
 /**
  * Represents an auto moderation rule.
@@ -32315,16 +34296,16 @@ module.exports = AutoModerationRule;
 
 /***/ }),
 
-/***/ 44708:
+/***/ 12094:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { InteractionResponseType, Routes } = __nccwpck_require__(29244);
-const BaseInteraction = __nccwpck_require__(76459);
-const CommandInteractionOptionResolver = __nccwpck_require__(99886);
-const { DiscordjsError, ErrorCodes } = __nccwpck_require__(22097);
+const { InteractionResponseType, Routes } = __nccwpck_require__(94104);
+const BaseInteraction = __nccwpck_require__(56881);
+const CommandInteractionOptionResolver = __nccwpck_require__(76676);
+const { DiscordjsError, ErrorCodes } = __nccwpck_require__(6119);
 
 /**
  * Represents an autocomplete interaction.
@@ -32425,13 +34406,13 @@ module.exports = AutocompleteInteraction;
 
 /***/ }),
 
-/***/ 94691:
+/***/ 7441:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { flatten } = __nccwpck_require__(29800);
+const { flatten } = __nccwpck_require__(21754);
 
 /**
  * Represents a data model that is identifiable by a Snowflake (i.e. Discord API data models).
@@ -32476,18 +34457,18 @@ module.exports = Base;
 
 /***/ }),
 
-/***/ 16836:
+/***/ 25234:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { channelLink, channelMention } = __nccwpck_require__(48871);
-const { DiscordSnowflake } = __nccwpck_require__(88062);
-const { ChannelType, Routes } = __nccwpck_require__(29244);
-const Base = __nccwpck_require__(94691);
-const ChannelFlagsBitField = __nccwpck_require__(54407);
-const { ThreadChannelTypes } = __nccwpck_require__(38855);
+const { channelLink, channelMention } = __nccwpck_require__(71188);
+const { DiscordSnowflake } = __nccwpck_require__(65681);
+const { ChannelType, Routes } = __nccwpck_require__(94104);
+const Base = __nccwpck_require__(7441);
+const ChannelFlagsBitField = __nccwpck_require__(90913);
+const { ThreadChannelTypes } = __nccwpck_require__(92645);
 
 /**
  * Represents any channel on Discord.
@@ -32655,16 +34636,16 @@ exports.BaseChannel = BaseChannel;
 
 /***/ }),
 
-/***/ 49628:
+/***/ 8506:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { makeURLSearchParams } = __nccwpck_require__(18447);
-const { DiscordSnowflake } = __nccwpck_require__(88062);
-const { Routes, GuildFeature } = __nccwpck_require__(29244);
-const Base = __nccwpck_require__(94691);
+const { makeURLSearchParams } = __nccwpck_require__(81374);
+const { DiscordSnowflake } = __nccwpck_require__(65681);
+const { Routes, GuildFeature } = __nccwpck_require__(94104);
+const Base = __nccwpck_require__(7441);
 
 /**
  * The base class for {@link Guild}, {@link OAuth2Guild} and {@link InviteGuild}.
@@ -32782,13 +34763,13 @@ module.exports = BaseGuild;
 
 /***/ }),
 
-/***/ 72104:
+/***/ 30402:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { Emoji } = __nccwpck_require__(67034);
+const { Emoji } = __nccwpck_require__(79268);
 
 /**
  * Parent class for {@link GuildEmoji} and {@link GuildPreviewEmoji}.
@@ -32865,16 +34846,16 @@ module.exports = BaseGuildEmoji;
 
 /***/ }),
 
-/***/ 15288:
+/***/ 45590:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const GuildChannel = __nccwpck_require__(81340);
-const TextBasedChannel = __nccwpck_require__(29228);
-const GuildMessageManager = __nccwpck_require__(42295);
-const GuildTextThreadManager = __nccwpck_require__(60387);
+const GuildChannel = __nccwpck_require__(31442);
+const TextBasedChannel = __nccwpck_require__(89874);
+const GuildMessageManager = __nccwpck_require__(41641);
+const GuildTextThreadManager = __nccwpck_require__(62993);
 
 /**
  * Represents a text-based guild channel on Discord.
@@ -33069,17 +35050,17 @@ module.exports = BaseGuildTextChannel;
 
 /***/ }),
 
-/***/ 98341:
+/***/ 56115:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { Collection } = __nccwpck_require__(41514);
-const { PermissionFlagsBits } = __nccwpck_require__(29244);
-const GuildChannel = __nccwpck_require__(81340);
-const TextBasedChannel = __nccwpck_require__(29228);
-const GuildMessageManager = __nccwpck_require__(42295);
+const { PermissionFlagsBits } = __nccwpck_require__(94104);
+const GuildChannel = __nccwpck_require__(31442);
+const TextBasedChannel = __nccwpck_require__(89874);
+const GuildMessageManager = __nccwpck_require__(41641);
 
 /**
  * Represents a voice-based guild channel on Discord.
@@ -33311,7 +35292,7 @@ module.exports = BaseGuildVoiceChannel;
 
 /***/ }),
 
-/***/ 76459:
+/***/ 56881:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -33319,11 +35300,11 @@ module.exports = BaseGuildVoiceChannel;
 
 const { deprecate } = __nccwpck_require__(57975);
 const { Collection } = __nccwpck_require__(41514);
-const { DiscordSnowflake } = __nccwpck_require__(88062);
-const { InteractionType, ApplicationCommandType, ComponentType } = __nccwpck_require__(29244);
-const Base = __nccwpck_require__(94691);
-const { SelectMenuTypes } = __nccwpck_require__(38855);
-const PermissionsBitField = __nccwpck_require__(92103);
+const { DiscordSnowflake } = __nccwpck_require__(65681);
+const { InteractionType, ApplicationCommandType, ComponentType } = __nccwpck_require__(94104);
+const Base = __nccwpck_require__(7441);
+const { SelectMenuTypes } = __nccwpck_require__(92645);
+const PermissionsBitField = __nccwpck_require__(57613);
 
 /**
  * Represents an interaction.
@@ -33652,13 +35633,13 @@ module.exports = BaseInteraction;
 
 /***/ }),
 
-/***/ 44081:
+/***/ 14771:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Component = __nccwpck_require__(34091);
+const Component = __nccwpck_require__(72329);
 
 /**
  * Represents a select menu component
@@ -33716,16 +35697,16 @@ module.exports = BaseSelectMenuComponent;
 
 /***/ }),
 
-/***/ 98439:
+/***/ 68653:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { ButtonBuilder: BuildersButton } = __nccwpck_require__(67951);
+const { ButtonBuilder: BuildersButton } = __nccwpck_require__(25722);
 const { isJSONEncodable } = __nccwpck_require__(1004);
-const { toSnakeCase } = __nccwpck_require__(75008);
-const { resolvePartialEmoji } = __nccwpck_require__(29800);
+const { toSnakeCase } = __nccwpck_require__(86138);
+const { resolvePartialEmoji } = __nccwpck_require__(21754);
 
 /**
  * Represents a button builder.
@@ -33768,13 +35749,13 @@ module.exports = ButtonBuilder;
 
 /***/ }),
 
-/***/ 15279:
+/***/ 56921:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Component = __nccwpck_require__(34091);
+const Component = __nccwpck_require__(72329);
 
 /**
  * Represents a button component
@@ -33841,13 +35822,13 @@ module.exports = ButtonComponent;
 
 /***/ }),
 
-/***/ 79544:
+/***/ 13594:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const MessageComponentInteraction = __nccwpck_require__(5006);
+const MessageComponentInteraction = __nccwpck_require__(5044);
 
 /**
  * Represents a button interaction.
@@ -33860,14 +35841,14 @@ module.exports = ButtonInteraction;
 
 /***/ }),
 
-/***/ 835:
+/***/ 3113:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const GuildChannel = __nccwpck_require__(81340);
-const CategoryChannelChildManager = __nccwpck_require__(86844);
+const GuildChannel = __nccwpck_require__(31442);
+const CategoryChannelChildManager = __nccwpck_require__(7134);
 
 /**
  * Represents a guild category channel on Discord.
@@ -33913,15 +35894,15 @@ module.exports = CategoryChannel;
 
 /***/ }),
 
-/***/ 96753:
+/***/ 911:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { ChannelSelectMenuBuilder: BuildersChannelSelectMenu } = __nccwpck_require__(67951);
+const { ChannelSelectMenuBuilder: BuildersChannelSelectMenu } = __nccwpck_require__(25722);
 const { isJSONEncodable } = __nccwpck_require__(1004);
-const { toSnakeCase } = __nccwpck_require__(75008);
+const { toSnakeCase } = __nccwpck_require__(86138);
 
 /**
  * Class used to build select menu components to be sent through the API
@@ -33952,13 +35933,13 @@ module.exports = ChannelSelectMenuBuilder;
 
 /***/ }),
 
-/***/ 61333:
+/***/ 95591:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const BaseSelectMenuComponent = __nccwpck_require__(44081);
+const BaseSelectMenuComponent = __nccwpck_require__(14771);
 
 /**
  * Represents a channel select menu component
@@ -33980,14 +35961,14 @@ module.exports = ChannelSelectMenuComponent;
 
 /***/ }),
 
-/***/ 542:
+/***/ 1200:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { Collection } = __nccwpck_require__(41514);
-const MessageComponentInteraction = __nccwpck_require__(5006);
+const MessageComponentInteraction = __nccwpck_require__(5044);
 
 /**
  * Represents a {@link ComponentType.ChannelSelect} select menu interaction.
@@ -34021,15 +36002,15 @@ module.exports = ChannelSelectMenuInteraction;
 
 /***/ }),
 
-/***/ 35461:
+/***/ 72119:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const CommandInteraction = __nccwpck_require__(33009);
-const CommandInteractionOptionResolver = __nccwpck_require__(99886);
-const { transformResolved } = __nccwpck_require__(29800);
+const CommandInteraction = __nccwpck_require__(59343);
+const CommandInteractionOptionResolver = __nccwpck_require__(76676);
+const { transformResolved } = __nccwpck_require__(21754);
 
 /**
  * Represents a command interaction.
@@ -34071,25 +36052,25 @@ module.exports = ChatInputCommandInteraction;
 
 /***/ }),
 
-/***/ 49495:
+/***/ 56981:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { Collection } = __nccwpck_require__(41514);
-const { Routes } = __nccwpck_require__(29244);
-const { ApplicationRoleConnectionMetadata } = __nccwpck_require__(79899);
-const { SKU } = __nccwpck_require__(70905);
-const Team = __nccwpck_require__(67471);
-const Application = __nccwpck_require__(61723);
-const ApplicationCommandManager = __nccwpck_require__(2792);
-const ApplicationEmojiManager = __nccwpck_require__(97733);
-const { EntitlementManager } = __nccwpck_require__(84766);
-const { SubscriptionManager } = __nccwpck_require__(46114);
-const ApplicationFlagsBitField = __nccwpck_require__(13528);
-const { resolveImage } = __nccwpck_require__(9242);
-const PermissionsBitField = __nccwpck_require__(92103);
+const { Routes } = __nccwpck_require__(94104);
+const { ApplicationRoleConnectionMetadata } = __nccwpck_require__(22149);
+const { SKU } = __nccwpck_require__(275);
+const Team = __nccwpck_require__(17941);
+const Application = __nccwpck_require__(45805);
+const ApplicationCommandManager = __nccwpck_require__(37386);
+const ApplicationEmojiManager = __nccwpck_require__(14307);
+const { EntitlementManager } = __nccwpck_require__(58372);
+const { SubscriptionManager } = __nccwpck_require__(61312);
+const ApplicationFlagsBitField = __nccwpck_require__(67922);
+const { resolveImage } = __nccwpck_require__(80176);
+const PermissionsBitField = __nccwpck_require__(57613);
 
 /**
  * @typedef {Object} ClientApplicationInstallParams
@@ -34248,26 +36229,6 @@ class ClientApplication extends Application {
       this.guildId = data.guild_id;
     } else {
       this.guildId ??= null;
-    }
-
-    if ('cover_image' in data) {
-      /**
-       * The hash of the application's cover image
-       * @type {?string}
-       */
-      this.cover = data.cover_image;
-    } else {
-      this.cover ??= null;
-    }
-
-    if ('rpc_origins' in data) {
-      /**
-       * The application's RPC origins, if enabled
-       * @type {string[]}
-       */
-      this.rpcOrigins = data.rpc_origins;
-    } else {
-      this.rpcOrigins ??= [];
     }
 
     if ('bot_require_code_grant' in data) {
@@ -34503,15 +36464,15 @@ module.exports = ClientApplication;
 
 /***/ }),
 
-/***/ 21748:
+/***/ 78282:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { GatewayOpcodes, ActivityType } = __nccwpck_require__(29244);
-const { Presence } = __nccwpck_require__(3943);
-const { DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(22097);
+const { GatewayOpcodes, ActivityType } = __nccwpck_require__(94104);
+const { Presence } = __nccwpck_require__(88101);
+const { DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(6119);
 
 /**
  * Represents the client's presence.
@@ -34595,15 +36556,15 @@ module.exports = ClientPresence;
 
 /***/ }),
 
-/***/ 86406:
+/***/ 73172:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { Routes } = __nccwpck_require__(29244);
-const User = __nccwpck_require__(2993);
-const { resolveImage } = __nccwpck_require__(9242);
+const { Routes } = __nccwpck_require__(94104);
+const User = __nccwpck_require__(40287);
+const { resolveImage } = __nccwpck_require__(80176);
 
 /**
  * Represents the logged in client's Discord user.
@@ -34809,16 +36770,16 @@ module.exports = ClientUser;
 
 /***/ }),
 
-/***/ 33009:
+/***/ 59343:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Attachment = __nccwpck_require__(65843);
-const BaseInteraction = __nccwpck_require__(76459);
-const InteractionWebhook = __nccwpck_require__(32927);
-const InteractionResponses = __nccwpck_require__(86193);
+const Attachment = __nccwpck_require__(22217);
+const BaseInteraction = __nccwpck_require__(56881);
+const InteractionWebhook = __nccwpck_require__(69701);
+const InteractionResponses = __nccwpck_require__(49671);
 
 /**
  * Represents a command interaction.
@@ -34979,14 +36940,14 @@ module.exports = CommandInteraction;
 
 /***/ }),
 
-/***/ 99886:
+/***/ 76676:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { ApplicationCommandOptionType } = __nccwpck_require__(29244);
-const { DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(22097);
+const { ApplicationCommandOptionType } = __nccwpck_require__(94104);
+const { DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(6119);
 
 /**
  * A resolver for command interaction options.
@@ -35295,7 +37256,7 @@ module.exports = CommandInteractionOptionResolver;
 
 /***/ }),
 
-/***/ 34091:
+/***/ 72329:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -35313,6 +37274,15 @@ class Component {
      * @type {APIMessageComponent}
      */
     this.data = data;
+  }
+
+  /**
+   * The id of this component
+   * @type {number}
+   * @readonly
+   */
+  get id() {
+    return this.data.id;
   }
 
   /**
@@ -35350,19 +37320,87 @@ module.exports = Component;
 
 /***/ }),
 
-/***/ 47891:
+/***/ 44318:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+
+const Component = __nccwpck_require__(72329);
+const { createComponent } = __nccwpck_require__(76506);
+
+/**
+ * Represents a container component
+ * @extends {Component}
+ */
+class ContainerComponent extends Component {
+  constructor({ components, ...data }) {
+    super(data);
+
+    /**
+     * The components in this container
+     * @type {Component[]}
+     * @readonly
+     */
+    this.components = components.map(component => createComponent(component));
+  }
+
+  /**
+   * The accent color of this container
+   * @type {?number}
+   * @readonly
+   */
+  get accentColor() {
+    return this.data.accent_color ?? null;
+  }
+
+  /**
+   * The hex accent color of this container
+   * @type {?string}
+   * @readonly
+   */
+  get hexAccentColor() {
+    return typeof this.data.accent_color === 'number'
+      ? `#${this.data.accent_color.toString(16).padStart(6, '0')}`
+      : (this.data.accent_color ?? null);
+  }
+
+  /**
+   * Whether this container is spoilered
+   * @type {boolean}
+   * @readonly
+   */
+  get spoiler() {
+    return this.data.spoiler ?? false;
+  }
+
+  /**
+   * Returns the API-compatible JSON for this component
+   * @returns {APIContainerComponent}
+   */
+  toJSON() {
+    return { ...this.data, components: this.components.map(component => component.toJSON()) };
+  }
+}
+
+module.exports = ContainerComponent;
+
+
+/***/ }),
+
+/***/ 37717:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { lazy } = __nccwpck_require__(1004);
-const { ApplicationCommandOptionType } = __nccwpck_require__(29244);
-const CommandInteraction = __nccwpck_require__(33009);
-const CommandInteractionOptionResolver = __nccwpck_require__(99886);
-const { transformResolved } = __nccwpck_require__(29800);
+const { ApplicationCommandOptionType } = __nccwpck_require__(94104);
+const CommandInteraction = __nccwpck_require__(59343);
+const CommandInteractionOptionResolver = __nccwpck_require__(76676);
+const { transformResolved } = __nccwpck_require__(21754);
 
-const getMessage = lazy(() => (__nccwpck_require__(25799).Message));
+const getMessage = lazy(() => (__nccwpck_require__(12053).Message));
 
 /**
  * Represents a context menu interaction.
@@ -35423,18 +37461,18 @@ module.exports = ContextMenuCommandInteraction;
 
 /***/ }),
 
-/***/ 41898:
+/***/ 18176:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { userMention } = __nccwpck_require__(48871);
-const { ChannelType } = __nccwpck_require__(29244);
-const { BaseChannel } = __nccwpck_require__(16836);
-const TextBasedChannel = __nccwpck_require__(29228);
-const DMMessageManager = __nccwpck_require__(15629);
-const Partials = __nccwpck_require__(13238);
+const { userMention } = __nccwpck_require__(71188);
+const { ChannelType } = __nccwpck_require__(94104);
+const { BaseChannel } = __nccwpck_require__(25234);
+const TextBasedChannel = __nccwpck_require__(89874);
+const DMMessageManager = __nccwpck_require__(38055);
+const Partials = __nccwpck_require__(43056);
 
 /**
  * Represents a direct message channel between two users.
@@ -35560,13 +37598,13 @@ module.exports = DMChannel;
 
 /***/ }),
 
-/***/ 17716:
+/***/ 81878:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { BaseChannel } = __nccwpck_require__(16836);
+const { BaseChannel } = __nccwpck_require__(25234);
 
 /**
  * Represents a channel that displays a directory of guilds.
@@ -35604,13 +37642,13 @@ module.exports = DirectoryChannel;
 
 /***/ }),
 
-/***/ 56341:
+/***/ 68883:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { embedLength } = __nccwpck_require__(67951);
+const { embedLength } = __nccwpck_require__(25722);
 const isEqual = __nccwpck_require__(4711);
 
 /**
@@ -35849,16 +37887,16 @@ module.exports = Embed;
 
 /***/ }),
 
-/***/ 63222:
+/***/ 13864:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { EmbedBuilder: BuildersEmbed, embedLength } = __nccwpck_require__(67951);
+const { EmbedBuilder: BuildersEmbed, embedLength } = __nccwpck_require__(25722);
 const { isJSONEncodable } = __nccwpck_require__(1004);
-const { toSnakeCase } = __nccwpck_require__(75008);
-const { resolveColor } = __nccwpck_require__(29800);
+const { toSnakeCase } = __nccwpck_require__(86138);
+const { resolveColor } = __nccwpck_require__(21754);
 
 /**
  * Represents an embed builder.
@@ -35907,16 +37945,16 @@ module.exports = EmbedBuilder;
 
 /***/ }),
 
-/***/ 67034:
+/***/ 79268:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const process = __nccwpck_require__(1708);
-const { formatEmoji } = __nccwpck_require__(48871);
-const { DiscordSnowflake } = __nccwpck_require__(88062);
-const Base = __nccwpck_require__(94691);
+const { formatEmoji } = __nccwpck_require__(71188);
+const { DiscordSnowflake } = __nccwpck_require__(65681);
+const Base = __nccwpck_require__(7441);
 
 let deprecationEmittedForURL = false;
 
@@ -36030,13 +38068,13 @@ exports.Emoji = Emoji;
 
 /***/ }),
 
-/***/ 91531:
+/***/ 88237:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Base = __nccwpck_require__(94691);
+const Base = __nccwpck_require__(7441);
 
 /**
  * Represents an Entitlement
@@ -36217,13 +38255,61 @@ exports.Entitlement = Entitlement;
 
 /***/ }),
 
-/***/ 79302:
+/***/ 18559:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const ThreadOnlyChannel = __nccwpck_require__(78433);
+const Component = __nccwpck_require__(72329);
+const UnfurledMediaItem = __nccwpck_require__(61622);
+
+/**
+ * Represents a file component
+ * @extends {Component}
+ */
+class FileComponent extends Component {
+  constructor({ file, ...data }) {
+    super(data);
+
+    /**
+     * The media associated with this file
+     * @type {UnfurledMediaItem}
+     * @readonly
+     */
+    this.file = new UnfurledMediaItem(file);
+  }
+
+  /**
+   * Whether this thumbnail is spoilered
+   * @type {boolean}
+   * @readonly
+   */
+  get spoiler() {
+    return this.data.spoiler ?? false;
+  }
+
+  /**
+   * Returns the API-compatible JSON for this component
+   * @returns {APIFileComponent}
+   */
+  toJSON() {
+    return { ...this.data, file: this.file.toJSON() };
+  }
+}
+
+module.exports = FileComponent;
+
+
+/***/ }),
+
+/***/ 37772:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+
+const ThreadOnlyChannel = __nccwpck_require__(24339);
 
 /**
  * Represents a forum channel.
@@ -36256,42 +38342,44 @@ module.exports = ForumChannel;
 
 /***/ }),
 
-/***/ 42219:
+/***/ 27473:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { Collection } = __nccwpck_require__(41514);
-const { makeURLSearchParams } = __nccwpck_require__(18447);
-const { DiscordSnowflake } = __nccwpck_require__(88062);
-const { ChannelType, GuildPremiumTier, Routes, GuildFeature } = __nccwpck_require__(29244);
-const AnonymousGuild = __nccwpck_require__(79798);
-const GuildAuditLogs = __nccwpck_require__(22743);
-const { GuildOnboarding } = __nccwpck_require__(82902);
-const GuildPreview = __nccwpck_require__(69607);
-const GuildTemplate = __nccwpck_require__(73769);
-const Integration = __nccwpck_require__(18634);
-const Webhook = __nccwpck_require__(62509);
-const WelcomeScreen = __nccwpck_require__(19624);
-const { DiscordjsError, DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(22097);
-const AutoModerationRuleManager = __nccwpck_require__(41114);
-const GuildApplicationCommandManager = __nccwpck_require__(27927);
-const GuildBanManager = __nccwpck_require__(10497);
-const GuildChannelManager = __nccwpck_require__(65299);
-const GuildEmojiManager = __nccwpck_require__(72960);
-const GuildInviteManager = __nccwpck_require__(46109);
-const GuildMemberManager = __nccwpck_require__(53968);
-const GuildScheduledEventManager = __nccwpck_require__(38437);
-const GuildStickerManager = __nccwpck_require__(91691);
-const PresenceManager = __nccwpck_require__(40334);
-const RoleManager = __nccwpck_require__(92949);
-const StageInstanceManager = __nccwpck_require__(2820);
-const VoiceStateManager = __nccwpck_require__(25200);
-const { resolveImage } = __nccwpck_require__(9242);
-const Status = __nccwpck_require__(34714);
-const SystemChannelFlagsBitField = __nccwpck_require__(45902);
-const { discordSort, getSortableGroupTypes, resolvePartialEmoji } = __nccwpck_require__(29800);
+const { makeURLSearchParams } = __nccwpck_require__(81374);
+const { DiscordSnowflake } = __nccwpck_require__(65681);
+const { ChannelType, GuildPremiumTier, Routes, GuildFeature } = __nccwpck_require__(94104);
+const AnonymousGuild = __nccwpck_require__(54236);
+const GuildAuditLogs = __nccwpck_require__(37285);
+const { GuildOnboarding } = __nccwpck_require__(43640);
+const GuildPreview = __nccwpck_require__(1973);
+const GuildTemplate = __nccwpck_require__(44439);
+const Integration = __nccwpck_require__(50264);
+const Webhook = __nccwpck_require__(11683);
+const WelcomeScreen = __nccwpck_require__(25302);
+const { DiscordjsError, DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(6119);
+const AutoModerationRuleManager = __nccwpck_require__(66836);
+const GuildApplicationCommandManager = __nccwpck_require__(13377);
+const GuildBanManager = __nccwpck_require__(67271);
+const GuildChannelManager = __nccwpck_require__(44941);
+const GuildEmojiManager = __nccwpck_require__(25782);
+const GuildInviteManager = __nccwpck_require__(12127);
+const GuildMemberManager = __nccwpck_require__(66090);
+const GuildScheduledEventManager = __nccwpck_require__(89415);
+const { GuildSoundboardSoundManager } = __nccwpck_require__(68328);
+const GuildStickerManager = __nccwpck_require__(99033);
+const PresenceManager = __nccwpck_require__(55488);
+const RoleManager = __nccwpck_require__(87167);
+const StageInstanceManager = __nccwpck_require__(30746);
+const VoiceStateManager = __nccwpck_require__(21434);
+const { resolveImage } = __nccwpck_require__(80176);
+const Status = __nccwpck_require__(20852);
+const SystemChannelFlagsBitField = __nccwpck_require__(8024);
+const { _transformAPIIncidentsData } = __nccwpck_require__(86138);
+const { discordSort, getSortableGroupTypes, resolvePartialEmoji } = __nccwpck_require__(21754);
 
 /**
  * Represents a guild (or a server) on Discord.
@@ -36368,6 +38456,12 @@ class Guild extends AnonymousGuild {
      * @type {AutoModerationRuleManager}
      */
     this.autoModerationRules = new AutoModerationRuleManager(this);
+
+    /**
+     * A manager of the soundboard sounds of this guild.
+     * @type {GuildSoundboardSoundManager}
+     */
+    this.soundboardSounds = new GuildSoundboardSoundManager(this);
 
     if (!data) return;
     if (data.unavailable) {
@@ -36731,6 +38825,34 @@ class Guild extends AnonymousGuild {
         guild_id: this.id,
         stickers: data.stickers,
       });
+    }
+
+    if ('incidents_data' in data) {
+      /**
+       * Incident actions of a guild.
+       * @typedef {Object} IncidentActions
+       * @property {?Date} invitesDisabledUntil When invites would be enabled again
+       * @property {?Date} dmsDisabledUntil When direct messages would be enabled again
+       * @property {?Date} dmSpamDetectedAt When direct message spam was detected
+       * @property {?Date} raidDetectedAt When a raid was detected
+       */
+
+      /**
+       * The incidents data of this guild.
+       * <info>You will need to fetch the guild using {@link BaseGuild#fetch} if you want to receive
+       * this property.</info>
+       * @type {?IncidentActions}
+       */
+      this.incidentsData = data.incidents_data && _transformAPIIncidentsData(data.incidents_data);
+    } else {
+      this.incidentsData ??= null;
+    }
+
+    if (data.soundboard_sounds) {
+      this.soundboardSounds.cache.clear();
+      for (const soundboardSound of data.soundboard_sounds) {
+        this.soundboardSounds._add(soundboardSound);
+      }
     }
   }
 
@@ -37628,6 +39750,15 @@ class Guild extends AnonymousGuild {
   }
 
   /**
+   * Sets the incident actions for a guild.
+   * @param {IncidentActionsEditOptions} incidentActions The incident actions to set
+   * @returns {Promise<IncidentActions>}
+   */
+  async setIncidentActions(incidentActions) {
+    return this.client.guilds.setIncidentActions(this.id, incidentActions);
+  }
+
+  /**
    * Whether this guild equals another guild. It compares all properties, so for most operations
    * it is advisable to just compare `guild.id === guild2.id` as it is much faster and is often
    * what most users need.
@@ -37722,18 +39853,18 @@ exports.Guild = Guild;
 
 /***/ }),
 
-/***/ 22743:
+/***/ 37285:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { Collection } = __nccwpck_require__(41514);
-const ApplicationCommand = __nccwpck_require__(18065);
-const GuildAuditLogsEntry = __nccwpck_require__(7843);
-const Integration = __nccwpck_require__(18634);
-const Webhook = __nccwpck_require__(62509);
-const { flatten } = __nccwpck_require__(29800);
+const ApplicationCommand = __nccwpck_require__(11159);
+const GuildAuditLogsEntry = __nccwpck_require__(22797);
+const Integration = __nccwpck_require__(50264);
+const Webhook = __nccwpck_require__(11683);
+const { flatten } = __nccwpck_require__(21754);
 
 /**
  * Audit logs entries are held in this class.
@@ -37821,24 +39952,24 @@ module.exports = GuildAuditLogs;
 
 /***/ }),
 
-/***/ 7843:
+/***/ 22797:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { DiscordSnowflake } = __nccwpck_require__(88062);
-const { AuditLogOptionsType, AuditLogEvent } = __nccwpck_require__(29244);
-const AutoModerationRule = __nccwpck_require__(45899);
-const { GuildOnboardingPrompt } = __nccwpck_require__(32488);
-const { GuildScheduledEvent } = __nccwpck_require__(81390);
-const Integration = __nccwpck_require__(18634);
-const Invite = __nccwpck_require__(50491);
-const { StageInstance } = __nccwpck_require__(58217);
-const { Sticker } = __nccwpck_require__(95967);
-const Webhook = __nccwpck_require__(62509);
-const Partials = __nccwpck_require__(13238);
-const { flatten } = __nccwpck_require__(29800);
+const { DiscordSnowflake } = __nccwpck_require__(65681);
+const { AuditLogOptionsType, AuditLogEvent } = __nccwpck_require__(94104);
+const AutoModerationRule = __nccwpck_require__(2593);
+const { GuildOnboardingPrompt } = __nccwpck_require__(87058);
+const { GuildScheduledEvent } = __nccwpck_require__(82548);
+const Integration = __nccwpck_require__(50264);
+const Invite = __nccwpck_require__(33225);
+const { StageInstance } = __nccwpck_require__(51347);
+const { Sticker } = __nccwpck_require__(97633);
+const Webhook = __nccwpck_require__(11683);
+const Partials = __nccwpck_require__(43056);
+const { flatten } = __nccwpck_require__(21754);
 
 const Targets = {
   All: 'All',
@@ -37859,6 +39990,7 @@ const Targets = {
   AutoModeration: 'AutoModeration',
   GuildOnboarding: 'GuildOnboarding',
   GuildOnboardingPrompt: 'GuildOnboardingPrompt',
+  SoundboardSound: 'SoundboardSound',
   Unknown: 'Unknown',
 };
 
@@ -37880,10 +40012,11 @@ const Targets = {
  * * An application command
  * * An auto moderation rule
  * * A guild onboarding prompt
+ * * A soundboard sound
  * * An object with an id key if target was deleted or fake entity
  * * An object where the keys represent either the new value or the old value
  * @typedef {?(Object|Guild|BaseChannel|User|Role|Invite|Webhook|GuildEmoji|Message|Integration|StageInstance|Sticker|
- * GuildScheduledEvent|ApplicationCommand|AutoModerationRule|GuildOnboardingPrompt)} AuditLogEntryTarget
+ * GuildScheduledEvent|ApplicationCommand|AutoModerationRule|GuildOnboardingPrompt|SoundboardSound)} AuditLogEntryTarget
  */
 
 /**
@@ -37913,6 +40046,8 @@ const Targets = {
  * * ApplicationCommandPermission
  * * GuildOnboarding
  * * GuildOnboardingPrompt
+ * * SoundboardSound
+ * * AutoModeration
  * * Unknown
  * @typedef {string} AuditLogTargetType
  */
@@ -38026,7 +40161,6 @@ class GuildAuditLogsEntry {
 
       case AuditLogEvent.MemberMove:
       case AuditLogEvent.MessageDelete:
-      case AuditLogEvent.MessageBulkDelete:
         this.extra = {
           channel: guild.channels.cache.get(data.options.channel_id) ?? { id: data.options.channel_id },
           count: Number(data.options.count),
@@ -38041,6 +40175,7 @@ class GuildAuditLogsEntry {
         };
         break;
 
+      case AuditLogEvent.MessageBulkDelete:
       case AuditLogEvent.MemberDisconnect:
         this.extra = {
           count: Number(data.options.count),
@@ -38192,10 +40327,14 @@ class GuildAuditLogsEntry {
         data.action_type === AuditLogEvent.OnboardingPromptCreate
           ? new GuildOnboardingPrompt(guild.client, changesReduce(this.changes, { id: data.target_id }), guild.id)
           : changesReduce(this.changes, { id: data.target_id });
-    } else if (targetType === Targets.GuildOnboarding) {
-      this.target = changesReduce(this.changes, { id: data.target_id });
+    } else if (targetType === Targets.Role) {
+      this.target = guild.roles.cache.get(data.target_id) ?? { id: data.target_id };
+    } else if (targetType === Targets.Emoji) {
+      this.target = guild.emojis.cache.get(data.target_id) ?? { id: data.target_id };
+    } else if (targetType === Targets.SoundboardSound) {
+      this.target = guild.soundboardSounds.cache.get(data.target_id) ?? { id: data.target_id };
     } else if (data.target_id) {
-      this.target = guild[`${targetType.toLowerCase()}s`]?.cache.get(data.target_id) ?? { id: data.target_id };
+      this.target = { id: data.target_id };
     }
   }
 
@@ -38219,7 +40358,9 @@ class GuildAuditLogsEntry {
     if (target < 110) return Targets.GuildScheduledEvent;
     if (target < 120) return Targets.Thread;
     if (target < 130) return Targets.ApplicationCommand;
-    if (target >= 140 && target < 150) return Targets.AutoModeration;
+    if (target < 140) return Targets.SoundboardSound;
+    if (target < 143) return Targets.AutoModeration;
+    if (target < 146) return Targets.User;
     if (target >= 163 && target <= 165) return Targets.GuildOnboardingPrompt;
     if (target >= 160 && target < 170) return Targets.GuildOnboarding;
     return Targets.Unknown;
@@ -38247,6 +40388,7 @@ class GuildAuditLogsEntry {
         AuditLogEvent.StickerCreate,
         AuditLogEvent.GuildScheduledEventCreate,
         AuditLogEvent.ThreadCreate,
+        AuditLogEvent.SoundboardSoundCreate,
         AuditLogEvent.AutoModerationRuleCreate,
         AuditLogEvent.AutoModerationBlockMessage,
         AuditLogEvent.OnboardingPromptCreate,
@@ -38276,6 +40418,7 @@ class GuildAuditLogsEntry {
         AuditLogEvent.StickerDelete,
         AuditLogEvent.GuildScheduledEventDelete,
         AuditLogEvent.ThreadDelete,
+        AuditLogEvent.SoundboardSoundDelete,
         AuditLogEvent.AutoModerationRuleDelete,
         AuditLogEvent.OnboardingPromptDelete,
       ].includes(action)
@@ -38300,8 +40443,12 @@ class GuildAuditLogsEntry {
         AuditLogEvent.StickerUpdate,
         AuditLogEvent.GuildScheduledEventUpdate,
         AuditLogEvent.ThreadUpdate,
+        AuditLogEvent.SoundboardSoundUpdate,
         AuditLogEvent.ApplicationCommandPermissionUpdate,
         AuditLogEvent.AutoModerationRuleUpdate,
+        AuditLogEvent.AutoModerationBlockMessage,
+        AuditLogEvent.AutoModerationFlagToChannel,
+        AuditLogEvent.AutoModerationUserCommunicationDisabled,
         AuditLogEvent.OnboardingPromptUpdate,
         AuditLogEvent.OnboardingUpdate,
       ].includes(action)
@@ -38340,13 +40487,13 @@ module.exports = GuildAuditLogsEntry;
 
 /***/ }),
 
-/***/ 85254:
+/***/ 54096:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Base = __nccwpck_require__(94691);
+const Base = __nccwpck_require__(7441);
 
 /**
  * Represents a ban in a guild on Discord.
@@ -38407,20 +40554,20 @@ module.exports = GuildBan;
 
 /***/ }),
 
-/***/ 81340:
+/***/ 31442:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { Snowflake } = __nccwpck_require__(88062);
-const { PermissionFlagsBits, ChannelType } = __nccwpck_require__(29244);
-const { BaseChannel } = __nccwpck_require__(16836);
-const { DiscordjsError, ErrorCodes } = __nccwpck_require__(22097);
-const PermissionOverwriteManager = __nccwpck_require__(91051);
-const { VoiceBasedChannelTypes } = __nccwpck_require__(38855);
-const PermissionsBitField = __nccwpck_require__(92103);
-const { getSortableGroupTypes } = __nccwpck_require__(29800);
+const { Snowflake } = __nccwpck_require__(65681);
+const { PermissionFlagsBits, ChannelType } = __nccwpck_require__(94104);
+const { BaseChannel } = __nccwpck_require__(25234);
+const { DiscordjsError, ErrorCodes } = __nccwpck_require__(6119);
+const PermissionOverwriteManager = __nccwpck_require__(28041);
+const { VoiceBasedChannelTypes } = __nccwpck_require__(92645);
+const PermissionsBitField = __nccwpck_require__(57613);
+const { getSortableGroupTypes } = __nccwpck_require__(21754);
 
 /**
  * Represents a guild channel from any of the following:
@@ -38678,8 +40825,8 @@ class GuildChannel extends BaseChannel {
    * Locks in the permission overwrites from the parent channel.
    * @returns {Promise<GuildChannel>}
    */
-  lockPermissions() {
-    if (!this.parent) return Promise.reject(new DiscordjsError(ErrorCodes.GuildChannelOrphan));
+  async lockPermissions() {
+    if (!this.parent) throw new DiscordjsError(ErrorCodes.GuildChannelOrphan);
     const permissionOverwrites = this.parent.permissionOverwrites.cache.map(overwrite => overwrite.toJSON());
     return this.edit({ permissionOverwrites });
   }
@@ -38890,16 +41037,16 @@ module.exports = GuildChannel;
 
 /***/ }),
 
-/***/ 33253:
+/***/ 67935:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { PermissionFlagsBits } = __nccwpck_require__(29244);
-const BaseGuildEmoji = __nccwpck_require__(72104);
-const { DiscordjsError, ErrorCodes } = __nccwpck_require__(22097);
-const GuildEmojiRoleManager = __nccwpck_require__(16944);
+const { PermissionFlagsBits } = __nccwpck_require__(94104);
+const BaseGuildEmoji = __nccwpck_require__(30402);
+const { DiscordjsError, ErrorCodes } = __nccwpck_require__(6119);
+const GuildEmojiRoleManager = __nccwpck_require__(67574);
 
 /**
  * Represents a custom emoji.
@@ -39046,20 +41193,20 @@ module.exports = GuildEmoji;
 
 /***/ }),
 
-/***/ 35985:
+/***/ 10159:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { PermissionFlagsBits } = __nccwpck_require__(29244);
-const Base = __nccwpck_require__(94691);
-const VoiceState = __nccwpck_require__(87961);
-const TextBasedChannel = __nccwpck_require__(29228);
-const { DiscordjsError, ErrorCodes } = __nccwpck_require__(22097);
-const GuildMemberRoleManager = __nccwpck_require__(65280);
-const { GuildMemberFlagsBitField } = __nccwpck_require__(44777);
-const PermissionsBitField = __nccwpck_require__(92103);
+const { PermissionFlagsBits } = __nccwpck_require__(94104);
+const Base = __nccwpck_require__(7441);
+const VoiceState = __nccwpck_require__(68903);
+const TextBasedChannel = __nccwpck_require__(89874);
+const { DiscordjsError, ErrorCodes } = __nccwpck_require__(6119);
+const GuildMemberRoleManager = __nccwpck_require__(78082);
+const { GuildMemberFlagsBitField } = __nccwpck_require__(6971);
+const PermissionsBitField = __nccwpck_require__(57613);
 
 /**
  * Represents a member of a guild on Discord.
@@ -39602,15 +41749,15 @@ exports.GuildMember = GuildMember;
 
 /***/ }),
 
-/***/ 82902:
+/***/ 43640:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { Collection } = __nccwpck_require__(41514);
-const Base = __nccwpck_require__(94691);
-const { GuildOnboardingPrompt } = __nccwpck_require__(32488);
+const Base = __nccwpck_require__(7441);
+const { GuildOnboardingPrompt } = __nccwpck_require__(87058);
 
 /**
  * Represents the onboarding data of a guild.
@@ -39674,15 +41821,15 @@ exports.GuildOnboarding = GuildOnboarding;
 
 /***/ }),
 
-/***/ 32488:
+/***/ 87058:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { Collection } = __nccwpck_require__(41514);
-const Base = __nccwpck_require__(94691);
-const { GuildOnboardingPromptOption } = __nccwpck_require__(88633);
+const Base = __nccwpck_require__(7441);
+const { GuildOnboardingPromptOption } = __nccwpck_require__(92391);
 
 /**
  * Represents the data of a prompt of a guilds onboarding.
@@ -39760,15 +41907,15 @@ exports.GuildOnboardingPrompt = GuildOnboardingPrompt;
 
 /***/ }),
 
-/***/ 88633:
+/***/ 92391:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { Collection } = __nccwpck_require__(41514);
-const Base = __nccwpck_require__(94691);
-const { Emoji } = __nccwpck_require__(67034);
+const Base = __nccwpck_require__(7441);
+const { Emoji } = __nccwpck_require__(79268);
 
 /**
  * Represents the data of an option from a prompt of a guilds onboarding.
@@ -39854,18 +42001,18 @@ exports.GuildOnboardingPromptOption = GuildOnboardingPromptOption;
 
 /***/ }),
 
-/***/ 69607:
+/***/ 1973:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { Collection } = __nccwpck_require__(41514);
-const { DiscordSnowflake } = __nccwpck_require__(88062);
-const { Routes } = __nccwpck_require__(29244);
-const Base = __nccwpck_require__(94691);
-const GuildPreviewEmoji = __nccwpck_require__(42465);
-const { Sticker } = __nccwpck_require__(95967);
+const { DiscordSnowflake } = __nccwpck_require__(65681);
+const { Routes } = __nccwpck_require__(94104);
+const Base = __nccwpck_require__(7441);
+const GuildPreviewEmoji = __nccwpck_require__(76979);
+const { Sticker } = __nccwpck_require__(97633);
 
 /**
  * Represents the data about the guild any bot can preview, connected to the specified guild.
@@ -40055,13 +42202,13 @@ module.exports = GuildPreview;
 
 /***/ }),
 
-/***/ 42465:
+/***/ 76979:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const BaseGuildEmoji = __nccwpck_require__(72104);
+const BaseGuildEmoji = __nccwpck_require__(30402);
 
 /**
  * Represents an instance of an emoji belonging to a public guild obtained through Discord's preview endpoint.
@@ -40090,16 +42237,16 @@ module.exports = GuildPreviewEmoji;
 
 /***/ }),
 
-/***/ 81390:
+/***/ 82548:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { DiscordSnowflake } = __nccwpck_require__(88062);
-const { GuildScheduledEventStatus, GuildScheduledEventEntityType, RouteBases } = __nccwpck_require__(29244);
-const Base = __nccwpck_require__(94691);
-const { DiscordjsError, ErrorCodes } = __nccwpck_require__(22097);
+const { DiscordSnowflake } = __nccwpck_require__(65681);
+const { GuildScheduledEventStatus, GuildScheduledEventEntityType, RouteBases } = __nccwpck_require__(94104);
+const Base = __nccwpck_require__(7441);
+const { DiscordjsError, ErrorCodes } = __nccwpck_require__(6119);
 
 /**
  * Represents a scheduled event in a {@link Guild}.
@@ -40632,17 +42779,17 @@ exports.GuildScheduledEvent = GuildScheduledEvent;
 
 /***/ }),
 
-/***/ 73769:
+/***/ 44439:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { setTimeout, clearTimeout } = __nccwpck_require__(87997);
-const { RouteBases, Routes } = __nccwpck_require__(29244);
-const Base = __nccwpck_require__(94691);
-const { resolveImage } = __nccwpck_require__(9242);
-const Events = __nccwpck_require__(69573);
+const { RouteBases, Routes } = __nccwpck_require__(94104);
+const Base = __nccwpck_require__(7441);
+const { resolveImage } = __nccwpck_require__(80176);
+const Events = __nccwpck_require__(88131);
 
 /**
  * Represents the template for a guild.
@@ -40881,15 +43028,15 @@ module.exports = GuildTemplate;
 
 /***/ }),
 
-/***/ 18634:
+/***/ 50264:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { Routes } = __nccwpck_require__(29244);
-const Base = __nccwpck_require__(94691);
-const IntegrationApplication = __nccwpck_require__(31114);
+const { Routes } = __nccwpck_require__(94104);
+const Base = __nccwpck_require__(7441);
+const IntegrationApplication = __nccwpck_require__(67280);
 
 /**
  * The information account for an integration
@@ -41109,13 +43256,13 @@ module.exports = Integration;
 
 /***/ }),
 
-/***/ 31114:
+/***/ 67280:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Application = __nccwpck_require__(61723);
+const Application = __nccwpck_require__(45805);
 
 /**
  * Represents an Integration's OAuth2 Application.
@@ -41202,13 +43349,13 @@ module.exports = IntegrationApplication;
 
 /***/ }),
 
-/***/ 7447:
+/***/ 78213:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { DiscordSnowflake } = __nccwpck_require__(88062);
+const { DiscordSnowflake } = __nccwpck_require__(65681);
 
 /**
  * Represents an interaction callback response from Discord
@@ -41284,7 +43431,7 @@ module.exports = InteractionCallback;
 
 /***/ }),
 
-/***/ 66323:
+/***/ 99245:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -41292,7 +43439,7 @@ module.exports = InteractionCallback;
 
 const { lazy } = __nccwpck_require__(1004);
 
-const getMessage = lazy(() => (__nccwpck_require__(25799).Message));
+const getMessage = lazy(() => (__nccwpck_require__(12053).Message));
 
 /**
  * Represents the resource that was created by the interaction response.
@@ -41344,14 +43491,14 @@ module.exports = InteractionCallbackResource;
 
 /***/ }),
 
-/***/ 65476:
+/***/ 38486:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const InteractionCallback = __nccwpck_require__(7447);
-const InteractionCallbackResource = __nccwpck_require__(66323);
+const InteractionCallback = __nccwpck_require__(78213);
+const InteractionCallbackResource = __nccwpck_require__(99245);
 
 /**
  * Represents an interaction's response
@@ -41385,15 +43532,15 @@ module.exports = InteractionCallbackResponse;
 
 /***/ }),
 
-/***/ 2917:
+/***/ 22683:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { Collection } = __nccwpck_require__(41514);
-const Collector = __nccwpck_require__(66926);
-const Events = __nccwpck_require__(69573);
+const Collector = __nccwpck_require__(79840);
+const Events = __nccwpck_require__(88131);
 
 /**
  * @typedef {CollectorOptions} InteractionCollectorOptions
@@ -41662,15 +43809,15 @@ module.exports = InteractionCollector;
 
 /***/ }),
 
-/***/ 97923:
+/***/ 38125:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { DiscordSnowflake } = __nccwpck_require__(88062);
-const { InteractionType } = __nccwpck_require__(29244);
-const { DiscordjsError, ErrorCodes } = __nccwpck_require__(22097);
+const { DiscordSnowflake } = __nccwpck_require__(65681);
+const { InteractionType } = __nccwpck_require__(94104);
+const { DiscordjsError, ErrorCodes } = __nccwpck_require__(6119);
 
 /**
  * Represents an interaction's response
@@ -41766,19 +43913,19 @@ class InteractionResponse {
 }
 
 // eslint-disable-next-line import/order
-const InteractionCollector = __nccwpck_require__(2917);
+const InteractionCollector = __nccwpck_require__(22683);
 module.exports = InteractionResponse;
 
 
 /***/ }),
 
-/***/ 32927:
+/***/ 69701:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Webhook = __nccwpck_require__(62509);
+const Webhook = __nccwpck_require__(11683);
 
 /**
  * Represents a webhook for an Interaction
@@ -41839,18 +43986,18 @@ module.exports = InteractionWebhook;
 
 /***/ }),
 
-/***/ 50491:
+/***/ 33225:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { RouteBases, Routes, PermissionFlagsBits } = __nccwpck_require__(29244);
-const Base = __nccwpck_require__(94691);
-const { GuildScheduledEvent } = __nccwpck_require__(81390);
-const IntegrationApplication = __nccwpck_require__(31114);
-const InviteStageInstance = __nccwpck_require__(49294);
-const { DiscordjsError, ErrorCodes } = __nccwpck_require__(22097);
+const { RouteBases, Routes, PermissionFlagsBits } = __nccwpck_require__(94104);
+const Base = __nccwpck_require__(7441);
+const { GuildScheduledEvent } = __nccwpck_require__(82548);
+const IntegrationApplication = __nccwpck_require__(67280);
+const InviteStageInstance = __nccwpck_require__(81816);
+const { DiscordjsError, ErrorCodes } = __nccwpck_require__(6119);
 
 /**
  * Represents an invitation to a guild channel.
@@ -41878,7 +44025,7 @@ class Invite extends Base {
   }
 
   _patch(data) {
-    const InviteGuild = __nccwpck_require__(13860);
+    const InviteGuild = __nccwpck_require__(30914);
     /**
      * The guild the invite is for including welcome screen data if present
      * @type {?(Guild|InviteGuild)}
@@ -42176,14 +44323,14 @@ module.exports = Invite;
 
 /***/ }),
 
-/***/ 13860:
+/***/ 30914:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const AnonymousGuild = __nccwpck_require__(79798);
-const WelcomeScreen = __nccwpck_require__(19624);
+const AnonymousGuild = __nccwpck_require__(54236);
+const WelcomeScreen = __nccwpck_require__(25302);
 
 /**
  * Represents a guild received from an invite, includes welcome screen data if available.
@@ -42206,14 +44353,14 @@ module.exports = InviteGuild;
 
 /***/ }),
 
-/***/ 49294:
+/***/ 81816:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { Collection } = __nccwpck_require__(41514);
-const Base = __nccwpck_require__(94691);
+const Base = __nccwpck_require__(7441);
 
 /**
  * Represents the data about a public {@link StageInstance} in an {@link Invite}.
@@ -42301,13 +44448,13 @@ module.exports = InviteStageInstance;
 
 /***/ }),
 
-/***/ 77417:
+/***/ 76867:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const ThreadOnlyChannel = __nccwpck_require__(78433);
+const ThreadOnlyChannel = __nccwpck_require__(24339);
 
 /**
  * Represents a media channel.
@@ -42320,15 +44467,113 @@ module.exports = MediaChannel;
 
 /***/ }),
 
-/***/ 14442:
+/***/ 70095:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { MentionableSelectMenuBuilder: BuildersMentionableSelectMenu } = __nccwpck_require__(67951);
+const Component = __nccwpck_require__(72329);
+const MediaGalleryItem = __nccwpck_require__(27369);
+
+/**
+ * Represents a media gallery component
+ * @extends {Component}
+ */
+class MediaGalleryComponent extends Component {
+  constructor({ items, ...data }) {
+    super(data);
+
+    /**
+     * The items in this media gallery
+     * @type {MediaGalleryItem[]}
+     * @readonly
+     */
+    this.items = items.map(item => new MediaGalleryItem(item));
+  }
+
+  /**
+   * Returns the API-compatible JSON for this component
+   * @returns {APIMediaGalleryComponent}
+   */
+  toJSON() {
+    return { ...this.data, items: this.items.map(item => item.toJSON()) };
+  }
+}
+
+module.exports = MediaGalleryComponent;
+
+
+/***/ }),
+
+/***/ 27369:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+
+const UnfurledMediaItem = __nccwpck_require__(61622);
+
+/**
+ * Represents an item in a media gallery
+ */
+class MediaGalleryItem {
+  constructor({ media, ...data }) {
+    /**
+     * The API data associated with this component
+     * @type {APIMediaGalleryItem}
+     */
+    this.data = data;
+
+    /**
+     * The media associated with this media gallery item
+     * @type {UnfurledMediaItem}
+     * @readonly
+     */
+    this.media = new UnfurledMediaItem(media);
+  }
+
+  /**
+   * The description of this media gallery item
+   * @type {?string}
+   * @readonly
+   */
+  get description() {
+    return this.data.description ?? null;
+  }
+
+  /**
+   * Whether this media gallery item is spoilered
+   * @type {boolean}
+   * @readonly
+   */
+  get spoiler() {
+    return this.data.spoiler ?? false;
+  }
+
+  /**
+   * Returns the API-compatible JSON for this component
+   * @returns {APIMediaGalleryItem}
+   */
+  toJSON() {
+    return { ...this.data, media: this.media.toJSON() };
+  }
+}
+
+module.exports = MediaGalleryItem;
+
+
+/***/ }),
+
+/***/ 80820:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+
+const { MentionableSelectMenuBuilder: BuildersMentionableSelectMenu } = __nccwpck_require__(25722);
 const { isJSONEncodable } = __nccwpck_require__(1004);
-const { toSnakeCase } = __nccwpck_require__(75008);
+const { toSnakeCase } = __nccwpck_require__(86138);
 
 /**
  * Class used to build select menu components to be sent through the API
@@ -42360,13 +44605,13 @@ module.exports = MentionableSelectMenuBuilder;
 
 /***/ }),
 
-/***/ 76598:
+/***/ 45524:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const BaseSelectMenuComponent = __nccwpck_require__(44081);
+const BaseSelectMenuComponent = __nccwpck_require__(14771);
 
 /**
  * Represents a mentionable select menu component
@@ -42379,15 +44624,15 @@ module.exports = MentionableSelectMenuComponent;
 
 /***/ }),
 
-/***/ 62209:
+/***/ 95399:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { Collection } = __nccwpck_require__(41514);
-const MessageComponentInteraction = __nccwpck_require__(5006);
-const Events = __nccwpck_require__(69573);
+const MessageComponentInteraction = __nccwpck_require__(5044);
+const Events = __nccwpck_require__(88131);
 
 /**
  * Represents a {@link ComponentType.MentionableSelect} select menu interaction.
@@ -42458,40 +44703,41 @@ module.exports = MentionableSelectMenuInteraction;
 
 /***/ }),
 
-/***/ 25799:
+/***/ 12053:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { Collection } = __nccwpck_require__(41514);
-const { messageLink } = __nccwpck_require__(48871);
-const { DiscordSnowflake } = __nccwpck_require__(88062);
+const { messageLink } = __nccwpck_require__(71188);
+const { DiscordSnowflake } = __nccwpck_require__(65681);
 const {
   InteractionType,
   ChannelType,
   MessageType,
   MessageFlags,
   PermissionFlagsBits,
-} = __nccwpck_require__(29244);
-const Attachment = __nccwpck_require__(65843);
-const Base = __nccwpck_require__(94691);
-const ClientApplication = __nccwpck_require__(49495);
-const Embed = __nccwpck_require__(56341);
-const InteractionCollector = __nccwpck_require__(2917);
-const Mentions = __nccwpck_require__(88608);
-const MessagePayload = __nccwpck_require__(63185);
-const { Poll } = __nccwpck_require__(67075);
-const ReactionCollector = __nccwpck_require__(39878);
-const { Sticker } = __nccwpck_require__(95967);
-const { DiscordjsError, ErrorCodes } = __nccwpck_require__(22097);
-const ReactionManager = __nccwpck_require__(54872);
-const { createComponent } = __nccwpck_require__(44872);
-const { NonSystemMessageTypes, MaxBulkDeletableMessageAge, UndeletableMessageTypes } = __nccwpck_require__(38855);
-const MessageFlagsBitField = __nccwpck_require__(51831);
-const PermissionsBitField = __nccwpck_require__(92103);
-const { _transformAPIMessageInteractionMetadata } = __nccwpck_require__(75008);
-const { cleanContent, resolvePartialEmoji, transformResolved } = __nccwpck_require__(29800);
+  MessageReferenceType,
+} = __nccwpck_require__(94104);
+const Attachment = __nccwpck_require__(22217);
+const Base = __nccwpck_require__(7441);
+const ClientApplication = __nccwpck_require__(56981);
+const Embed = __nccwpck_require__(68883);
+const InteractionCollector = __nccwpck_require__(22683);
+const Mentions = __nccwpck_require__(1742);
+const MessagePayload = __nccwpck_require__(99143);
+const { Poll } = __nccwpck_require__(37597);
+const ReactionCollector = __nccwpck_require__(19492);
+const { Sticker } = __nccwpck_require__(97633);
+const { DiscordjsError, ErrorCodes } = __nccwpck_require__(6119);
+const ReactionManager = __nccwpck_require__(13546);
+const { createComponent, findComponentByCustomId } = __nccwpck_require__(76506);
+const { NonSystemMessageTypes, MaxBulkDeletableMessageAge, UndeletableMessageTypes } = __nccwpck_require__(92645);
+const MessageFlagsBitField = __nccwpck_require__(35377);
+const PermissionsBitField = __nccwpck_require__(57613);
+const { _transformAPIMessageInteractionMetadata } = __nccwpck_require__(86138);
+const { cleanContent, resolvePartialEmoji, transformResolved } = __nccwpck_require__(21754);
 
 /**
  * Represents a message on Discord.
@@ -42614,10 +44860,10 @@ class Message extends Base {
 
     if ('components' in data) {
       /**
-       * An array of action rows in the message.
+       * An array of components in the message.
        * <info>This property requires the {@link GatewayIntentBits.MessageContent} privileged intent
        * in a guild for messages that do not mention the client.</info>
-       * @type {ActionRow[]}
+       * @type {Component[]}
        */
       this.components = data.components.map(component => createComponent(component));
     } else {
@@ -42916,7 +45162,7 @@ class Message extends Base {
 
     if (data.message_snapshots) {
       /**
-       * The message associated with the message reference
+       * The message snapshots associated with the message reference
        * @type {Collection<Snowflake, Message>}
        */
       this.messageSnapshots = data.message_snapshots.reduce((coll, snapshot) => {
@@ -43168,7 +45414,11 @@ class Message extends Base {
    * @readonly
    */
   get editable() {
-    const precheck = Boolean(this.author.id === this.client.user.id && (!this.guild || this.channel?.viewable));
+    const precheck = Boolean(
+      this.author.id === this.client.user.id &&
+        (!this.guild || this.channel?.viewable) &&
+        this.reference?.type !== MessageReferenceType.Forward,
+    );
 
     // Regardless of permissions thread messages cannot be edited if
     // the thread is archived or the thread is locked and the bot does not have permission to manage threads.
@@ -43288,8 +45538,8 @@ class Message extends Base {
    *   .then(msg => console.log(`Updated the content of a message to ${msg.content}`))
    *   .catch(console.error);
    */
-  edit(options) {
-    if (!this.channel) return Promise.reject(new DiscordjsError(ErrorCodes.ChannelNotCached));
+  async edit(options) {
+    if (!this.channel) throw new DiscordjsError(ErrorCodes.ChannelNotCached);
     return this.channel.messages.edit(this, options);
   }
 
@@ -43304,8 +45554,8 @@ class Message extends Base {
    *     .catch(console.error);
    * }
    */
-  crosspost() {
-    if (!this.channel) return Promise.reject(new DiscordjsError(ErrorCodes.ChannelNotCached));
+  async crosspost() {
+    if (!this.channel) throw new DiscordjsError(ErrorCodes.ChannelNotCached);
     return this.channel.messages.crosspost(this.id);
   }
 
@@ -43403,8 +45653,8 @@ class Message extends Base {
    *   .then(() => console.log(`Replied to message "${message.content}"`))
    *   .catch(console.error);
    */
-  reply(options) {
-    if (!this.channel) return Promise.reject(new DiscordjsError(ErrorCodes.ChannelNotCached));
+  async reply(options) {
+    if (!this.channel) throw new DiscordjsError(ErrorCodes.ChannelNotCached);
     let data;
 
     if (options instanceof MessagePayload) {
@@ -43418,6 +45668,24 @@ class Message extends Base {
       });
     }
     return this.channel.send(data);
+  }
+
+  /**
+   * Forwards this message
+   *
+   * @param {TextBasedChannelResolvable} channel The channel to forward this message to.
+   * @returns {Promise<Message>}
+   */
+  forward(channel) {
+    const resolvedChannel = this.client.channels.resolve(channel);
+    if (!resolvedChannel) throw new DiscordjsError(ErrorCodes.InvalidType, 'channel', 'TextBasedChannelResolvable');
+    return resolvedChannel.send({
+      forward: {
+        message: this.id,
+        channel: this.channelId,
+        guild: this.guildId,
+      },
+    });
   }
 
   /**
@@ -43436,12 +45704,12 @@ class Message extends Base {
    * @param {StartThreadOptions} [options] Options for starting a thread on this message
    * @returns {Promise<ThreadChannel>}
    */
-  startThread(options = {}) {
-    if (!this.channel) return Promise.reject(new DiscordjsError(ErrorCodes.ChannelNotCached));
+  async startThread(options = {}) {
+    if (!this.channel) throw new DiscordjsError(ErrorCodes.ChannelNotCached);
     if (![ChannelType.GuildText, ChannelType.GuildAnnouncement].includes(this.channel.type)) {
-      return Promise.reject(new DiscordjsError(ErrorCodes.MessageThreadParent));
+      throw new DiscordjsError(ErrorCodes.MessageThreadParent);
     }
-    if (this.hasThread) return Promise.reject(new DiscordjsError(ErrorCodes.MessageExistingThread));
+    if (this.hasThread) throw new DiscordjsError(ErrorCodes.MessageExistingThread);
     return this.channel.threads.create({ ...options, startMessage: this });
   }
 
@@ -43450,8 +45718,8 @@ class Message extends Base {
    * @param {boolean} [force=true] Whether to skip the cache check and request the API
    * @returns {Promise<Message>}
    */
-  fetch(force = true) {
-    if (!this.channel) return Promise.reject(new DiscordjsError(ErrorCodes.ChannelNotCached));
+  async fetch(force = true) {
+    if (!this.channel) throw new DiscordjsError(ErrorCodes.ChannelNotCached);
     return this.channel.messages.fetch({ message: this.id, force });
   }
 
@@ -43459,9 +45727,9 @@ class Message extends Base {
    * Fetches the webhook used to create this message.
    * @returns {Promise<?Webhook>}
    */
-  fetchWebhook() {
-    if (!this.webhookId) return Promise.reject(new DiscordjsError(ErrorCodes.WebhookMessage));
-    if (this.webhookId === this.applicationId) return Promise.reject(new DiscordjsError(ErrorCodes.WebhookApplication));
+  async fetchWebhook() {
+    if (!this.webhookId) throw new DiscordjsError(ErrorCodes.WebhookMessage);
+    if (this.webhookId === this.applicationId) throw new DiscordjsError(ErrorCodes.WebhookApplication);
     return this.client.fetchWebhook(this.webhookId);
   }
 
@@ -43496,7 +45764,7 @@ class Message extends Base {
    * @returns {?MessageActionRowComponent}
    */
   resolveComponent(customId) {
-    return this.components.flatMap(row => row.components).find(component => component.customId === customId) ?? null;
+    return findComponentByCustomId(this.components, customId);
   }
 
   /**
@@ -43570,14 +45838,14 @@ exports.Message = Message;
 
 /***/ }),
 
-/***/ 80460:
+/***/ 48634:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Collector = __nccwpck_require__(66926);
-const Events = __nccwpck_require__(69573);
+const Collector = __nccwpck_require__(79840);
+const Events = __nccwpck_require__(88131);
 
 /**
  * @typedef {CollectorOptions} MessageCollectorOptions
@@ -43724,18 +45992,19 @@ module.exports = MessageCollector;
 
 /***/ }),
 
-/***/ 5006:
+/***/ 5044:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { lazy } = __nccwpck_require__(1004);
-const BaseInteraction = __nccwpck_require__(76459);
-const InteractionWebhook = __nccwpck_require__(32927);
-const InteractionResponses = __nccwpck_require__(86193);
+const BaseInteraction = __nccwpck_require__(56881);
+const InteractionWebhook = __nccwpck_require__(69701);
+const InteractionResponses = __nccwpck_require__(49671);
+const { findComponentByCustomId } = __nccwpck_require__(76506);
 
-const getMessage = lazy(() => (__nccwpck_require__(25799).Message));
+const getMessage = lazy(() => (__nccwpck_require__(12053).Message));
 
 /**
  * Represents a message component interaction.
@@ -43809,13 +46078,11 @@ class MessageComponentInteraction extends BaseInteraction {
 
   /**
    * The component which was interacted with
-   * @type {MessageActionRowComponent|APIMessageActionRowComponent}
+   * @type {MessageActionRowComponent|APIComponentInMessageActionRow}
    * @readonly
    */
   get component() {
-    return this.message.components
-      .flatMap(row => row.components)
-      .find(component => (component.customId ?? component.custom_id) === this.customId);
+    return findComponentByCustomId(this.message.components, this.customId);
   }
 
   // These are here only for documentation purposes - they are implemented by InteractionResponses
@@ -43840,13 +46107,13 @@ module.exports = MessageComponentInteraction;
 
 /***/ }),
 
-/***/ 55960:
+/***/ 62970:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const ContextMenuCommandInteraction = __nccwpck_require__(47891);
+const ContextMenuCommandInteraction = __nccwpck_require__(37717);
 
 /**
  * Represents a message context menu interaction.
@@ -43868,15 +46135,15 @@ module.exports = MessageContextMenuCommandInteraction;
 
 /***/ }),
 
-/***/ 88608:
+/***/ 1742:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { Collection } = __nccwpck_require__(41514);
-const { FormattingPatterns } = __nccwpck_require__(29244);
-const { flatten } = __nccwpck_require__(29800);
+const { FormattingPatterns } = __nccwpck_require__(94104);
+const { flatten } = __nccwpck_require__(21754);
 
 /**
  * Keeps track of mentions in a {@link Message}.
@@ -44173,7 +46440,7 @@ module.exports = MessageMentions;
 
 /***/ }),
 
-/***/ 63185:
+/***/ 99143:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -44181,15 +46448,14 @@ module.exports = MessageMentions;
 
 const { Buffer } = __nccwpck_require__(4573);
 const { lazy, isJSONEncodable } = __nccwpck_require__(1004);
-const { DiscordSnowflake } = __nccwpck_require__(88062);
-const { MessageFlags } = __nccwpck_require__(29244);
-const ActionRowBuilder = __nccwpck_require__(41155);
-const { DiscordjsError, DiscordjsRangeError, ErrorCodes } = __nccwpck_require__(22097);
-const { resolveFile } = __nccwpck_require__(9242);
-const MessageFlagsBitField = __nccwpck_require__(51831);
-const { basename, verifyString, resolvePartialEmoji } = __nccwpck_require__(29800);
+const { DiscordSnowflake } = __nccwpck_require__(65681);
+const { MessageFlags, MessageReferenceType } = __nccwpck_require__(94104);
+const { DiscordjsError, DiscordjsRangeError, ErrorCodes } = __nccwpck_require__(6119);
+const { resolveFile } = __nccwpck_require__(80176);
+const MessageFlagsBitField = __nccwpck_require__(35377);
+const { basename, verifyString, resolvePartialEmoji } = __nccwpck_require__(21754);
 
-const getBaseInteraction = lazy(() => __nccwpck_require__(76459));
+const getBaseInteraction = lazy(() => __nccwpck_require__(56881));
 
 /**
  * Represents a message to be sent to the API.
@@ -44231,8 +46497,8 @@ class MessagePayload {
    * @readonly
    */
   get isWebhook() {
-    const Webhook = __nccwpck_require__(62509);
-    const WebhookClient = __nccwpck_require__(94463);
+    const Webhook = __nccwpck_require__(11683);
+    const WebhookClient = __nccwpck_require__(29729);
     return this.target instanceof Webhook || this.target instanceof WebhookClient;
   }
 
@@ -44242,8 +46508,8 @@ class MessagePayload {
    * @readonly
    */
   get isUser() {
-    const User = __nccwpck_require__(2993);
-    const { GuildMember } = __nccwpck_require__(35985);
+    const User = __nccwpck_require__(40287);
+    const { GuildMember } = __nccwpck_require__(10159);
     return this.target instanceof User || this.target instanceof GuildMember;
   }
 
@@ -44253,7 +46519,7 @@ class MessagePayload {
    * @readonly
    */
   get isMessage() {
-    const { Message } = __nccwpck_require__(25799);
+    const { Message } = __nccwpck_require__(12053);
     return this.target instanceof Message;
   }
 
@@ -44263,7 +46529,7 @@ class MessagePayload {
    * @readonly
    */
   get isMessageManager() {
-    const MessageManager = __nccwpck_require__(35942);
+    const MessageManager = __nccwpck_require__(87128);
     return this.target instanceof MessageManager;
   }
 
@@ -44275,7 +46541,7 @@ class MessagePayload {
    */
   get isInteraction() {
     const BaseInteraction = getBaseInteraction();
-    const InteractionWebhook = __nccwpck_require__(32927);
+    const InteractionWebhook = __nccwpck_require__(69701);
     return this.target instanceof BaseInteraction || this.target instanceof InteractionWebhook;
   }
 
@@ -44328,7 +46594,7 @@ class MessagePayload {
     }
 
     const components = this.options.components?.map(component =>
-      (isJSONEncodable(component) ? component : new ActionRowBuilder(component)).toJSON(),
+      isJSONEncodable(component) ? component.toJSON() : this.target.client.options.jsonTransformer(component),
     );
 
     let username;
@@ -44345,9 +46611,7 @@ class MessagePayload {
     let flags;
     if (
       // eslint-disable-next-line eqeqeq
-      this.options.flags != null ||
-      (this.isMessage && this.options.reply === undefined) ||
-      this.isMessageManager
+      this.options.flags != null
     ) {
       flags = new MessageFlagsBitField(this.options.flags).bitfield;
     }
@@ -44374,6 +46638,22 @@ class MessagePayload {
         message_reference = {
           message_id,
           fail_if_not_exists: this.options.reply.failIfNotExists ?? this.target.client.options.failIfNotExists,
+        };
+      }
+    }
+
+    if (typeof this.options.forward === 'object') {
+      const reference = this.options.forward.message;
+      const channel_id = reference.channelId ?? this.target.client.channels.resolveId(this.options.forward.channel);
+      const guild_id = reference.guildId ?? this.target.client.guilds.resolveId(this.options.forward.guild);
+      const message_id = this.target.messages.resolveId(reference);
+      if (message_id) {
+        if (!channel_id) throw new DiscordjsError(ErrorCodes.InvalidType, 'channelId', 'TextBasedChannelResolvable');
+        message_reference = {
+          type: MessageReferenceType.Forward,
+          message_id,
+          channel_id,
+          guild_id: guild_id ?? undefined,
         };
       }
     }
@@ -44414,7 +46694,10 @@ class MessagePayload {
       components,
       username,
       avatar_url: avatarURL,
-      allowed_mentions: content === undefined && message_reference === undefined ? undefined : allowedMentions,
+      allowed_mentions:
+        this.isMessage && message_reference === undefined && this.target.author.id !== this.target.client.user.id
+          ? undefined
+          : allowedMentions,
       flags,
       message_reference,
       attachments: this.options.attachments,
@@ -44509,18 +46792,18 @@ module.exports = MessagePayload;
 
 /***/ }),
 
-/***/ 66296:
+/***/ 40486:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { Routes } = __nccwpck_require__(29244);
-const ApplicationEmoji = __nccwpck_require__(96474);
-const GuildEmoji = __nccwpck_require__(33253);
-const ReactionEmoji = __nccwpck_require__(11239);
-const ReactionUserManager = __nccwpck_require__(27889);
-const { flatten } = __nccwpck_require__(29800);
+const { Routes } = __nccwpck_require__(94104);
+const ApplicationEmoji = __nccwpck_require__(81068);
+const GuildEmoji = __nccwpck_require__(67935);
+const ReactionEmoji = __nccwpck_require__(7449);
+const ReactionUserManager = __nccwpck_require__(57803);
+const { flatten } = __nccwpck_require__(21754);
 
 /**
  * Represents a reaction to a message.
@@ -44717,15 +47000,15 @@ module.exports = MessageReaction;
 
 /***/ }),
 
-/***/ 78630:
+/***/ 34856:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { ModalBuilder: BuildersModal, ComponentBuilder } = __nccwpck_require__(67951);
+const { ModalBuilder: BuildersModal, ComponentBuilder } = __nccwpck_require__(25722);
 const { isJSONEncodable } = __nccwpck_require__(1004);
-const { toSnakeCase } = __nccwpck_require__(75008);
+const { toSnakeCase } = __nccwpck_require__(86138);
 
 /**
  * Represents a modal builder.
@@ -44761,15 +47044,15 @@ module.exports = ModalBuilder;
 
 /***/ }),
 
-/***/ 17916:
+/***/ 92618:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { Collection } = __nccwpck_require__(41514);
-const { ComponentType } = __nccwpck_require__(29244);
-const { DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(22097);
+const { ComponentType } = __nccwpck_require__(94104);
+const { DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(6119);
 
 /**
  * Represents the serialized fields from a modal submit interaction
@@ -44824,19 +47107,19 @@ module.exports = ModalSubmitFields;
 
 /***/ }),
 
-/***/ 22557:
+/***/ 61363:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { lazy } = __nccwpck_require__(1004);
-const BaseInteraction = __nccwpck_require__(76459);
-const InteractionWebhook = __nccwpck_require__(32927);
-const ModalSubmitFields = __nccwpck_require__(17916);
-const InteractionResponses = __nccwpck_require__(86193);
+const BaseInteraction = __nccwpck_require__(56881);
+const InteractionWebhook = __nccwpck_require__(69701);
+const ModalSubmitFields = __nccwpck_require__(92618);
+const InteractionResponses = __nccwpck_require__(49671);
 
-const getMessage = lazy(() => (__nccwpck_require__(25799).Message));
+const getMessage = lazy(() => (__nccwpck_require__(12053).Message));
 
 /**
  * @typedef {Object} ModalData
@@ -44958,15 +47241,15 @@ module.exports = ModalSubmitInteraction;
 
 /***/ }),
 
-/***/ 23542:
+/***/ 46464:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { Routes } = __nccwpck_require__(29244);
-const BaseGuildTextChannel = __nccwpck_require__(15288);
-const { DiscordjsError, ErrorCodes } = __nccwpck_require__(22097);
+const { Routes } = __nccwpck_require__(94104);
+const BaseGuildTextChannel = __nccwpck_require__(45590);
+const { DiscordjsError, ErrorCodes } = __nccwpck_require__(6119);
 
 /**
  * Represents a guild news channel on Discord.
@@ -44998,14 +47281,14 @@ module.exports = NewsChannel;
 
 /***/ }),
 
-/***/ 64154:
+/***/ 68424:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const BaseGuild = __nccwpck_require__(49628);
-const PermissionsBitField = __nccwpck_require__(92103);
+const BaseGuild = __nccwpck_require__(8506);
+const PermissionsBitField = __nccwpck_require__(57613);
 
 /**
  * A partial guild received when using {@link GuildManager#fetch} to fetch multiple guilds.
@@ -45034,19 +47317,21 @@ module.exports = OAuth2Guild;
 
 /***/ }),
 
-/***/ 62418:
+/***/ 76728:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { BaseChannel } = __nccwpck_require__(16836);
-const { DiscordjsError, ErrorCodes } = __nccwpck_require__(22097);
-const PartialGroupDMMessageManager = __nccwpck_require__(81949);
+const { BaseChannel } = __nccwpck_require__(25234);
+const TextBasedChannel = __nccwpck_require__(89874);
+const { DiscordjsError, ErrorCodes } = __nccwpck_require__(6119);
+const PartialGroupDMMessageManager = __nccwpck_require__(3431);
 
 /**
  * Represents a Partial Group DM Channel on Discord.
  * @extends {BaseChannel}
+ * @implements {TextBasedChannel}
  */
 class PartialGroupDMChannel extends BaseChannel {
   constructor(client, data) {
@@ -45084,6 +47369,36 @@ class PartialGroupDMChannel extends BaseChannel {
      * @type {PartialGroupDMMessageManager}
      */
     this.messages = new PartialGroupDMMessageManager(this);
+
+    if ('owner_id' in data) {
+      /**
+       * The user id of the owner of this Group DM Channel
+       * @type {?Snowflake}
+       */
+      this.ownerId = data.owner_id;
+    } else {
+      this.ownerId ??= null;
+    }
+
+    if ('last_message_id' in data) {
+      /**
+       * The channel's last message id, if one was sent
+       * @type {?Snowflake}
+       */
+      this.lastMessageId = data.last_message_id;
+    } else {
+      this.lastMessageId ??= null;
+    }
+
+    if ('last_pin_timestamp' in data) {
+      /**
+       * The timestamp when the last pinned message was pinned, if there was one
+       * @type {?number}
+       */
+      this.lastPinTimestamp = data.last_pin_timestamp ? Date.parse(data.last_pin_timestamp) : null;
+    } else {
+      this.lastPinTimestamp ??= null;
+    }
   }
 
   /**
@@ -45095,31 +47410,63 @@ class PartialGroupDMChannel extends BaseChannel {
     return this.icon && this.client.rest.cdn.channelIcon(this.id, this.icon, options);
   }
 
-  delete() {
-    return Promise.reject(new DiscordjsError(ErrorCodes.DeleteGroupDMChannel));
+  /**
+   * Fetches the owner of this Group DM Channel.
+   * @param {BaseFetchOptions} [options] The options for fetching the user
+   * @returns {Promise<User>}
+   */
+  async fetchOwner(options) {
+    if (!this.ownerId) {
+      throw new DiscordjsError(ErrorCodes.FetchOwnerId, 'group DM');
+    }
+
+    return this.client.users.fetch(this.ownerId, options);
   }
 
-  fetch() {
-    return Promise.reject(new DiscordjsError(ErrorCodes.FetchGroupDMChannel));
+  async delete() {
+    throw new DiscordjsError(ErrorCodes.DeleteGroupDMChannel);
   }
+
+  async fetch() {
+    throw new DiscordjsError(ErrorCodes.FetchGroupDMChannel);
+  }
+
+  // These are here only for documentation purposes - they are implemented by TextBasedChannel
+  /* eslint-disable no-empty-function */
+  get lastMessage() {}
+  get lastPinAt() {}
+  createMessageComponentCollector() {}
+  awaitMessageComponent() {}
 }
+
+TextBasedChannel.applyToClass(PartialGroupDMChannel, true, [
+  'bulkDelete',
+  'send',
+  'sendTyping',
+  'createMessageCollector',
+  'awaitMessages',
+  'fetchWebhooks',
+  'createWebhook',
+  'setRateLimitPerUser',
+  'setNSFW',
+]);
 
 module.exports = PartialGroupDMChannel;
 
 
 /***/ }),
 
-/***/ 97927:
+/***/ 86625:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { OverwriteType } = __nccwpck_require__(29244);
-const Base = __nccwpck_require__(94691);
-const { Role } = __nccwpck_require__(53390);
-const { DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(22097);
-const PermissionsBitField = __nccwpck_require__(92103);
+const { OverwriteType } = __nccwpck_require__(94104);
+const Base = __nccwpck_require__(7441);
+const { Role } = __nccwpck_require__(7788);
+const { DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(6119);
+const PermissionsBitField = __nccwpck_require__(57613);
 
 /**
  * Represents a permission overwrite for a role or member in a guild channel.
@@ -45296,7 +47643,10 @@ class PermissionOverwrites extends Base {
     }
 
     const userOrRole = guild.roles.resolve(overwrite.id) ?? guild.client.users.resolve(overwrite.id);
-    if (!userOrRole) throw new DiscordjsTypeError(ErrorCodes.InvalidType, 'parameter', 'User nor a Role');
+    if (!userOrRole) {
+      throw new DiscordjsTypeError(ErrorCodes.InvalidType, 'parameter', 'cached User or Role');
+    }
+
     const type = userOrRole instanceof Role ? OverwriteType.Role : OverwriteType.Member;
 
     return {
@@ -45313,17 +47663,17 @@ module.exports = PermissionOverwrites;
 
 /***/ }),
 
-/***/ 67075:
+/***/ 37597:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { Collection } = __nccwpck_require__(41514);
-const Base = __nccwpck_require__(94691);
-const { PollAnswer } = __nccwpck_require__(3345);
-const { DiscordjsError } = __nccwpck_require__(78846);
-const { ErrorCodes } = __nccwpck_require__(22097);
+const Base = __nccwpck_require__(7441);
+const { PollAnswer } = __nccwpck_require__(20667);
+const { DiscordjsError } = __nccwpck_require__(62548);
+const { ErrorCodes } = __nccwpck_require__(6119);
 
 /**
  * Represents a Poll
@@ -45416,9 +47766,9 @@ class Poll extends Base {
    * Ends this poll.
    * @returns {Promise<Message>}
    */
-  end() {
+  async end() {
     if (Date.now() > this.expiresTimestamp) {
-      return Promise.reject(new DiscordjsError(ErrorCodes.PollAlreadyExpired));
+      throw new DiscordjsError(ErrorCodes.PollAlreadyExpired);
     }
 
     return this.message.channel.messages.endPoll(this.message.id);
@@ -45430,14 +47780,14 @@ exports.Poll = Poll;
 
 /***/ }),
 
-/***/ 3345:
+/***/ 20667:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Base = __nccwpck_require__(94691);
-const { Emoji } = __nccwpck_require__(67034);
+const Base = __nccwpck_require__(7441);
+const { Emoji } = __nccwpck_require__(79268);
 
 /**
  * Represents an answer to a {@link Poll}
@@ -45527,16 +47877,16 @@ exports.PollAnswer = PollAnswer;
 
 /***/ }),
 
-/***/ 3943:
+/***/ 88101:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Base = __nccwpck_require__(94691);
-const { Emoji } = __nccwpck_require__(67034);
-const ActivityFlagsBitField = __nccwpck_require__(69655);
-const { flatten } = __nccwpck_require__(29800);
+const Base = __nccwpck_require__(7441);
+const { Emoji } = __nccwpck_require__(79268);
+const ActivityFlagsBitField = __nccwpck_require__(55433);
+const { flatten } = __nccwpck_require__(21754);
 
 /**
  * Activity sent in a message.
@@ -45920,15 +48270,15 @@ exports.RichPresenceAssets = RichPresenceAssets;
 
 /***/ }),
 
-/***/ 39878:
+/***/ 19492:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { Collection } = __nccwpck_require__(41514);
-const Collector = __nccwpck_require__(66926);
-const Events = __nccwpck_require__(69573);
+const Collector = __nccwpck_require__(79840);
+const Events = __nccwpck_require__(88131);
 
 /**
  * @typedef {CollectorOptions} ReactionCollectorOptions
@@ -46157,14 +48507,14 @@ module.exports = ReactionCollector;
 
 /***/ }),
 
-/***/ 11239:
+/***/ 7449:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { Emoji } = __nccwpck_require__(67034);
-const { flatten } = __nccwpck_require__(29800);
+const { Emoji } = __nccwpck_require__(79268);
+const { flatten } = __nccwpck_require__(21754);
 
 /**
  * Represents a limited emoji set used for both custom and unicode emojis. Custom emojis
@@ -46196,19 +48546,19 @@ module.exports = ReactionEmoji;
 
 /***/ }),
 
-/***/ 53390:
+/***/ 7788:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { roleMention } = __nccwpck_require__(48871);
-const { DiscordSnowflake } = __nccwpck_require__(88062);
-const { PermissionFlagsBits } = __nccwpck_require__(29244);
-const Base = __nccwpck_require__(94691);
-const { DiscordjsError, ErrorCodes } = __nccwpck_require__(22097);
-const PermissionsBitField = __nccwpck_require__(92103);
-const RoleFlagsBitField = __nccwpck_require__(85068);
+const { roleMention } = __nccwpck_require__(71188);
+const { DiscordSnowflake } = __nccwpck_require__(65681);
+const { PermissionFlagsBits } = __nccwpck_require__(94104);
+const Base = __nccwpck_require__(7441);
+const { DiscordjsError, ErrorCodes } = __nccwpck_require__(6119);
+const PermissionsBitField = __nccwpck_require__(57613);
+const RoleFlagsBitField = __nccwpck_require__(14550);
 
 /**
  * Represents a role on Discord.
@@ -46671,15 +49021,15 @@ exports.Role = Role;
 
 /***/ }),
 
-/***/ 37390:
+/***/ 99180:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { RoleSelectMenuBuilder: BuildersRoleSelectMenu } = __nccwpck_require__(67951);
+const { RoleSelectMenuBuilder: BuildersRoleSelectMenu } = __nccwpck_require__(25722);
 const { isJSONEncodable } = __nccwpck_require__(1004);
-const { toSnakeCase } = __nccwpck_require__(75008);
+const { toSnakeCase } = __nccwpck_require__(86138);
 
 /**
  * Class used to build select menu components to be sent through the API
@@ -46710,13 +49060,13 @@ module.exports = RoleSelectMenuBuilder;
 
 /***/ }),
 
-/***/ 66146:
+/***/ 8540:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const BaseSelectMenuComponent = __nccwpck_require__(44081);
+const BaseSelectMenuComponent = __nccwpck_require__(14771);
 
 /**
  * Represents a role select menu component
@@ -46729,14 +49079,14 @@ module.exports = RoleSelectMenuComponent;
 
 /***/ }),
 
-/***/ 4229:
+/***/ 52079:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { Collection } = __nccwpck_require__(41514);
-const MessageComponentInteraction = __nccwpck_require__(5006);
+const MessageComponentInteraction = __nccwpck_require__(5044);
 
 /**
  * Represents a {@link ComponentType.RoleSelect} select menu interaction.
@@ -46770,14 +49120,14 @@ module.exports = RoleSelectMenuInteraction;
 
 /***/ }),
 
-/***/ 70905:
+/***/ 275:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Base = __nccwpck_require__(94691);
-const { SKUFlagsBitField } = __nccwpck_require__(13533);
+const Base = __nccwpck_require__(7441);
+const { SKUFlagsBitField } = __nccwpck_require__(72107);
 
 /**
  * Represents a premium application SKU.
@@ -46830,14 +49180,64 @@ exports.SKU = SKU;
 
 /***/ }),
 
-/***/ 97386:
+/***/ 72766:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+
+const Component = __nccwpck_require__(72329);
+const { createComponent } = __nccwpck_require__(76506);
+
+/**
+ * Represents a section component
+ * @extends {Component}
+ */
+class SectionComponent extends Component {
+  constructor({ accessory, components, ...data }) {
+    super(data);
+
+    /**
+     * The components in this section
+     * @type {Component[]}
+     * @readonly
+     */
+    this.components = components.map(component => createComponent(component));
+
+    /**
+     * The accessory component of this section
+     * @type {Component}
+     * @readonly
+     */
+    this.accessory = createComponent(accessory);
+  }
+
+  /**
+   * Returns the API-compatible JSON for this component
+   * @returns {APISectionComponent}
+   */
+  toJSON() {
+    return {
+      ...this.data,
+      accessory: this.accessory.toJSON(),
+      components: this.components.map(component => component.toJSON()),
+    };
+  }
+}
+
+module.exports = SectionComponent;
+
+
+/***/ }),
+
+/***/ 27072:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const process = __nccwpck_require__(1708);
-const StringSelectMenuBuilder = __nccwpck_require__(40533);
+const StringSelectMenuBuilder = __nccwpck_require__(76011);
 
 let deprecationEmitted = false;
 
@@ -46864,14 +49264,14 @@ module.exports = SelectMenuBuilder;
 
 /***/ }),
 
-/***/ 51350:
+/***/ 86200:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const process = __nccwpck_require__(1708);
-const StringSelectMenuComponent = __nccwpck_require__(63345);
+const StringSelectMenuComponent = __nccwpck_require__(81963);
 
 let deprecationEmitted = false;
 
@@ -46898,14 +49298,14 @@ module.exports = SelectMenuComponent;
 
 /***/ }),
 
-/***/ 17505:
+/***/ 79651:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const process = __nccwpck_require__(1708);
-const StringSelectMenuInteraction = __nccwpck_require__(58514);
+const StringSelectMenuInteraction = __nccwpck_require__(26972);
 
 let deprecationEmitted = false;
 
@@ -46932,14 +49332,14 @@ module.exports = SelectMenuInteraction;
 
 /***/ }),
 
-/***/ 17589:
+/***/ 13583:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const process = __nccwpck_require__(1708);
-const StringSelectMenuOptionBuilder = __nccwpck_require__(3786);
+const StringSelectMenuOptionBuilder = __nccwpck_require__(6788);
 
 let deprecationEmitted = false;
 
@@ -46966,13 +49366,263 @@ module.exports = SelectMenuOptionBuilder;
 
 /***/ }),
 
-/***/ 44767:
+/***/ 76030:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const BaseGuildVoiceChannel = __nccwpck_require__(98341);
+const { SeparatorSpacingSize } = __nccwpck_require__(94104);
+const Component = __nccwpck_require__(72329);
+
+/**
+ * Represents a separator component
+ * @extends {Component}
+ */
+class SeparatorComponent extends Component {
+  /**
+   * The spacing of this separator
+   * @type {SeparatorSpacingSize}
+   * @readonly
+   */
+  get spacing() {
+    return this.data.spacing ?? SeparatorSpacingSize.Small;
+  }
+
+  /**
+   * Whether this separator is a divider
+   * @type {boolean}
+   * @readonly
+   */
+  get divider() {
+    return this.data.divider ?? true;
+  }
+}
+
+module.exports = SeparatorComponent;
+
+
+/***/ }),
+
+/***/ 39082:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+
+const { DiscordSnowflake } = __nccwpck_require__(65681);
+const Base = __nccwpck_require__(7441);
+const { Emoji } = __nccwpck_require__(79268);
+const { DiscordjsError, ErrorCodes } = __nccwpck_require__(6119);
+
+/**
+ * Represents a soundboard sound.
+ * @extends {Base}
+ */
+class SoundboardSound extends Base {
+  constructor(client, data) {
+    super(client);
+
+    /**
+     * The id of this soundboard sound
+     * @type {Snowflake|string}
+     */
+    this.soundId = data.sound_id;
+
+    this._patch(data);
+  }
+
+  _patch(data) {
+    if ('available' in data) {
+      /**
+       * Whether this soundboard sound is available
+       * @type {?boolean}
+       */
+      this.available = data.available;
+    } else {
+      this.available ??= null;
+    }
+
+    if ('name' in data) {
+      /**
+       * The name of this soundboard sound
+       * @type {?string}
+       */
+      this.name = data.name;
+    } else {
+      this.name ??= null;
+    }
+
+    if ('volume' in data) {
+      /**
+       * The volume (a double) of this soundboard sound, from 0 to 1
+       * @type {?number}
+       */
+      this.volume = data.volume;
+    } else {
+      this.volume ??= null;
+    }
+
+    if ('emoji_id' in data) {
+      /**
+       * The raw emoji data of this soundboard sound
+       * @type {?Object}
+       * @private
+       */
+      this._emoji = {
+        id: data.emoji_id,
+        name: data.emoji_name,
+      };
+    } else {
+      this._emoji ??= null;
+    }
+
+    if ('guild_id' in data) {
+      /**
+       * The guild id of this soundboard sound
+       * @type {?Snowflake}
+       */
+      this.guildId = data.guild_id;
+    } else {
+      this.guildId ??= null;
+    }
+
+    if ('user' in data) {
+      /**
+       * The user who created this soundboard sound
+       * @type {?User}
+       */
+      this.user = this.client.users._add(data.user);
+    } else {
+      this.user ??= null;
+    }
+  }
+
+  /**
+   * The timestamp this soundboard sound was created at
+   * @type {number}
+   * @readonly
+   */
+  get createdTimestamp() {
+    return DiscordSnowflake.timestampFrom(this.soundId);
+  }
+
+  /**
+   * The time this soundboard sound was created at
+   * @type {Date}
+   * @readonly
+   */
+  get createdAt() {
+    return new Date(this.createdTimestamp);
+  }
+
+  /**
+   * The emoji of this soundboard sound
+   * @type {?Emoji}
+   * @readonly
+   */
+  get emoji() {
+    if (!this._emoji) return null;
+
+    return this.guild?.emojis.cache.get(this._emoji.id) ?? new Emoji(this.client, this._emoji);
+  }
+
+  /**
+   * The guild this soundboard sound is part of
+   * @type {?Guild}
+   * @readonly
+   */
+  get guild() {
+    return this.client.guilds.resolve(this.guildId);
+  }
+
+  /**
+   * A link to this soundboard sound
+   * @type {string}
+   * @readonly
+   */
+  get url() {
+    return this.client.rest.cdn.soundboardSound(this.soundId);
+  }
+
+  /**
+   * Edits this soundboard sound.
+   * @param {GuildSoundboardSoundEditOptions} options The options to provide
+   * @returns {Promise<SoundboardSound>}
+   * @example
+   * // Update the name of a soundboard sound
+   * soundboardSound.edit({ name: 'new name' })
+   *   .then(sound => console.log(`Updated the name of the soundboard sound to ${sound.name}`))
+   *   .catch(console.error);
+   */
+  async edit(options) {
+    if (!this.guildId) throw new DiscordjsError(ErrorCodes.NotGuildSoundboardSound, 'edited');
+
+    return this.guild.soundboardSounds.edit(this, options);
+  }
+
+  /**
+   * Deletes this soundboard sound.
+   * @param {string} [reason] Reason for deleting this soundboard sound
+   * @returns {Promise<SoundboardSound>}
+   * @example
+   * // Delete a soundboard sound
+   * soundboardSound.delete()
+   *   .then(sound => console.log(`Deleted soundboard sound ${sound.name}`))
+   *   .catch(console.error);
+   */
+  async delete(reason) {
+    if (!this.guildId) throw new DiscordjsError(ErrorCodes.NotGuildSoundboardSound, 'deleted');
+
+    await this.guild.soundboardSounds.delete(this, reason);
+
+    return this;
+  }
+
+  /**
+   * Whether this soundboard sound is the same as another one.
+   * @param {SoundboardSound|APISoundboardSound} other The soundboard sound to compare it to
+   * @returns {boolean}
+   */
+  equals(other) {
+    if (other instanceof SoundboardSound) {
+      return (
+        this.soundId === other.soundId &&
+        this.available === other.available &&
+        this.name === other.name &&
+        this.volume === other.volume &&
+        this._emoji?.id === other._emoji?.id &&
+        this._emoji?.name === other._emoji?.name &&
+        this.guildId === other.guildId &&
+        this.user?.id === other.user?.id
+      );
+    }
+
+    return (
+      this.soundId === other.sound_id &&
+      this.available === other.available &&
+      this.name === other.name &&
+      this.volume === other.volume &&
+      (this._emoji?.id ?? null) === other.emoji_id &&
+      (this._emoji?.name ?? null) === other.emoji_name &&
+      this.guildId === other.guild_id &&
+      this.user?.id === other.user?.id
+    );
+  }
+}
+
+exports.SoundboardSound = SoundboardSound;
+
+
+/***/ }),
+
+/***/ 15409:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+
+const BaseGuildVoiceChannel = __nccwpck_require__(56115);
 
 /**
  * Represents a guild stage channel on Discord.
@@ -47086,14 +49736,14 @@ module.exports = StageChannel;
 
 /***/ }),
 
-/***/ 58217:
+/***/ 51347:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { DiscordSnowflake } = __nccwpck_require__(88062);
-const Base = __nccwpck_require__(94691);
+const { DiscordSnowflake } = __nccwpck_require__(65681);
+const Base = __nccwpck_require__(7441);
 
 /**
  * Represents a stage instance.
@@ -47261,17 +49911,17 @@ exports.StageInstance = StageInstance;
 
 /***/ }),
 
-/***/ 95967:
+/***/ 97633:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { DiscordSnowflake } = __nccwpck_require__(88062);
-const { Routes } = __nccwpck_require__(29244);
-const Base = __nccwpck_require__(94691);
-const { DiscordjsError, ErrorCodes } = __nccwpck_require__(22097);
-const { StickerFormatExtensionMap } = __nccwpck_require__(38855);
+const { DiscordSnowflake } = __nccwpck_require__(65681);
+const { Routes } = __nccwpck_require__(94104);
+const Base = __nccwpck_require__(7441);
+const { DiscordjsError, ErrorCodes } = __nccwpck_require__(6119);
+const { StickerFormatExtensionMap } = __nccwpck_require__(92645);
 
 /**
  * Represents a Sticker.
@@ -47449,8 +50099,8 @@ class Sticker extends Base {
    * Fetches the pack that contains this sticker.
    * @returns {Promise<?StickerPack>} The sticker pack or `null` if this sticker does not belong to one.
    */
-  fetchPack() {
-    if (!this.packId) return Promise.resolve(null);
+  async fetchPack() {
+    if (!this.packId) return null;
     return this.client.fetchStickerPacks({ packId: this.packId });
   }
 
@@ -47492,7 +50142,7 @@ class Sticker extends Base {
    * @returns {Promise<Sticker>}
    * @param {string} [reason] Reason for deleting this sticker
    * @example
-   * // Delete a message
+   * // Delete a sticker
    * sticker.delete()
    *   .then(sticker => console.log(`Deleted sticker ${sticker.name}`))
    *   .catch(console.error);
@@ -47537,16 +50187,16 @@ exports.Sticker = Sticker;
 
 /***/ }),
 
-/***/ 87626:
+/***/ 25724:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { Collection } = __nccwpck_require__(41514);
-const { DiscordSnowflake } = __nccwpck_require__(88062);
-const Base = __nccwpck_require__(94691);
-const { Sticker } = __nccwpck_require__(95967);
+const { DiscordSnowflake } = __nccwpck_require__(65681);
+const Base = __nccwpck_require__(7441);
+const { Sticker } = __nccwpck_require__(97633);
 
 /**
  * Represents a pack of standard stickers.
@@ -47640,16 +50290,16 @@ module.exports = StickerPack;
 
 /***/ }),
 
-/***/ 40533:
+/***/ 76011:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { SelectMenuBuilder: BuildersSelectMenu, normalizeArray } = __nccwpck_require__(67951);
+const { SelectMenuBuilder: BuildersSelectMenu, normalizeArray } = __nccwpck_require__(25722);
 const { isJSONEncodable } = __nccwpck_require__(1004);
-const { toSnakeCase } = __nccwpck_require__(75008);
-const { resolvePartialEmoji } = __nccwpck_require__(29800);
+const { toSnakeCase } = __nccwpck_require__(86138);
+const { resolvePartialEmoji } = __nccwpck_require__(21754);
 
 /**
  * Class used to build select menu components to be sent through the API
@@ -47727,13 +50377,13 @@ module.exports = StringSelectMenuBuilder;
 
 /***/ }),
 
-/***/ 63345:
+/***/ 81963:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const BaseSelectMenuComponent = __nccwpck_require__(44081);
+const BaseSelectMenuComponent = __nccwpck_require__(14771);
 
 /**
  * Represents a string select menu component
@@ -47755,13 +50405,13 @@ module.exports = StringSelectMenuComponent;
 
 /***/ }),
 
-/***/ 58514:
+/***/ 26972:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const MessageComponentInteraction = __nccwpck_require__(5006);
+const MessageComponentInteraction = __nccwpck_require__(5044);
 
 /**
  * Represents a {@link ComponentType.StringSelect} select menu interaction.
@@ -47784,16 +50434,16 @@ module.exports = StringSelectMenuInteraction;
 
 /***/ }),
 
-/***/ 3786:
+/***/ 6788:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { SelectMenuOptionBuilder: BuildersSelectMenuOption } = __nccwpck_require__(67951);
+const { SelectMenuOptionBuilder: BuildersSelectMenuOption } = __nccwpck_require__(25722);
 const { isJSONEncodable } = __nccwpck_require__(1004);
-const { toSnakeCase } = __nccwpck_require__(75008);
-const { resolvePartialEmoji } = __nccwpck_require__(29800);
+const { toSnakeCase } = __nccwpck_require__(86138);
+const { resolvePartialEmoji } = __nccwpck_require__(21754);
 
 /**
  * Represents a select menu option builder.
@@ -47841,13 +50491,13 @@ module.exports = StringSelectMenuOptionBuilder;
 
 /***/ }),
 
-/***/ 91895:
+/***/ 82097:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Base = __nccwpck_require__(94691);
+const Base = __nccwpck_require__(7441);
 
 /**
  * Represents a Subscription
@@ -47902,6 +50552,14 @@ class Subscription extends Base {
      * @type {SubscriptionStatus}
      */
     this.status = data.status;
+
+    if ('renewal_sku_ids' in data) {
+      /**
+       * The SKU ids that this user will be subscribed to at renewal
+       * @type {?Snowflake[]}
+       */
+      this.renewalSkuIds = data.renewal_sku_ids;
+    }
 
     if ('canceled_at' in data) {
       /**
@@ -47958,16 +50616,16 @@ exports.Subscription = Subscription;
 
 /***/ }),
 
-/***/ 67471:
+/***/ 17941:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { Collection } = __nccwpck_require__(41514);
-const { DiscordSnowflake } = __nccwpck_require__(88062);
-const Base = __nccwpck_require__(94691);
-const TeamMember = __nccwpck_require__(72741);
+const { DiscordSnowflake } = __nccwpck_require__(65681);
+const Base = __nccwpck_require__(7441);
+const TeamMember = __nccwpck_require__(58979);
 
 /**
  * Represents a Client OAuth2 Application Team.
@@ -48083,13 +50741,13 @@ module.exports = Team;
 
 /***/ }),
 
-/***/ 72741:
+/***/ 58979:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Base = __nccwpck_require__(94691);
+const Base = __nccwpck_require__(7441);
 
 /**
  * Represents a Client OAuth2 Application Team Member.
@@ -48170,13 +50828,13 @@ module.exports = TeamMember;
 
 /***/ }),
 
-/***/ 35454:
+/***/ 12548:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const BaseGuildTextChannel = __nccwpck_require__(15288);
+const BaseGuildTextChannel = __nccwpck_require__(45590);
 
 /**
  * Represents a guild text channel on Discord.
@@ -48211,15 +50869,43 @@ module.exports = TextChannel;
 
 /***/ }),
 
-/***/ 94794:
+/***/ 92818:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { TextInputBuilder: BuildersTextInput } = __nccwpck_require__(67951);
+const Component = __nccwpck_require__(72329);
+
+/**
+ * Represents a text display component
+ * @extends {Component}
+ */
+class TextDisplayComponent extends Component {
+  /**
+   * The content of this text display
+   * @type {string}
+   * @readonly
+   */
+  get content() {
+    return this.data.content;
+  }
+}
+
+module.exports = TextDisplayComponent;
+
+
+/***/ }),
+
+/***/ 24908:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+
+const { TextInputBuilder: BuildersTextInput } = __nccwpck_require__(25722);
 const { isJSONEncodable } = __nccwpck_require__(1004);
-const { toSnakeCase } = __nccwpck_require__(75008);
+const { toSnakeCase } = __nccwpck_require__(86138);
 
 /**
  * Represents a text input builder.
@@ -48250,13 +50936,13 @@ module.exports = TextInputBuilder;
 
 /***/ }),
 
-/***/ 22262:
+/***/ 29948:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Component = __nccwpck_require__(34091);
+const Component = __nccwpck_require__(72329);
 
 /**
  * Represents a text input component.
@@ -48287,22 +50973,22 @@ module.exports = TextInputComponent;
 
 /***/ }),
 
-/***/ 81251:
+/***/ 1669:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { DiscordAPIError } = __nccwpck_require__(18447);
+const { DiscordAPIError } = __nccwpck_require__(81374);
 const { lazy } = __nccwpck_require__(1004);
-const { RESTJSONErrorCodes, ChannelFlags, ChannelType, PermissionFlagsBits, Routes } = __nccwpck_require__(29244);
-const { BaseChannel } = __nccwpck_require__(16836);
-const getThreadOnlyChannel = lazy(() => __nccwpck_require__(78433));
-const TextBasedChannel = __nccwpck_require__(29228);
-const { DiscordjsRangeError, ErrorCodes } = __nccwpck_require__(22097);
-const GuildMessageManager = __nccwpck_require__(42295);
-const ThreadMemberManager = __nccwpck_require__(66675);
-const ChannelFlagsBitField = __nccwpck_require__(54407);
+const { RESTJSONErrorCodes, ChannelFlags, ChannelType, PermissionFlagsBits, Routes } = __nccwpck_require__(94104);
+const { BaseChannel } = __nccwpck_require__(25234);
+const getThreadOnlyChannel = lazy(() => __nccwpck_require__(24339));
+const TextBasedChannel = __nccwpck_require__(89874);
+const { DiscordjsRangeError, ErrorCodes } = __nccwpck_require__(6119);
+const GuildMessageManager = __nccwpck_require__(41641);
+const ThreadMemberManager = __nccwpck_require__(76345);
+const ChannelFlagsBitField = __nccwpck_require__(90913);
 
 /**
  * Represents a thread channel on Discord.
@@ -48610,7 +51296,6 @@ class ThreadChannel extends BaseChannel {
    * @param {BaseFetchOptions} [options] Additional options for this fetch
    * @returns {Promise<?Message<true>>}
    */
-  // eslint-disable-next-line require-await
   async fetchStarterMessage(options) {
     const channel = this.parent instanceof getThreadOnlyChannel() ? this : this.parent;
     return channel?.messages.fetch({ message: this.id, ...options }) ?? null;
@@ -48700,9 +51385,9 @@ class ThreadChannel extends BaseChannel {
    * @param {string} [reason] Reason for changing invite
    * @returns {Promise<ThreadChannel>}
    */
-  setInvitable(invitable = true, reason) {
+  async setInvitable(invitable = true, reason) {
     if (this.type !== ChannelType.PrivateThread) {
-      return Promise.reject(new DiscordjsRangeError(ErrorCodes.ThreadInvitableType, this.type));
+      throw new DiscordjsRangeError(ErrorCodes.ThreadInvitableType, this.type);
     }
     return this.edit({ invitable, reason });
   }
@@ -48908,15 +51593,15 @@ module.exports = ThreadChannel;
 
 /***/ }),
 
-/***/ 69960:
+/***/ 19642:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Base = __nccwpck_require__(94691);
-const ThreadMemberFlagsBitField = __nccwpck_require__(18970);
-const { emitDeprecationWarningForRemoveThreadMember } = __nccwpck_require__(29800);
+const Base = __nccwpck_require__(7441);
+const ThreadMemberFlagsBitField = __nccwpck_require__(22752);
+const { emitDeprecationWarningForRemoveThreadMember } = __nccwpck_require__(21754);
 
 /**
  * Represents a Member for a Thread.
@@ -49035,16 +51720,16 @@ module.exports = ThreadMember;
 
 /***/ }),
 
-/***/ 78433:
+/***/ 24339:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const GuildChannel = __nccwpck_require__(81340);
-const TextBasedChannel = __nccwpck_require__(29228);
-const GuildForumThreadManager = __nccwpck_require__(25477);
-const { transformAPIGuildForumTag, transformAPIGuildDefaultReaction } = __nccwpck_require__(96756);
+const GuildChannel = __nccwpck_require__(31442);
+const TextBasedChannel = __nccwpck_require__(89874);
+const GuildForumThreadManager = __nccwpck_require__(59491);
+const { transformAPIGuildForumTag, transformAPIGuildDefaultReaction } = __nccwpck_require__(30966);
 
 /**
  * @typedef {Object} GuildForumTagEmoji
@@ -49292,13 +51977,70 @@ module.exports = ThreadOnlyChannel;
 
 /***/ }),
 
-/***/ 47181:
+/***/ 30699:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Base = __nccwpck_require__(94691);
+const Component = __nccwpck_require__(72329);
+const UnfurledMediaItem = __nccwpck_require__(61622);
+
+/**
+ * Represents a thumbnail component
+ * @extends {Component}
+ */
+class ThumbnailComponent extends Component {
+  constructor({ media, ...data }) {
+    super(data);
+
+    /**
+     * The media associated with this thumbnail
+     * @type {UnfurledMediaItem}
+     * @readonly
+     */
+    this.media = new UnfurledMediaItem(media);
+  }
+
+  /**
+   * The description of this thumbnail
+   * @type {?string}
+   * @readonly
+   */
+  get description() {
+    return this.data.description ?? null;
+  }
+
+  /**
+   * Whether this thumbnail is spoilered
+   * @type {boolean}
+   * @readonly
+   */
+  get spoiler() {
+    return this.data.spoiler ?? false;
+  }
+
+  /**
+   * Returns the API-compatible JSON for this component
+   * @returns {APIThumbnailComponent}
+   */
+  toJSON() {
+    return { ...this.data, media: this.media.toJSON() };
+  }
+}
+
+module.exports = ThumbnailComponent;
+
+
+/***/ }),
+
+/***/ 86219:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+
+const Base = __nccwpck_require__(7441);
 
 /**
  * Represents a typing state for a user in a channel.
@@ -49374,19 +52116,60 @@ module.exports = Typing;
 
 /***/ }),
 
-/***/ 2993:
+/***/ 61622:
+/***/ ((module) => {
+
+"use strict";
+
+
+/**
+ * Represents a media item in a component
+ */
+class UnfurledMediaItem {
+  constructor(data) {
+    /**
+     * The API data associated with this media item
+     * @type {APIUnfurledMediaItem}
+     */
+    this.data = data;
+  }
+
+  /**
+   * The URL of this media gallery item
+   * @type {string}
+   * @readonly
+   */
+  get url() {
+    return this.data.url;
+  }
+
+  /**
+   * Returns the API-compatible JSON for this media item
+   * @returns {APIUnfurledMediaItem}
+   */
+  toJSON() {
+    return { ...this.data };
+  }
+}
+
+module.exports = UnfurledMediaItem;
+
+
+/***/ }),
+
+/***/ 40287:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { userMention } = __nccwpck_require__(48871);
-const { calculateUserDefaultAvatarIndex } = __nccwpck_require__(18447);
-const { DiscordSnowflake } = __nccwpck_require__(88062);
-const Base = __nccwpck_require__(94691);
-const TextBasedChannel = __nccwpck_require__(29228);
-const UserFlagsBitField = __nccwpck_require__(27553);
-const { emitDeprecationWarningForUserFetchFlags } = __nccwpck_require__(29800);
+const { userMention } = __nccwpck_require__(71188);
+const { calculateUserDefaultAvatarIndex } = __nccwpck_require__(81374);
+const { DiscordSnowflake } = __nccwpck_require__(65681);
+const Base = __nccwpck_require__(7441);
+const TextBasedChannel = __nccwpck_require__(89874);
+const UserFlagsBitField = __nccwpck_require__(26387);
+const { emitDeprecationWarningForUserFetchFlags } = __nccwpck_require__(21754);
 
 /**
  * Represents a user on Discord.
@@ -49793,13 +52576,13 @@ module.exports = User;
 
 /***/ }),
 
-/***/ 87262:
+/***/ 36960:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const ContextMenuCommandInteraction = __nccwpck_require__(47891);
+const ContextMenuCommandInteraction = __nccwpck_require__(37717);
 
 /**
  * Represents a user context menu interaction.
@@ -49830,15 +52613,15 @@ module.exports = UserContextMenuCommandInteraction;
 
 /***/ }),
 
-/***/ 35331:
+/***/ 32777:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { UserSelectMenuBuilder: BuildersUserSelectMenu } = __nccwpck_require__(67951);
+const { UserSelectMenuBuilder: BuildersUserSelectMenu } = __nccwpck_require__(25722);
 const { isJSONEncodable } = __nccwpck_require__(1004);
-const { toSnakeCase } = __nccwpck_require__(75008);
+const { toSnakeCase } = __nccwpck_require__(86138);
 
 /**
  * Class used to build select menu components to be sent through the API
@@ -49869,13 +52652,13 @@ module.exports = UserSelectMenuBuilder;
 
 /***/ }),
 
-/***/ 28307:
+/***/ 46429:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const BaseSelectMenuComponent = __nccwpck_require__(44081);
+const BaseSelectMenuComponent = __nccwpck_require__(14771);
 
 /**
  * Represents a user select menu component
@@ -49888,15 +52671,15 @@ module.exports = UserSelectMenuComponent;
 
 /***/ }),
 
-/***/ 60036:
+/***/ 31750:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { Collection } = __nccwpck_require__(41514);
-const MessageComponentInteraction = __nccwpck_require__(5006);
-const Events = __nccwpck_require__(69573);
+const MessageComponentInteraction = __nccwpck_require__(5044);
+const Events = __nccwpck_require__(88131);
 
 /**
  * Represents a {@link ComponentType.UserSelect} select menu interaction.
@@ -49947,14 +52730,14 @@ module.exports = UserSelectMenuInteraction;
 
 /***/ }),
 
-/***/ 4731:
+/***/ 56089:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { PermissionFlagsBits } = __nccwpck_require__(29244);
-const BaseGuildVoiceChannel = __nccwpck_require__(98341);
+const { PermissionFlagsBits, Routes } = __nccwpck_require__(94104);
+const BaseGuildVoiceChannel = __nccwpck_require__(56115);
 
 /**
  * Represents a guild voice channel on Discord.
@@ -49987,6 +52770,26 @@ class VoiceChannel extends BaseGuildVoiceChannel {
       this.guild.members.me.communicationDisabledUntilTimestamp < Date.now() &&
       permissions.has(PermissionFlagsBits.Speak, false)
     );
+  }
+
+  /**
+   * @typedef {Object} SendSoundboardSoundOptions
+   * @property {string} soundId The id of the soundboard sound to send
+   * @property {string} [guildId] The id of the guild the soundboard sound is a part of
+   */
+
+  /**
+   * Send a soundboard sound to a voice channel the user is connected to.
+   * @param {SoundboardSound|SendSoundboardSoundOptions} sound The sound to send
+   * @returns {Promise<void>}
+   */
+  async sendSoundboardSound(sound) {
+    await this.client.rest.post(Routes.sendSoundboardSound(this.id), {
+      body: {
+        sound_id: sound.soundId,
+        source_guild_id: sound.guildId ?? undefined,
+      },
+    });
   }
 }
 
@@ -50051,13 +52854,13 @@ module.exports = VoiceChannel;
 
 /***/ }),
 
-/***/ 91478:
+/***/ 70048:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { Emoji } = __nccwpck_require__(67034);
+const { Emoji } = __nccwpck_require__(79268);
 
 /**
  * Represents an effect used in a {@link VoiceChannel}.
@@ -50121,6 +52924,15 @@ class VoiceChannelEffect {
   get channel() {
     return this.guild.channels.cache.get(this.channelId) ?? null;
   }
+
+  /**
+   * The soundboard sound for soundboard effects.
+   * @type {?SoundboardSound}
+   * @readonly
+   */
+  get soundboardSound() {
+    return this.guild.soundboardSounds.cache.get(this.soundId) ?? null;
+  }
 }
 
 module.exports = VoiceChannelEffect;
@@ -50128,13 +52940,13 @@ module.exports = VoiceChannelEffect;
 
 /***/ }),
 
-/***/ 16118:
+/***/ 8812:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { flatten } = __nccwpck_require__(29800);
+const { flatten } = __nccwpck_require__(21754);
 
 /**
  * Represents a Discord voice region for guilds.
@@ -50182,15 +52994,15 @@ module.exports = VoiceRegion;
 
 /***/ }),
 
-/***/ 87961:
+/***/ 68903:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { ChannelType, Routes } = __nccwpck_require__(29244);
-const Base = __nccwpck_require__(94691);
-const { DiscordjsError, DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(22097);
+const { ChannelType, Routes } = __nccwpck_require__(94104);
+const Base = __nccwpck_require__(7441);
+const { DiscordjsError, DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(6119);
 
 /**
  * Represents the voice state for a Guild Member.
@@ -50502,21 +53314,21 @@ module.exports = VoiceState;
 
 /***/ }),
 
-/***/ 62509:
+/***/ 11683:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { makeURLSearchParams } = __nccwpck_require__(18447);
+const { makeURLSearchParams } = __nccwpck_require__(81374);
 const { lazy } = __nccwpck_require__(1004);
-const { DiscordSnowflake } = __nccwpck_require__(88062);
-const { Routes, WebhookType } = __nccwpck_require__(29244);
-const MessagePayload = __nccwpck_require__(63185);
-const { DiscordjsError, ErrorCodes } = __nccwpck_require__(22097);
-const { resolveImage } = __nccwpck_require__(9242);
+const { DiscordSnowflake } = __nccwpck_require__(65681);
+const { Routes, WebhookType } = __nccwpck_require__(94104);
+const MessagePayload = __nccwpck_require__(99143);
+const { DiscordjsError, ErrorCodes } = __nccwpck_require__(6119);
+const { resolveImage } = __nccwpck_require__(80176);
 
-const getMessage = lazy(() => (__nccwpck_require__(25799).Message));
+const getMessage = lazy(() => (__nccwpck_require__(12053).Message));
 
 /**
  * Represents a webhook.
@@ -50645,12 +53457,13 @@ class Webhook {
    * @property {string} [threadName] Name of the thread to create (only available if the webhook is in a forum channel)
    * @property {Snowflake[]} [appliedTags]
    * The tags to apply to the created thread (only available if the webhook is in a forum channel)
+   * @property {boolean} [withComponents] Whether to allow sending non-interactive components in the message.
+   * <info>For application-owned webhooks, this property is ignored</info>
    */
 
   /**
    * Options that can be passed into editMessage.
-   * @typedef {BaseMessageOptions} WebhookMessageEditOptions
-   * @property {Attachment[]} [attachments] Attachments to send with the message
+   * @typedef {MessageEditOptions} WebhookMessageEditOptions
    * @property {Snowflake} [threadId] The id of the thread this message belongs to
    * <info>For interaction webhooks, this property is ignored</info>
    */
@@ -50723,12 +53536,14 @@ class Webhook {
       messagePayload = MessagePayload.create(this, options).resolveBody();
     }
 
+    const { body, files } = await messagePayload.resolveFiles();
+
     const query = makeURLSearchParams({
       wait: true,
       thread_id: messagePayload.options.threadId,
+      with_components: messagePayload.options.withComponents,
     });
 
-    const { body, files } = await messagePayload.resolveFiles();
     const d = await this.client.rest.post(Routes.webhook(this.id, this.token), {
       body,
       files,
@@ -50807,6 +53622,8 @@ class Webhook {
    * @property {boolean} [cache=true] Whether to cache the message.
    * @property {Snowflake} [threadId] The id of the thread this message belongs to.
    * <info>For interaction webhooks, this property is ignored</info>
+   * @property {boolean} [withComponents] Whether to allow sending non-interactive components in the message.
+   * <info>For application-owned webhooks, this property is ignored</info>
    */
 
   /**
@@ -50846,14 +53663,17 @@ class Webhook {
 
     const { body, files } = await messagePayload.resolveBody().resolveFiles();
 
+    const query = makeURLSearchParams({
+      thread_id: messagePayload.options.threadId,
+      with_components: messagePayload.options.withComponents,
+    });
+
     const d = await this.client.rest.patch(
       Routes.webhookMessage(this.id, this.token, typeof message === 'string' ? message : message.id),
       {
         body,
         files,
-        query: messagePayload.options.threadId
-          ? makeURLSearchParams({ thread_id: messagePayload.options.threadId })
-          : undefined,
+        query,
         auth: false,
       },
     );
@@ -50991,14 +53811,14 @@ module.exports = Webhook;
 
 /***/ }),
 
-/***/ 66297:
+/***/ 39095:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Base = __nccwpck_require__(94691);
-const { Emoji } = __nccwpck_require__(67034);
+const Base = __nccwpck_require__(7441);
+const { Emoji } = __nccwpck_require__(79268);
 
 /**
  * Represents a channel link in a guild's welcome screen.
@@ -51059,16 +53879,16 @@ module.exports = WelcomeChannel;
 
 /***/ }),
 
-/***/ 19624:
+/***/ 25302:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { Collection } = __nccwpck_require__(41514);
-const { GuildFeature } = __nccwpck_require__(29244);
-const Base = __nccwpck_require__(94691);
-const WelcomeChannel = __nccwpck_require__(66297);
+const { GuildFeature } = __nccwpck_require__(94104);
+const Base = __nccwpck_require__(7441);
+const WelcomeChannel = __nccwpck_require__(39095);
 
 /**
  * Represents a welcome screen.
@@ -51116,16 +53936,16 @@ module.exports = WelcomeScreen;
 
 /***/ }),
 
-/***/ 91042:
+/***/ 30048:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { Collection } = __nccwpck_require__(41514);
-const { Routes } = __nccwpck_require__(29244);
-const Base = __nccwpck_require__(94691);
-const WidgetMember = __nccwpck_require__(67828);
+const { Routes } = __nccwpck_require__(94104);
+const Base = __nccwpck_require__(7441);
+const WidgetMember = __nccwpck_require__(70402);
 
 /**
  * Represents a Widget.
@@ -51221,13 +54041,13 @@ module.exports = Widget;
 
 /***/ }),
 
-/***/ 67828:
+/***/ 70402:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Base = __nccwpck_require__(94691);
+const Base = __nccwpck_require__(7441);
 
 /**
  * Represents a WidgetMember.
@@ -51328,14 +54148,14 @@ module.exports = WidgetMember;
 
 /***/ }),
 
-/***/ 61723:
+/***/ 45805:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { DiscordSnowflake } = __nccwpck_require__(88062);
-const Base = __nccwpck_require__(94691);
+const { DiscordSnowflake } = __nccwpck_require__(65681);
+const Base = __nccwpck_require__(7441);
 
 /**
  * Represents an OAuth2 Application.
@@ -51383,6 +54203,56 @@ class Application extends Base {
       this.icon = data.icon;
     } else {
       this.icon ??= null;
+    }
+
+    if ('terms_of_service_url' in data) {
+      /**
+       * The URL of the application's terms of service
+       * @type {?string}
+       */
+      this.termsOfServiceURL = data.terms_of_service_url;
+    } else {
+      this.termsOfServiceURL ??= null;
+    }
+
+    if ('privacy_policy_url' in data) {
+      /**
+       * The URL of the application's privacy policy
+       * @type {?string}
+       */
+      this.privacyPolicyURL = data.privacy_policy_url;
+    } else {
+      this.privacyPolicyURL ??= null;
+    }
+
+    if ('rpc_origins' in data) {
+      /**
+       * The application's RPC origins, if enabled
+       * @type {string[]}
+       */
+      this.rpcOrigins = data.rpc_origins;
+    } else {
+      this.rpcOrigins ??= [];
+    }
+
+    if ('cover_image' in data) {
+      /**
+       * The hash of the application's cover image
+       * @type {?string}
+       */
+      this.cover = data.cover_image;
+    } else {
+      this.cover ??= null;
+    }
+
+    if ('verify_key' in data) {
+      /**
+       * The hex-encoded key for verification in interactions and the GameSDK's GetTicket
+       * @type {?string}
+       */
+      this.verifyKey = data.verify_key;
+    } else {
+      this.verifyKey ??= null;
     }
   }
 
@@ -51444,7 +54314,7 @@ module.exports = Application;
 
 /***/ }),
 
-/***/ 66926:
+/***/ 79840:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -51453,8 +54323,8 @@ module.exports = Application;
 const EventEmitter = __nccwpck_require__(78474);
 const { setTimeout, clearTimeout } = __nccwpck_require__(87997);
 const { Collection } = __nccwpck_require__(41514);
-const { DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(22097);
-const { flatten } = __nccwpck_require__(29800);
+const { DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(6119);
+const { flatten } = __nccwpck_require__(21754);
 
 /**
  * Filter to be applied to the collector.
@@ -51787,7 +54657,7 @@ module.exports = Collector;
 
 /***/ }),
 
-/***/ 86193:
+/***/ 49671:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -51795,15 +54665,15 @@ module.exports = Collector;
 
 const process = __nccwpck_require__(1708);
 const { deprecate } = __nccwpck_require__(57975);
-const { makeURLSearchParams } = __nccwpck_require__(18447);
+const { makeURLSearchParams } = __nccwpck_require__(81374);
 const { isJSONEncodable } = __nccwpck_require__(1004);
-const { InteractionResponseType, MessageFlags, Routes, InteractionType } = __nccwpck_require__(29244);
-const { DiscordjsError, ErrorCodes } = __nccwpck_require__(22097);
-const MessageFlagsBitField = __nccwpck_require__(51831);
-const InteractionCallbackResponse = __nccwpck_require__(65476);
-const InteractionCollector = __nccwpck_require__(2917);
-const InteractionResponse = __nccwpck_require__(97923);
-const MessagePayload = __nccwpck_require__(63185);
+const { InteractionResponseType, MessageFlags, Routes, InteractionType } = __nccwpck_require__(94104);
+const { DiscordjsError, ErrorCodes } = __nccwpck_require__(6119);
+const MessageFlagsBitField = __nccwpck_require__(35377);
+const InteractionCallbackResponse = __nccwpck_require__(38486);
+const InteractionCollector = __nccwpck_require__(22683);
+const InteractionResponse = __nccwpck_require__(38125);
+const MessagePayload = __nccwpck_require__(99143);
 
 let deprecationEmittedForEphemeralOption = false;
 let deprecationEmittedForFetchReplyOption = false;
@@ -52065,9 +54935,11 @@ class InteractionResponses {
    * @param {string|MessagePayload|InteractionReplyOptions} options The options for the reply
    * @returns {Promise<Message>}
    */
-  followUp(options) {
-    if (!this.deferred && !this.replied) return Promise.reject(new DiscordjsError(ErrorCodes.InteractionNotReplied));
-    return this.webhook.send(options);
+  async followUp(options) {
+    if (!this.deferred && !this.replied) throw new DiscordjsError(ErrorCodes.InteractionNotReplied);
+    const msg = await this.webhook.send(options);
+    this.replied = true;
+    return msg;
   }
 
   /**
@@ -52218,7 +55090,7 @@ class InteractionResponses {
    *   .then(interaction => console.log(`${interaction.customId} was submitted!`))
    *   .catch(console.error);
    */
-  awaitModalSubmit(options) {
+  async awaitModalSubmit(options) {
     if (typeof options.time !== 'number') throw new DiscordjsError(ErrorCodes.InvalidType, 'time', 'number');
     const _options = { ...options, max: 1, interactionType: InteractionType.ModalSubmit };
     return new Promise((resolve, reject) => {
@@ -52268,20 +55140,20 @@ module.exports = InteractionResponses;
 
 /***/ }),
 
-/***/ 29228:
+/***/ 89874:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { Collection } = __nccwpck_require__(41514);
-const { DiscordSnowflake } = __nccwpck_require__(88062);
-const { InteractionType, Routes } = __nccwpck_require__(29244);
-const { DiscordjsTypeError, DiscordjsError, ErrorCodes } = __nccwpck_require__(22097);
-const { MaxBulkDeletableMessageAge } = __nccwpck_require__(38855);
-const InteractionCollector = __nccwpck_require__(2917);
-const MessageCollector = __nccwpck_require__(80460);
-const MessagePayload = __nccwpck_require__(63185);
+const { DiscordSnowflake } = __nccwpck_require__(65681);
+const { InteractionType, Routes } = __nccwpck_require__(94104);
+const { DiscordjsTypeError, DiscordjsError, ErrorCodes } = __nccwpck_require__(6119);
+const { MaxBulkDeletableMessageAge } = __nccwpck_require__(92645);
+const InteractionCollector = __nccwpck_require__(22683);
+const MessageCollector = __nccwpck_require__(48634);
+const MessagePayload = __nccwpck_require__(99143);
 
 /**
  * Interface for classes that have text-channel-like features.
@@ -52349,11 +55221,14 @@ class TextBasedChannel {
    * @property {?string} [content=''] The content for the message. This can only be `null` when editing a message.
    * @property {Array<(EmbedBuilder|Embed|APIEmbed)>} [embeds] The embeds for the message
    * @property {MessageMentionOptions} [allowedMentions] Which mentions should be parsed from the message content
-   * (see [here](https://discord.com/developers/docs/resources/message#allowed-mentions-object) for more details)
+   * (see {@link https://discord.com/developers/docs/resources/message#allowed-mentions-object here} for more details)
    * @property {Array<(AttachmentBuilder|Attachment|AttachmentPayload|BufferResolvable)>} [files]
    * The files to send with the message.
-   * @property {Array<(ActionRowBuilder|ActionRow|APIActionRowComponent)>} [components]
-   * Action rows containing interactive components for the message (buttons, select menus)
+   * @property {Array<(ActionRowBuilder|MessageTopLevelComponent|APIMessageTopLevelComponent)>} [components]
+   * Action rows containing interactive components for the message (buttons, select menus) and other
+   * top-level components.
+   * <info>When using components v2, the flag {@link MessageFlags.IsComponentsV2} needs to be set
+   * and `content`, `embeds`, `stickers`, and `poll` cannot be used.</info>
    */
 
   /**
@@ -52381,13 +55256,23 @@ class TextBasedChannel {
    * that message will be returned and no new message will be created
    * @property {StickerResolvable[]} [stickers=[]] The stickers to send in the message
    * @property {MessageFlags} [flags] Which flags to set for the message.
-   * <info>Only `MessageFlags.SuppressEmbeds` and `MessageFlags.SuppressNotifications` can be set.</info>
+   * <info>Only {@link MessageFlags.SuppressEmbeds}, {@link MessageFlags.SuppressNotifications} and
+   * {@link MessageFlags.IsComponentsV2} can be set.</info>
+   * <info>{@link MessageFlags.IsComponentsV2} is required if passing components that aren't action rows</info>
+   */
+
+  /**
+   * @typedef {Object} ForwardOptions
+   * @property {MessageResolvable} message The originating message
+   * @property {TextBasedChannelResolvable} [channel] The channel of the originating message
+   * @property {GuildResolvable} [guild] The guild of the originating message
    */
 
   /**
    * The options for sending a message.
    * @typedef {BaseMessageCreateOptions} MessageCreateOptions
    * @property {ReplyOptions} [reply] The options for replying to a message
+   * @property {ForwardOptions} [forward] The options for forwarding a message
    */
 
   /**
@@ -52436,8 +55321,8 @@ class TextBasedChannel {
    *   .catch(console.error);
    */
   async send(options) {
-    const User = __nccwpck_require__(2993);
-    const { GuildMember } = __nccwpck_require__(35985);
+    const User = __nccwpck_require__(40287);
+    const { GuildMember } = __nccwpck_require__(10159);
 
     if (this instanceof User || this instanceof GuildMember) {
       const dm = await this.createDM();
@@ -52705,19 +55590,19 @@ module.exports = TextBasedChannel;
 
 // Fixes Circular
 // eslint-disable-next-line import/order
-const GuildMessageManager = __nccwpck_require__(42295);
+const GuildMessageManager = __nccwpck_require__(41641);
 
 
 /***/ }),
 
-/***/ 69655:
+/***/ 55433:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { ActivityFlags } = __nccwpck_require__(29244);
-const BitField = __nccwpck_require__(50449);
+const { ActivityFlags } = __nccwpck_require__(94104);
+const BitField = __nccwpck_require__(82267);
 
 /**
  * Data structure that makes it easy to interact with an {@link Activity#flags} bitfield.
@@ -52744,14 +55629,14 @@ module.exports = ActivityFlagsBitField;
 
 /***/ }),
 
-/***/ 13528:
+/***/ 67922:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { ApplicationFlags } = __nccwpck_require__(29244);
-const BitField = __nccwpck_require__(50449);
+const { ApplicationFlags } = __nccwpck_require__(94104);
+const BitField = __nccwpck_require__(82267);
 
 /**
  * Data structure that makes it easy to interact with a {@link ClientApplication#flags} bitfield.
@@ -52793,14 +55678,14 @@ module.exports = ApplicationFlagsBitField;
 
 /***/ }),
 
-/***/ 10235:
+/***/ 48877:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { AttachmentFlags } = __nccwpck_require__(29244);
-const BitField = __nccwpck_require__(50449);
+const { AttachmentFlags } = __nccwpck_require__(94104);
+const BitField = __nccwpck_require__(82267);
 
 /**
  * Data structure that makes it easy to interact with an {@link Attachment#flags} bitfield.
@@ -52827,13 +55712,13 @@ module.exports = AttachmentFlagsBitField;
 
 /***/ }),
 
-/***/ 50449:
+/***/ 82267:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { DiscordjsRangeError, ErrorCodes } = __nccwpck_require__(22097);
+const { DiscordjsRangeError, ErrorCodes } = __nccwpck_require__(6119);
 
 /**
  * Data structure that makes it easy to interact with a bitfield.
@@ -53013,14 +55898,14 @@ module.exports = BitField;
 
 /***/ }),
 
-/***/ 54407:
+/***/ 90913:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { ChannelFlags } = __nccwpck_require__(29244);
-const BitField = __nccwpck_require__(50449);
+const { ChannelFlags } = __nccwpck_require__(94104);
+const BitField = __nccwpck_require__(82267);
 
 /**
  * Data structure that makes it easy to interact with a {@link BaseChannel#flags} bitfield.
@@ -53062,26 +55947,26 @@ module.exports = ChannelFlagsBitField;
 
 /***/ }),
 
-/***/ 96756:
+/***/ 30966:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { lazy } = __nccwpck_require__(1004);
-const { ChannelType } = __nccwpck_require__(29244);
+const { ChannelType } = __nccwpck_require__(94104);
 
-const getCategoryChannel = lazy(() => __nccwpck_require__(835));
-const getDMChannel = lazy(() => __nccwpck_require__(41898));
-const getNewsChannel = lazy(() => __nccwpck_require__(23542));
-const getStageChannel = lazy(() => __nccwpck_require__(44767));
-const getTextChannel = lazy(() => __nccwpck_require__(35454));
-const getThreadChannel = lazy(() => __nccwpck_require__(81251));
-const getVoiceChannel = lazy(() => __nccwpck_require__(4731));
-const getDirectoryChannel = lazy(() => __nccwpck_require__(17716));
-const getPartialGroupDMChannel = lazy(() => __nccwpck_require__(62418));
-const getForumChannel = lazy(() => __nccwpck_require__(79302));
-const getMediaChannel = lazy(() => __nccwpck_require__(77417));
+const getCategoryChannel = lazy(() => __nccwpck_require__(3113));
+const getDMChannel = lazy(() => __nccwpck_require__(18176));
+const getNewsChannel = lazy(() => __nccwpck_require__(46464));
+const getStageChannel = lazy(() => __nccwpck_require__(15409));
+const getTextChannel = lazy(() => __nccwpck_require__(12548));
+const getThreadChannel = lazy(() => __nccwpck_require__(1669));
+const getVoiceChannel = lazy(() => __nccwpck_require__(56089));
+const getDirectoryChannel = lazy(() => __nccwpck_require__(81878));
+const getPartialGroupDMChannel = lazy(() => __nccwpck_require__(76728));
+const getForumChannel = lazy(() => __nccwpck_require__(37772));
+const getMediaChannel = lazy(() => __nccwpck_require__(76867));
 
 /**
  * Extra options for creating a channel.
@@ -53231,7 +56116,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 77836:
+/***/ 1874:
 /***/ ((module) => {
 
 "use strict";
@@ -53312,17 +56197,18 @@ module.exports = {
 
 /***/ }),
 
-/***/ 44872:
+/***/ 76506:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-// This file contains the typedefs for camel-cased JSON data
-const { ComponentBuilder } = __nccwpck_require__(67951);
-const { ComponentType } = __nccwpck_require__(29244);
+const { ComponentBuilder } = __nccwpck_require__(25722);
+const { ComponentType } = __nccwpck_require__(94104);
+
 /**
  * @typedef {Object} BaseComponentData
+ * @property {number} [id] the id of this component
  * @property {ComponentType} type The type of component
  */
 
@@ -53334,30 +56220,30 @@ const { ComponentType } = __nccwpck_require__(29244);
 /**
  * @typedef {BaseComponentData} ButtonComponentData
  * @property {ButtonStyle} style The style of the button
- * @property {?boolean} disabled Whether this button is disabled
+ * @property {boolean} [disabled] Whether this button is disabled
  * @property {string} label The label of this button
- * @property {?APIMessageComponentEmoji} emoji The emoji on this button
- * @property {?string} customId The custom id of the button
- * @property {?string} url The URL of the button
+ * @property {APIMessageComponentEmoji} [emoji] The emoji on this button
+ * @property {string} [customId] The custom id of the button
+ * @property {string} [url] The URL of the button
  */
 
 /**
  * @typedef {object} SelectMenuComponentOptionData
  * @property {string} label The label of the option
  * @property {string} value The value of the option
- * @property {?string} description The description of the option
- * @property {?APIMessageComponentEmoji} emoji The emoji on the option
- * @property {?boolean} default Whether this option is selected by default
+ * @property {string} [description] The description of the option
+ * @property {APIMessageComponentEmoji} [emoji] The emoji on the option
+ * @property {boolean} [default] Whether this option is selected by default
  */
 
 /**
  * @typedef {BaseComponentData} SelectMenuComponentData
  * @property {string} customId The custom id of the select menu
- * @property {?boolean} disabled Whether the select menu is disabled or not
- * @property {?number} maxValues The maximum amount of options that can be selected
- * @property {?number} minValues The minimum amount of options that can be selected
- * @property {?SelectMenuComponentOptionData[]} options The options in this select menu
- * @property {?string} placeholder The placeholder of the select menu
+ * @property {boolean} [disabled] Whether the select menu is disabled or not
+ * @property {number} [maxValues] The maximum amount of options that can be selected
+ * @property {number} [minValues] The minimum amount of options that can be selected
+ * @property {SelectMenuComponentOptionData[]} [options] The options in this select menu
+ * @property {string} [placeholder] The placeholder of the select menu
  */
 
 /**
@@ -53369,15 +56255,76 @@ const { ComponentType } = __nccwpck_require__(29244);
  * @property {string} customId The custom id of the text input
  * @property {TextInputStyle} style The style of the text input
  * @property {string} label The text that appears on top of the text input field
- * @property {?number} minLength The minimum number of characters that can be entered in the text input
- * @property {?number} maxLength The maximum number of characters that can be entered in the text input
- * @property {?boolean} required Whether or not the text input is required or not
- * @property {?string} value The pre-filled text in the text input
- * @property {?string} placeholder Placeholder for the text input
+ * @property {number} [minLength] The minimum number of characters that can be entered in the text input
+ * @property {number} [maxLength] The maximum number of characters that can be entered in the text input
+ * @property {boolean} [required] Whether or not the text input is required or not
+ * @property {string} [value] The pre-filled text in the text input
+ * @property {string} [placeholder] Placeholder for the text input
  */
 
 /**
- * @typedef {ActionRowData|ButtonComponentData|SelectMenuComponentData|TextInputComponentData} ComponentData
+ * @typedef {Object} UnfurledMediaItemData
+ * @property {string} url The url of this media item. Accepts either http:, https: or attachment: protocol
+ */
+
+/**
+ * @typedef {BaseComponentData} ThumbnailComponentData
+ * @property {UnfurledMediaItemData} media The media for the thumbnail
+ * @property {string} [description] The description of the thumbnail
+ * @property {boolean} [spoiler] Whether the thumbnail should be spoilered
+ */
+
+/**
+ * @typedef {BaseComponentData} FileComponentData
+ * @property {UnfurledMediaItemData} file The file media in this component
+ * @property {boolean} [spoiler] Whether the file should be spoilered
+ */
+
+/**
+ * @typedef {Object} MediaGalleryItemData
+ * @property {UnfurledMediaItemData} media The media for the media gallery item
+ * @property {string} [description] The description of the media gallery item
+ * @property {boolean} [spoiler] Whether the media gallery item should be spoilered
+ */
+
+/**
+ * @typedef {BaseComponentData} MediaGalleryComponentData
+ * @property {MediaGalleryItemData[]} items The media gallery items in this media gallery component
+ */
+
+/**
+ * @typedef {BaseComponentData} SeparatorComponentData
+ * @property {SeparatorSpacingSize} [spacing] The spacing size of this component
+ * @property {boolean} [divider] Whether the separator shows as a divider
+ */
+
+/**
+ * @typedef {BaseComponentData} SectionComponentData
+ * @property {Components[]} components The components in this section
+ * @property {ButtonComponentData|ThumbnailComponentData} accessory The accessory shown next to this section
+ */
+
+/**
+ * @typedef {BaseComponentData} TextDisplayComponentData
+ * @property {string} content The content displayed in this component
+ */
+
+/**
+ * @typedef {ActionRowData|FileComponentData|MediaGalleryComponentData|SectionComponentData|
+ * SeparatorComponentData|TextDisplayComponentData} ComponentInContainerData
+ */
+
+/**
+ * @typedef {BaseComponentData} ContainerComponentData
+ * @property {ComponentInContainerData} components The components in this container
+ * @property {?number} [accentColor] The accent color of this container
+ * @property {boolean} [spoiler] Whether the container should be spoilered
+ */
+
+/**
+ * @typedef {ActionRowData|ButtonComponentData|SelectMenuComponentData|TextInputComponentData|
+ * ThumbnailComponentData|FileComponentData|MediaGalleryComponentData|SeparatorComponentData|
+ * SectionComponentData|TextDisplayComponentData|ContainerComponentData} ComponentData
  */
 
 /**
@@ -53386,9 +56333,15 @@ const { ComponentType } = __nccwpck_require__(29244);
  */
 
 /**
+ * @typedef {ActionRow|ContainerComponent|FileComponent|MediaGalleryComponent|
+ * SectionComponent|SeparatorComponent|TextDisplayComponent} MessageTopLevelComponent
+ */
+
+/**
  * Transforms API data into a component
  * @param {APIMessageComponent|Component} data The data to create the component from
  * @returns {Component}
+ * @ignore
  */
 function createComponent(data) {
   if (data instanceof Component) {
@@ -53412,6 +56365,20 @@ function createComponent(data) {
       return new MentionableSelectMenuComponent(data);
     case ComponentType.ChannelSelect:
       return new ChannelSelectMenuComponent(data);
+    case ComponentType.Container:
+      return new ContainerComponent(data);
+    case ComponentType.TextDisplay:
+      return new TextDisplayComponent(data);
+    case ComponentType.File:
+      return new FileComponent(data);
+    case ComponentType.MediaGallery:
+      return new MediaGalleryComponent(data);
+    case ComponentType.Section:
+      return new SectionComponent(data);
+    case ComponentType.Separator:
+      return new SeparatorComponent(data);
+    case ComponentType.Thumbnail:
+      return new ThumbnailComponent(data);
     default:
       return new Component(data);
   }
@@ -53421,6 +56388,7 @@ function createComponent(data) {
  * Transforms API data into a component builder
  * @param {APIMessageComponent|ComponentBuilder} data The data to create the component from
  * @returns {ComponentBuilder}
+ * @ignore
  */
 function createComponentBuilder(data) {
   if (data instanceof ComponentBuilder) {
@@ -53449,36 +56417,77 @@ function createComponentBuilder(data) {
   }
 }
 
-module.exports = { createComponent, createComponentBuilder };
+/**
+ * Extracts all interactive components from the component tree
+ * @param {Component|APIMessageComponent} component The component to find all interactive components in
+ * @returns {Array<Component|APIMessageComponent>}
+ * @ignore
+ */
+function extractInteractiveComponents(component) {
+  switch (component.type) {
+    case ComponentType.ActionRow:
+      return component.components;
+    case ComponentType.Section:
+      return [...component.components, component.accessory];
+    case ComponentType.Container:
+      return component.components.flatMap(extractInteractiveComponents);
+    default:
+      return [component];
+  }
+}
 
-const ActionRow = __nccwpck_require__(16330);
-const ActionRowBuilder = __nccwpck_require__(41155);
-const ButtonBuilder = __nccwpck_require__(98439);
-const ButtonComponent = __nccwpck_require__(15279);
-const ChannelSelectMenuBuilder = __nccwpck_require__(96753);
-const ChannelSelectMenuComponent = __nccwpck_require__(61333);
-const Component = __nccwpck_require__(34091);
-const MentionableSelectMenuBuilder = __nccwpck_require__(14442);
-const MentionableSelectMenuComponent = __nccwpck_require__(76598);
-const RoleSelectMenuBuilder = __nccwpck_require__(37390);
-const RoleSelectMenuComponent = __nccwpck_require__(66146);
-const StringSelectMenuBuilder = __nccwpck_require__(40533);
-const StringSelectMenuComponent = __nccwpck_require__(63345);
-const TextInputBuilder = __nccwpck_require__(94794);
-const TextInputComponent = __nccwpck_require__(22262);
-const UserSelectMenuBuilder = __nccwpck_require__(35331);
-const UserSelectMenuComponent = __nccwpck_require__(28307);
+/**
+ * Finds a component by customId in nested components
+ * @param {Array<Component|APIMessageComponent>} components The components to search in
+ * @param {string} customId The customId to search for
+ * @returns {Component|APIMessageComponent}
+ * @ignore
+ */
+function findComponentByCustomId(components, customId) {
+  return (
+    components
+      .flatMap(extractInteractiveComponents)
+      .find(component => (component.customId ?? component.custom_id) === customId) ?? null
+  );
+}
+
+module.exports = { createComponent, createComponentBuilder, findComponentByCustomId };
+
+const ActionRow = __nccwpck_require__(7868);
+const ActionRowBuilder = __nccwpck_require__(67513);
+const ButtonBuilder = __nccwpck_require__(68653);
+const ButtonComponent = __nccwpck_require__(56921);
+const ChannelSelectMenuBuilder = __nccwpck_require__(911);
+const ChannelSelectMenuComponent = __nccwpck_require__(95591);
+const Component = __nccwpck_require__(72329);
+const ContainerComponent = __nccwpck_require__(44318);
+const FileComponent = __nccwpck_require__(18559);
+const MediaGalleryComponent = __nccwpck_require__(70095);
+const MentionableSelectMenuBuilder = __nccwpck_require__(80820);
+const MentionableSelectMenuComponent = __nccwpck_require__(45524);
+const RoleSelectMenuBuilder = __nccwpck_require__(99180);
+const RoleSelectMenuComponent = __nccwpck_require__(8540);
+const SectionComponent = __nccwpck_require__(72766);
+const SeparatorComponent = __nccwpck_require__(76030);
+const StringSelectMenuBuilder = __nccwpck_require__(76011);
+const StringSelectMenuComponent = __nccwpck_require__(81963);
+const TextDisplayComponent = __nccwpck_require__(92818);
+const TextInputBuilder = __nccwpck_require__(24908);
+const TextInputComponent = __nccwpck_require__(29948);
+const ThumbnailComponent = __nccwpck_require__(30699);
+const UserSelectMenuBuilder = __nccwpck_require__(32777);
+const UserSelectMenuComponent = __nccwpck_require__(46429);
 
 
 /***/ }),
 
-/***/ 38855:
+/***/ 92645:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { ChannelType, MessageType, ComponentType, ImageFormat, StickerFormatType } = __nccwpck_require__(29244);
+const { ChannelType, MessageType, ComponentType, ImageFormat, StickerFormatType } = __nccwpck_require__(94104);
 
 /**
  * Max bulk deletable message age
@@ -53747,7 +56756,7 @@ exports.StickerFormatExtensionMap = {
 
 /***/ }),
 
-/***/ 9242:
+/***/ 80176:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -53756,9 +56765,9 @@ exports.StickerFormatExtensionMap = {
 const { Buffer } = __nccwpck_require__(4573);
 const fs = __nccwpck_require__(51455);
 const path = __nccwpck_require__(76760);
-const { fetch } = __nccwpck_require__(83110);
-const { DiscordjsError, DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(22097);
-const Invite = __nccwpck_require__(50491);
+const { fetch } = __nccwpck_require__(30794);
+const { DiscordjsError, DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(6119);
+const Invite = __nccwpck_require__(33225);
 
 /**
  * Data that can be resolved to give an invite code. This can be:
@@ -53802,7 +56811,7 @@ function resolveInviteCode(data) {
  * @private
  */
 function resolveGuildTemplateCode(data) {
-  const GuildTemplate = __nccwpck_require__(73769);
+  const GuildTemplate = __nccwpck_require__(44439);
   return resolveCode(data, GuildTemplate.GuildTemplatesPattern);
 }
 
@@ -53866,13 +56875,14 @@ async function resolveFile(resource) {
  */
 
 /**
- * Resolves a Base64Resolvable to a Base 64 image.
+ * Resolves a Base64Resolvable to a Base 64 string.
  * @param {Base64Resolvable} data The base 64 resolvable you want to resolve
+ * @param {string} [contentType='image/jpg'] The content type of the data
  * @returns {?string}
  * @private
  */
-function resolveBase64(data) {
-  if (Buffer.isBuffer(data)) return `data:image/jpg;base64,${data.toString('base64')}`;
+function resolveBase64(data, contentType = 'image/jpg') {
+  if (Buffer.isBuffer(data)) return `data:${contentType};base64,${data.toString('base64')}`;
   return data;
 }
 
@@ -53896,7 +56906,7 @@ module.exports = { resolveCode, resolveInviteCode, resolveGuildTemplateCode, res
 
 /***/ }),
 
-/***/ 18132:
+/***/ 16618:
 /***/ ((module) => {
 
 "use strict";
@@ -53917,7 +56927,7 @@ module.exports = { createEnum };
 
 /***/ }),
 
-/***/ 69573:
+/***/ 88131:
 /***/ ((module) => {
 
 "use strict";
@@ -53964,6 +56974,10 @@ module.exports = { createEnum };
  * @property {string} GuildScheduledEventUpdate guildScheduledEventUpdate
  * @property {string} GuildScheduledEventUserAdd guildScheduledEventUserAdd
  * @property {string} GuildScheduledEventUserRemove guildScheduledEventUserRemove
+ * @property {string} GuildSoundboardSoundCreate guildSoundboardSoundCreate
+ * @property {string} GuildSoundboardSoundDelete guildSoundboardSoundDelete
+ * @property {string} GuildSoundboardSoundsUpdate guildSoundboardSoundsUpdate
+ * @property {string} GuildSoundboardSoundUpdate guildSoundboardSoundUpdate
  * @property {string} GuildStickerCreate stickerCreate
  * @property {string} GuildStickerDelete stickerDelete
  * @property {string} GuildStickerUpdate stickerUpdate
@@ -53984,6 +56998,7 @@ module.exports = { createEnum };
  * @property {string} MessageReactionRemoveEmoji messageReactionRemoveEmoji
  * @property {string} MessageUpdate messageUpdate
  * @property {string} PresenceUpdate presenceUpdate
+ * @property {string} SoundboardSounds soundboardSounds
  * @property {string} ShardDisconnect shardDisconnect
  * @property {string} ShardError shardError
  * @property {string} ShardReady shardReady
@@ -54055,6 +57070,10 @@ module.exports = {
   GuildScheduledEventUpdate: 'guildScheduledEventUpdate',
   GuildScheduledEventUserAdd: 'guildScheduledEventUserAdd',
   GuildScheduledEventUserRemove: 'guildScheduledEventUserRemove',
+  GuildSoundboardSoundCreate: 'guildSoundboardSoundCreate',
+  GuildSoundboardSoundDelete: 'guildSoundboardSoundDelete',
+  GuildSoundboardSoundsUpdate: 'guildSoundboardSoundsUpdate',
+  GuildSoundboardSoundUpdate: 'guildSoundboardSoundUpdate',
   GuildStickerCreate: 'stickerCreate',
   GuildStickerDelete: 'stickerDelete',
   GuildStickerUpdate: 'stickerUpdate',
@@ -54075,6 +57094,7 @@ module.exports = {
   MessageReactionRemoveEmoji: 'messageReactionRemoveEmoji',
   MessageUpdate: 'messageUpdate',
   PresenceUpdate: 'presenceUpdate',
+  SoundboardSounds: 'soundboardSounds',
   Raw: 'raw',
   ShardDisconnect: 'shardDisconnect',
   ShardError: 'shardError',
@@ -54105,7 +57125,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 38300:
+/***/ 3061:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -54130,7 +57150,7 @@ const {
   TimestampStyles,
   underscore,
   userMention,
-} = __nccwpck_require__(48871);
+} = __nccwpck_require__(71188);
 
 /**
  * Formats an application command name and id into an application command mention.
@@ -54526,14 +57546,14 @@ module.exports = Formatters;
 
 /***/ }),
 
-/***/ 44777:
+/***/ 6971:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { GuildMemberFlags } = __nccwpck_require__(29244);
-const BitField = __nccwpck_require__(50449);
+const { GuildMemberFlags } = __nccwpck_require__(94104);
+const BitField = __nccwpck_require__(82267);
 
 /**
  * Data structure that makes it easy to interact with a {@link GuildMember#flags} bitfield.
@@ -54575,13 +57595,13 @@ exports.GuildMemberFlagsBitField = GuildMemberFlagsBitField;
 
 /***/ }),
 
-/***/ 69156:
+/***/ 51142:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
-const { GatewayIntentBits } = __nccwpck_require__(29244);
-const BitField = __nccwpck_require__(50449);
+const { GatewayIntentBits } = __nccwpck_require__(94104);
+const BitField = __nccwpck_require__(82267);
 
 /**
  * Data structure that makes it easy to calculate intents.
@@ -54617,14 +57637,14 @@ module.exports = IntentsBitField;
 
 /***/ }),
 
-/***/ 40464:
+/***/ 79826:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { Collection } = __nccwpck_require__(41514);
-const { DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(22097);
+const { DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(6119);
 
 /**
  * Options for defining the behavior of a LimitedCollection
@@ -54693,14 +57713,14 @@ module.exports = LimitedCollection;
 
 /***/ }),
 
-/***/ 51831:
+/***/ 35377:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { MessageFlags } = __nccwpck_require__(29244);
-const BitField = __nccwpck_require__(50449);
+const { MessageFlags } = __nccwpck_require__(94104);
+const BitField = __nccwpck_require__(82267);
 
 /**
  * Data structure that makes it easy to interact with a {@link Message#flags} bitfield.
@@ -54742,15 +57762,15 @@ module.exports = MessageFlagsBitField;
 
 /***/ }),
 
-/***/ 4264:
+/***/ 61710:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { DefaultRestOptions, DefaultUserAgentAppendix } = __nccwpck_require__(18447);
-const { toSnakeCase } = __nccwpck_require__(75008);
-const { version } = __nccwpck_require__(38276);
+const { DefaultRestOptions, DefaultUserAgentAppendix } = __nccwpck_require__(81374);
+const { toSnakeCase } = __nccwpck_require__(86138);
+const { version } = __nccwpck_require__(27638);
 
 // TODO(ckohen): switch order of params so full manager is first and "type" is optional
 /**
@@ -54778,7 +57798,7 @@ const { version } = __nccwpck_require__(38276);
  * @property {MessageMentionOptions} [allowedMentions] The default value for {@link BaseMessageOptions#allowedMentions}
  * @property {Partials[]} [partials] Structures allowed to be partial. This means events can be emitted even when
  * they're missing all the data for a particular structure. See the "Partial Structures" topic on the
- * [guide](https://discordjs.guide/popular-topics/partials.html) for some
+ * {@link https://discordjs.guide/popular-topics/partials.html guide} for some
  * important usage information, as partials require you to put checks in place when handling data.
  * @property {boolean} [failIfNotExists=true] The default value for {@link MessageReplyOptions#failIfNotExists}
  * @property {PresenceData} [presence={}] Presence data to use upon login
@@ -54789,7 +57809,7 @@ const { version } = __nccwpck_require__(38276);
  * @property {WebsocketOptions} [ws] Options for the WebSocket
  * @property {RESTOptions} [rest] Options for the REST manager
  * @property {Function} [jsonTransformer] A function used to transform outgoing json data
- * @property {boolean} [enforceNonce=false] The default value for {@link MessageReplyOptions#enforceNonce}
+ * @property {boolean} [enforceNonce=false] The default value for {@link MessageCreateOptions#enforceNonce}
  */
 
 /**
@@ -54900,7 +57920,7 @@ class Options extends null {
    */
   static cacheWithLimits(settings = {}) {
     const { Collection } = __nccwpck_require__(41514);
-    const LimitedCollection = __nccwpck_require__(40464);
+    const LimitedCollection = __nccwpck_require__(79826);
 
     return (managerType, _, manager) => {
       const setting = settings[manager.name] ?? settings[managerType.name];
@@ -54989,13 +58009,13 @@ module.exports = Options;
 
 /***/ }),
 
-/***/ 13238:
+/***/ 43056:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { createEnum } = __nccwpck_require__(18132);
+const { createEnum } = __nccwpck_require__(16618);
 
 /**
  * The enumeration for partials.
@@ -55021,6 +58041,7 @@ const { createEnum } = __nccwpck_require__(18132);
  * @property {number} Reaction The partial to receive uncached reactions.
  * @property {number} GuildScheduledEvent The partial to receive uncached guild scheduled events.
  * @property {number} ThreadMember The partial to receive uncached thread members.
+ * @property {number} SoundboardSound The partial to receive uncached soundboard sounds.
  */
 
 // JSDoc for IntelliSense purposes
@@ -55036,19 +58057,20 @@ module.exports = createEnum([
   'Reaction',
   'GuildScheduledEvent',
   'ThreadMember',
+  'SoundboardSound',
 ]);
 
 
 /***/ }),
 
-/***/ 92103:
+/***/ 57613:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { PermissionFlagsBits } = __nccwpck_require__(29244);
-const BitField = __nccwpck_require__(50449);
+const { PermissionFlagsBits } = __nccwpck_require__(94104);
+const BitField = __nccwpck_require__(82267);
 
 /**
  * Data structure that makes it easy to interact with a permission bitfield. All {@link GuildMember}s have a set of
@@ -55153,14 +58175,14 @@ module.exports = PermissionsBitField;
 
 /***/ }),
 
-/***/ 85068:
+/***/ 14550:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { RoleFlags } = __nccwpck_require__(29244);
-const BitField = __nccwpck_require__(50449);
+const { RoleFlags } = __nccwpck_require__(94104);
+const BitField = __nccwpck_require__(82267);
 
 /**
  * Data structure that makes it easy to interact with a {@link Role#flags} bitfield.
@@ -55187,14 +58209,14 @@ module.exports = RoleFlagsBitField;
 
 /***/ }),
 
-/***/ 13533:
+/***/ 72107:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { SKUFlags } = __nccwpck_require__(29244);
-const BitField = __nccwpck_require__(50449);
+const { SKUFlags } = __nccwpck_require__(94104);
+const BitField = __nccwpck_require__(82267);
 
 /**
  * Data structure that makes it easy to interact with an {@link SKU#flags} bitfield.
@@ -55221,7 +58243,7 @@ exports.SKUFlagsBitField = SKUFlagsBitField;
 
 /***/ }),
 
-/***/ 99223:
+/***/ 69745:
 /***/ ((module) => {
 
 "use strict";
@@ -55258,13 +58280,13 @@ module.exports = {
 
 /***/ }),
 
-/***/ 34714:
+/***/ 20852:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { createEnum } = __nccwpck_require__(18132);
+const { createEnum } = __nccwpck_require__(16618);
 
 /**
  * @typedef {Object} Status
@@ -55299,16 +58321,16 @@ module.exports = createEnum([
 
 /***/ }),
 
-/***/ 98312:
+/***/ 14610:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { setInterval, clearInterval } = __nccwpck_require__(87997);
-const { ThreadChannelTypes, SweeperKeys } = __nccwpck_require__(38855);
-const Events = __nccwpck_require__(69573);
-const { DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(22097);
+const { ThreadChannelTypes, SweeperKeys } = __nccwpck_require__(92645);
+const Events = __nccwpck_require__(88131);
+const { DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(6119);
 
 /**
  * @typedef {Function} GlobalSweepFilter
@@ -55794,7 +58816,7 @@ module.exports = Sweepers;
 
 /***/ }),
 
-/***/ 25379:
+/***/ 32049:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -55805,14 +58827,14 @@ exports.MakeCacheOverrideSymbol = Symbol('djs.managers.makeCacheOverride');
 
 /***/ }),
 
-/***/ 45902:
+/***/ 8024:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { GuildSystemChannelFlags } = __nccwpck_require__(29244);
-const BitField = __nccwpck_require__(50449);
+const { GuildSystemChannelFlags } = __nccwpck_require__(94104);
+const BitField = __nccwpck_require__(82267);
 
 /**
  * Data structure that makes it easy to interact with a {@link Guild#systemChannelFlags} bitfield.
@@ -55856,13 +58878,13 @@ module.exports = SystemChannelFlagsBitField;
 
 /***/ }),
 
-/***/ 18970:
+/***/ 22752:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const BitField = __nccwpck_require__(50449);
+const BitField = __nccwpck_require__(82267);
 
 /**
  * Data structure that makes it easy to interact with a {@link ThreadMember#flags} bitfield.
@@ -55895,7 +58917,7 @@ module.exports = ThreadMemberFlagsBitField;
 
 /***/ }),
 
-/***/ 75008:
+/***/ 86138:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -55964,16 +58986,27 @@ function _transformAPIMessageInteractionMetadata(client, messageInteractionMetad
 function _transformGuildScheduledEventRecurrenceRule(recurrenceRule) {
   return {
     start: new Date(recurrenceRule.startAt).toISOString(),
-    // eslint-disable-next-line eqeqeq
-    end: recurrenceRule.endAt != null ? new Date(recurrenceRule.endAt).toISOString() : recurrenceRule.endAt,
     frequency: recurrenceRule.frequency,
     interval: recurrenceRule.interval,
     by_weekday: recurrenceRule.byWeekday,
     by_n_weekday: recurrenceRule.byNWeekday,
     by_month: recurrenceRule.byMonth,
     by_month_day: recurrenceRule.byMonthDay,
-    by_year_day: recurrenceRule.byYearDay,
-    count: recurrenceRule.count,
+  };
+}
+
+/**
+ * Transforms API incidents data to a camel-cased variant.
+ * @param {APIIncidentsData} data The incidents data to transform
+ * @returns {IncidentActions}
+ * @ignore
+ */
+function _transformAPIIncidentsData(data) {
+  return {
+    invitesDisabledUntil: data.invites_disabled_until ? new Date(data.invites_disabled_until) : null,
+    dmsDisabledUntil: data.dms_disabled_until ? new Date(data.dms_disabled_until) : null,
+    dmSpamDetectedAt: data.dm_spam_detected_at ? new Date(data.dm_spam_detected_at) : null,
+    raidDetectedAt: data.raid_detected_at ? new Date(data.raid_detected_at) : null,
   };
 }
 
@@ -55982,19 +59015,20 @@ module.exports = {
   _transformAPIAutoModerationAction,
   _transformAPIMessageInteractionMetadata,
   _transformGuildScheduledEventRecurrenceRule,
+  _transformAPIIncidentsData,
 };
 
 
 /***/ }),
 
-/***/ 27553:
+/***/ 26387:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { UserFlags } = __nccwpck_require__(29244);
-const BitField = __nccwpck_require__(50449);
+const { UserFlags } = __nccwpck_require__(94104);
+const BitField = __nccwpck_require__(82267);
 
 /**
  * Data structure that makes it easy to interact with a {@link User#flags} bitfield.
@@ -56027,7 +59061,7 @@ module.exports = UserFlagsBitField;
 
 /***/ }),
 
-/***/ 29800:
+/***/ 21754:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -56036,10 +59070,10 @@ module.exports = UserFlagsBitField;
 const { parse } = __nccwpck_require__(76760);
 const process = __nccwpck_require__(1708);
 const { Collection } = __nccwpck_require__(41514);
-const { ChannelType, RouteBases, Routes } = __nccwpck_require__(29244);
-const { fetch } = __nccwpck_require__(83110);
-const Colors = __nccwpck_require__(77836);
-const { DiscordjsError, DiscordjsRangeError, DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(22097);
+const { ChannelType, RouteBases, Routes } = __nccwpck_require__(94104);
+const { fetch } = __nccwpck_require__(30794);
+const Colors = __nccwpck_require__(1874);
+const { DiscordjsError, DiscordjsRangeError, DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(6119);
 const isObject = d => typeof d === 'object' && d !== null;
 
 let deprecationEmittedForUserFetchFlags = false;
@@ -56586,14 +59620,14 @@ module.exports = {
 };
 
 // Fixes Circular
-const Attachment = __nccwpck_require__(65843);
-const GuildChannel = __nccwpck_require__(81340);
-const { SKU } = __nccwpck_require__(70905);
+const Attachment = __nccwpck_require__(22217);
+const GuildChannel = __nccwpck_require__(31442);
+const { SKU } = __nccwpck_require__(275);
 
 
 /***/ }),
 
-/***/ 77524:
+/***/ 38090:
 /***/ ((module) => {
 
 "use strict";
@@ -76493,19 +79527,16 @@ module.exports = uniqWith;
 
 /***/ }),
 
-/***/ 87795:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+/***/ 33224:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.filetypeextension = exports.filetypemime = exports.filetypename = exports.filetypeinfo = void 0;
-const pattern_tree_1 = __importDefault(__nccwpck_require__(16276));
-const toHex_1 = __nccwpck_require__(92139);
-const patternTree = pattern_tree_1.default();
+exports.register = exports.filetypeextension = exports.filetypemime = exports.filetypename = exports.filetypeinfo = void 0;
+const pattern_tree_1 = __nccwpck_require__(5189);
+const toHex_1 = __nccwpck_require__(87040);
+const patternTree = pattern_tree_1.createTree();
 const filetypeinfo = (bytes) => {
     let tree = patternTree;
     for (const k of Object.keys(tree.offset)) {
@@ -76557,18 +79588,23 @@ const filetypeextension = (bytes) => exports.filetypeinfo(bytes)
     .map((e) => (e.extension ? e.extension : null))
     .filter((x) => x !== null);
 exports.filetypeextension = filetypeextension;
+const register = (typename, signature, additionalInfo, offset) => {
+    pattern_tree_1.add(typename, signature, additionalInfo, offset);
+};
+exports.register = register;
 
 
 /***/ }),
 
-/***/ 16276:
+/***/ 5189:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const toHex_1 = __nccwpck_require__(92139);
-const tree_1 = __nccwpck_require__(7749);
+exports.createTree = exports.add = void 0;
+const toHex_1 = __nccwpck_require__(87040);
+const tree_1 = __nccwpck_require__(57864);
 // https://en.wikipedia.org/wiki/List_of_file_signatures
 let tree = {
     noOffset: null,
@@ -76594,19 +79630,20 @@ const add = (typename, signature, additionalInfo, offset) => {
         }
     }
 };
-add("gif", ["0x47", "0x49", "0x46", "0x38", "0x37", "0x61"], {
+exports.add = add;
+exports.add("gif", ["0x47", "0x49", "0x46", "0x38", "0x37", "0x61"], {
     mime: "image/gif",
     extension: "gif",
 });
-add("gif", ["0x47", "0x49", "0x46", "0x38", "0x39", "0x61"], {
+exports.add("gif", ["0x47", "0x49", "0x46", "0x38", "0x39", "0x61"], {
     mime: "image/gif",
     extension: "gif",
 });
-add("jpg", ["0xFF", "0xD8", "0xFF"], {
+exports.add("jpg", ["0xFF", "0xD8", "0xFF"], {
     mime: "image/jpeg",
     extension: "jpeg",
 });
-add("webp", [
+exports.add("webp", [
     "0x52",
     "0x49",
     "0x46",
@@ -76620,41 +79657,41 @@ add("webp", [
     "0x42",
     "0x50",
 ], { mime: "image/webp", extension: "webp" });
-add("heif", ["0x66", "0x74", "0x79", "0x70", "0x6D", "0x69", "0x66", "0x31"], { mime: "image/heif", extension: "heif" }, 4);
-add("heif", ["0x66", "0x74", "0x79", "0x70", "0x68", "0x65", "0x69", "0x63"], { mime: "image/heif", extension: "heic" }, 4);
-add("rpm", ["0xed", "0xab", "0xee", "0xdb"]);
-add("bin", ["0x53", "0x50", "0x30", "0x31"], {
+exports.add("heif", ["0x66", "0x74", "0x79", "0x70", "0x6D", "0x69", "0x66", "0x31"], { mime: "image/heif", extension: "heif" }, 4);
+exports.add("heif", ["0x66", "0x74", "0x79", "0x70", "0x68", "0x65", "0x69", "0x63"], { mime: "image/heif", extension: "heic" }, 4);
+exports.add("rpm", ["0xed", "0xab", "0xee", "0xdb"]);
+exports.add("bin", ["0x53", "0x50", "0x30", "0x31"], {
     mime: "application/octet-stream",
     extension: "bin",
 });
-add("pic", ["0x00"]);
-add("pif", ["0x00"]);
-add("sea", ["0x00"]);
-add("ytr", ["0x00"]);
+exports.add("pic", ["0x00"]);
+exports.add("pif", ["0x00"]);
+exports.add("sea", ["0x00"]);
+exports.add("ytr", ["0x00"]);
 // 66747970
 // 6D703432
-add("mp4", ["0x66", "0x74", "0x79", "0x70"], { mime: "video/mp4", extension: "mp4" }, 0x4);
-add("ttf", ["0x00", "0x01", "0x00", "0x00", "0x00"], {
+exports.add("mp4", ["0x66", "0x74", "0x79", "0x70"], { mime: "video/mp4", extension: "mp4" }, 0x4);
+exports.add("ttf", ["0x00", "0x01", "0x00", "0x00", "0x00"], {
     mime: "font/ttf",
     extension: "ttf",
 });
-add("otf", ["0x4F", "0x54", "0x54", "0x4F"], {
+exports.add("otf", ["0x4F", "0x54", "0x54", "0x4F"], {
     mime: "font/otf",
     extension: "otf",
 });
-add("eot", ["0x50", "0x4C"], {
+exports.add("eot", ["0x50", "0x4C"], {
     mime: "application/vnd.ms-fontobject",
     extension: "eot",
 });
-add("woff", ["0x77", "0x4F", "0x46", "0x46"], {
+exports.add("woff", ["0x77", "0x4F", "0x46", "0x46"], {
     mime: "font/woff",
     extension: "woff",
 });
-add("woff2", ["0x77", "0x4F", "0x46", "0x32"], {
+exports.add("woff2", ["0x77", "0x4F", "0x46", "0x32"], {
     mime: "font/woff2",
     extension: "woff2",
 });
-add("pdb", [
+exports.add("pdb", [
     "0x00",
     "0x00",
     "0x00",
@@ -76680,18 +79717,18 @@ add("pdb", [
     "0x00",
     "0x00",
 ]);
-add("dba", ["0xBE", "0xBA", "0xFE", "0xCA"]);
-add("dba2", ["0x00", "0x01", "0x42", "0x44"]);
-add("tda", ["0x00", "0x01", "0x44", "0x54"]);
-add("tda2", ["0x00", "0x01", "0x00", "0x00"]);
-add("ico", ["0x00", "0x00", "0x01", "0x00"], {
+exports.add("dba", ["0xBE", "0xBA", "0xFE", "0xCA"]);
+exports.add("dba2", ["0x00", "0x01", "0x42", "0x44"]);
+exports.add("tda", ["0x00", "0x01", "0x44", "0x54"]);
+exports.add("tda2", ["0x00", "0x01", "0x00", "0x00"]);
+exports.add("ico", ["0x00", "0x00", "0x01", "0x00"], {
     mime: "image/x-icon",
     extension: "ico",
 });
-add("3gp", ["0x66", "0x74", "0x79", "0x70", "0x33", "0x67"]);
-add("z", ["0x1F", "0x9D"]);
-add("tar.z", ["0x1F", "0xA0"]);
-add("bac", [
+exports.add("3gp", ["0x66", "0x74", "0x79", "0x70", "0x33", "0x67"]);
+exports.add("z", ["0x1F", "0x9D"]);
+exports.add("tar.z", ["0x1F", "0xA0"]);
+exports.add("bac", [
     "0x42",
     "0x41",
     "0x43",
@@ -76705,19 +79742,19 @@ add("bac", [
     "0x53",
     "0x4B",
 ]);
-add("bz2", ["0x42", "0x5A", "0x68"], {
+exports.add("bz2", ["0x42", "0x5A", "0x68"], {
     mime: "application/x-bzip2",
     extension: "bz2",
 });
-add("tif", ["0x49", "0x49", "0x2A", "0x00"], {
+exports.add("tif", ["0x49", "0x49", "0x2A", "0x00"], {
     mime: "image/tiff",
     extension: "tif",
 });
-add("tiff", ["0x4D", "0x4D", "0x00", "0x2A"], {
+exports.add("tiff", ["0x4D", "0x4D", "0x00", "0x2A"], {
     mime: "image/tiff",
     extension: "tiff",
 });
-add("cr2", [
+exports.add("cr2", [
     "0x49",
     "0x49",
     "0x2A",
@@ -76729,14 +79766,14 @@ add("cr2", [
     "0x43",
     "0x52",
 ]);
-add("cin", ["0x80", "0x2A", "0x5F", "0xD7"]);
-add("cin1", ["0x52", "0x4E", "0x43", "0x01"]);
-add("cin2", ["0x52", "0x4E", "0x43", "0x02"]);
-add("dpx", ["0x53", "0x44", "0x50", "0x58"]);
-add("dpx2", ["0x58", "0x50", "0x44", "0x53"]);
-add("exr", ["0x76", "0x2F", "0x31", "0x01"]);
-add("bpg", ["0x42", "0x50", "0x47", "0xFB"]);
-add("ilbm", [
+exports.add("cin", ["0x80", "0x2A", "0x5F", "0xD7"]);
+exports.add("cin1", ["0x52", "0x4E", "0x43", "0x01"]);
+exports.add("cin2", ["0x52", "0x4E", "0x43", "0x02"]);
+exports.add("dpx", ["0x53", "0x44", "0x50", "0x58"]);
+exports.add("dpx2", ["0x58", "0x50", "0x44", "0x53"]);
+exports.add("exr", ["0x76", "0x2F", "0x31", "0x01"]);
+exports.add("bpg", ["0x42", "0x50", "0x47", "0xFB"]);
+exports.add("ilbm", [
     "0x46",
     "0x4F",
     "0x52",
@@ -76750,7 +79787,7 @@ add("ilbm", [
     "0x42",
     "0x4D",
 ]);
-add("8svx", [
+exports.add("8svx", [
     "0x46",
     "0x4F",
     "0x52",
@@ -76764,7 +79801,7 @@ add("8svx", [
     "0x56",
     "0x58",
 ]);
-add("acbm", [
+exports.add("acbm", [
     "0x46",
     "0x4F",
     "0x52",
@@ -76778,7 +79815,7 @@ add("acbm", [
     "0x42",
     "0x4D",
 ]);
-add("anbm", [
+exports.add("anbm", [
     "0x46",
     "0x4F",
     "0x52",
@@ -76792,7 +79829,7 @@ add("anbm", [
     "0x42",
     "0x4D",
 ]);
-add("anim", [
+exports.add("anim", [
     "0x46",
     "0x4F",
     "0x52",
@@ -76806,7 +79843,7 @@ add("anim", [
     "0x49",
     "0x4D",
 ]);
-add("faxx", [
+exports.add("faxx", [
     "0x46",
     "0x4F",
     "0x52",
@@ -76820,7 +79857,7 @@ add("faxx", [
     "0x58",
     "0x58",
 ]);
-add("ftxt", [
+exports.add("ftxt", [
     "0x46",
     "0x4F",
     "0x52",
@@ -76834,7 +79871,7 @@ add("ftxt", [
     "0x58",
     "0x54",
 ]);
-add("smus", [
+exports.add("smus", [
     "0x46",
     "0x4F",
     "0x52",
@@ -76848,7 +79885,7 @@ add("smus", [
     "0x55",
     "0x53",
 ]);
-add("cmus", [
+exports.add("cmus", [
     "0x46",
     "0x4F",
     "0x52",
@@ -76862,7 +79899,7 @@ add("cmus", [
     "0x55",
     "0x53",
 ]);
-add("yuvn", [
+exports.add("yuvn", [
     "0x46",
     "0x4F",
     "0x52",
@@ -76876,7 +79913,7 @@ add("yuvn", [
     "0x56",
     "0x4E",
 ]);
-add("iff", [
+exports.add("iff", [
     "0x46",
     "0x4F",
     "0x52",
@@ -76890,7 +79927,7 @@ add("iff", [
     "0x4E",
     "0x54",
 ]);
-add("aiff", [
+exports.add("aiff", [
     "0x46",
     "0x4F",
     "0x52",
@@ -76904,179 +79941,179 @@ add("aiff", [
     "0x46",
     "0x46",
 ], { mime: "audio/x-aiff", extension: "aiff" });
-add("idx", ["0x49", "0x4E", "0x44", "0x58"]);
-add("lz", ["0x4C", "0x5A", "0x49", "0x50"]);
-add("exe", ["0x4D", "0x5A"]);
-add("zip", ["0x50", "0x4B", "0x03", "0x04"], {
+exports.add("idx", ["0x49", "0x4E", "0x44", "0x58"]);
+exports.add("lz", ["0x4C", "0x5A", "0x49", "0x50"]);
+exports.add("exe", ["0x4D", "0x5A"]);
+exports.add("zip", ["0x50", "0x4B", "0x03", "0x04"], {
     mime: "application/zip",
     extension: "zip",
 });
-add("zip", ["0x50", "0x4B", "0x05", "0x06"], {
+exports.add("zip", ["0x50", "0x4B", "0x05", "0x06"], {
     mime: "application/zip",
     extension: "zip",
 });
-add("zip", ["0x50", "0x4B", "0x07", "0x08"], {
+exports.add("zip", ["0x50", "0x4B", "0x07", "0x08"], {
     mime: "application/zip",
     extension: "zip",
 });
-add("jar", ["0x50", "0x4B", "0x03", "0x04"], {
+exports.add("jar", ["0x50", "0x4B", "0x03", "0x04"], {
     mime: "application/java-archive",
     extension: "jar",
 });
-add("jar", ["0x50", "0x4B", "0x05", "0x06"], {
+exports.add("jar", ["0x50", "0x4B", "0x05", "0x06"], {
     mime: "application/java-archive",
     extension: "jar",
 });
-add("jar", ["0x50", "0x4B", "0x07", "0x08"], {
+exports.add("jar", ["0x50", "0x4B", "0x07", "0x08"], {
     mime: "application/java-archive",
     extension: "jar",
 });
-add("odt", ["0x50", "0x4B", "0x03", "0x04"], {
+exports.add("odt", ["0x50", "0x4B", "0x03", "0x04"], {
     mime: "application/vnd.oasis.opendocument.text",
     extension: "odt",
 });
-add("odt", ["0x50", "0x4B", "0x05", "0x06"], {
+exports.add("odt", ["0x50", "0x4B", "0x05", "0x06"], {
     mime: "application/vnd.oasis.opendocument.text",
     extension: "odt",
 });
-add("odt", ["0x50", "0x4B", "0x07", "0x08"], {
+exports.add("odt", ["0x50", "0x4B", "0x07", "0x08"], {
     mime: "application/vnd.oasis.opendocument.text",
     extension: "odt",
 });
-add("ods", ["0x50", "0x4B", "0x03", "0x04"], {
+exports.add("ods", ["0x50", "0x4B", "0x03", "0x04"], {
     mime: "application/vnd.oasis.opendocument.spreadsheet",
     extension: "ods",
 });
-add("ods", ["0x50", "0x4B", "0x05", "0x06"], {
+exports.add("ods", ["0x50", "0x4B", "0x05", "0x06"], {
     mime: "application/vnd.oasis.opendocument.spreadsheet",
     extension: "ods",
 });
-add("ods", ["0x50", "0x4B", "0x07", "0x08"], {
+exports.add("ods", ["0x50", "0x4B", "0x07", "0x08"], {
     mime: "application/vnd.oasis.opendocument.spreadsheet",
     extension: "ods",
 });
-add("odp", ["0x50", "0x4B", "0x03", "0x04"], {
+exports.add("odp", ["0x50", "0x4B", "0x03", "0x04"], {
     mime: "application/vnd.oasis.opendocument.presentation",
     extension: "odp",
 });
-add("odp", ["0x50", "0x4B", "0x05", "0x06"], {
+exports.add("odp", ["0x50", "0x4B", "0x05", "0x06"], {
     mime: "application/vnd.oasis.opendocument.presentation",
     extension: "odp",
 });
-add("odp", ["0x50", "0x4B", "0x07", "0x08"], {
+exports.add("odp", ["0x50", "0x4B", "0x07", "0x08"], {
     mime: "application/vnd.oasis.opendocument.presentation",
     extension: "odp",
 });
-add("docx", ["0x50", "0x4B", "0x03", "0x04"], {
+exports.add("docx", ["0x50", "0x4B", "0x03", "0x04"], {
     mime: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
     extension: "docx",
 });
-add("docx", ["0x50", "0x4B", "0x05", "0x06"], {
+exports.add("docx", ["0x50", "0x4B", "0x05", "0x06"], {
     mime: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
     extension: "docx",
 });
-add("docx", ["0x50", "0x4B", "0x07", "0x08"], {
+exports.add("docx", ["0x50", "0x4B", "0x07", "0x08"], {
     mime: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
     extension: "docx",
 });
-add("xlsx", ["0x50", "0x4B", "0x03", "0x04"], {
+exports.add("xlsx", ["0x50", "0x4B", "0x03", "0x04"], {
     mime: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
     extension: "xlsx",
 });
-add("xlsx", ["0x50", "0x4B", "0x05", "0x06"], {
+exports.add("xlsx", ["0x50", "0x4B", "0x05", "0x06"], {
     mime: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
     extension: "xlsx",
 });
-add("xlsx", ["0x50", "0x4B", "0x07", "0x08"], {
+exports.add("xlsx", ["0x50", "0x4B", "0x07", "0x08"], {
     mime: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
     extension: "xlsx",
 });
-add("pptx", ["0x50", "0x4B", "0x03", "0x04"], {
+exports.add("pptx", ["0x50", "0x4B", "0x03", "0x04"], {
     mime: "application/vnd.openxmlformats-officedocument.presentationml.presentation",
     extension: "pptx",
 });
-add("pptx", ["0x50", "0x4B", "0x05", "0x06"], {
+exports.add("pptx", ["0x50", "0x4B", "0x05", "0x06"], {
     mime: "application/vnd.openxmlformats-officedocument.presentationml.presentation",
     extension: "pptx",
 });
-add("pptx", ["0x50", "0x4B", "0x07", "0x08"], {
+exports.add("pptx", ["0x50", "0x4B", "0x07", "0x08"], {
     mime: "application/vnd.openxmlformats-officedocument.presentationml.presentation",
     extension: "pptx",
 });
-add("vsdx", ["0x50", "0x4B", "0x03", "0x04"], {
+exports.add("vsdx", ["0x50", "0x4B", "0x03", "0x04"], {
     mime: "application/vnd.ms-visio.drawing",
     extension: "vsdx",
 });
-add("vsdx", ["0x50", "0x4B", "0x05", "0x06"], {
+exports.add("vsdx", ["0x50", "0x4B", "0x05", "0x06"], {
     mime: "application/vnd.ms-visio.drawing",
     extension: "vsdx",
 });
-add("vsdx", ["0x50", "0x4B", "0x07", "0x08"], {
+exports.add("vsdx", ["0x50", "0x4B", "0x07", "0x08"], {
     mime: "application/vnd.ms-visio.drawing",
     extension: "vsdx",
 });
-add("apk", ["0x50", "0x4B", "0x03", "0x04"], {
+exports.add("apk", ["0x50", "0x4B", "0x03", "0x04"], {
     mime: "application/vnd.android.package-archive",
     extension: "apk",
 });
-add("apk", ["0x50", "0x4B", "0x05", "0x06"], {
+exports.add("apk", ["0x50", "0x4B", "0x05", "0x06"], {
     mime: "application/vnd.android.package-archive",
     extension: "apk",
 });
-add("apk", ["0x50", "0x4B", "0x07", "0x08"], {
+exports.add("apk", ["0x50", "0x4B", "0x07", "0x08"], {
     mime: "application/vnd.android.package-archive",
     extension: "apk",
 });
-add("aar", ["0x50", "0x4B", "0x03", "0x04"], {
+exports.add("aar", ["0x50", "0x4B", "0x03", "0x04"], {
     mime: "application/vnd.android.package-archive",
     extension: "aar",
 });
-add("aar", ["0x50", "0x4B", "0x05", "0x06"], {
+exports.add("aar", ["0x50", "0x4B", "0x05", "0x06"], {
     mime: "application/vnd.android.package-archive",
     extension: "aar",
 });
-add("aar", ["0x50", "0x4B", "0x07", "0x08"], {
+exports.add("aar", ["0x50", "0x4B", "0x07", "0x08"], {
     mime: "application/vnd.android.package-archive",
     extension: "aar",
 });
-add("rar", ["0x52", "0x61", "0x72", "0x21", "0x1A", "0x07", "0x00"], {
+exports.add("rar", ["0x52", "0x61", "0x72", "0x21", "0x1A", "0x07", "0x00"], {
     mime: "application/vnd.rar",
     extension: "rar",
 });
-add("rar", ["0x52", "0x61", "0x72", "0x21", "0x1A", "0x07", "0x01", "0x00"], {
+exports.add("rar", ["0x52", "0x61", "0x72", "0x21", "0x1A", "0x07", "0x01", "0x00"], {
     mime: "application/vnd.rar",
     extension: "rar",
 });
-add("rar", ["0x7F", "0x45", "0x4C", "0x46"], {
+exports.add("rar", ["0x7F", "0x45", "0x4C", "0x46"], {
     mime: "application/vnd.rar",
     extension: "rar",
 });
-add("png", ["0x89", "0x50", "0x4E", "0x47", "0x0D", "0x0A", "0x1A", "0x0A"], {
+exports.add("png", ["0x89", "0x50", "0x4E", "0x47", "0x0D", "0x0A", "0x1A", "0x0A"], {
     mime: "image/png",
     extension: "png",
 });
-add("apng", ["0x89", "0x50", "0x4E", "0x47", "0x0D", "0x0A", "0x1A", "0x0A"], {
+exports.add("apng", ["0x89", "0x50", "0x4E", "0x47", "0x0D", "0x0A", "0x1A", "0x0A"], {
     mime: "image/apng",
     extension: "apng",
 });
-add("class", ["0xCA", "0xFE", "0xBA", "0xBE"]);
-add("class", ["0xEF", "0xBB", "0xBF"]);
-add("class", ["0xFE", "0xed", "0xFA", "0xCE"], undefined, 0x1000);
-add("class", ["0xFE", "0xed", "0xFA", "0xCF"], undefined, 0x1000);
-add("class", ["0xCE", "0xFA", "0xed", "0xFE"]);
-add("class", ["0xCF", "0xFA", "0xed", "0xFE"]);
-add("class", ["0xFF", "0xFE"]);
-add("class", ["0xFF", "0xFE"]);
-add("class", ["0xFF", "0xFE", "0x00", "0x00"]);
-add("ps", ["0x25", "0x21", "0x50", "0x53"], {
+exports.add("class", ["0xCA", "0xFE", "0xBA", "0xBE"]);
+exports.add("class", ["0xEF", "0xBB", "0xBF"]);
+exports.add("class", ["0xFE", "0xed", "0xFA", "0xCE"], undefined, 0x1000);
+exports.add("class", ["0xFE", "0xed", "0xFA", "0xCF"], undefined, 0x1000);
+exports.add("class", ["0xCE", "0xFA", "0xed", "0xFE"]);
+exports.add("class", ["0xCF", "0xFA", "0xed", "0xFE"]);
+exports.add("class", ["0xFF", "0xFE"]);
+exports.add("class", ["0xFF", "0xFE"]);
+exports.add("class", ["0xFF", "0xFE", "0x00", "0x00"]);
+exports.add("ps", ["0x25", "0x21", "0x50", "0x53"], {
     mime: "application/postscript",
-    extension: ".ps"
+    extension: ".ps",
 });
-add("pdf", ["0x25", "0x50", "0x44", "0x46"], {
+exports.add("pdf", ["0x25", "0x50", "0x44", "0x46"], {
     mime: "application/pdf",
     extension: "pdf",
 });
-add("asf", [
+exports.add("asf", [
     "0x30",
     "0x26",
     "0xB2",
@@ -77094,7 +80131,7 @@ add("asf", [
     "0xCE",
     "0x6C",
 ]);
-add("wma", [
+exports.add("wma", [
     "0x30",
     "0x26",
     "0xB2",
@@ -77112,7 +80149,7 @@ add("wma", [
     "0xCE",
     "0x6C",
 ]);
-add("wmv", [
+exports.add("wmv", [
     "0x30",
     "0x26",
     "0xB2",
@@ -77130,7 +80167,7 @@ add("wmv", [
     "0xCE",
     "0x6C",
 ]);
-add("deploymentimage", [
+exports.add("deploymentimage", [
     "0x24",
     "0x53",
     "0x44",
@@ -77141,7 +80178,7 @@ add("deploymentimage", [
     "0x31",
 ]);
 // ogg video ' theora'
-add("ogv", [
+exports.add("ogv", [
     "0x4F",
     "0x67",
     "0x67",
@@ -77182,7 +80219,7 @@ add("ogv", [
     extension: "ogv",
 });
 // ogg video '\x01video'
-add("ogm", [
+exports.add("ogm", [
     "0x4F",
     "0x67",
     "0x67",
@@ -77223,7 +80260,7 @@ add("ogm", [
     extension: "ogm",
 });
 // ogg audio ' FLAC'
-add("oga", [
+exports.add("oga", [
     "0x4F",
     "0x67",
     "0x67",
@@ -77262,7 +80299,7 @@ add("oga", [
     extension: "oga",
 });
 // ogg audio 'Speex  '
-add("spx", [
+exports.add("spx", [
     "0x4F",
     "0x67",
     "0x67",
@@ -77303,7 +80340,7 @@ add("spx", [
     extension: "spx",
 });
 // ogg audio '\x01vorbis '
-add("ogg", [
+exports.add("ogg", [
     "0x4F",
     "0x67",
     "0x67",
@@ -77344,16 +80381,16 @@ add("ogg", [
     extension: "ogg",
 });
 // default OGG container
-add("ogx", ["0x4F", "0x67", "0x67", "0x53"], {
+exports.add("ogx", ["0x4F", "0x67", "0x67", "0x53"], {
     mime: "application/ogg",
     extension: "ogx",
 });
-add("psd", ["0x38", "0x42", "0x50", "0x53"], {
+exports.add("psd", ["0x38", "0x42", "0x50", "0x53"], {
     mime: "application/x-photoshop",
     extension: "psd",
 });
-add("clip", ["0x43", "0x53", "0x46", "0x43", "0x48", "0x55", "0x4e", "0x4b"]);
-add("wav", [
+exports.add("clip", ["0x43", "0x53", "0x46", "0x43", "0x48", "0x55", "0x4e", "0x4b"]);
+exports.add("wav", [
     "0x52",
     "0x49",
     "0x46",
@@ -77367,7 +80404,7 @@ add("wav", [
     "0x56",
     "0x45",
 ], { mime: "audio/x-wav", extension: "wav" });
-add("avi", [
+exports.add("avi", [
     "0x52",
     "0x49",
     "0x46",
@@ -77381,39 +80418,39 @@ add("avi", [
     "0x49",
     "0x20",
 ], { mime: "video/x-msvideo", extension: "avi" });
-add("mp3", ["0xFF", "0xFB"], { mime: "audio/mpeg", extension: "mp3" });
-add("mp3", ["0xFF", "0xF3"], { mime: "audio/mpeg", extension: "mp3" });
-add("mp3", ["0xFF", "0xF2"], { mime: "audio/mpeg", extension: "mp3" });
-add("mp3", ["0x49", "0x44", "0x33"], { mime: "audio/mpeg", extension: "mp3" });
-add("bmp", ["0x42", "0x4D"], { mime: "image/bmp", extension: "bmp" });
-add("iso", ["0x43", "0x44", "0x30", "0x30", "0x31"]);
-add("flac", ["0x66", "0x4C", "0x61", "0x43"]);
-add("mid", ["0x4D", "0x54", "0x68", "0x64"], {
+exports.add("mp3", ["0xFF", "0xFB"], { mime: "audio/mpeg", extension: "mp3" });
+exports.add("mp3", ["0xFF", "0xF3"], { mime: "audio/mpeg", extension: "mp3" });
+exports.add("mp3", ["0xFF", "0xF2"], { mime: "audio/mpeg", extension: "mp3" });
+exports.add("mp3", ["0x49", "0x44", "0x33"], { mime: "audio/mpeg", extension: "mp3" });
+exports.add("bmp", ["0x42", "0x4D"], { mime: "image/bmp", extension: "bmp" });
+exports.add("iso", ["0x43", "0x44", "0x30", "0x30", "0x31"]);
+exports.add("flac", ["0x66", "0x4C", "0x61", "0x43"]);
+exports.add("mid", ["0x4D", "0x54", "0x68", "0x64"], {
     mime: "audio/midi",
     extension: "mid",
 });
-add("midi", ["0x4D", "0x54", "0x68", "0x64"], {
+exports.add("midi", ["0x4D", "0x54", "0x68", "0x64"], {
     mime: "audio/midi",
     extension: "midi",
 });
-add("doc", ["0xD0", "0xCF", "0x11", "0xE0", "0xA1", "0xB1", "0x1A", "0xE1"], {
+exports.add("doc", ["0xD0", "0xCF", "0x11", "0xE0", "0xA1", "0xB1", "0x1A", "0xE1"], {
     mime: "application/msword",
     extension: "doc",
 });
-add("xls", ["0xD0", "0xCF", "0x11", "0xE0", "0xA1", "0xB1", "0x1A", "0xE1"], {
+exports.add("xls", ["0xD0", "0xCF", "0x11", "0xE0", "0xA1", "0xB1", "0x1A", "0xE1"], {
     mime: "application/vnd.ms-excel",
     extension: "xls",
 });
-add("ppt", ["0xD0", "0xCF", "0x11", "0xE0", "0xA1", "0xB1", "0x1A", "0xE1"], {
+exports.add("ppt", ["0xD0", "0xCF", "0x11", "0xE0", "0xA1", "0xB1", "0x1A", "0xE1"], {
     mime: "application/vnd.ms-powerpoint",
     extension: "ppt",
 });
-add("msg", ["0xD0", "0xCF", "0x11", "0xE0", "0xA1", "0xB1", "0x1A", "0xE1"]);
-add("dex", ["0x64", "0x65", "0x78", "0x0A", "0x30", "0x33", "0x35", "0x00"]);
-add("vmdk", ["0x4B", "0x44", "0x4D"]);
-add("crx", ["0x43", "0x72", "0x32", "0x34"]);
-add("fh8", ["0x41", "0x47", "0x44", "0x33"]);
-add("cwk", [
+exports.add("msg", ["0xD0", "0xCF", "0x11", "0xE0", "0xA1", "0xB1", "0x1A", "0xE1"]);
+exports.add("dex", ["0x64", "0x65", "0x78", "0x0A", "0x30", "0x33", "0x35", "0x00"]);
+exports.add("vmdk", ["0x4B", "0x44", "0x4D"]);
+exports.add("crx", ["0x43", "0x72", "0x32", "0x34"]);
+exports.add("fh8", ["0x41", "0x47", "0x44", "0x33"]);
+exports.add("cwk", [
     "0x05",
     "0x07",
     "0x00",
@@ -77437,7 +80474,7 @@ add("cwk", [
     "0x00",
     "0x01",
 ]);
-add("cwk", [
+exports.add("cwk", [
     "0x06",
     "0x07",
     "0xE1",
@@ -77461,27 +80498,27 @@ add("cwk", [
     "0x00",
     "0x01",
 ]);
-add("toast", ["0x45", "0x52", "0x02", "0x00", "0x00", "0x00"]);
-add("toast", ["0x8B", "0x45", "0x52", "0x02", "0x00", "0x00", "0x00"]);
-add("dmg", ["0x78", "0x01", "0x73", "0x0D", "0x62", "0x62", "0x60"]);
-add("xar", ["0x78", "0x61", "0x72", "0x21"]);
-add("dat", ["0x50", "0x4D", "0x4F", "0x43", "0x43", "0x4D", "0x4F", "0x43"]);
-add("nes", ["0x4E", "0x45", "0x53", "0x1A"]);
-add("tar", ["0x75", "0x73", "0x74", "0x61", "0x72", "0x00", "0x30", "0x30"], {
+exports.add("toast", ["0x45", "0x52", "0x02", "0x00", "0x00", "0x00"]);
+exports.add("toast", ["0x8B", "0x45", "0x52", "0x02", "0x00", "0x00", "0x00"]);
+exports.add("dmg", ["0x78", "0x01", "0x73", "0x0D", "0x62", "0x62", "0x60"]);
+exports.add("xar", ["0x78", "0x61", "0x72", "0x21"]);
+exports.add("dat", ["0x50", "0x4D", "0x4F", "0x43", "0x43", "0x4D", "0x4F", "0x43"]);
+exports.add("nes", ["0x4E", "0x45", "0x53", "0x1A"]);
+exports.add("tar", ["0x75", "0x73", "0x74", "0x61", "0x72", "0x00", "0x30", "0x30"], {
     // As per Mozilla documentation available at:
     // https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types
     // or wikipedia page:
     // https://en.wikipedia.org/wiki/List_of_archive_formats
     mime: "application/x-tar",
-    extension: "tar"
+    extension: "tar",
 }, 0x101);
-add("tar", ["0x75", "0x73", "0x74", "0x61", "0x72", "0x20", "0x20", "0x00"], {
+exports.add("tar", ["0x75", "0x73", "0x74", "0x61", "0x72", "0x20", "0x20", "0x00"], {
     mime: "application/x-tar",
-    extension: "tar"
+    extension: "tar",
 }, 0x101);
-add("tox", ["0x74", "0x6F", "0x78", "0x33"]);
-add("mlv", ["0x4D", "0x4C", "0x56", "0x49"]);
-add("windowsupdate", [
+exports.add("tox", ["0x74", "0x6F", "0x78", "0x33"]);
+exports.add("mlv", ["0x4D", "0x4C", "0x56", "0x49"]);
+exports.add("windowsupdate", [
     "0x44",
     "0x43",
     "0x4D",
@@ -77491,131 +80528,131 @@ add("windowsupdate", [
     "0x33",
     "0x30",
 ]);
-add("7z", ["0x37", "0x7A", "0xBC", "0xAF", "0x27", "0x1C"], {
+exports.add("7z", ["0x37", "0x7A", "0xBC", "0xAF", "0x27", "0x1C"], {
     mime: "application/x-7z-compressed",
     extension: "7z",
 });
-add("gz", ["0x1F", "0x8B"], { mime: "application/gzip", extension: "gz" });
-add("tar.gz", ["0x1F", "0x8B"], {
+exports.add("gz", ["0x1F", "0x8B"], { mime: "application/gzip", extension: "gz" });
+exports.add("tar.gz", ["0x1F", "0x8B"], {
     mime: "application/gzip",
     extension: "tar.gz",
 });
-add("xz", ["0xFD", "0x37", "0x7A", "0x58", "0x5A", "0x00", "0x00"], {
+exports.add("xz", ["0xFD", "0x37", "0x7A", "0x58", "0x5A", "0x00", "0x00"], {
     mime: "application/gzip",
     extension: "xz",
 });
-add("tar.xz", ["0xFD", "0x37", "0x7A", "0x58", "0x5A", "0x00", "0x00"], {
+exports.add("tar.xz", ["0xFD", "0x37", "0x7A", "0x58", "0x5A", "0x00", "0x00"], {
     mime: "application/gzip",
     extension: "tar.xz",
 });
-add("lz2", ["0x04", "0x22", "0x4D", "0x18"]);
-add("cab", ["0x4D", "0x53", "0x43", "0x46"]);
-add("mkv", ["0x1A", "0x45", "0xDF", "0xA3"], {
+exports.add("lz2", ["0x04", "0x22", "0x4D", "0x18"]);
+exports.add("cab", ["0x4D", "0x53", "0x43", "0x46"]);
+exports.add("mkv", ["0x1A", "0x45", "0xDF", "0xA3"], {
     mime: "video/x-matroska",
     extension: "mkv",
 });
-add("mka", ["0x1A", "0x45", "0xDF", "0xA3"], {
+exports.add("mka", ["0x1A", "0x45", "0xDF", "0xA3"], {
     mime: "audio/x-matroska",
     extension: "mka",
 });
-add("mks", ["0x1A", "0x45", "0xDF", "0xA3"], {
+exports.add("mks", ["0x1A", "0x45", "0xDF", "0xA3"], {
     mime: "video/x-matroska",
     extension: "mks",
 });
-add("mk3d", ["0x1A", "0x45", "0xDF", "0xA3"]);
-add("webm", ["0x1A", "0x45", "0xDF", "0xA3"], {
+exports.add("mk3d", ["0x1A", "0x45", "0xDF", "0xA3"]);
+exports.add("webm", ["0x1A", "0x45", "0xDF", "0xA3"], {
     mime: "audio/webm",
     extension: "webm",
 });
-add("dcm", ["0x44", "0x49", "0x43", "0x4D"], undefined, 0x80);
-add("xml", ["0x3C", "0x3f", "0x78", "0x6d", "0x6C", "0x20"], {
+exports.add("dcm", ["0x44", "0x49", "0x43", "0x4D"], undefined, 0x80);
+exports.add("xml", ["0x3C", "0x3f", "0x78", "0x6d", "0x6C", "0x20"], {
     mime: "application/xml",
     extension: "xml",
 });
-add("wasm", ["0x00", "0x61", "0x73", "0x6d"], {
+exports.add("wasm", ["0x00", "0x61", "0x73", "0x6d"], {
     mime: "application/wasm",
     extension: "wasm",
 });
-add("lep", ["0xCF", "0x84", "0x01"]);
-add("swf", ["0x43", "0x57", "0x53"], {
+exports.add("lep", ["0xCF", "0x84", "0x01"]);
+exports.add("swf", ["0x43", "0x57", "0x53"], {
     mime: "application/x-shockwave-flash",
     extension: "swf",
 });
-add("swf", ["0x46", "0x57", "0x53"], {
+exports.add("swf", ["0x46", "0x57", "0x53"], {
     mime: "application/x-shockwave-flash",
     extension: "swf",
 });
-add("deb", ["0x21", "0x3C", "0x61", "0x72", "0x63", "0x68", "0x3E"]);
-add("rtf", ["0x7B", "0x5C", "0x72", "0x74", "0x66", "0x31"], {
+exports.add("deb", ["0x21", "0x3C", "0x61", "0x72", "0x63", "0x68", "0x3E"]);
+exports.add("rtf", ["0x7B", "0x5C", "0x72", "0x74", "0x66", "0x31"], {
     mime: "application/rtf",
     extension: "rtf",
 });
-add("m2p", ["0x00", "0x00", "0x01", "0xBA"]);
-add("vob", ["0x00", "0x00", "0x01", "0xBA"]);
-add("mpg", ["0x00", "0x00", "0x01", "0xBA"], {
+exports.add("m2p", ["0x00", "0x00", "0x01", "0xBA"]);
+exports.add("vob", ["0x00", "0x00", "0x01", "0xBA"]);
+exports.add("mpg", ["0x00", "0x00", "0x01", "0xBA"], {
     mime: "video/mpeg",
     extension: "mpg",
 });
-add("mpeg", ["0x00", "0x00", "0x01", "0xBA"], {
+exports.add("mpeg", ["0x00", "0x00", "0x01", "0xBA"], {
     mime: "video/mpeg",
     extension: "mpeg",
 });
-add("mpeg", ["0x47"], { mime: "video/mpeg", extension: "mpeg" });
-add("mpeg", ["0x00", "0x00", "0x01", "0xB3"], {
+exports.add("mpeg", ["0x47"], { mime: "video/mpeg", extension: "mpeg" });
+exports.add("mpeg", ["0x00", "0x00", "0x01", "0xB3"], {
     mime: "video/mpeg",
     extension: "mpeg",
 });
 // mov 'free' TODO: find test file
-add("mov", ["0x66", "0x72", "0x65", "0x65"], {
+exports.add("mov", ["0x66", "0x72", "0x65", "0x65"], {
     mime: "video/quicktime",
     extension: "mov",
 }, 0x4);
 // mov 'mdat'
-add("mov", ["0x6D", "0x64", "0x61", "0x74"], {
+exports.add("mov", ["0x6D", "0x64", "0x61", "0x74"], {
     mime: "video/quicktime",
     extension: "mov",
 }, 0x4);
 // mov 'moov' TODO: find test file
-add("mov", ["0x6D", "0x6F", "0x6F", "0x76"], {
+exports.add("mov", ["0x6D", "0x6F", "0x6F", "0x76"], {
     mime: "video/quicktime",
     extension: "mov",
 }, 0x4);
 // move 'wide' TODO: find test file
-add("mov", ["0x77", "0x69", "0x64", "0x65"], {
+exports.add("mov", ["0x77", "0x69", "0x64", "0x65"], {
     mime: "video/quicktime",
     extension: "mov",
 }, 0x4);
 // mov 'ftypqt'
-add("mov", ["0x66", "0x74", "0x79", "0x70", "0x71", "0x74"], {
+exports.add("mov", ["0x66", "0x74", "0x79", "0x70", "0x71", "0x74"], {
     mime: "video/quicktime",
     extension: "mov",
 }, 0x4);
-add("hl2demo", ["0x48", "0x4C", "0x32", "0x44", "0x45", "0x4D", "0x4F"]);
-add("txt", ["0xEF", "0xBB", "0xBF"], {
+exports.add("hl2demo", ["0x48", "0x4C", "0x32", "0x44", "0x45", "0x4D", "0x4F"]);
+exports.add("txt", ["0xEF", "0xBB", "0xBF"], {
     mime: "text/plain; charset=UTF-8",
     extension: "txt",
 });
-add("txt", ["0xFF", "0xFE"], {
+exports.add("txt", ["0xFF", "0xFE"], {
     mime: "text/plain; charset=UTF-16LE",
     extension: "txt",
 });
-add("txt", ["0xFE", "0xFF"], {
+exports.add("txt", ["0xFE", "0xFF"], {
     mime: "text/plain; charset=UTF-16BE",
     extension: "txt",
 });
-add("txt", ["0xFF", "0xFE", "0x00", "0x00"], {
+exports.add("txt", ["0xFF", "0xFE", "0x00", "0x00"], {
     mime: "text/plain; charset=UTF-32LE",
     extension: "txt",
 });
-add("txt", ["0x00", "0x00", "0xFE", "0xFF"], {
+exports.add("txt", ["0x00", "0x00", "0xFE", "0xFF"], {
     mime: "text/plain; charset=UTF-32BE",
     extension: "txt",
 });
-add("SubRip", ["0x31", "0x0D", "0x0A", "0x30", "0x30", "0x3A"], {
+exports.add("SubRip", ["0x31", "0x0D", "0x0A", "0x30", "0x30", "0x3A"], {
     mime: "application/x-subrip",
     extension: "srt",
 });
-add("WebVTT", [
+exports.add("WebVTT", [
     "0xEF",
     "0xBB",
     "0xBF",
@@ -77630,7 +80667,7 @@ add("WebVTT", [
     mime: "text/vtt",
     extension: "vtt",
 });
-add("WebVTT", [
+exports.add("WebVTT", [
     "0xEF",
     "0xBB",
     "0xBF",
@@ -77645,7 +80682,7 @@ add("WebVTT", [
     mime: "text/vtt",
     extension: "vtt",
 });
-add("WebVTT", [
+exports.add("WebVTT", [
     "0xEF",
     "0xBB",
     "0xBF",
@@ -77660,7 +80697,7 @@ add("WebVTT", [
     mime: "text/vtt",
     extension: "vtt",
 });
-add("WebVTT", [
+exports.add("WebVTT", [
     "0xEF",
     "0xBB",
     "0xBF",
@@ -77675,56 +80712,62 @@ add("WebVTT", [
     mime: "text/vtt",
     extension: "vtt",
 });
-add("WebVTT", ["0x57", "0x45", "0x42", "0x56", "0x54", "0x54", "0x0A"], {
+exports.add("WebVTT", ["0x57", "0x45", "0x42", "0x56", "0x54", "0x54", "0x0A"], {
     mime: "text/vtt",
     extension: "vtt",
 });
-add("WebVTT", ["0x57", "0x45", "0x42", "0x56", "0x54", "0x54", "0x0D"], {
+exports.add("WebVTT", ["0x57", "0x45", "0x42", "0x56", "0x54", "0x54", "0x0D"], {
     mime: "text/vtt",
     extension: "vtt",
 });
-add("WebVTT", ["0x57", "0x45", "0x42", "0x56", "0x54", "0x54", "0x20"], {
+exports.add("WebVTT", ["0x57", "0x45", "0x42", "0x56", "0x54", "0x54", "0x20"], {
     mime: "text/vtt",
     extension: "vtt",
 });
-add("WebVTT", ["0x57", "0x45", "0x42", "0x56", "0x54", "0x54", "0x09"], {
+exports.add("WebVTT", ["0x57", "0x45", "0x42", "0x56", "0x54", "0x54", "0x09"], {
     mime: "text/vtt",
     extension: "vtt",
 });
-add("Json", ["0x7B"], {
+exports.add("Json", ["0x7B"], {
     mime: "application/json",
     extension: ".json",
 });
-add("Json", ["0x5B"], {
+exports.add("Json", ["0x5B"], {
     mime: "application/json",
     extension: ".json",
 });
-add("ELF", ["0x7F", "0x45", "0x4C", "0x46"], {
+exports.add("ELF", ["0x7F", "0x45", "0x4C", "0x46"], {
     mime: "application/x-executable",
     extension: ".elf",
 });
-add("Mach-O", ["0xFE", "0xED", "0xFA", "0xC"], {
+exports.add("Mach-O", ["0xFE", "0xED", "0xFA", "0xC"], {
     mime: "application/x-mach-binary",
     extension: ".o",
 });
-add("Mach-O", ["0xFE", "0xED", "0xFA", "0xCF"], {
+exports.add("Mach-O", ["0xFE", "0xED", "0xFA", "0xCF"], {
     mime: "application/x-executable",
     extension: "elf",
 });
-add("EML", ["0x52", "0x65", "0x63", "0x65", "0x69", "0x76", "0x65", "0x64", "0x3A"], {
+exports.add("EML", ["0x52", "0x65", "0x63", "0x65", "0x69", "0x76", "0x65", "0x64", "0x3A"], {
     mime: "message/rfc822",
     extension: ".eml",
 });
-add("SVG", ["0x3c", "0x73", "0x76", "0x67"], {
+exports.add("SVG", ["0x3c", "0x73", "0x76", "0x67"], {
     mime: "image/svg+xml",
     extension: "svg",
 });
+exports.add("avif", ["0x66", "0x74", "0x79", "0x70", "0x61", "0x76", "0x69", "0x66"], {
+    mime: "image/avif",
+    extension: "avif",
+}, 4);
+const createTree = () => tree;
+exports.createTree = createTree;
 exports["default"] = () => tree;
 
 
 /***/ }),
 
-/***/ 92139:
+/***/ 87040:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -77740,7 +80783,7 @@ exports.fromHex = fromHex;
 
 /***/ }),
 
-/***/ 7749:
+/***/ 57864:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -77752,22 +80795,19 @@ const createMatch = (leaf) => ({
     mime: leaf.info.mime,
     extension: leaf.info.extension,
 });
-const isMatchingNode = (tree, path) => tree && path.length === 0;
-const head = (arr) => arr[0];
-const tail = (arr) => arr.slice(1, arr.length);
+const isLeafNode = (tree, path) => tree && path.length === 0;
 const merge = (node, tree) => {
     if (node.bytes.length === 0)
         return tree;
-    const currentByte = head(node.bytes); // 0
-    const path = tail(node.bytes); // [1,2]
+    const [currentByte, ...path] = node.bytes;
     const currentTree = tree.bytes[currentByte];
     // traversed to end. Just add key to leaf.
-    if (isMatchingNode(currentTree, path)) {
+    if (isLeafNode(currentTree, path)) {
         const matchingNode = tree.bytes[currentByte];
         tree.bytes[currentByte] = {
             ...matchingNode,
             matches: [
-                ...(matchingNode.matches ? matchingNode.matches : []),
+                ...(matchingNode.matches ?? []),
                 createMatch(node),
             ],
         };
@@ -77776,14 +80816,9 @@ const merge = (node, tree) => {
     // Path exists already, Merge subtree
     if (tree.bytes[currentByte]) {
         tree.bytes[currentByte] = exports.merge(exports.createNode(node.typename, path, node.info), tree.bytes[currentByte]);
-        return tree;
     }
-    // Tree did not exist before
-    if (!tree.bytes[currentByte]) {
-        tree.bytes[currentByte] = {
-            ...tree.bytes[currentByte],
-            ...exports.createComplexNode(node.typename, path, node.info),
-        };
+    else { // Tree did not exist before
+        tree.bytes[currentByte] = exports.createComplexNode(node.typename, path, node.info);
     }
     return tree;
 };
@@ -77797,8 +80832,7 @@ const createComplexNode = (typename, bytes, info) => {
         bytes: {},
         matches: undefined,
     };
-    const currentKey = head(bytes); // 0
-    const path = tail(bytes); // [1,2]
+    const [currentKey, ...path] = bytes;
     if (bytes.length === 0) {
         return {
             matches: [
@@ -79350,32 +82384,32 @@ exports.debug = debug; // for test
 
 /***/ }),
 
-/***/ 71909:
+/***/ 40298:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Client = __nccwpck_require__(76646)
-const Dispatcher = __nccwpck_require__(59724)
-const errors = __nccwpck_require__(33862)
-const Pool = __nccwpck_require__(17787)
-const BalancedPool = __nccwpck_require__(7568)
-const Agent = __nccwpck_require__(69072)
-const util = __nccwpck_require__(33465)
+const Client = __nccwpck_require__(60439)
+const Dispatcher = __nccwpck_require__(53553)
+const errors = __nccwpck_require__(61581)
+const Pool = __nccwpck_require__(6086)
+const BalancedPool = __nccwpck_require__(33375)
+const Agent = __nccwpck_require__(28603)
+const util = __nccwpck_require__(84606)
 const { InvalidArgumentError } = errors
-const api = __nccwpck_require__(84598)
-const buildConnector = __nccwpck_require__(2559)
-const MockClient = __nccwpck_require__(70962)
-const MockAgent = __nccwpck_require__(35332)
-const MockPool = __nccwpck_require__(52975)
-const mockErrors = __nccwpck_require__(14222)
-const ProxyAgent = __nccwpck_require__(82145)
-const RetryHandler = __nccwpck_require__(33966)
-const { getGlobalDispatcher, setGlobalDispatcher } = __nccwpck_require__(17882)
-const DecoratorHandler = __nccwpck_require__(28975)
-const RedirectHandler = __nccwpck_require__(90238)
-const createRedirectInterceptor = __nccwpck_require__(92130)
+const api = __nccwpck_require__(88725)
+const buildConnector = __nccwpck_require__(20110)
+const MockClient = __nccwpck_require__(74163)
+const MockAgent = __nccwpck_require__(35343)
+const MockPool = __nccwpck_require__(83722)
+const mockErrors = __nccwpck_require__(82255)
+const ProxyAgent = __nccwpck_require__(46278)
+const RetryHandler = __nccwpck_require__(92483)
+const { getGlobalDispatcher, setGlobalDispatcher } = __nccwpck_require__(7075)
+const DecoratorHandler = __nccwpck_require__(41858)
+const RedirectHandler = __nccwpck_require__(63897)
+const createRedirectInterceptor = __nccwpck_require__(99509)
 
 let hasCrypto
 try {
@@ -79458,7 +82492,7 @@ if (util.nodeMajor > 16 || (util.nodeMajor === 16 && util.nodeMinor >= 8)) {
   let fetchImpl = null
   module.exports.fetch = async function fetch (resource) {
     if (!fetchImpl) {
-      fetchImpl = (__nccwpck_require__(58358).fetch)
+      fetchImpl = (__nccwpck_require__(79401).fetch)
     }
 
     try {
@@ -79471,20 +82505,20 @@ if (util.nodeMajor > 16 || (util.nodeMajor === 16 && util.nodeMinor >= 8)) {
       throw err
     }
   }
-  module.exports.Headers = __nccwpck_require__(72908).Headers
-  module.exports.Response = __nccwpck_require__(95683).Response
-  module.exports.Request = __nccwpck_require__(15767).Request
-  module.exports.FormData = __nccwpck_require__(12894).FormData
-  module.exports.File = __nccwpck_require__(60066).File
-  module.exports.FileReader = __nccwpck_require__(62171).FileReader
+  module.exports.Headers = __nccwpck_require__(12223).Headers
+  module.exports.Response = __nccwpck_require__(96062).Response
+  module.exports.Request = __nccwpck_require__(62204).Request
+  module.exports.FormData = __nccwpck_require__(61187).FormData
+  module.exports.File = __nccwpck_require__(74091).File
+  module.exports.FileReader = __nccwpck_require__(9086).FileReader
 
-  const { setGlobalOrigin, getGlobalOrigin } = __nccwpck_require__(59963)
+  const { setGlobalOrigin, getGlobalOrigin } = __nccwpck_require__(50742)
 
   module.exports.setGlobalOrigin = setGlobalOrigin
   module.exports.getGlobalOrigin = getGlobalOrigin
 
-  const { CacheStorage } = __nccwpck_require__(89605)
-  const { kConstruct } = __nccwpck_require__(51829)
+  const { CacheStorage } = __nccwpck_require__(78400)
+  const { kConstruct } = __nccwpck_require__(5914)
 
   // Cache & CacheStorage are tightly coupled with fetch. Even if it may run
   // in an older version of Node, it doesn't have any use without fetch.
@@ -79492,21 +82526,21 @@ if (util.nodeMajor > 16 || (util.nodeMajor === 16 && util.nodeMinor >= 8)) {
 }
 
 if (util.nodeMajor >= 16) {
-  const { deleteCookie, getCookies, getSetCookies, setCookie } = __nccwpck_require__(88829)
+  const { deleteCookie, getCookies, getSetCookies, setCookie } = __nccwpck_require__(47426)
 
   module.exports.deleteCookie = deleteCookie
   module.exports.getCookies = getCookies
   module.exports.getSetCookies = getSetCookies
   module.exports.setCookie = setCookie
 
-  const { parseMIMEType, serializeAMimeType } = __nccwpck_require__(43911)
+  const { parseMIMEType, serializeAMimeType } = __nccwpck_require__(46960)
 
   module.exports.parseMIMEType = parseMIMEType
   module.exports.serializeAMimeType = serializeAMimeType
 }
 
 if (util.nodeMajor >= 18 && hasCrypto) {
-  const { WebSocket } = __nccwpck_require__(66102)
+  const { WebSocket } = __nccwpck_require__(23853)
 
   module.exports.WebSocket = WebSocket
 }
@@ -79525,20 +82559,20 @@ module.exports.mockErrors = mockErrors
 
 /***/ }),
 
-/***/ 69072:
+/***/ 28603:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { InvalidArgumentError } = __nccwpck_require__(33862)
-const { kClients, kRunning, kClose, kDestroy, kDispatch, kInterceptors } = __nccwpck_require__(34856)
-const DispatcherBase = __nccwpck_require__(9368)
-const Pool = __nccwpck_require__(17787)
-const Client = __nccwpck_require__(76646)
-const util = __nccwpck_require__(33465)
-const createRedirectInterceptor = __nccwpck_require__(92130)
-const { WeakRef, FinalizationRegistry } = __nccwpck_require__(60547)()
+const { InvalidArgumentError } = __nccwpck_require__(61581)
+const { kClients, kRunning, kClose, kDestroy, kDispatch, kInterceptors } = __nccwpck_require__(45773)
+const DispatcherBase = __nccwpck_require__(19787)
+const Pool = __nccwpck_require__(6086)
+const Client = __nccwpck_require__(60439)
+const util = __nccwpck_require__(84606)
+const createRedirectInterceptor = __nccwpck_require__(99509)
+const { WeakRef, FinalizationRegistry } = __nccwpck_require__(91408)()
 
 const kOnConnect = Symbol('onConnect')
 const kOnDisconnect = Symbol('onDisconnect')
@@ -79681,11 +82715,11 @@ module.exports = Agent
 
 /***/ }),
 
-/***/ 24541:
+/***/ 38788:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const { addAbortListener } = __nccwpck_require__(33465)
-const { RequestAbortedError } = __nccwpck_require__(33862)
+const { addAbortListener } = __nccwpck_require__(84606)
+const { RequestAbortedError } = __nccwpck_require__(61581)
 
 const kListener = Symbol('kListener')
 const kSignal = Symbol('kSignal')
@@ -79742,16 +82776,16 @@ module.exports = {
 
 /***/ }),
 
-/***/ 52657:
+/***/ 23290:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { AsyncResource } = __nccwpck_require__(90290)
-const { InvalidArgumentError, RequestAbortedError, SocketError } = __nccwpck_require__(33862)
-const util = __nccwpck_require__(33465)
-const { addSignal, removeSignal } = __nccwpck_require__(24541)
+const { InvalidArgumentError, RequestAbortedError, SocketError } = __nccwpck_require__(61581)
+const util = __nccwpck_require__(84606)
+const { addSignal, removeSignal } = __nccwpck_require__(38788)
 
 class ConnectHandler extends AsyncResource {
   constructor (opts, callback) {
@@ -79854,7 +82888,7 @@ module.exports = connect
 
 /***/ }),
 
-/***/ 10681:
+/***/ 69840:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -79869,10 +82903,10 @@ const {
   InvalidArgumentError,
   InvalidReturnValueError,
   RequestAbortedError
-} = __nccwpck_require__(33862)
-const util = __nccwpck_require__(33465)
+} = __nccwpck_require__(61581)
+const util = __nccwpck_require__(84606)
 const { AsyncResource } = __nccwpck_require__(90290)
-const { addSignal, removeSignal } = __nccwpck_require__(24541)
+const { addSignal, removeSignal } = __nccwpck_require__(38788)
 const assert = __nccwpck_require__(42613)
 
 const kResume = Symbol('resume')
@@ -80111,21 +83145,21 @@ module.exports = pipeline
 
 /***/ }),
 
-/***/ 72834:
+/***/ 33333:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Readable = __nccwpck_require__(35964)
+const Readable = __nccwpck_require__(71709)
 const {
   InvalidArgumentError,
   RequestAbortedError
-} = __nccwpck_require__(33862)
-const util = __nccwpck_require__(33465)
-const { getResolveErrorBodyCallback } = __nccwpck_require__(74920)
+} = __nccwpck_require__(61581)
+const util = __nccwpck_require__(84606)
+const { getResolveErrorBodyCallback } = __nccwpck_require__(70757)
 const { AsyncResource } = __nccwpck_require__(90290)
-const { addSignal, removeSignal } = __nccwpck_require__(24541)
+const { addSignal, removeSignal } = __nccwpck_require__(38788)
 
 class RequestHandler extends AsyncResource {
   constructor (opts, callback) {
@@ -80299,7 +83333,7 @@ module.exports.RequestHandler = RequestHandler
 
 /***/ }),
 
-/***/ 6759:
+/***/ 42310:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -80310,11 +83344,11 @@ const {
   InvalidArgumentError,
   InvalidReturnValueError,
   RequestAbortedError
-} = __nccwpck_require__(33862)
-const util = __nccwpck_require__(33465)
-const { getResolveErrorBodyCallback } = __nccwpck_require__(74920)
+} = __nccwpck_require__(61581)
+const util = __nccwpck_require__(84606)
+const { getResolveErrorBodyCallback } = __nccwpck_require__(70757)
 const { AsyncResource } = __nccwpck_require__(90290)
-const { addSignal, removeSignal } = __nccwpck_require__(24541)
+const { addSignal, removeSignal } = __nccwpck_require__(38788)
 
 class StreamHandler extends AsyncResource {
   constructor (opts, factory, callback) {
@@ -80527,16 +83561,16 @@ module.exports = stream
 
 /***/ }),
 
-/***/ 19387:
+/***/ 67236:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { InvalidArgumentError, RequestAbortedError, SocketError } = __nccwpck_require__(33862)
+const { InvalidArgumentError, RequestAbortedError, SocketError } = __nccwpck_require__(61581)
 const { AsyncResource } = __nccwpck_require__(90290)
-const util = __nccwpck_require__(33465)
-const { addSignal, removeSignal } = __nccwpck_require__(24541)
+const util = __nccwpck_require__(84606)
+const { addSignal, removeSignal } = __nccwpck_require__(38788)
 const assert = __nccwpck_require__(42613)
 
 class UpgradeHandler extends AsyncResource {
@@ -80640,22 +83674,22 @@ module.exports = upgrade
 
 /***/ }),
 
-/***/ 84598:
+/***/ 88725:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-module.exports.request = __nccwpck_require__(72834)
-module.exports.stream = __nccwpck_require__(6759)
-module.exports.pipeline = __nccwpck_require__(10681)
-module.exports.upgrade = __nccwpck_require__(19387)
-module.exports.connect = __nccwpck_require__(52657)
+module.exports.request = __nccwpck_require__(33333)
+module.exports.stream = __nccwpck_require__(42310)
+module.exports.pipeline = __nccwpck_require__(69840)
+module.exports.upgrade = __nccwpck_require__(67236)
+module.exports.connect = __nccwpck_require__(23290)
 
 
 /***/ }),
 
-/***/ 35964:
+/***/ 71709:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -80665,9 +83699,9 @@ module.exports.connect = __nccwpck_require__(52657)
 
 const assert = __nccwpck_require__(42613)
 const { Readable } = __nccwpck_require__(2203)
-const { RequestAbortedError, NotSupportedError, InvalidArgumentError } = __nccwpck_require__(33862)
-const util = __nccwpck_require__(33465)
-const { ReadableStreamFrom, toUSVString } = __nccwpck_require__(33465)
+const { RequestAbortedError, NotSupportedError, InvalidArgumentError } = __nccwpck_require__(61581)
+const util = __nccwpck_require__(84606)
+const { ReadableStreamFrom, toUSVString } = __nccwpck_require__(84606)
 
 let Blob
 
@@ -80985,14 +84019,14 @@ function consumeFinish (consume, err) {
 
 /***/ }),
 
-/***/ 74920:
+/***/ 70757:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 const assert = __nccwpck_require__(42613)
 const {
   ResponseStatusCodeError
-} = __nccwpck_require__(33862)
-const { toUSVString } = __nccwpck_require__(33465)
+} = __nccwpck_require__(61581)
+const { toUSVString } = __nccwpck_require__(84606)
 
 async function getResolveErrorBodyCallback ({ callback, body, contentType, statusCode, statusMessage, headers }) {
   assert(body)
@@ -81038,7 +84072,7 @@ module.exports = { getResolveErrorBodyCallback }
 
 /***/ }),
 
-/***/ 7568:
+/***/ 33375:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -81047,7 +84081,7 @@ module.exports = { getResolveErrorBodyCallback }
 const {
   BalancedPoolMissingUpstreamError,
   InvalidArgumentError
-} = __nccwpck_require__(33862)
+} = __nccwpck_require__(61581)
 const {
   PoolBase,
   kClients,
@@ -81055,10 +84089,10 @@ const {
   kAddClient,
   kRemoveClient,
   kGetDispatcher
-} = __nccwpck_require__(89769)
-const Pool = __nccwpck_require__(17787)
-const { kUrl, kInterceptors } = __nccwpck_require__(34856)
-const { parseOrigin } = __nccwpck_require__(33465)
+} = __nccwpck_require__(49974)
+const Pool = __nccwpck_require__(6086)
+const { kUrl, kInterceptors } = __nccwpck_require__(45773)
+const { parseOrigin } = __nccwpck_require__(84606)
 const kFactory = Symbol('factory')
 
 const kOptions = Symbol('options')
@@ -81236,24 +84270,24 @@ module.exports = BalancedPool
 
 /***/ }),
 
-/***/ 64890:
+/***/ 13761:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { kConstruct } = __nccwpck_require__(51829)
-const { urlEquals, fieldValues: getFieldValues } = __nccwpck_require__(20726)
-const { kEnumerableProperty, isDisturbed } = __nccwpck_require__(33465)
-const { kHeadersList } = __nccwpck_require__(34856)
-const { webidl } = __nccwpck_require__(29)
-const { Response, cloneResponse } = __nccwpck_require__(95683)
-const { Request } = __nccwpck_require__(15767)
-const { kState, kHeaders, kGuard, kRealm } = __nccwpck_require__(68323)
-const { fetching } = __nccwpck_require__(58358)
-const { urlIsHttpHttpsScheme, createDeferredPromise, readAllBytes } = __nccwpck_require__(42696)
+const { kConstruct } = __nccwpck_require__(5914)
+const { urlEquals, fieldValues: getFieldValues } = __nccwpck_require__(83175)
+const { kEnumerableProperty, isDisturbed } = __nccwpck_require__(84606)
+const { kHeadersList } = __nccwpck_require__(45773)
+const { webidl } = __nccwpck_require__(33476)
+const { Response, cloneResponse } = __nccwpck_require__(96062)
+const { Request } = __nccwpck_require__(62204)
+const { kState, kHeaders, kGuard, kRealm } = __nccwpck_require__(11088)
+const { fetching } = __nccwpck_require__(79401)
+const { urlIsHttpHttpsScheme, createDeferredPromise, readAllBytes } = __nccwpck_require__(18961)
 const assert = __nccwpck_require__(42613)
-const { getGlobalDispatcher } = __nccwpck_require__(17882)
+const { getGlobalDispatcher } = __nccwpck_require__(7075)
 
 /**
  * @see https://w3c.github.io/ServiceWorker/#dfn-cache-batch-operation
@@ -82082,16 +85116,16 @@ module.exports = {
 
 /***/ }),
 
-/***/ 89605:
+/***/ 78400:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { kConstruct } = __nccwpck_require__(51829)
-const { Cache } = __nccwpck_require__(64890)
-const { webidl } = __nccwpck_require__(29)
-const { kEnumerableProperty } = __nccwpck_require__(33465)
+const { kConstruct } = __nccwpck_require__(5914)
+const { Cache } = __nccwpck_require__(13761)
+const { webidl } = __nccwpck_require__(33476)
+const { kEnumerableProperty } = __nccwpck_require__(84606)
 
 class CacheStorage {
   /**
@@ -82234,28 +85268,28 @@ module.exports = {
 
 /***/ }),
 
-/***/ 51829:
+/***/ 5914:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 module.exports = {
-  kConstruct: (__nccwpck_require__(34856).kConstruct)
+  kConstruct: (__nccwpck_require__(45773).kConstruct)
 }
 
 
 /***/ }),
 
-/***/ 20726:
+/***/ 83175:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const assert = __nccwpck_require__(42613)
-const { URLSerializer } = __nccwpck_require__(43911)
-const { isValidHeaderName } = __nccwpck_require__(42696)
+const { URLSerializer } = __nccwpck_require__(46960)
+const { isValidHeaderName } = __nccwpck_require__(18961)
 
 /**
  * @see https://url.spec.whatwg.org/#concept-url-equals
@@ -82304,7 +85338,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 76646:
+/***/ 60439:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -82318,10 +85352,10 @@ const assert = __nccwpck_require__(42613)
 const net = __nccwpck_require__(69278)
 const http = __nccwpck_require__(58611)
 const { pipeline } = __nccwpck_require__(2203)
-const util = __nccwpck_require__(33465)
-const timers = __nccwpck_require__(82907)
-const Request = __nccwpck_require__(4916)
-const DispatcherBase = __nccwpck_require__(9368)
+const util = __nccwpck_require__(84606)
+const timers = __nccwpck_require__(62374)
+const Request = __nccwpck_require__(63505)
+const DispatcherBase = __nccwpck_require__(19787)
 const {
   RequestContentLengthMismatchError,
   ResponseContentLengthMismatchError,
@@ -82335,8 +85369,8 @@ const {
   HTTPParserError,
   ResponseExceededMaxSizeError,
   ClientDestroyedError
-} = __nccwpck_require__(33862)
-const buildConnector = __nccwpck_require__(2559)
+} = __nccwpck_require__(61581)
+const buildConnector = __nccwpck_require__(20110)
 const {
   kUrl,
   kReset,
@@ -82388,7 +85422,7 @@ const {
   kHTTP2BuildRequest,
   kHTTP2CopyHeaders,
   kHTTP1BuildRequest
-} = __nccwpck_require__(34856)
+} = __nccwpck_require__(45773)
 
 /** @type {import('http2')} */
 let http2
@@ -82794,16 +85828,16 @@ function onHTTP2GoAway (code) {
   resume(client)
 }
 
-const constants = __nccwpck_require__(10307)
-const createRedirectInterceptor = __nccwpck_require__(92130)
+const constants = __nccwpck_require__(862)
+const createRedirectInterceptor = __nccwpck_require__(99509)
 const EMPTY_BUF = Buffer.alloc(0)
 
 async function lazyllhttp () {
-  const llhttpWasmData = process.env.JEST_WORKER_ID ? __nccwpck_require__(79741) : undefined
+  const llhttpWasmData = process.env.JEST_WORKER_ID ? __nccwpck_require__(68484) : undefined
 
   let mod
   try {
-    mod = await WebAssembly.compile(Buffer.from(__nccwpck_require__(15919), 'base64'))
+    mod = await WebAssembly.compile(Buffer.from(__nccwpck_require__(10652), 'base64'))
   } catch (e) {
     /* istanbul ignore next */
 
@@ -82811,7 +85845,7 @@ async function lazyllhttp () {
     // being enabled, but the occurring of this other error
     // * https://github.com/emscripten-core/emscripten/issues/11495
     // got me to remove that check to avoid breaking Node 12.
-    mod = await WebAssembly.compile(Buffer.from(llhttpWasmData || __nccwpck_require__(79741), 'base64'))
+    mod = await WebAssembly.compile(Buffer.from(llhttpWasmData || __nccwpck_require__(68484), 'base64'))
   }
 
   return await WebAssembly.instantiate(mod, {
@@ -84595,7 +87629,7 @@ module.exports = Client
 
 /***/ }),
 
-/***/ 60547:
+/***/ 91408:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -84603,7 +87637,7 @@ module.exports = Client
 
 /* istanbul ignore file: only for Node 12 */
 
-const { kConnected, kSize } = __nccwpck_require__(34856)
+const { kConnected, kSize } = __nccwpck_require__(45773)
 
 class CompatWeakRef {
   constructor (value) {
@@ -84651,7 +87685,7 @@ module.exports = function () {
 
 /***/ }),
 
-/***/ 30516:
+/***/ 38803:
 /***/ ((module) => {
 
 "use strict";
@@ -84671,16 +87705,16 @@ module.exports = {
 
 /***/ }),
 
-/***/ 88829:
+/***/ 47426:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { parseSetCookie } = __nccwpck_require__(27042)
-const { stringify, getHeadersList } = __nccwpck_require__(13325)
-const { webidl } = __nccwpck_require__(29)
-const { Headers } = __nccwpck_require__(72908)
+const { parseSetCookie } = __nccwpck_require__(77889)
+const { stringify } = __nccwpck_require__(83692)
+const { webidl } = __nccwpck_require__(33476)
+const { Headers } = __nccwpck_require__(12223)
 
 /**
  * @typedef {Object} Cookie
@@ -84754,14 +87788,13 @@ function getSetCookies (headers) {
 
   webidl.brandCheck(headers, Headers, { strict: false })
 
-  const cookies = getHeadersList(headers).cookies
+  const cookies = headers.getSetCookie()
 
   if (!cookies) {
     return []
   }
 
-  // In older versions of undici, cookies is a list of name:value.
-  return cookies.map((pair) => parseSetCookie(Array.isArray(pair) ? pair[1] : pair))
+  return cookies.map((pair) => parseSetCookie(pair))
 }
 
 /**
@@ -84863,15 +87896,15 @@ module.exports = {
 
 /***/ }),
 
-/***/ 27042:
+/***/ 77889:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { maxNameValuePairSize, maxAttributeValueSize } = __nccwpck_require__(30516)
-const { isCTLExcludingHtab } = __nccwpck_require__(13325)
-const { collectASequenceOfCodePointsFast } = __nccwpck_require__(43911)
+const { maxNameValuePairSize, maxAttributeValueSize } = __nccwpck_require__(38803)
+const { isCTLExcludingHtab } = __nccwpck_require__(83692)
+const { collectASequenceOfCodePointsFast } = __nccwpck_require__(46960)
 const assert = __nccwpck_require__(42613)
 
 /**
@@ -85188,15 +88221,16 @@ module.exports = {
 
 /***/ }),
 
-/***/ 13325:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+/***/ 83692:
+/***/ ((module) => {
 
 "use strict";
 
 
-const assert = __nccwpck_require__(42613)
-const { kHeadersList } = __nccwpck_require__(34856)
-
+/**
+ * @param {string} value
+ * @returns {boolean}
+ */
 function isCTLExcludingHtab (value) {
   if (value.length === 0) {
     return false
@@ -85457,37 +88491,19 @@ function stringify (cookie) {
   return out.join('; ')
 }
 
-let kHeadersListNode
-
-function getHeadersList (headers) {
-  if (headers[kHeadersList]) {
-    return headers[kHeadersList]
-  }
-
-  if (!kHeadersListNode) {
-    kHeadersListNode = Object.getOwnPropertySymbols(headers).find(
-      (symbol) => symbol.description === 'headers list'
-    )
-
-    assert(kHeadersListNode, 'Headers cannot be parsed')
-  }
-
-  const headersList = headers[kHeadersListNode]
-  assert(headersList)
-
-  return headersList
-}
-
 module.exports = {
   isCTLExcludingHtab,
-  stringify,
-  getHeadersList
+  validateCookieName,
+  validateCookiePath,
+  validateCookieValue,
+  toIMFDate,
+  stringify
 }
 
 
 /***/ }),
 
-/***/ 2559:
+/***/ 20110:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -85495,8 +88511,8 @@ module.exports = {
 
 const net = __nccwpck_require__(69278)
 const assert = __nccwpck_require__(42613)
-const util = __nccwpck_require__(33465)
-const { InvalidArgumentError, ConnectTimeoutError } = __nccwpck_require__(33862)
+const util = __nccwpck_require__(84606)
+const { InvalidArgumentError, ConnectTimeoutError } = __nccwpck_require__(61581)
 
 let tls // include tls conditionally since it is not always available
 
@@ -85684,7 +88700,7 @@ module.exports = buildConnector
 
 /***/ }),
 
-/***/ 48088:
+/***/ 97281:
 /***/ ((module) => {
 
 "use strict";
@@ -85810,7 +88826,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 33862:
+/***/ 61581:
 /***/ ((module) => {
 
 "use strict";
@@ -86048,7 +89064,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 4916:
+/***/ 63505:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -86057,10 +89073,10 @@ module.exports = {
 const {
   InvalidArgumentError,
   NotSupportedError
-} = __nccwpck_require__(33862)
+} = __nccwpck_require__(61581)
 const assert = __nccwpck_require__(42613)
-const { kHTTP2BuildRequest, kHTTP2CopyHeaders, kHTTP1BuildRequest } = __nccwpck_require__(34856)
-const util = __nccwpck_require__(33465)
+const { kHTTP2BuildRequest, kHTTP2CopyHeaders, kHTTP1BuildRequest } = __nccwpck_require__(45773)
+const util = __nccwpck_require__(84606)
 
 // tokenRegExp and headerCharRegex have been lifted from
 // https://github.com/nodejs/node/blob/main/lib/_http_common.js
@@ -86255,7 +89271,7 @@ class Request {
       }
 
       if (!extractBody) {
-        extractBody = (__nccwpck_require__(1380).extractBody)
+        extractBody = (__nccwpck_require__(38009).extractBody)
       }
 
       const [bodyStream, contentType] = extractBody(body)
@@ -86555,7 +89571,7 @@ module.exports = Request
 
 /***/ }),
 
-/***/ 34856:
+/***/ 45773:
 /***/ ((module) => {
 
 module.exports = {
@@ -86625,22 +89641,22 @@ module.exports = {
 
 /***/ }),
 
-/***/ 33465:
+/***/ 84606:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const assert = __nccwpck_require__(42613)
-const { kDestroyed, kBodyUsed } = __nccwpck_require__(34856)
+const { kDestroyed, kBodyUsed } = __nccwpck_require__(45773)
 const { IncomingMessage } = __nccwpck_require__(58611)
 const stream = __nccwpck_require__(2203)
 const net = __nccwpck_require__(69278)
-const { InvalidArgumentError } = __nccwpck_require__(33862)
+const { InvalidArgumentError } = __nccwpck_require__(61581)
 const { Blob } = __nccwpck_require__(20181)
 const nodeUtil = __nccwpck_require__(39023)
 const { stringify } = __nccwpck_require__(83480)
-const { headerNameLowerCasedRecord } = __nccwpck_require__(48088)
+const { headerNameLowerCasedRecord } = __nccwpck_require__(97281)
 
 const [nodeMajor, nodeMinor] = process.versions.node.split('.').map(v => Number(v))
 
@@ -87155,19 +90171,19 @@ module.exports = {
 
 /***/ }),
 
-/***/ 9368:
+/***/ 19787:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Dispatcher = __nccwpck_require__(59724)
+const Dispatcher = __nccwpck_require__(53553)
 const {
   ClientDestroyedError,
   ClientClosedError,
   InvalidArgumentError
-} = __nccwpck_require__(33862)
-const { kDestroy, kClose, kDispatch, kInterceptors } = __nccwpck_require__(34856)
+} = __nccwpck_require__(61581)
+const { kDestroy, kClose, kDispatch, kInterceptors } = __nccwpck_require__(45773)
 
 const kDestroyed = Symbol('destroyed')
 const kClosed = Symbol('closed')
@@ -87355,7 +90371,7 @@ module.exports = DispatcherBase
 
 /***/ }),
 
-/***/ 59724:
+/***/ 53553:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -87382,14 +90398,14 @@ module.exports = Dispatcher
 
 /***/ }),
 
-/***/ 1380:
+/***/ 38009:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const Busboy = __nccwpck_require__(69766)
-const util = __nccwpck_require__(33465)
+const util = __nccwpck_require__(84606)
 const {
   ReadableStreamFrom,
   isBlobLike,
@@ -87397,18 +90413,26 @@ const {
   readableStreamClose,
   createDeferredPromise,
   fullyReadBody
-} = __nccwpck_require__(42696)
-const { FormData } = __nccwpck_require__(12894)
-const { kState } = __nccwpck_require__(68323)
-const { webidl } = __nccwpck_require__(29)
-const { DOMException, structuredClone } = __nccwpck_require__(84135)
+} = __nccwpck_require__(18961)
+const { FormData } = __nccwpck_require__(61187)
+const { kState } = __nccwpck_require__(11088)
+const { webidl } = __nccwpck_require__(33476)
+const { DOMException, structuredClone } = __nccwpck_require__(7536)
 const { Blob, File: NativeFile } = __nccwpck_require__(20181)
-const { kBodyUsed } = __nccwpck_require__(34856)
+const { kBodyUsed } = __nccwpck_require__(45773)
 const assert = __nccwpck_require__(42613)
-const { isErrored } = __nccwpck_require__(33465)
+const { isErrored } = __nccwpck_require__(84606)
 const { isUint8Array, isArrayBuffer } = __nccwpck_require__(98253)
-const { File: UndiciFile } = __nccwpck_require__(60066)
-const { parseMIMEType, serializeAMimeType } = __nccwpck_require__(43911)
+const { File: UndiciFile } = __nccwpck_require__(74091)
+const { parseMIMEType, serializeAMimeType } = __nccwpck_require__(46960)
+
+let random
+try {
+  const crypto = __nccwpck_require__(77598)
+  random = (max) => crypto.randomInt(0, max)
+} catch {
+  random = (max) => Math.floor(Math.random(max))
+}
 
 let ReadableStream = globalThis.ReadableStream
 
@@ -87495,7 +90519,7 @@ function extractBody (object, keepalive = false) {
     // Set source to a copy of the bytes held by object.
     source = new Uint8Array(object.buffer.slice(object.byteOffset, object.byteOffset + object.byteLength))
   } else if (util.isFormDataLike(object)) {
-    const boundary = `----formdata-undici-0${`${Math.floor(Math.random() * 1e11)}`.padStart(11, '0')}`
+    const boundary = `----formdata-undici-0${`${random(1e11)}`.padStart(11, '0')}`
     const prefix = `--${boundary}\r\nContent-Disposition: form-data`
 
     /*! formdata-polyfill. MIT License. Jimmy Wärting <https://jimmy.warting.se/opensource> */
@@ -87995,7 +91019,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 84135:
+/***/ 7536:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -88154,12 +91178,12 @@ module.exports = {
 
 /***/ }),
 
-/***/ 43911:
+/***/ 46960:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 const assert = __nccwpck_require__(42613)
 const { atob } = __nccwpck_require__(20181)
-const { isomorphicDecode } = __nccwpck_require__(42696)
+const { isomorphicDecode } = __nccwpck_require__(18961)
 
 const encoder = new TextEncoder()
 
@@ -88788,7 +91812,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 60066:
+/***/ 74091:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -88796,11 +91820,11 @@ module.exports = {
 
 const { Blob, File: NativeFile } = __nccwpck_require__(20181)
 const { types } = __nccwpck_require__(39023)
-const { kState } = __nccwpck_require__(68323)
-const { isBlobLike } = __nccwpck_require__(42696)
-const { webidl } = __nccwpck_require__(29)
-const { parseMIMEType, serializeAMimeType } = __nccwpck_require__(43911)
-const { kEnumerableProperty } = __nccwpck_require__(33465)
+const { kState } = __nccwpck_require__(11088)
+const { isBlobLike } = __nccwpck_require__(18961)
+const { webidl } = __nccwpck_require__(33476)
+const { parseMIMEType, serializeAMimeType } = __nccwpck_require__(46960)
+const { kEnumerableProperty } = __nccwpck_require__(84606)
 const encoder = new TextEncoder()
 
 class File extends Blob {
@@ -89140,16 +92164,16 @@ module.exports = { File, FileLike, isFileLike }
 
 /***/ }),
 
-/***/ 12894:
+/***/ 61187:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { isBlobLike, toUSVString, makeIterator } = __nccwpck_require__(42696)
-const { kState } = __nccwpck_require__(68323)
-const { File: UndiciFile, FileLike, isFileLike } = __nccwpck_require__(60066)
-const { webidl } = __nccwpck_require__(29)
+const { isBlobLike, toUSVString, makeIterator } = __nccwpck_require__(18961)
+const { kState } = __nccwpck_require__(11088)
+const { File: UndiciFile, FileLike, isFileLike } = __nccwpck_require__(74091)
+const { webidl } = __nccwpck_require__(33476)
 const { Blob, File: NativeFile } = __nccwpck_require__(20181)
 
 /** @type {globalThis['File']} */
@@ -89413,7 +92437,7 @@ module.exports = { FormData }
 
 /***/ }),
 
-/***/ 59963:
+/***/ 50742:
 /***/ ((module) => {
 
 "use strict";
@@ -89461,7 +92485,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 72908:
+/***/ 12223:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -89469,15 +92493,16 @@ module.exports = {
 
 
 
-const { kHeadersList, kConstruct } = __nccwpck_require__(34856)
-const { kGuard } = __nccwpck_require__(68323)
-const { kEnumerableProperty } = __nccwpck_require__(33465)
+const { kHeadersList, kConstruct } = __nccwpck_require__(45773)
+const { kGuard } = __nccwpck_require__(11088)
+const { kEnumerableProperty } = __nccwpck_require__(84606)
 const {
   makeIterator,
   isValidHeaderName,
   isValidHeaderValue
-} = __nccwpck_require__(42696)
-const { webidl } = __nccwpck_require__(29)
+} = __nccwpck_require__(18961)
+const util = __nccwpck_require__(39023)
+const { webidl } = __nccwpck_require__(33476)
 const assert = __nccwpck_require__(42613)
 
 const kHeadersMap = Symbol('headers map')
@@ -90030,6 +93055,9 @@ Object.defineProperties(Headers.prototype, {
   [Symbol.toStringTag]: {
     value: 'Headers',
     configurable: true
+  },
+  [util.inspect.custom]: {
+    enumerable: false
   }
 })
 
@@ -90058,7 +93086,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 58358:
+/***/ 79401:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -90072,9 +93100,9 @@ const {
   makeAppropriateNetworkError,
   filterResponse,
   makeResponse
-} = __nccwpck_require__(95683)
-const { Headers } = __nccwpck_require__(72908)
-const { Request, makeRequest } = __nccwpck_require__(15767)
+} = __nccwpck_require__(96062)
+const { Headers } = __nccwpck_require__(12223)
+const { Request, makeRequest } = __nccwpck_require__(62204)
 const zlib = __nccwpck_require__(43106)
 const {
   bytesMatch,
@@ -90105,10 +93133,10 @@ const {
   urlIsLocal,
   urlIsHttpHttpsScheme,
   urlHasHttpsScheme
-} = __nccwpck_require__(42696)
-const { kState, kHeaders, kGuard, kRealm } = __nccwpck_require__(68323)
+} = __nccwpck_require__(18961)
+const { kState, kHeaders, kGuard, kRealm } = __nccwpck_require__(11088)
 const assert = __nccwpck_require__(42613)
-const { safelyExtractBody } = __nccwpck_require__(1380)
+const { safelyExtractBody } = __nccwpck_require__(38009)
 const {
   redirectStatusSet,
   nullBodyStatus,
@@ -90116,15 +93144,15 @@ const {
   requestBodyHeader,
   subresourceSet,
   DOMException
-} = __nccwpck_require__(84135)
-const { kHeadersList } = __nccwpck_require__(34856)
+} = __nccwpck_require__(7536)
+const { kHeadersList } = __nccwpck_require__(45773)
 const EE = __nccwpck_require__(24434)
 const { Readable, pipeline } = __nccwpck_require__(2203)
-const { addAbortListener, isErrored, isReadable, nodeMajor, nodeMinor } = __nccwpck_require__(33465)
-const { dataURLProcessor, serializeAMimeType } = __nccwpck_require__(43911)
+const { addAbortListener, isErrored, isReadable, nodeMajor, nodeMinor } = __nccwpck_require__(84606)
+const { dataURLProcessor, serializeAMimeType } = __nccwpck_require__(46960)
 const { TransformStream } = __nccwpck_require__(63774)
-const { getGlobalDispatcher } = __nccwpck_require__(17882)
-const { webidl } = __nccwpck_require__(29)
+const { getGlobalDispatcher } = __nccwpck_require__(7075)
+const { webidl } = __nccwpck_require__(33476)
 const { STATUS_CODES } = __nccwpck_require__(58611)
 const GET_OR_HEAD = ['GET', 'HEAD']
 
@@ -92214,7 +95242,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 15767:
+/***/ 62204:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -92222,17 +95250,17 @@ module.exports = {
 
 
 
-const { extractBody, mixinBody, cloneBody } = __nccwpck_require__(1380)
-const { Headers, fill: fillHeaders, HeadersList } = __nccwpck_require__(72908)
-const { FinalizationRegistry } = __nccwpck_require__(60547)()
-const util = __nccwpck_require__(33465)
+const { extractBody, mixinBody, cloneBody } = __nccwpck_require__(38009)
+const { Headers, fill: fillHeaders, HeadersList } = __nccwpck_require__(12223)
+const { FinalizationRegistry } = __nccwpck_require__(91408)()
+const util = __nccwpck_require__(84606)
 const {
   isValidHTTPToken,
   sameOrigin,
   normalizeMethod,
   makePolicyContainer,
   normalizeMethodRecord
-} = __nccwpck_require__(42696)
+} = __nccwpck_require__(18961)
 const {
   forbiddenMethodsSet,
   corsSafeListedMethodsSet,
@@ -92242,13 +95270,13 @@ const {
   requestCredentials,
   requestCache,
   requestDuplex
-} = __nccwpck_require__(84135)
+} = __nccwpck_require__(7536)
 const { kEnumerableProperty } = util
-const { kHeaders, kSignal, kState, kGuard, kRealm } = __nccwpck_require__(68323)
-const { webidl } = __nccwpck_require__(29)
-const { getGlobalOrigin } = __nccwpck_require__(59963)
-const { URLSerializer } = __nccwpck_require__(43911)
-const { kHeadersList, kConstruct } = __nccwpck_require__(34856)
+const { kHeaders, kSignal, kState, kGuard, kRealm } = __nccwpck_require__(11088)
+const { webidl } = __nccwpck_require__(33476)
+const { getGlobalOrigin } = __nccwpck_require__(50742)
+const { URLSerializer } = __nccwpck_require__(46960)
+const { kHeadersList, kConstruct } = __nccwpck_require__(45773)
 const assert = __nccwpck_require__(42613)
 const { getMaxListeners, setMaxListeners, getEventListeners, defaultMaxListeners } = __nccwpck_require__(24434)
 
@@ -93168,15 +96196,15 @@ module.exports = { Request, makeRequest }
 
 /***/ }),
 
-/***/ 95683:
+/***/ 96062:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { Headers, HeadersList, fill } = __nccwpck_require__(72908)
-const { extractBody, cloneBody, mixinBody } = __nccwpck_require__(1380)
-const util = __nccwpck_require__(33465)
+const { Headers, HeadersList, fill } = __nccwpck_require__(12223)
+const { extractBody, cloneBody, mixinBody } = __nccwpck_require__(38009)
+const util = __nccwpck_require__(84606)
 const { kEnumerableProperty } = util
 const {
   isValidReasonPhrase,
@@ -93186,18 +96214,18 @@ const {
   serializeJavascriptValueToJSONString,
   isErrorLike,
   isomorphicEncode
-} = __nccwpck_require__(42696)
+} = __nccwpck_require__(18961)
 const {
   redirectStatusSet,
   nullBodyStatus,
   DOMException
-} = __nccwpck_require__(84135)
-const { kState, kHeaders, kGuard, kRealm } = __nccwpck_require__(68323)
-const { webidl } = __nccwpck_require__(29)
-const { FormData } = __nccwpck_require__(12894)
-const { getGlobalOrigin } = __nccwpck_require__(59963)
-const { URLSerializer } = __nccwpck_require__(43911)
-const { kHeadersList, kConstruct } = __nccwpck_require__(34856)
+} = __nccwpck_require__(7536)
+const { kState, kHeaders, kGuard, kRealm } = __nccwpck_require__(11088)
+const { webidl } = __nccwpck_require__(33476)
+const { FormData } = __nccwpck_require__(61187)
+const { getGlobalOrigin } = __nccwpck_require__(50742)
+const { URLSerializer } = __nccwpck_require__(46960)
+const { kHeadersList, kConstruct } = __nccwpck_require__(45773)
 const assert = __nccwpck_require__(42613)
 const { types } = __nccwpck_require__(39023)
 
@@ -93747,7 +96775,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 68323:
+/***/ 11088:
 /***/ ((module) => {
 
 "use strict";
@@ -93765,16 +96793,16 @@ module.exports = {
 
 /***/ }),
 
-/***/ 42696:
+/***/ 18961:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { redirectStatusSet, referrerPolicySet: referrerPolicyTokens, badPortsSet } = __nccwpck_require__(84135)
-const { getGlobalOrigin } = __nccwpck_require__(59963)
+const { redirectStatusSet, referrerPolicySet: referrerPolicyTokens, badPortsSet } = __nccwpck_require__(7536)
+const { getGlobalOrigin } = __nccwpck_require__(50742)
 const { performance } = __nccwpck_require__(82987)
-const { isBlobLike, toUSVString, ReadableStreamFrom } = __nccwpck_require__(33465)
+const { isBlobLike, toUSVString, ReadableStreamFrom } = __nccwpck_require__(84606)
 const assert = __nccwpck_require__(42613)
 const { isUint8Array } = __nccwpck_require__(98253)
 
@@ -94917,14 +97945,14 @@ module.exports = {
 
 /***/ }),
 
-/***/ 29:
+/***/ 33476:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { types } = __nccwpck_require__(39023)
-const { hasOwn, toUSVString } = __nccwpck_require__(42696)
+const { hasOwn, toUSVString } = __nccwpck_require__(18961)
 
 /** @type {import('../../types/webidl').Webidl} */
 const webidl = {}
@@ -95571,7 +98599,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 2951:
+/***/ 80202:
 /***/ ((module) => {
 
 "use strict";
@@ -95869,7 +98897,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 62171:
+/***/ 9086:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -95879,16 +98907,16 @@ const {
   staticPropertyDescriptors,
   readOperation,
   fireAProgressEvent
-} = __nccwpck_require__(43170)
+} = __nccwpck_require__(20367)
 const {
   kState,
   kError,
   kResult,
   kEvents,
   kAborted
-} = __nccwpck_require__(78057)
-const { webidl } = __nccwpck_require__(29)
-const { kEnumerableProperty } = __nccwpck_require__(33465)
+} = __nccwpck_require__(27570)
+const { webidl } = __nccwpck_require__(33476)
+const { kEnumerableProperty } = __nccwpck_require__(84606)
 
 class FileReader extends EventTarget {
   constructor () {
@@ -96221,13 +99249,13 @@ module.exports = {
 
 /***/ }),
 
-/***/ 8389:
+/***/ 95702:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { webidl } = __nccwpck_require__(29)
+const { webidl } = __nccwpck_require__(33476)
 
 const kState = Symbol('ProgressEvent state')
 
@@ -96307,7 +99335,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 78057:
+/***/ 27570:
 /***/ ((module) => {
 
 "use strict";
@@ -96325,7 +99353,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 43170:
+/***/ 20367:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -96337,11 +99365,11 @@ const {
   kResult,
   kAborted,
   kLastProgressEventFired
-} = __nccwpck_require__(78057)
-const { ProgressEvent } = __nccwpck_require__(8389)
-const { getEncoding } = __nccwpck_require__(2951)
-const { DOMException } = __nccwpck_require__(84135)
-const { serializeAMimeType, parseMIMEType } = __nccwpck_require__(43911)
+} = __nccwpck_require__(27570)
+const { ProgressEvent } = __nccwpck_require__(95702)
+const { getEncoding } = __nccwpck_require__(80202)
+const { DOMException } = __nccwpck_require__(7536)
+const { serializeAMimeType, parseMIMEType } = __nccwpck_require__(46960)
 const { types } = __nccwpck_require__(39023)
 const { StringDecoder } = __nccwpck_require__(13193)
 const { btoa } = __nccwpck_require__(20181)
@@ -96725,7 +99753,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 17882:
+/***/ 7075:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -96734,8 +99762,8 @@ module.exports = {
 // We include a version number for the Dispatcher API. In case of breaking changes,
 // this version number must be increased to avoid conflicts.
 const globalDispatcher = Symbol.for('undici.globalDispatcher.1')
-const { InvalidArgumentError } = __nccwpck_require__(33862)
-const Agent = __nccwpck_require__(69072)
+const { InvalidArgumentError } = __nccwpck_require__(61581)
+const Agent = __nccwpck_require__(28603)
 
 if (getGlobalDispatcher() === undefined) {
   setGlobalDispatcher(new Agent())
@@ -96765,7 +99793,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 28975:
+/***/ 41858:
 /***/ ((module) => {
 
 "use strict";
@@ -96808,16 +99836,16 @@ module.exports = class DecoratorHandler {
 
 /***/ }),
 
-/***/ 90238:
+/***/ 63897:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const util = __nccwpck_require__(33465)
-const { kBodyUsed } = __nccwpck_require__(34856)
+const util = __nccwpck_require__(84606)
+const { kBodyUsed } = __nccwpck_require__(45773)
 const assert = __nccwpck_require__(42613)
-const { InvalidArgumentError } = __nccwpck_require__(33862)
+const { InvalidArgumentError } = __nccwpck_require__(61581)
 const EE = __nccwpck_require__(24434)
 
 const redirectableStatusCodes = [300, 301, 302, 303, 307, 308]
@@ -97037,14 +100065,14 @@ module.exports = RedirectHandler
 
 /***/ }),
 
-/***/ 33966:
+/***/ 92483:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 const assert = __nccwpck_require__(42613)
 
-const { kRetryHandlerDefaultRetry } = __nccwpck_require__(34856)
-const { RequestRetryError } = __nccwpck_require__(33862)
-const { isDisturbed, parseHeaders, parseRangeHeader } = __nccwpck_require__(33465)
+const { kRetryHandlerDefaultRetry } = __nccwpck_require__(45773)
+const { RequestRetryError } = __nccwpck_require__(61581)
+const { isDisturbed, parseHeaders, parseRangeHeader } = __nccwpck_require__(84606)
 
 function calculateRetryAfterHeader (retryAfter) {
   const current = Date.now()
@@ -97380,13 +100408,13 @@ module.exports = RetryHandler
 
 /***/ }),
 
-/***/ 92130:
+/***/ 99509:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const RedirectHandler = __nccwpck_require__(90238)
+const RedirectHandler = __nccwpck_require__(63897)
 
 function createRedirectInterceptor ({ maxRedirections: defaultMaxRedirections }) {
   return (dispatch) => {
@@ -97409,14 +100437,14 @@ module.exports = createRedirectInterceptor
 
 /***/ }),
 
-/***/ 10307:
+/***/ 862:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.SPECIAL_HEADERS = exports.HEADER_STATE = exports.MINOR = exports.MAJOR = exports.CONNECTION_TOKEN_CHARS = exports.HEADER_CHARS = exports.TOKEN = exports.STRICT_TOKEN = exports.HEX = exports.URL_CHAR = exports.STRICT_URL_CHAR = exports.USERINFO_CHARS = exports.MARK = exports.ALPHANUM = exports.NUM = exports.HEX_MAP = exports.NUM_MAP = exports.ALPHA = exports.FINISH = exports.H_METHOD_MAP = exports.METHOD_MAP = exports.METHODS_RTSP = exports.METHODS_ICE = exports.METHODS_HTTP = exports.METHODS = exports.LENIENT_FLAGS = exports.FLAGS = exports.TYPE = exports.ERROR = void 0;
-const utils_1 = __nccwpck_require__(9619);
+const utils_1 = __nccwpck_require__(31910);
 // C headers
 var ERROR;
 (function (ERROR) {
@@ -97694,7 +100722,7 @@ exports.SPECIAL_HEADERS = {
 
 /***/ }),
 
-/***/ 79741:
+/***/ 68484:
 /***/ ((module) => {
 
 module.exports = 'AGFzbQEAAAABMAhgAX8Bf2ADf39/AX9gBH9/f38Bf2AAAGADf39/AGABfwBgAn9/AGAGf39/f39/AALLAQgDZW52GHdhc21fb25faGVhZGVyc19jb21wbGV0ZQACA2VudhV3YXNtX29uX21lc3NhZ2VfYmVnaW4AAANlbnYLd2FzbV9vbl91cmwAAQNlbnYOd2FzbV9vbl9zdGF0dXMAAQNlbnYUd2FzbV9vbl9oZWFkZXJfZmllbGQAAQNlbnYUd2FzbV9vbl9oZWFkZXJfdmFsdWUAAQNlbnYMd2FzbV9vbl9ib2R5AAEDZW52GHdhc21fb25fbWVzc2FnZV9jb21wbGV0ZQAAA0ZFAwMEAAAFAAAAAAAABQEFAAUFBQAABgAAAAAGBgYGAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQABAAABAQcAAAUFAwABBAUBcAESEgUDAQACBggBfwFBgNQECwfRBSIGbWVtb3J5AgALX2luaXRpYWxpemUACRlfX2luZGlyZWN0X2Z1bmN0aW9uX3RhYmxlAQALbGxodHRwX2luaXQAChhsbGh0dHBfc2hvdWxkX2tlZXBfYWxpdmUAQQxsbGh0dHBfYWxsb2MADAZtYWxsb2MARgtsbGh0dHBfZnJlZQANBGZyZWUASA9sbGh0dHBfZ2V0X3R5cGUADhVsbGh0dHBfZ2V0X2h0dHBfbWFqb3IADxVsbGh0dHBfZ2V0X2h0dHBfbWlub3IAEBFsbGh0dHBfZ2V0X21ldGhvZAARFmxsaHR0cF9nZXRfc3RhdHVzX2NvZGUAEhJsbGh0dHBfZ2V0X3VwZ3JhZGUAEwxsbGh0dHBfcmVzZXQAFA5sbGh0dHBfZXhlY3V0ZQAVFGxsaHR0cF9zZXR0aW5nc19pbml0ABYNbGxodHRwX2ZpbmlzaAAXDGxsaHR0cF9wYXVzZQAYDWxsaHR0cF9yZXN1bWUAGRtsbGh0dHBfcmVzdW1lX2FmdGVyX3VwZ3JhZGUAGhBsbGh0dHBfZ2V0X2Vycm5vABsXbGxodHRwX2dldF9lcnJvcl9yZWFzb24AHBdsbGh0dHBfc2V0X2Vycm9yX3JlYXNvbgAdFGxsaHR0cF9nZXRfZXJyb3JfcG9zAB4RbGxodHRwX2Vycm5vX25hbWUAHxJsbGh0dHBfbWV0aG9kX25hbWUAIBJs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ADcDACAAQShqQgA3AwAgAEEgakIANwMAIABBEGpCADcDACAAQQhqQgA3AwAgAEHdATYCHEEAC3sBAX8CQCAAKAIMIgMNAAJAIAAoAgRFDQAgACABNgIECwJAIAAgASACEMSAgIAAIgMNACAAKAIMDwsgACADNgIcQQAhAyAAKAIEIgFFDQAgACABIAIgACgCCBGBgICAAAAiAUUNACAAIAI2AhQgACABNgIMIAEhAwsgAwvk8wEDDn8DfgR/I4CAgIAAQRBrIgMkgICAgAAgASEEIAEhBSABIQYgASEHIAEhCCABIQkgASEKIAEhCyABIQwgASENIAEhDiABIQ8CQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkAgACgCHCIQQX9qDt0B2gEB2QECAwQFBgcICQoLDA0O2AEPENcBERLWARMUFRYXGBkaG+AB3wEcHR7VAR8gISIjJCXUASYnKCkqKyzTAdIBLS7RAdABLzAxMjM0NTY3ODk6Ozw9Pj9AQUJDREVG2wFHSElKzwHOAUvNAUzMAU1OT1BRUlNUVVZXWFlaW1xdXl9gYWJjZGVmZ2hpamtsbW5vcHFyc3R1dnd4eXp7fH1+f4ABgQGCAYMBhAGFAYYBhwGIAYkB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QAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkAC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FCAAIBA2AgxBACEQDLIBCyAAKAIEIRAgAEEANgIEAkAgACAQIAEQp4CAgAAiEA0AIAEhAQxNCyAAQdMANgIcIAAgATYCFCAAIBA2AgxBACEQDLEBCyAAKAIEIRAgAEEANgIEAkAgACAQIAEQp4CAgAAiEA0AIAEhAQxRCyAAQeUANgIcIAAgATYCFCAAIBA2AgxBACEQDLABCyAAQQA2AhwgACABNgIUIABBxoqAgAA2AhAgAEEHNgIMQQAhEAyvAQsgACgCBCEQIABBADYCBAJAIAAgECABEKeAgIAAIhANACABIQEMSQsgAEHSADYCHCAAIAE2AhQgACAQNgIMQQAhEAyuAQsgACgCBCEQIABBADYCBAJAIAAgECABEKeAgIAAIhANACABIQEMSQsgAEHTADYCHCAAIAE2AhQgACAQNgIMQQAhEAytAQsgACgCBCEQIABBADYCBAJAIAAgECABEKeAgIAAIhANACABIQEMTQsgAEHlADYCHCAAIAE2AhQgACAQNgIMQQAhEAysAQsgAEEANgIcIAAgATYCFCAAQdyIgIAANgIQIABBBzYCDEEAIRAMqwELIBBBP0cNASABQQFqIQELQQUhEAyQAQtBACEQIABBADYCHCAAIAE2AhQgAEH9koCAADYCECAAQQc2AgwMqAELIAAoAgQhECAAQQA2AgQCQCAAIBAgARCngICAACIQDQAgASEBDEILIABB0gA2AhwgACABNgIUIAAgEDYCDEEAIRAMpwELIAAoAgQhECAAQQA2AgQCQCAAIBAgARCngICAACIQDQAgASEBDEILIABB0wA2AhwgACABNgIUIAAgEDYCDEEAIRAMpgELIAAoAgQhECAAQQA2AgQCQCAAIBAgARCngICAACIQDQAgASEBDEYLIABB5QA2AhwgACABNgIUIAAgEDYCDEEAIRAMpQELIAAoAgQhASAAQQA2AgQCQCAAIAEgFBCngICAACIBDQAgFCEBDD8LIABB0gA2AhwgACAUNgIUIAAgATYCDEEAIRAMpAELIAAoAgQhASAAQQA2AgQCQCAAIAEgFBCngICAACIBDQAgFCEBDD8LIABB0wA2AhwgACAUNgIUIAAgATYCDEEAIRAMowELIAAoAgQhASAAQQA2AgQCQCAAIAEgFBCngICAACIBDQAgFCEBDEMLIABB5QA2AhwgACAU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YWdlX2JlZ2luYCBjYWxsYmFjayBlcnJvcgBgb25fY2h1bmtfZXh0ZW5zaW9uX3ZhbHVlYCBjYWxsYmFjayBlcnJvcgBgb25fc3RhdHVzX2NvbXBsZXRlYCBjYWxsYmFjayBlcnJvcgBgb25fdmVyc2lvbl9jb21wbGV0ZWAgY2FsbGJhY2sgZXJyb3IAYG9uX3VybF9jb21wbGV0ZWAgY2FsbGJhY2sgZXJyb3IAYG9uX2NodW5rX2NvbXBsZXRlYCBjYWxsYmFjayBlcnJvcgBgb25faGVhZGVyX3ZhbHVlX2NvbXBsZXRlYCBjYWxsYmFjayBlcnJvcgBgb25fbWVzc2FnZV9jb21wbGV0ZWAgY2FsbGJhY2sgZXJyb3IAYG9uX21ldGhvZF9jb21wbGV0ZWAgY2FsbGJhY2sgZXJyb3IAYG9uX2hlYWRlcl9maWVsZF9jb21wbGV0ZWAgY2FsbGJhY2sgZXJyb3IAYG9uX2NodW5rX2V4dGVuc2lvbl9uYW1lYCBjYWxsYmFjayBlcnJvcgBVbmV4cGVjdGVkIGNoYXIgaW4gdXJsIHNlcnZlcgBJbnZhbGlkIGhlYWRlciB2YWx1ZSBjaGFyAEludmFsaWQgaGVhZGVyIGZpZWxkIGNoYXIAU3BhbiBjYWxsYmFjayBlcnJvciBpbiBvbl92ZXJzaW9uAEludmFsaWQgbWlub3IgdmVyc2lvbgBJbnZhbGlkIG1ham9yIHZlcnNpb24ARXhwZWN0ZWQgc3BhY2UgYWZ0ZXIgdmVyc2lvbgBFeHBlY3RlZCBDUkxGIGFmdGVyIHZlcnNpb24ASW52YWxpZCBIVFRQIHZlcnNpb24ASW52YWxpZCBoZWFkZXIgdG9rZW4AU3BhbiBjYWxsYmFjayBlcnJvciBpbiBvbl91cmwASW52YWxpZCBjaGFyYWN0ZXJzIGluIHVybABVbmV4cGVjdGVkIHN0YXJ0IGNoYXIgaW4gdXJsAERvdWJsZSBAIGluIHVybABFbXB0eSBDb250ZW50LUxlbmd0aABJbnZhbGlkIGNoYXJhY3RlciBpbiBDb250ZW50LUxlbmd0aABEdXBsaWNhdGUgQ29udGVudC1MZW5ndGgASW52YWxpZCBjaGFyIGluIHVybCBwYXRoAENvbnRlbnQtTGVuZ3RoIGNhbid0IGJlIHByZXNlbnQgd2l0aCBUcmFuc2Zlci1FbmNvZGluZwBJbnZhbGlkIGNoYXJhY3RlciBpbiBjaHVuayBzaXplAFNwYW4gY2FsbGJhY2sgZXJyb3IgaW4gb25faGVhZGVyX3ZhbHVlAFNwYW4gY2FsbGJhY2sgZXJyb3IgaW4gb25fY2h1bmtfZXh0ZW5zaW9uX3ZhbHVlAEludmFsaWQgY2hhcmFjdGVyIGluIGNodW5rIGV4dGVuc2lvbnMgdmFsdWUATWlzc2luZyBleHBlY3RlZCBMRiBhZnRlciBoZWFkZXIgdmFsdWUASW52YWxpZCBgVHJhbnNmZXItRW5jb2RpbmdgIGhlYWRlciB2YWx1ZQBJbnZhbGlkIGNoYXJhY3RlciBpbiBjaHVuayBleHRlbnNpb25zIHF1b3RlIHZhbHVlAEludmFsaWQgY2hhcmFjdGVyIGluIGNodW5rIGV4dGVuc2lvbnMgcXVvdGVkIHZhbHVlAFBhdXNlZCBieSBvbl9oZWFkZXJzX2NvbXBsZXRlAEludmFsaWQgRU9GIHN0YXRlAG9uX3Jlc2V0IHBhdXNlAG9uX2NodW5rX2hlYWRlciBwYXVzZQBvbl9tZXNzYWdlX2JlZ2luIHBhdXNlAG9uX2NodW5rX2V4dGVuc2lvbl92YWx1ZSBwYXVzZQBvbl9zdGF0dXNfY29tcGxldGUgcGF1c2UAb25fdmVyc2lvbl9jb21wbGV0ZSBwYXVzZQBvbl91cmxfY29tcGxldGUgcGF1c2UAb25fY2h1bmtfY29tcGxldGUgcGF1c2UAb25faGVhZGVyX3ZhbHVlX2NvbXBsZXRlIHBhdXNlAG9uX21lc3NhZ2VfY29tcGxldGUgcGF1c2UAb25fbWV0aG9kX2NvbXBsZXRlIHBhdXNlAG9uX2hlYWRlcl9maWVsZF9jb21wbGV0ZSBwYXVzZQBvbl9jaHVua19leHRlbnNpb25fbmFtZSBwYXVzZQBVbmV4cGVjdGVkIHNwYWNlIGFmdGVyIHN0YXJ0IGxpbmUAU3BhbiBjYWxsYmFjayBlcnJvciBpbiBvbl9jaHVua19leHRlbnNpb25fbmFtZQBJbnZhbGlkIGNoYXJhY3RlciBpbiBjaHVuayBleHRlbnNpb25zIG5hbWUAUGF1c2Ugb24gQ09OTkVDVC9VcGdyYWRlAFBhdXNlIG9uIFBSSS9VcGdyYWRlAEV4cGVjdGVkIEhUVFAvMiBDb25uZWN0aW9uIFByZWZhY2UAU3BhbiBjYWxsYmFjayBlcnJvciBpbiBvbl9tZXRob2QARXhwZWN0ZWQgc3BhY2UgYWZ0ZXIgbWV0aG9kAFNwYW4gY2FsbGJhY2sgZXJyb3IgaW4gb25faGVhZGVyX2ZpZWxkAFBhdXNlZABJbnZhbGlkIHdvcmQgZW5jb3VudGVyZWQASW52YWxpZCBtZXRob2QgZW5jb3VudGVyZWQAVW5leHBlY3RlZCBjaGFyIGluIHVybCBzY2hlbWEAUmVxdWVzdCBoYXMgaW52YWxpZCBgVHJhbnNmZXItRW5jb2RpbmdgAFNXSVRDSF9QUk9YWQBVU0VfUFJPWFkATUtBQ1RJVklUWQBVTlBST0NFU1NBQkxFX0VOVElUWQBDT1BZAE1PVkVEX1BFUk1BTkVOVExZAFRPT19FQVJMWQBOT1RJRlkARkFJTEVEX0RFUEVOREVOQ1kAQkFEX0dBVEVXQVkAUExBWQBQVVQAQ0hFQ0tPVVQAR0FURVdBWV9USU1FT1VUAFJFUVVFU1RfVElNRU9VVABORVRXT1JLX0NPTk5FQ1RfVElNRU9VVABDT05ORUNUSU9OX1RJTUVPVVQATE9HSU5fVElNRU9VVABORVRXT1JLX1JFQURfVElNRU9VVABQT1NUAE1JU0RJUkVDVEVEX1JFUVVFU1QAQ0xJRU5UX0NMT1NFRF9SRVFVRVNUAENMSUVOVF9DTE9TRURfTE9BRF9CQUxBTkNFRF9SRVFVRVNUAEJBRF9SRVFVRVNUAEhUVFBfUkVRVUVTVF9TRU5UX1RPX0hUVFBTX1BPUlQAUkVQT1JUAElNX0FfVEVBUE9UAFJFU0VUX0NPTlRFTlQATk9fQ09OVEVOVABQQVJUSUFMX0NPTlRFTlQASFBFX0lOVkFMSURfQ09OU1RBTlQASFBFX0NCX1JFU0VUAEdFVABIUEVfU1RSSUNUAENPTkZMSUNUAFRFTVBPUkFSWV9SRURJUkVDVABQRVJNQU5FTlRfUkVESVJFQ1QAQ09OTkVDVABNVUxUSV9TVEFUVVMASFBFX0lOVkFMSURfU1RBVFVTAFRPT19NQU5ZX1JFUVVFU1RTAEVBUkxZX0hJTlRTAFVOQVZBSUxBQkxFX0ZPUl9MRUdBTF9SRUFTT05TAE9QVElPTlMAU1dJVENISU5HX1BST1RPQ09MUwBWQVJJQU5UX0FMU09fTkVHT1RJQVRFUwBNVUxUSVBMRV9DSE9JQ0VTAElOVEVSTkFMX1NFUlZFUl9FUlJPUgBXRUJfU0VSVkVSX1VOS05PV05fRVJST1IAUkFJTEdVTl9FUlJPUgBJREVOVElUWV9QUk9WSURFUl9BVVRIRU5USUNBVElPTl9FUlJPUgBTU0xfQ0VSVElGSUNBVEVfRVJST1IASU5WQUxJRF9YX0ZPUldBUkRFRF9GT1IAU0VUX1BBUkFNRVRFUgBHRVRfUEFSQU1FVEVSAEhQRV9VU0VSAFNFRV9PVEhFUgBIUEVfQ0JfQ0hVTktfSEVBREVSAE1LQ0FMRU5EQVIAU0VUVVAAV0VCX1NFUlZFUl9JU19ET1dOAFRFQVJET1dOAEhQRV9DTE9TRURfQ09OTkVDVElPTgBIRVVSSVNUSUNfRVhQSVJBVElPTgBESVNDT05ORUNURURfT1BFUkFUSU9OAE5PTl9BVVRIT1JJVEFUSVZFX0lORk9STUFUSU9OAEhQRV9JTlZBTElEX1ZFUlNJT04ASFBFX0NCX01FU1NBR0VfQkVHSU4AU0lURV9JU19GUk9aRU4ASFBFX0lOVkFMSURfSEVBREVSX1RPS0VOAElOVkFMSURfVE9LRU4ARk9SQklEREVOAEVOSEFOQ0VfWU9VUl9DQUxNAEhQRV9JTlZBTElEX1VSTABCTE9DS0VEX0JZX1BBUkVOVEFMX0NPTlRST0wATUtDT0wAQUNMAEhQRV9JTlRFUk5BTABSRVFVRVNUX0hFQURFUl9GSUVMRFNfVE9PX0xBUkdFX1VOT0ZGSUNJQUwASFBFX09LAFVOTElOSwBVTkxPQ0sAUFJJAFJFVFJZX1dJVEgASFBFX0lOVkFMSURfQ09OVEVOVF9MRU5HVEgASFBFX1VORVhQRUNURURfQ09OVEVOVF9MRU5HVEgARkxVU0gAUFJPUFBBVENIAE0tU0VBUkNIAFVSSV9UT09fTE9ORwBQUk9DRVNTSU5HAE1JU0NFTExBTkVPVVNfUEVSU0lTVEVOVF9XQVJOSU5HAE1JU0NFTExBTkVPVVNfV0FSTklORwBIUEVfSU5WQUxJRF9UUkFOU0ZFUl9FTkNPRElORwBFeHBlY3RlZCBDUkxGAEhQRV9JTlZBTElEX0NIVU5LX1NJWkUATU9WRQBDT05USU5VRQBIUEVfQ0JfU1RBVFVTX0NPTVBMRVRFAEhQRV9DQl9IRUFERVJTX0NPTVBMRVRFAEhQRV9DQl9WRVJTSU9OX0NPTVBMRVRFAEhQRV9DQl9VUkxfQ09NUExFVEUASFBFX0NCX0NIVU5LX0NPTVBMRVRFAEhQRV9DQl9IRUFERVJfVkFMVUVfQ09NUExFVEUASFBFX0NCX0NIVU5LX0VYVEVOU0lPTl9WQUxVRV9DT01QTEVURQBIUEVfQ0JfQ0hVTktfRVhURU5TSU9OX05BTUVfQ09NUExFVEUASFBFX0NCX01FU1NBR0VfQ09NUExFVEUASFBFX0NCX01FVEhPRF9DT01QTEVURQBIUEVfQ0JfSEVBREVSX0ZJRUxEX0NPTVBMRVRFAERFTEVURQBIUEVfSU5WQUxJRF9FT0ZfU1RBVEUASU5WQUxJRF9TU0xfQ0VSVElGSUNBVEUAUEFVU0UATk9fUkVTUE9OU0UAVU5TVVBQT1JURURfTUVESUFfVFlQRQBHT05FAE5PVF9BQ0NFUFRBQkxFAFNFUlZJQ0VfVU5BVkFJTEFCTEUAUkFOR0VfTk9UX1NBVElTRklBQkxFAE9SSUdJTl9JU19VTlJFQUNIQUJMRQBSRVNQT05TRV9JU19TVEFMRQBQVVJHRQBNRVJHRQBSRVFVRVNUX0hFQURFUl9GSUVMRFNfVE9PX0xBUkdFAFJFUVVFU1RfSEVBREVSX1RPT19MQVJHRQBQQVlMT0FEX1RPT19MQVJHRQBJTlNVRkZJQ0lFTlRfU1RPUkFHRQBIUEVfUEFVU0VEX1VQR1JBREUASFBFX1BBVVNFRF9IMl9VUEdSQURFAFNPVVJDRQBBTk5PVU5DRQBUUkFDRQBIUEVfVU5FWFBFQ1RFRF9TUEFDRQBERVNDUklCRQBVTlNVQlNDUklCRQBSRUNPUkQASFBFX0lOVkFMSURfTUVUSE9EAE5PVF9GT1VORABQUk9QRklORABVTkJJTkQAUkVCSU5EAFVOQVVUSE9SSVpFRABNRVRIT0RfTk9UX0FMTE9XRUQASFRUUF9WRVJTSU9OX05PVF9TVVBQT1JURUQAQUxSRUFEWV9SRVBPUlRFRABBQ0NFUFRFRABOT1RfSU1QTEVNRU5URUQATE9PUF9ERVRFQ1RFRABIUEVfQ1JfRVhQRUNURUQASFBFX0xGX0VYUEVDVEVEAENSRUFURUQASU1fVVNFRABIUEVfUEFVU0VEAFRJTUVPVVRfT0NDVVJFRABQQVlNRU5UX1JFUVVJUkVEAFBSRUNPTkRJVElPTl9SRVFVSVJFRABQUk9YWV9BVVRIRU5USUNBVElPTl9SRVFVSVJFRABORVRXT1JLX0FVVEhFTlRJQ0FUSU9OX1JFUVVJUkVEAExFTkdUSF9SRVFVSVJFRABTU0xfQ0VSVElGSUNBVEVfUkVRVUlSRUQAVVBHUkFERV9SRVFVSVJFRABQQUdFX0VYUElSRUQAUFJFQ09ORElUSU9OX0ZBSUxFRABFWFBFQ1RBVElPTl9GQUlMRUQAUkVWQUxJREFUSU9OX0ZBSUxFRABTU0xfSEFORFNIQUtFX0ZBSUxFRABMT0NLRUQAVFJBTlNGT1JNQVRJT05fQVBQTElFRABOT1RfTU9ESUZJRUQATk9UX0VYVEVOREVEAEJBTkRXSURUSF9MSU1JVF9FWENFRURFRABTSVRFX0lTX09WRVJMT0FERUQASEVBRABFeHBlY3RlZCBIVFRQLwAAXhMAACYTAAAwEAAA8BcAAJ0TAAAVEgAAORcAAPASAAAKEAAAdRIAAK0SAACCEwAATxQAAH8QAACgFQAAIxQAAIkSAACLFAAATRUAANQRAADPFAAAEBgAAMkWAADcFgAAwREAAOAXAAC7FAAAdBQAAHwVAADlFAAACBcAAB8QAABlFQAAoxQAACgVAAACFQAAmRUAACwQAACLGQAATw8AANQOAABqEAAAzhAAAAIXAACJDgAAbhMAABwTAABmFAAAVhcAAMETAADNEwAAbBMAAGgXAABmFwAAXxcAACITAADODwAAaQ4AANgOAABjFgAAyxMAAKoOAAAoFwAAJhcAAMUTAABdFgAA6BEAAGcTAABlEwAA8hYAAHMTAAAdFwAA+RYAAPMRAADPDgAAzhUAAAwSAACzEQAApREAAGEQAAAyFwAAuxMAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAQIBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEAAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAIDAgICAgIAAAICAAICAAICAgICAgICAgIABAAAAAAAAgICAgICAgICAgICAgICAgICAgICAgICAgIAAAACAgICAgICAgICAgICAgICAgICAgICAgICAgICAgACAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAACAAICAgICAAACAgACAgACAgICAgICAgICAAMABAAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAAAAAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAAgACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAbG9zZWVlcC1hbGl2ZQAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEAAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEBAQEBAQEBAQEBAQIBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBY2h1bmtlZAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAQEBAQEAAAEBAAEBAAEBAQEBAQEBAQEAAAAAAAAAAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEAAAABAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQABAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABlY3Rpb25lbnQtbGVuZ3Rob25yb3h5LWNvbm5lY3Rpb24AAAAAAAAAAAAAAAAAAAByYW5zZmVyLWVuY29kaW5ncGdyYWRlDQoNCg0KU00NCg0KVFRQL0NFL1RTUC8AAAAAAAAAAAAAAAABAgABAwAAAAAAAAAAAAAAAAAAAAAAAAQBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAAAAAAAAAAAAAQIAAQMAAAAAAAAAAAAAAAAAAAAAAAAEAQEFAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQABAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQAAAAAAAAAAAAEAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAEBAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQABAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEAAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEAAAAAAAAAAAAAAQAAAgAAAAAAAAAAAAAAAAAAAAAAAAMEAAAEBAQEBAQEBAQEBAUEBAQEBAQEBAQEBAQABAAGBwQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAAEAAQABAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAEAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAADAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwAAAAAAAAMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAABAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAIAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMAAAAAAAADAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABOT1VOQ0VFQ0tPVVRORUNURVRFQ1JJQkVMVVNIRVRFQURTRUFSQ0hSR0VDVElWSVRZTEVOREFSVkVPVElGWVBUSU9OU0NIU0VBWVNUQVRDSEdFT1JESVJFQ1RPUlRSQ0hQQVJBTUVURVJVUkNFQlNDUklCRUFSRE9XTkFDRUlORE5LQ0tVQlNDUklCRUhUVFAvQURUUC8='
@@ -97702,7 +100730,7 @@ module.exports = 'AGFzbQEAAAABMAhgAX8Bf2ADf39/AX9gBH9/f38Bf2AAAGADf39/AGABfwBgAn
 
 /***/ }),
 
-/***/ 15919:
+/***/ 10652:
 /***/ ((module) => {
 
 module.exports = 'AGFzbQEAAAABMAhgAX8Bf2ADf39/AX9gBH9/f38Bf2AAAGADf39/AGABfwBgAn9/AGAGf39/f39/AALLAQgDZW52GHdhc21fb25faGVhZGVyc19jb21wbGV0ZQACA2VudhV3YXNtX29uX21lc3NhZ2VfYmVnaW4AAANlbnYLd2FzbV9vbl91cmwAAQNlbnYOd2FzbV9vbl9zdGF0dXMAAQNlbnYUd2FzbV9vbl9oZWFkZXJfZmllbGQAAQNlbnYUd2FzbV9vbl9oZWFkZXJfdmFsdWUAAQNlbnYMd2FzbV9vbl9ib2R5AAEDZW52GHdhc21fb25fbWVzc2FnZV9jb21wbGV0ZQAAA0ZFAwMEAAAFAAAAAAAABQEFAAUFBQAABgAAAAAGBgYGAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQABAAABAQcAAAUFAwABBAUBcAESEgUDAQACBggBfwFBgNQECwfRBSIGbWVtb3J5AgALX2luaXRpYWxpemUACRlfX2luZGlyZWN0X2Z1bmN0aW9uX3RhYmxlAQALbGxodHRwX2luaXQAChhsbGh0dHBfc2hvdWxkX2tlZXBfYWxpdmUAQQxsbGh0dHBfYWxsb2MADAZtYWxsb2MARgtsbGh0dHBfZnJlZQANBGZyZWUASA9sbGh0dHBfZ2V0X3R5cGUADhVsbGh0dHBfZ2V0X2h0dHBfbWFqb3IADxVsbGh0dHBfZ2V0X2h0dHBfbWlub3IAEBFsbGh0dHBfZ2V0X21ldGhvZAARFmxsaHR0cF9nZXRfc3RhdHVzX2NvZGUAEhJsbGh0dHBfZ2V0X3VwZ3JhZGUAEwxsbGh0dHBfcmVzZXQAFA5sbGh0dHBfZXhlY3V0ZQAVFGxsaHR0cF9zZXR0aW5nc19pbml0ABYNbGxodHRwX2ZpbmlzaAAXDGxsaHR0cF9wYXVzZQAYDWxsaHR0cF9yZXN1bWUAGRtsbGh0dHBfcmVzdW1lX2FmdGVyX3VwZ3JhZGUAGhBsbGh0dHBfZ2V0X2Vycm5vABsXbGxodHRwX2dldF9lcnJvcl9yZWFzb24AHBdsbGh0dHBfc2V0X2Vycm9yX3JlYXNvbgAdFGxsaHR0cF9nZXRfZXJyb3JfcG9zAB4RbGxodHRwX2Vycm5vX25hbWUAHxJsbGh0dHBfbWV0aG9kX25hbWUAIBJsbGh0dHBfc3RhdHVzX25hbWUAIRpsbGh0dHBfc2V0X2xlbmllbnRfaGVhZGVycwAiIWxsaHR0cF9zZXRfbGVuaWVudF9jaHVua2VkX2xlbmd0aAAjHWxsaHR0cF9zZXRfbGVuaWVudF9rZWVwX2FsaXZlACQkbGxodHRwX3NldF9sZW5pZW50X3RyYW5zZmVyX2VuY29kaW5nACUYbGxodHRwX21lc3NhZ2VfbmVlZHNfZW9mAD8JFwEAQQELEQECAwQFCwYHNTk3MS8tJyspCrLgAkUCAAsIABCIgICAAAsZACAAEMKAgIAAGiAAIAI2AjggACABOgAoCxwAIAAgAC8BMiAALQAuIAAQwYCAgAAQgICAgAALKgEBf0HAABDGgICAACIBEMKAgIAAGiABQYCIgIAANgI4IAEgADoAKCABCwoAIAAQyICAgAALBwAgAC0AKAsHACAALQAqCwcAIAAtACsLBwAgAC0AKQsHACAALwEyCwcAIAAtAC4LRQEEfyAAKAIYIQEgAC0ALSECIAAtACghAyAAKAI4IQQgABDCgICAABogACAENgI4IAAgAzoAKCAAIAI6AC0gACABNgIYCxEAIAAgASABIAJqEMOAgIAACxAAIABBAEHcABDMgICAABoLZwEBf0EAIQECQCAAKAIMDQACQAJAAkACQCAALQAvDgMBAAMCCyAAKAI4IgFFDQAgASgCLCIBRQ0AIAAgARGAgICAAAAiAQ0DC0EADwsQyoCAgAAACyAAQcOWgIAANgIQQQ4hAQsgAQseAAJAIAAoAgwNACAAQdGbgIAANgIQIABBFTYCDAsLFgACQCAAKAIMQRVHDQAgAEEANgIMCwsWAAJAIAAoAgxBFkcNACAAQQA2AgwLCwcAIAAoAgwLBwAgACgCEAsJACAAIAE2AhALBwAgACgCFAsiAAJAIABBJEkNABDKgICAAAALIABBAnRBoLOAgABqKAIACyIAAkAgAEEuSQ0AEMqAgIAAAAsgAEECdEGwtICAAGooAgAL7gsBAX9B66iAgAAhAQJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAIABBnH9qDvQDY2IAAWFhYWFhYQIDBAVhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhBgcICQoLDA0OD2FhYWFhEGFhYWFhYWFhYWFhEWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYRITFBUWFxgZGhthYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhHB0eHyAhIiMkJSYnKCkqKywtLi8wMTIzNDU2YTc4OTphYWFhYWFhYTthYWE8YWFhYT0+P2FhYWFhYWFhQGFhQWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYUJDREVGR0hJSktMTU5PUFFSU2FhYWFhYWFhVFVWV1hZWlthXF1hYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFeYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhX2BhC0Hhp4CAAA8LQaShgIAADwtBy6yAgAAPC0H+sYCAAA8LQcCkgIAADwtBq6SAgAAPC0GNqICAAA8LQeKmgIAADwtBgLCAgAAPC0G5r4CAAA8LQdekgIAADwtB75+AgAAPC0Hhn4CAAA8LQfqfgIAADwtB8qCAgAAPC0Gor4CAAA8LQa6ygIAADwtBiLCAgAAPC0Hsp4CAAA8LQYKigIAADwtBjp2AgAAPC0HQroCAAA8LQcqjgIAADwtBxbKAgAAPC0HfnICAAA8LQdKcgIAADwtBxKCAgAAPC0HXoICAAA8LQaKfgIAADwtB7a6AgAAPC0GrsICAAA8LQdSlgIAADwtBzK6AgAAPC0H6roCAAA8LQfyrgIAADwtB0rCAgAAPC0HxnYCAAA8LQbuggIAADwtB96uAgAAPC0GQsYCAAA8LQdexgIAADwtBoq2AgAAPC0HUp4CAAA8LQeCrgIAADwtBn6yAgAAPC0HrsYCAAA8LQdWfgIAADwtByrGAgAAPC0HepYCAAA8LQdSegIAADwtB9JyAgAAPC0GnsoCAAA8LQbGdgIAADwtBoJ2AgAAPC0G5sYCAAA8LQbywgIAADwtBkqGAgAAPC0GzpoCAAA8LQemsgIAADwtBrJ6AgAAPC0HUq4CAAA8LQfemgIAADwtBgKaAgAAPC0GwoYCAAA8LQf6egIAADwtBjaOAgAAPC0GJrYCAAA8LQfeigIAADwtBoLGAgAAPC0Gun4CAAA8LQcalgIAADwtB6J6AgAAPC0GTooCAAA8LQcKvgIAADwtBw52AgAAPC0GLrICAAA8LQeGdgIAADwtBja+AgAAPC0HqoYCAAA8LQbStgIAADwtB0q+AgAAPC0HfsoCAAA8LQdKygIAADwtB8LCAgAAPC0GpooCAAA8LQfmjgIAADwtBmZ6AgAAPC0G1rICAAA8LQZuwgIAADwtBkrKAgAAPC0G2q4CAAA8LQcKigIAADwtB+LKAgAAPC0GepYCAAA8LQdCigIAADwtBup6AgAAPC0GBnoCAAA8LEMqAgIAAAAtB1qGAgAAhAQsgAQsWACAAIAAtAC1B/gFxIAFBAEdyOgAtCxkAIAAgAC0ALUH9AXEgAUEAR0EBdHI6AC0LGQAgACAALQAtQfsBcSABQQBHQQJ0cjoALQsZACAAIAAtAC1B9wFxIAFBAEdBA3RyOgAtCy4BAn9BACEDAkAgACgCOCIERQ0AIAQoAgAiBEUNACAAIAQRgICAgAAAIQMLIAMLSQECf0EAIQMCQCAAKAI4IgRFDQAgBCgCBCIERQ0AIAAgASACIAFrIAQRgYCAgAAAIgNBf0cNACAAQcaRgIAANgIQQRghAwsgAwsuAQJ/QQAhAwJAIAAoAjgiBEUNACAEKAIwIgRFDQAgACAEEYCAgIAAACEDCyADC0kBAn9BACEDAkAgACgCOCIERQ0AIAQoAggiBEUNACAAIAEgAiABayAEEYGAgIAAACIDQX9HDQAgAEH2ioCAADYCEEEYIQMLIAMLLgECf0EAIQMCQCAAKAI4IgRFDQAgBCgCNCIERQ0AIAAgBBGAgICAAAAhAwsgAwtJAQJ/QQAhAwJAIAAoAjgiBEUNACAEKAIMIgRFDQAgACABIAIgAWsgBBGBgICAAAAiA0F/Rw0AIABB7ZqAgAA2AhBBGCEDCyADCy4BAn9BACEDAkAgACgCOCIERQ0AIAQoAjgiBEUNACAAIAQRgICAgAAAIQMLIAMLSQECf0EAIQMCQCAAKAI4IgRFDQAgBCgCECIERQ0AIAAgASACIAFrIAQRgYCAgAAAIgNBf0cNACAAQZWQgIAANgIQQRghAwsgAwsuAQJ/QQAhAwJAIAAoAjgiBEUNACAEKAI8IgRFDQAgACAEEYCAgIAAACEDCyADC0kBAn9BACEDAkAgACgCOCIERQ0AIAQoAhQiBEUNACAAIAEgAiABayAEEYGAgIAAACIDQX9HDQAgAEGqm4CAADYCEEEYIQMLIAMLLgECf0EAIQMCQCAAKAI4IgRFDQAgBCgCQCIERQ0AIAAgBBGAgICAAAAhAwsgAwtJAQJ/QQAhAwJAIAAoAjgiBEUNACAEKAIYIgRFDQAgACABIAIgAWsgBBGBgICAAAAiA0F/Rw0AIABB7ZOAgAA2AhBBGCEDCyADCy4BAn9BACEDAkAgACgCOCIERQ0AIAQoAkQiBEUNACAAIAQRgICAgAAAIQMLIAMLLgECf0EAIQMCQCAAKAI4IgRFDQAgBCgCJCIERQ0AIAAgBBGAgICAAAAhAwsgAwsuAQJ/QQAhAwJAIAAoAjgiBEUNACAEKAIsIgRFDQAgACAEEYCAgIAAACEDCyADC0kBAn9BACEDAkAgACgCOCIERQ0AIAQoAigiBEUNACAAIAEgAiABayAEEYGAgIAAACIDQX9HDQAgAEH2iICAADYCEEEYIQMLIAMLLgECf0EAIQMCQCAAKAI4IgRFDQAgBCgCUCIERQ0AIAAgBBGAgICAAAAhAwsgAwtJAQJ/QQAhAwJAIAAoAjgiBEUNACAEKAIcIgRFDQAgACABIAIgAWsgBBGBgICAAAAiA0F/Rw0AIABBwpmAgAA2AhBBGCEDCyADCy4BAn9BACEDAkAgACgCOCIERQ0AIAQoAkgiBEUNACAAIAQRgICAgAAAIQMLIAMLSQECf0EAIQMCQCAAKAI4IgRFDQAgBCgCICIERQ0AIAAgASACIAFrIAQRgYCAgAAAIgNBf0cNACAAQZSUgIAANgIQQRghAwsgAwsuAQJ/QQAhAwJAIAAoAjgiBEUNACAEKAJMIgRFDQAgACAEEYCAgIAAACEDCyADCy4BAn9BACEDAkAgACgCOCIERQ0AIAQoAlQiBEUNACAAIAQRgICAgAAAIQMLIAMLLgECf0EAIQMCQCAAKAI4IgRFDQAgBCgCWCIERQ0AIAAgBBGAgICAAAAhAwsgAwtFAQF/AkACQCAALwEwQRRxQRRHDQBBASEDIAAtAChBAUYNASAALwEyQeUARiEDDAELIAAtAClBBUYhAwsgACADOgAuQQAL/gEBA39BASEDAkAgAC8BMCIEQQhxDQAgACkDIEIAUiEDCwJAAkAgAC0ALkUNAEEBIQUgAC0AKUEFRg0BQQEhBSAEQcAAcUUgA3FBAUcNAQtBACEFIARBwABxDQBBAiEFIARB//8DcSIDQQhxDQACQCADQYAEcUUNAAJAIAAtAChBAUcNACAALQAtQQpxDQBBBQ8LQQQPCwJAIANBIHENAAJAIAAtAChBAUYNACAALwEyQf//A3EiAEGcf2pB5ABJDQAgAEHMAUYNACAAQbACRg0AQQQhBSAEQShxRQ0CIANBiARxQYAERg0CC0EADwtBAEEDIAApAyBQGyEFCyAFC2IBAn9BACEBAkAgAC0AKEEBRg0AIAAvATJB//8DcSICQZx/akHkAEkNACACQcwBRg0AIAJBsAJGDQAgAC8BMCIAQcAAcQ0AQQEhASAAQYgEcUGABEYNACAAQShxRSEBCyABC6cBAQN/AkACQAJAIAAtACpFDQAgAC0AK0UNAEEAIQMgAC8BMCIEQQJxRQ0BDAILQQAhAyAALwEwIgRBAXFFDQELQQEhAyAALQAoQQFGDQAgAC8BMkH//wNxIgVBnH9qQeQASQ0AIAVBzAFGDQAgBUGwAkYNACAEQcAAcQ0AQQAhAyAEQYgEcUGABEYNACAEQShxQQBHIQMLIABBADsBMCAAQQA6AC8gAwuZAQECfwJAAkACQCAALQAqRQ0AIAAtACtFDQBBACEBIAAvATAiAkECcUUNAQwCC0EAIQEgAC8BMCICQQFxRQ0BC0EBIQEgAC0AKEEBRg0AIAAvATJB//8DcSIAQZx/akHkAEkNACAAQcwBRg0AIABBsAJGDQAgAkHAAHENAEEAIQEgAkGIBHFBgARGDQAgAkEocUEARyEBCyABC0kBAXsgAEEQav0MAAAAAAAAAAAAAAAAAAAAACIB/QsDACAAIAH9CwMAIABBMGogAf0LAwAgAEEgaiAB/QsDACAAQd0BNgIcQQALewEBfwJAIAAoAgwiAw0AAkAgACgCBEUNACAAIAE2AgQLAkAgACABIAIQxICAgAAiAw0AIAAoAgwPCyAAIAM2AhxBACEDIAAoAgQiAUUNACAAIAEgAiAAKAIIEYGAgIAAACIBRQ0AIAAgAjYCFCAAIAE2AgwgASEDCyADC+TzAQMOfwN+BH8jgICAgABBEGsiAySAgICAACABIQQgASEFIAEhBiABIQcgASEIIAEhCSABIQogASELIAEhDCABIQ0gASEOIAEhDwJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQCAAKAIcIhBBf2oO3QHaAQHZAQIDBAUGBwgJCgsMDQ7YAQ8Q1wEREtYBExQVFhcYGRob4AHfARwdHtUBHyAhIiMkJdQBJicoKSorLNMB0gEtLtEB0AEvMDEyMzQ1Njc4OTo7PD0+P0BBQkNERUbbAUdISUrPAc4BS80BTMwBTU5PUFFSU1RVVldYWVpbXF1eX2BhYmNkZWZnaGlqa2xtbm9wcXJzdHV2d3h5ent8fX5/gAGBAYIBgwGEAYUBhgGHAYgBiQGKAYsBjAGNAY4BjwGQAZEB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QAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAIBAOxwEAAQID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YWNrIGVycm9yAGBvbl9jaHVua19leHRlbnNpb25fdmFsdWVgIGNhbGxiYWNrIGVycm9yAGBvbl9zdGF0dXNfY29tcGxldGVgIGNhbGxiYWNrIGVycm9yAGBvbl92ZXJzaW9uX2NvbXBsZXRlYCBjYWxsYmFjayBlcnJvcgBgb25fdXJsX2NvbXBsZXRlYCBjYWxsYmFjayBlcnJvcgBgb25fY2h1bmtfY29tcGxldGVgIGNhbGxiYWNrIGVycm9yAGBvbl9oZWFkZXJfdmFsdWVfY29tcGxldGVgIGNhbGxiYWNrIGVycm9yAGBvbl9tZXNzYWdlX2NvbXBsZXRlYCBjYWxsYmFjayBlcnJvcgBgb25fbWV0aG9kX2NvbXBsZXRlYCBjYWxsYmFjayBlcnJvcgBgb25faGVhZGVyX2ZpZWxkX2NvbXBsZXRlYCBjYWxsYmFjayBlcnJvcgBgb25fY2h1bmtfZXh0ZW5zaW9uX25hbWVgIGNhbGxiYWNrIGVycm9yAFVuZXhwZWN0ZWQgY2hhciBpbiB1cmwgc2VydmVyAEludmFsaWQgaGVhZGVyIHZhbHVlIGNoYXIASW52YWxpZCBoZWFkZXIgZmllbGQgY2hhcgBTcGFuIGNhbGxiYWNrIGVycm9yIGluIG9uX3ZlcnNpb24ASW52YWxpZCBtaW5vciB2ZXJzaW9uAEludmFsaWQgbWFqb3IgdmVyc2lvbgBFeHBlY3RlZCBzcGFjZSBhZnRlciB2ZXJzaW9uAEV4cGVjdGVkIENSTEYgYWZ0ZXIgdmVyc2lvbgBJbnZhbGlkIEhUVFAgdmVyc2lvbgBJbnZhbGlkIGhlYWRlciB0b2tlbgBTcGFuIGNhbGxiYWNrIGVycm9yIGluIG9uX3VybABJbnZhbGlkIGNoYXJhY3RlcnMgaW4gdXJsAFVuZXhwZWN0ZWQgc3RhcnQgY2hhciBpbiB1cmwARG91YmxlIEAgaW4gdXJsAEVtcHR5IENvbnRlbnQtTGVuZ3RoAEludmFsaWQgY2hhcmFjdGVyIGluIENvbnRlbnQtTGVuZ3RoAER1cGxpY2F0ZSBDb250ZW50LUxlbmd0aABJbnZhbGlkIGNoYXIgaW4gdXJsIHBhdGgAQ29udGVudC1MZW5ndGggY2FuJ3QgYmUgcHJlc2VudCB3aXRoIFRyYW5zZmVyLUVuY29kaW5nAEludmFsaWQgY2hhcmFjdGVyIGluIGNodW5rIHNpemUAU3BhbiBjYWxsYmFjayBlcnJvciBpbiBvbl9oZWFkZXJfdmFsdWUAU3BhbiBjYWxsYmFjayBlcnJvciBpbiBvbl9jaHVua19leHRlbnNpb25fdmFsdWUASW52YWxpZCBjaGFyYWN0ZXIgaW4gY2h1bmsgZXh0ZW5zaW9ucyB2YWx1ZQBNaXNzaW5nIGV4cGVjdGVkIExGIGFmdGVyIGhlYWRlciB2YWx1ZQBJbnZhbGlkIGBUcmFuc2Zlci1FbmNvZGluZ2AgaGVhZGVyIHZhbHVlAEludmFsaWQgY2hhcmFjdGVyIGluIGNodW5rIGV4dGVuc2lvbnMgcXVvdGUgdmFsdWUASW52YWxpZCBjaGFyYWN0ZXIgaW4gY2h1bmsgZXh0ZW5zaW9ucyBxdW90ZWQgdmFsdWUAUGF1c2VkIGJ5IG9uX2hlYWRlcnNfY29tcGxldGUASW52YWxpZCBFT0Ygc3RhdGUAb25fcmVzZXQgcGF1c2UAb25fY2h1bmtfaGVhZGVyIHBhdXNlAG9uX21lc3NhZ2VfYmVnaW4gcGF1c2UAb25fY2h1bmtfZXh0ZW5zaW9uX3ZhbHVlIHBhdXNlAG9uX3N0YXR1c19jb21wbGV0ZSBwYXVzZQBvbl92ZXJzaW9uX2NvbXBsZXRlIHBhdXNlAG9uX3VybF9jb21wbGV0ZSBwYXVzZQBvbl9jaHVua19jb21wbGV0ZSBwYXVzZQBvbl9oZWFkZXJfdmFsdWVfY29tcGxldGUgcGF1c2UAb25fbWVzc2FnZV9jb21wbGV0ZSBwYXVzZQBvbl9tZXRob2RfY29tcGxldGUgcGF1c2UAb25faGVhZGVyX2ZpZWxkX2NvbXBsZXRlIHBhdXNlAG9uX2NodW5rX2V4dGVuc2lvbl9uYW1lIHBhdXNlAFVuZXhwZWN0ZWQgc3BhY2UgYWZ0ZXIgc3RhcnQgbGluZQBTcGFuIGNhbGxiYWNrIGVycm9yIGluIG9uX2NodW5rX2V4dGVuc2lvbl9uYW1lAEludmFsaWQgY2hhcmFjdGVyIGluIGNodW5rIGV4dGVuc2lvbnMgbmFtZQBQYXVzZSBvbiBDT05ORUNUL1VwZ3JhZGUAUGF1c2Ugb24gUFJJL1VwZ3JhZGUARXhwZWN0ZWQgSFRUUC8yIENvbm5lY3Rpb24gUHJlZmFjZQBTcGFuIGNhbGxiYWNrIGVycm9yIGluIG9uX21ldGhvZABFeHBlY3RlZCBzcGFjZSBhZnRlciBtZXRob2QAU3BhbiBjYWxsYmFjayBlcnJvciBpbiBvbl9oZWFkZXJfZmllbGQAUGF1c2VkAEludmFsaWQgd29yZCBlbmNvdW50ZXJlZABJbnZhbGlkIG1ldGhvZCBlbmNvdW50ZXJlZABVbmV4cGVjdGVkIGNoYXIgaW4gdXJsIHNjaGVtYQBSZXF1ZXN0IGhhcyBpbnZhbGlkIGBUcmFuc2Zlci1FbmNvZGluZ2AAU1dJVENIX1BST1hZAFVTRV9QUk9YWQBNS0FDVElWSVRZAFVOUFJPQ0VTU0FCTEVfRU5USVRZAENPUFkATU9WRURfUEVSTUFORU5UTFkAVE9PX0VBUkxZAE5PVElGWQBGQUlMRURfREVQRU5ERU5DWQBCQURfR0FURVdBWQBQTEFZAFBVVABDSEVDS09VVABHQVRFV0FZX1RJTUVPVVQAUkVRVUVTVF9USU1FT1VUAE5FVFdPUktfQ09OTkVDVF9USU1FT1VUAENPTk5FQ1RJT05fVElNRU9VVABMT0dJTl9USU1FT1VUAE5FVFdPUktfUkVBRF9USU1FT1VUAFBPU1QATUlTRElSRUNURURfUkVRVUVTVABDTElFTlRfQ0xPU0VEX1JFUVVFU1QAQ0xJRU5UX0NMT1NFRF9MT0FEX0JBTEFOQ0VEX1JFUVVFU1QAQkFEX1JFUVVFU1QASFRUUF9SRVFVRVNUX1NFTlRfVE9fSFRUUFNfUE9SVABSRVBPUlQASU1fQV9URUFQT1QAUkVTRVRfQ09OVEVOVABOT19DT05URU5UAFBBUlRJQUxfQ09OVEVOVABIUEVfSU5WQUxJRF9DT05TVEFOVABIUEVfQ0JfUkVTRVQAR0VUAEhQRV9TVFJJQ1QAQ09ORkxJQ1QAVEVNUE9SQVJZX1JFRElSRUNUAFBFUk1BTkVOVF9SRURJUkVDVABDT05ORUNUAE1VTFRJX1NUQVRVUwBIUEVfSU5WQUxJRF9TVEFUVVMAVE9PX01BTllfUkVRVUVTVFMARUFSTFlfSElOVFMAVU5BVkFJTEFCTEVfRk9SX0xFR0FMX1JFQVNPTlMAT1BUSU9OUwBTV0lUQ0hJTkdfUFJPVE9DT0xTAFZBUklBTlRfQUxTT19ORUdPVElBVEVTAE1VTFRJUExFX0NIT0lDRVMASU5URVJOQUxfU0VSVkVSX0VSUk9SAFdFQl9TRVJWRVJfVU5LTk9XTl9FUlJPUgBSQUlMR1VOX0VSUk9SAElERU5USVRZX1BST1ZJREVSX0FVVEhFTlRJQ0FUSU9OX0VSUk9SAFNTTF9DRVJUSUZJQ0FURV9FUlJPUgBJTlZBTElEX1hfRk9SV0FSREVEX0ZPUgBTRVRfUEFSQU1FVEVSAEdFVF9QQVJBTUVURVIASFBFX1VTRVIAU0VFX09USEVSAEhQRV9DQl9DSFVOS19IRUFERVIATUtDQUxFTkRBUgBTRVRVUABXRUJfU0VSVkVSX0lTX0RPV04AVEVBUkRPV04ASFBFX0NMT1NFRF9DT05ORUNUSU9OAEhFVVJJU1RJQ19FWFBJUkFUSU9OAERJU0NPTk5FQ1RFRF9PUEVSQVRJT04ATk9OX0FVVEhPUklUQVRJVkVfSU5GT1JNQVRJT04ASFBFX0lOVkFMSURfVkVSU0lPTgBIUEVfQ0JfTUVTU0FHRV9CRUdJTgBTSVRFX0lTX0ZST1pFTgBIUEVfSU5WQUxJRF9IRUFERVJfVE9LRU4ASU5WQUxJRF9UT0tFTgBGT1JCSURERU4ARU5IQU5DRV9ZT1VSX0NBTE0ASFBFX0lOVkFMSURfVVJMAEJMT0NLRURfQllfUEFSRU5UQUxfQ09OVFJPTABNS0NPTABBQ0wASFBFX0lOVEVSTkFMAFJFUVVFU1RfSEVBREVSX0ZJRUxEU19UT09fTEFSR0VfVU5PRkZJQ0lBTABIUEVfT0sAVU5MSU5LAFVOTE9DSwBQUkkAUkVUUllfV0lUSABIUEVfSU5WQUxJRF9DT05URU5UX0xFTkdUSABIUEVfVU5FWFBFQ1RFRF9DT05URU5UX0xFTkdUSABGTFVTSABQUk9QUEFUQ0gATS1TRUFSQ0gAVVJJX1RPT19MT05HAFBST0NFU1NJTkcATUlTQ0VMTEFORU9VU19QRVJTSVNURU5UX1dBUk5JTkcATUlTQ0VMTEFORU9VU19XQVJOSU5HAEhQRV9JTlZBTElEX1RSQU5TRkVSX0VOQ09ESU5HAEV4cGVjdGVkIENSTEYASFBFX0lOVkFMSURfQ0hVTktfU0laRQBNT1ZFAENPTlRJTlVFAEhQRV9DQl9TVEFUVVNfQ09NUExFVEUASFBFX0NCX0hFQURFUlNfQ09NUExFVEUASFBFX0NCX1ZFUlNJT05fQ09NUExFVEUASFBFX0NCX1VSTF9DT01QTEVURQBIUEVfQ0JfQ0hVTktfQ09NUExFVEUASFBFX0NCX0hFQURFUl9WQUxVRV9DT01QTEVURQBIUEVfQ0JfQ0hVTktfRVhURU5TSU9OX1ZBTFVFX0NPTVBMRVRFAEhQRV9DQl9DSFVOS19FWFRFTlNJT05fTkFNRV9DT01QTEVURQBIUEVfQ0JfTUVTU0FHRV9DT01QTEVURQBIUEVfQ0JfTUVUSE9EX0NPTVBMRVRFAEhQRV9DQl9IRUFERVJfRklFTERfQ09NUExFVEUAREVMRVRFAEhQRV9JTlZBTElEX0VPRl9TVEFURQBJTlZBTElEX1NTTF9DRVJUSUZJQ0FURQBQQVVTRQBOT19SRVNQT05TRQBVTlNVUFBPUlRFRF9NRURJQV9UWVBFAEdPTkUATk9UX0FDQ0VQVEFCTEUAU0VSVklDRV9VTkFWQUlMQUJMRQBSQU5HRV9OT1RfU0FUSVNGSUFCTEUAT1JJR0lOX0lTX1VOUkVBQ0hBQkxFAFJFU1BPTlNFX0lTX1NUQUxFAFBVUkdFAE1FUkdFAFJFUVVFU1RfSEVBREVSX0ZJRUxEU19UT09fTEFSR0UAUkVRVUVTVF9IRUFERVJfVE9PX0xBUkdFAFBBWUxPQURfVE9PX0xBUkdFAElOU1VGRklDSUVOVF9TVE9SQUdFAEhQRV9QQVVTRURfVVBHUkFERQBIUEVfUEFVU0VEX0gyX1VQR1JBREUAU09VUkNFAEFOTk9VTkNFAFRSQUNFAEhQRV9VTkVYUEVDVEVEX1NQQUNFAERFU0NSSUJFAFVOU1VCU0NSSUJFAFJFQ09SRABIUEVfSU5WQUxJRF9NRVRIT0QATk9UX0ZPVU5EAFBST1BGSU5EAFVOQklORABSRUJJTkQAVU5BVVRIT1JJWkVEAE1FVEhPRF9OT1RfQUxMT1dFRABIVFRQX1ZFUlNJT05fTk9UX1NVUFBPUlRFRABBTFJFQURZX1JFUE9SVEVEAEFDQ0VQVEVEAE5PVF9JTVBMRU1FTlRFRABMT09QX0RFVEVDVEVEAEhQRV9DUl9FWFBFQ1RFRABIUEVfTEZfRVhQRUNURUQAQ1JFQVRFRABJTV9VU0VEAEhQRV9QQVVTRUQAVElNRU9VVF9PQ0NVUkVEAFBBWU1FTlRfUkVRVUlSRUQAUFJFQ09ORElUSU9OX1JFUVVJUkVEAFBST1hZX0FVVEhFTlRJQ0FUSU9OX1JFUVVJUkVEAE5FVFdPUktfQVVUSEVOVElDQVRJT05fUkVRVUlSRUQATEVOR1RIX1JFUVVJUkVEAFNTTF9DRVJUSUZJQ0FURV9SRVFVSVJFRABVUEdSQURFX1JFUVVJUkVEAFBBR0VfRVhQSVJFRABQUkVDT05ESVRJT05fRkFJTEVEAEVYUEVDVEFUSU9OX0ZBSUxFRABSRVZBTElEQVRJT05fRkFJTEVEAFNTTF9IQU5EU0hBS0VfRkFJTEVEAExPQ0tFRABUUkFOU0ZPUk1BVElPTl9BUFBMSUVEAE5PVF9NT0RJRklFRABOT1RfRVhURU5ERUQAQkFORFdJRFRIX0xJTUlUX0VYQ0VFREVEAFNJVEVfSVNfT1ZFUkxPQURFRABIRUFEAEV4cGVjdGVkIEhUVFAvAABeEwAAJhMAADAQAADwFwAAnRMAABUSAAA5FwAA8BIAAAoQAAB1EgAArRIAAIITAABPFAAAfxAAAKAVAAAjFAAAiRIAAIsUAABNFQAA1BEAAM8UAAAQGAAAyRYAANwWAADBEQAA4BcAALsUAAB0FAAAfBUAAOUUAAAIFwAAHxAAAGUVAACjFAAAKBUAAAIVAACZFQAALBAAAIsZAABPDwAA1A4AAGoQAADOEAAAAhcAAIkOAABuEwAAHBMAAGYUAABWFwAAwRMAAM0TAABsEwAAaBcAAGYXAABfFwAAIhMAAM4PAABpDgAA2A4AAGMWAADLEwAAqg4AACgXAAAmFwAAxRMAAF0WAADoEQAAZxMAAGUTAADyFgAAcxMAAB0XAAD5FgAA8xEAAM8OAADOFQAADBIAALMRAAClEQAAYRAAADIXAAC7EwAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEBAgEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQABAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAgMCAgICAgAAAgIAAgIAAgICAgICAgICAgAEAAAAAAACAgICAgICAgICAgICAgICAgICAgICAgICAgAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAAIAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAIAAgICAgIAAAICAAICAAICAgICAgICAgIAAwAEAAAAAgICAgICAgICAgICAgICAgICAgICAgICAgIAAAACAgICAgICAgICAgICAgICAgICAgICAgICAgICAgACAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABsb3NlZWVwLWFsaXZlAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQABAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEBAQEBAQEBAQEBAgEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEAAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQFjaHVua2VkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAQABAQEBAQAAAQEAAQEAAQEBAQEBAQEBAQAAAAAAAAABAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQAAAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAAEAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGVjdGlvbmVudC1sZW5ndGhvbnJveHktY29ubmVjdGlvbgAAAAAAAAAAAAAAAAAAAHJhbnNmZXItZW5jb2RpbmdwZ3JhZGUNCg0KDQpTTQ0KDQpUVFAvQ0UvVFNQLwAAAAAAAAAAAAAAAAECAAEDAAAAAAAAAAAAAAAAAAAAAAAABAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEAAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEAAAAAAAAAAAABAgABAwAAAAAAAAAAAAAAAAAAAAAAAAQBAQUBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAAAAAAAAAAAAAQAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQABAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQAAAAAAAAAAAAABAAACAAAAAAAAAAAAAAAAAAAAAAAAAwQAAAQEBAQEBAQEBAQEBQQEBAQEBAQEBAQEBAAEAAYHBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEAAQABAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAQAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAAAAAAAAAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAEAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAgAAAAACAAAAAAAAAAAAAAAAAAAAAAADAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwAAAAAAAAMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAE5PVU5DRUVDS09VVE5FQ1RFVEVDUklCRUxVU0hFVEVBRFNFQVJDSFJHRUNUSVZJVFlMRU5EQVJWRU9USUZZUFRJT05TQ0hTRUFZU1RBVENIR0VPUkRJUkVDVE9SVFJDSFBBUkFNRVRFUlVSQ0VCU0NSSUJFQVJET1dOQUNFSU5ETktDS1VCU0NSSUJFSFRUUC9BRFRQLw=='
@@ -97710,7 +100738,7 @@ module.exports = 'AGFzbQEAAAABMAhgAX8Bf2ADf39/AX9gBH9/f38Bf2AAAGADf39/AGABfwBgAn
 
 /***/ }),
 
-/***/ 9619:
+/***/ 31910:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -97732,14 +100760,14 @@ exports.enumToMap = enumToMap;
 
 /***/ }),
 
-/***/ 35332:
+/***/ 35343:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { kClients } = __nccwpck_require__(34856)
-const Agent = __nccwpck_require__(69072)
+const { kClients } = __nccwpck_require__(45773)
+const Agent = __nccwpck_require__(28603)
 const {
   kAgent,
   kMockAgentSet,
@@ -97750,14 +100778,14 @@ const {
   kGetNetConnect,
   kOptions,
   kFactory
-} = __nccwpck_require__(48592)
-const MockClient = __nccwpck_require__(70962)
-const MockPool = __nccwpck_require__(52975)
-const { matchValue, buildMockOptions } = __nccwpck_require__(42020)
-const { InvalidArgumentError, UndiciError } = __nccwpck_require__(33862)
-const Dispatcher = __nccwpck_require__(59724)
-const Pluralizer = __nccwpck_require__(77012)
-const PendingInterceptorsFormatter = __nccwpck_require__(95507)
+} = __nccwpck_require__(15367)
+const MockClient = __nccwpck_require__(74163)
+const MockPool = __nccwpck_require__(83722)
+const { matchValue, buildMockOptions } = __nccwpck_require__(50939)
+const { InvalidArgumentError, UndiciError } = __nccwpck_require__(61581)
+const Dispatcher = __nccwpck_require__(53553)
+const Pluralizer = __nccwpck_require__(1315)
+const PendingInterceptorsFormatter = __nccwpck_require__(16584)
 
 class FakeWeakRef {
   constructor (value) {
@@ -97911,15 +100939,15 @@ module.exports = MockAgent
 
 /***/ }),
 
-/***/ 70962:
+/***/ 74163:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { promisify } = __nccwpck_require__(39023)
-const Client = __nccwpck_require__(76646)
-const { buildMockDispatch } = __nccwpck_require__(42020)
+const Client = __nccwpck_require__(60439)
+const { buildMockDispatch } = __nccwpck_require__(50939)
 const {
   kDispatches,
   kMockAgent,
@@ -97928,10 +100956,10 @@ const {
   kOrigin,
   kOriginalDispatch,
   kConnected
-} = __nccwpck_require__(48592)
-const { MockInterceptor } = __nccwpck_require__(31470)
-const Symbols = __nccwpck_require__(34856)
-const { InvalidArgumentError } = __nccwpck_require__(33862)
+} = __nccwpck_require__(15367)
+const { MockInterceptor } = __nccwpck_require__(93445)
+const Symbols = __nccwpck_require__(45773)
+const { InvalidArgumentError } = __nccwpck_require__(61581)
 
 /**
  * MockClient provides an API that extends the Client to influence the mockDispatches.
@@ -97978,13 +101006,13 @@ module.exports = MockClient
 
 /***/ }),
 
-/***/ 14222:
+/***/ 82255:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { UndiciError } = __nccwpck_require__(33862)
+const { UndiciError } = __nccwpck_require__(61581)
 
 class MockNotMatchedError extends UndiciError {
   constructor (message) {
@@ -98003,13 +101031,13 @@ module.exports = {
 
 /***/ }),
 
-/***/ 31470:
+/***/ 93445:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { getResponseData, buildKey, addMockDispatch } = __nccwpck_require__(42020)
+const { getResponseData, buildKey, addMockDispatch } = __nccwpck_require__(50939)
 const {
   kDispatches,
   kDispatchKey,
@@ -98017,9 +101045,9 @@ const {
   kDefaultTrailers,
   kContentLength,
   kMockDispatch
-} = __nccwpck_require__(48592)
-const { InvalidArgumentError } = __nccwpck_require__(33862)
-const { buildURL } = __nccwpck_require__(33465)
+} = __nccwpck_require__(15367)
+const { InvalidArgumentError } = __nccwpck_require__(61581)
+const { buildURL } = __nccwpck_require__(84606)
 
 /**
  * Defines the scope API for an interceptor reply
@@ -98217,15 +101245,15 @@ module.exports.MockScope = MockScope
 
 /***/ }),
 
-/***/ 52975:
+/***/ 83722:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { promisify } = __nccwpck_require__(39023)
-const Pool = __nccwpck_require__(17787)
-const { buildMockDispatch } = __nccwpck_require__(42020)
+const Pool = __nccwpck_require__(6086)
+const { buildMockDispatch } = __nccwpck_require__(50939)
 const {
   kDispatches,
   kMockAgent,
@@ -98234,10 +101262,10 @@ const {
   kOrigin,
   kOriginalDispatch,
   kConnected
-} = __nccwpck_require__(48592)
-const { MockInterceptor } = __nccwpck_require__(31470)
-const Symbols = __nccwpck_require__(34856)
-const { InvalidArgumentError } = __nccwpck_require__(33862)
+} = __nccwpck_require__(15367)
+const { MockInterceptor } = __nccwpck_require__(93445)
+const Symbols = __nccwpck_require__(45773)
+const { InvalidArgumentError } = __nccwpck_require__(61581)
 
 /**
  * MockPool provides an API that extends the Pool to influence the mockDispatches.
@@ -98284,7 +101312,7 @@ module.exports = MockPool
 
 /***/ }),
 
-/***/ 48592:
+/***/ 15367:
 /***/ ((module) => {
 
 "use strict";
@@ -98315,21 +101343,21 @@ module.exports = {
 
 /***/ }),
 
-/***/ 42020:
+/***/ 50939:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { MockNotMatchedError } = __nccwpck_require__(14222)
+const { MockNotMatchedError } = __nccwpck_require__(82255)
 const {
   kDispatches,
   kMockAgent,
   kOriginalDispatch,
   kOrigin,
   kGetNetConnect
-} = __nccwpck_require__(48592)
-const { buildURL, nop } = __nccwpck_require__(33465)
+} = __nccwpck_require__(15367)
+const { buildURL, nop } = __nccwpck_require__(84606)
 const { STATUS_CODES } = __nccwpck_require__(58611)
 const {
   types: {
@@ -98674,7 +101702,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 95507:
+/***/ 16584:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -98722,7 +101750,7 @@ module.exports = class PendingInterceptorsFormatter {
 
 /***/ }),
 
-/***/ 77012:
+/***/ 1315:
 /***/ ((module) => {
 
 "use strict";
@@ -98759,7 +101787,7 @@ module.exports = class Pluralizer {
 
 /***/ }),
 
-/***/ 79414:
+/***/ 60119:
 /***/ ((module) => {
 
 "use strict";
@@ -98884,16 +101912,16 @@ module.exports = class FixedQueue {
 
 /***/ }),
 
-/***/ 89769:
+/***/ 49974:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const DispatcherBase = __nccwpck_require__(9368)
-const FixedQueue = __nccwpck_require__(79414)
-const { kConnected, kSize, kRunning, kPending, kQueued, kBusy, kFree, kUrl, kClose, kDestroy, kDispatch } = __nccwpck_require__(34856)
-const PoolStats = __nccwpck_require__(39721)
+const DispatcherBase = __nccwpck_require__(19787)
+const FixedQueue = __nccwpck_require__(60119)
+const { kConnected, kSize, kRunning, kPending, kQueued, kBusy, kFree, kUrl, kClose, kDestroy, kDispatch } = __nccwpck_require__(45773)
+const PoolStats = __nccwpck_require__(50136)
 
 const kClients = Symbol('clients')
 const kNeedDrain = Symbol('needDrain')
@@ -99086,10 +102114,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ 39721:
+/***/ 50136:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const { kFree, kConnected, kPending, kQueued, kRunning, kSize } = __nccwpck_require__(34856)
+const { kFree, kConnected, kPending, kQueued, kRunning, kSize } = __nccwpck_require__(45773)
 const kPool = Symbol('pool')
 
 class PoolStats {
@@ -99127,7 +102155,7 @@ module.exports = PoolStats
 
 /***/ }),
 
-/***/ 17787:
+/***/ 6086:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -99139,14 +102167,14 @@ const {
   kNeedDrain,
   kAddClient,
   kGetDispatcher
-} = __nccwpck_require__(89769)
-const Client = __nccwpck_require__(76646)
+} = __nccwpck_require__(49974)
+const Client = __nccwpck_require__(60439)
 const {
   InvalidArgumentError
-} = __nccwpck_require__(33862)
-const util = __nccwpck_require__(33465)
-const { kUrl, kInterceptors } = __nccwpck_require__(34856)
-const buildConnector = __nccwpck_require__(2559)
+} = __nccwpck_require__(61581)
+const util = __nccwpck_require__(84606)
+const { kUrl, kInterceptors } = __nccwpck_require__(45773)
+const buildConnector = __nccwpck_require__(20110)
 
 const kOptions = Symbol('options')
 const kConnections = Symbol('connections')
@@ -99206,6 +102234,20 @@ class Pool extends PoolBase {
       ? { ...options.interceptors }
       : undefined
     this[kFactory] = factory
+
+    this.on('connectionError', (origin, targets, error) => {
+      // If a connection error occurs, we remove the client from the pool,
+      // and emit a connectionError event. They will not be re-used.
+      // Fixes https://github.com/nodejs/undici/issues/3895
+      for (const target of targets) {
+        // Do not use kRemoveClient here, as it will close the client,
+        // but the client cannot be closed in this state.
+        const idx = this[kClients].indexOf(target)
+        if (idx !== -1) {
+          this[kClients].splice(idx, 1)
+        }
+      }
+    })
   }
 
   [kGetDispatcher] () {
@@ -99229,19 +102271,19 @@ module.exports = Pool
 
 /***/ }),
 
-/***/ 82145:
+/***/ 46278:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { kProxy, kClose, kDestroy, kInterceptors } = __nccwpck_require__(34856)
+const { kProxy, kClose, kDestroy, kInterceptors } = __nccwpck_require__(45773)
 const { URL } = __nccwpck_require__(87016)
-const Agent = __nccwpck_require__(69072)
-const Pool = __nccwpck_require__(17787)
-const DispatcherBase = __nccwpck_require__(9368)
-const { InvalidArgumentError, RequestAbortedError } = __nccwpck_require__(33862)
-const buildConnector = __nccwpck_require__(2559)
+const Agent = __nccwpck_require__(28603)
+const Pool = __nccwpck_require__(6086)
+const DispatcherBase = __nccwpck_require__(19787)
+const { InvalidArgumentError, RequestAbortedError } = __nccwpck_require__(61581)
+const buildConnector = __nccwpck_require__(20110)
 
 const kAgent = Symbol('proxy agent')
 const kClient = Symbol('proxy client')
@@ -99426,7 +102468,7 @@ module.exports = ProxyAgent
 
 /***/ }),
 
-/***/ 82907:
+/***/ 62374:
 /***/ ((module) => {
 
 "use strict";
@@ -99531,27 +102573,27 @@ module.exports = {
 
 /***/ }),
 
-/***/ 63097:
+/***/ 33760:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const diagnosticsChannel = __nccwpck_require__(31637)
-const { uid, states } = __nccwpck_require__(63464)
+const { uid, states } = __nccwpck_require__(67875)
 const {
   kReadyState,
   kSentClose,
   kByteParser,
   kReceivedClose
-} = __nccwpck_require__(35832)
-const { fireEvent, failWebsocketConnection } = __nccwpck_require__(33385)
-const { CloseEvent } = __nccwpck_require__(33164)
-const { makeRequest } = __nccwpck_require__(15767)
-const { fetching } = __nccwpck_require__(58358)
-const { Headers } = __nccwpck_require__(72908)
-const { getGlobalDispatcher } = __nccwpck_require__(17882)
-const { kHeadersList } = __nccwpck_require__(34856)
+} = __nccwpck_require__(16063)
+const { fireEvent, failWebsocketConnection } = __nccwpck_require__(10588)
+const { CloseEvent } = __nccwpck_require__(43897)
+const { makeRequest } = __nccwpck_require__(62204)
+const { fetching } = __nccwpck_require__(79401)
+const { Headers } = __nccwpck_require__(12223)
+const { getGlobalDispatcher } = __nccwpck_require__(7075)
+const { kHeadersList } = __nccwpck_require__(45773)
 
 const channels = {}
 channels.open = diagnosticsChannel.channel('undici:websocket:open')
@@ -99830,7 +102872,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 63464:
+/***/ 67875:
 /***/ ((module) => {
 
 "use strict";
@@ -99889,14 +102931,14 @@ module.exports = {
 
 /***/ }),
 
-/***/ 33164:
+/***/ 43897:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { webidl } = __nccwpck_require__(29)
-const { kEnumerableProperty } = __nccwpck_require__(33465)
+const { webidl } = __nccwpck_require__(33476)
+const { kEnumerableProperty } = __nccwpck_require__(84606)
 const { MessagePort } = __nccwpck_require__(28167)
 
 /**
@@ -100200,13 +103242,13 @@ module.exports = {
 
 /***/ }),
 
-/***/ 23272:
+/***/ 54391:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { maxUnsigned16Bit } = __nccwpck_require__(63464)
+const { maxUnsigned16Bit } = __nccwpck_require__(67875)
 
 /** @type {import('crypto')} */
 let crypto
@@ -100281,7 +103323,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 51084:
+/***/ 60833:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -100289,10 +103331,10 @@ module.exports = {
 
 const { Writable } = __nccwpck_require__(2203)
 const diagnosticsChannel = __nccwpck_require__(31637)
-const { parserStates, opcodes, states, emptyBuffer } = __nccwpck_require__(63464)
-const { kReadyState, kSentClose, kResponse, kReceivedClose } = __nccwpck_require__(35832)
-const { isValidStatusCode, failWebsocketConnection, websocketMessageReceived } = __nccwpck_require__(33385)
-const { WebsocketFrameSend } = __nccwpck_require__(23272)
+const { parserStates, opcodes, states, emptyBuffer } = __nccwpck_require__(67875)
+const { kReadyState, kSentClose, kResponse, kReceivedClose } = __nccwpck_require__(16063)
+const { isValidStatusCode, failWebsocketConnection, websocketMessageReceived } = __nccwpck_require__(10588)
+const { WebsocketFrameSend } = __nccwpck_require__(54391)
 
 // This code was influenced by ws released under the MIT license.
 // Copyright (c) 2011 Einar Otto Stangvik <einaros@gmail.com>
@@ -100633,7 +103675,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 35832:
+/***/ 16063:
 /***/ ((module) => {
 
 "use strict";
@@ -100653,15 +103695,15 @@ module.exports = {
 
 /***/ }),
 
-/***/ 33385:
+/***/ 10588:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { kReadyState, kController, kResponse, kBinaryType, kWebSocketURL } = __nccwpck_require__(35832)
-const { states, opcodes } = __nccwpck_require__(63464)
-const { MessageEvent, ErrorEvent } = __nccwpck_require__(33164)
+const { kReadyState, kController, kResponse, kBinaryType, kWebSocketURL } = __nccwpck_require__(16063)
+const { states, opcodes } = __nccwpck_require__(67875)
+const { MessageEvent, ErrorEvent } = __nccwpck_require__(43897)
 
 /* globals Blob */
 
@@ -100861,17 +103903,17 @@ module.exports = {
 
 /***/ }),
 
-/***/ 66102:
+/***/ 23853:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { webidl } = __nccwpck_require__(29)
-const { DOMException } = __nccwpck_require__(84135)
-const { URLSerializer } = __nccwpck_require__(43911)
-const { getGlobalOrigin } = __nccwpck_require__(59963)
-const { staticPropertyDescriptors, states, opcodes, emptyBuffer } = __nccwpck_require__(63464)
+const { webidl } = __nccwpck_require__(33476)
+const { DOMException } = __nccwpck_require__(7536)
+const { URLSerializer } = __nccwpck_require__(46960)
+const { getGlobalOrigin } = __nccwpck_require__(50742)
+const { staticPropertyDescriptors, states, opcodes, emptyBuffer } = __nccwpck_require__(67875)
 const {
   kWebSocketURL,
   kReadyState,
@@ -100880,13 +103922,13 @@ const {
   kResponse,
   kSentClose,
   kByteParser
-} = __nccwpck_require__(35832)
-const { isEstablished, isClosing, isValidSubprotocol, failWebsocketConnection, fireEvent } = __nccwpck_require__(33385)
-const { establishWebSocketConnection } = __nccwpck_require__(63097)
-const { WebsocketFrameSend } = __nccwpck_require__(23272)
-const { ByteParser } = __nccwpck_require__(51084)
-const { kEnumerableProperty, isBlobLike } = __nccwpck_require__(33465)
-const { getGlobalDispatcher } = __nccwpck_require__(17882)
+} = __nccwpck_require__(16063)
+const { isEstablished, isClosing, isValidSubprotocol, failWebsocketConnection, fireEvent } = __nccwpck_require__(10588)
+const { establishWebSocketConnection } = __nccwpck_require__(33760)
+const { WebsocketFrameSend } = __nccwpck_require__(54391)
+const { ByteParser } = __nccwpck_require__(60833)
+const { kEnumerableProperty, isBlobLike } = __nccwpck_require__(84606)
+const { getGlobalDispatcher } = __nccwpck_require__(7075)
 const { types } = __nccwpck_require__(39023)
 
 let experimentalWarned = false
@@ -101510,34 +104552,34 @@ module.exports = {
 
 /***/ }),
 
-/***/ 83110:
+/***/ 30794:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Client = __nccwpck_require__(23319)
-const Dispatcher = __nccwpck_require__(5489)
-const Pool = __nccwpck_require__(26694)
-const BalancedPool = __nccwpck_require__(44895)
-const Agent = __nccwpck_require__(97147)
-const ProxyAgent = __nccwpck_require__(30534)
-const EnvHttpProxyAgent = __nccwpck_require__(50547)
-const RetryAgent = __nccwpck_require__(72720)
-const errors = __nccwpck_require__(96137)
-const util = __nccwpck_require__(50226)
+const Client = __nccwpck_require__(29939)
+const Dispatcher = __nccwpck_require__(29877)
+const Pool = __nccwpck_require__(60618)
+const BalancedPool = __nccwpck_require__(65219)
+const Agent = __nccwpck_require__(65103)
+const ProxyAgent = __nccwpck_require__(57322)
+const EnvHttpProxyAgent = __nccwpck_require__(28743)
+const RetryAgent = __nccwpck_require__(44700)
+const errors = __nccwpck_require__(88909)
+const util = __nccwpck_require__(28094)
 const { InvalidArgumentError } = errors
-const api = __nccwpck_require__(46601)
-const buildConnector = __nccwpck_require__(49994)
-const MockClient = __nccwpck_require__(6479)
-const MockAgent = __nccwpck_require__(16163)
-const MockPool = __nccwpck_require__(27678)
-const mockErrors = __nccwpck_require__(59211)
-const RetryHandler = __nccwpck_require__(98542)
-const { getGlobalDispatcher, setGlobalDispatcher } = __nccwpck_require__(2959)
-const DecoratorHandler = __nccwpck_require__(17069)
-const RedirectHandler = __nccwpck_require__(75608)
-const createRedirectInterceptor = __nccwpck_require__(51426)
+const api = __nccwpck_require__(12821)
+const buildConnector = __nccwpck_require__(82734)
+const MockClient = __nccwpck_require__(44179)
+const MockAgent = __nccwpck_require__(41455)
+const MockPool = __nccwpck_require__(87210)
+const mockErrors = __nccwpck_require__(80431)
+const RetryHandler = __nccwpck_require__(82442)
+const { getGlobalDispatcher, setGlobalDispatcher } = __nccwpck_require__(68131)
+const DecoratorHandler = __nccwpck_require__(9633)
+const RedirectHandler = __nccwpck_require__(99596)
+const createRedirectInterceptor = __nccwpck_require__(35542)
 
 Object.assign(Dispatcher.prototype, api)
 
@@ -101555,9 +104597,10 @@ module.exports.DecoratorHandler = DecoratorHandler
 module.exports.RedirectHandler = RedirectHandler
 module.exports.createRedirectInterceptor = createRedirectInterceptor
 module.exports.interceptors = {
-  redirect: __nccwpck_require__(9076),
-  retry: __nccwpck_require__(8092),
-  dump: __nccwpck_require__(74914)
+  redirect: __nccwpck_require__(85872),
+  retry: __nccwpck_require__(50768),
+  dump: __nccwpck_require__(82822),
+  dns: __nccwpck_require__(64257)
 }
 
 module.exports.buildConnector = buildConnector
@@ -101619,7 +104662,7 @@ function makeDispatcher (fn) {
 module.exports.setGlobalDispatcher = setGlobalDispatcher
 module.exports.getGlobalDispatcher = getGlobalDispatcher
 
-const fetchImpl = (__nccwpck_require__(75988).fetch)
+const fetchImpl = (__nccwpck_require__(95504).fetch)
 module.exports.fetch = async function fetch (init, options = undefined) {
   try {
     return await fetchImpl(init, options)
@@ -101631,39 +104674,39 @@ module.exports.fetch = async function fetch (init, options = undefined) {
     throw err
   }
 }
-module.exports.Headers = __nccwpck_require__(10422).Headers
-module.exports.Response = __nccwpck_require__(46717).Response
-module.exports.Request = __nccwpck_require__(13241).Request
-module.exports.FormData = __nccwpck_require__(4192).FormData
+module.exports.Headers = __nccwpck_require__(90834).Headers
+module.exports.Response = __nccwpck_require__(51657).Response
+module.exports.Request = __nccwpck_require__(57341).Request
+module.exports.FormData = __nccwpck_require__(89828).FormData
 module.exports.File = globalThis.File ?? (__nccwpck_require__(4573).File)
-module.exports.FileReader = __nccwpck_require__(89273).FileReader
+module.exports.FileReader = __nccwpck_require__(36197).FileReader
 
-const { setGlobalOrigin, getGlobalOrigin } = __nccwpck_require__(7773)
+const { setGlobalOrigin, getGlobalOrigin } = __nccwpck_require__(51689)
 
 module.exports.setGlobalOrigin = setGlobalOrigin
 module.exports.getGlobalOrigin = getGlobalOrigin
 
-const { CacheStorage } = __nccwpck_require__(57171)
-const { kConstruct } = __nccwpck_require__(35239)
+const { CacheStorage } = __nccwpck_require__(24391)
+const { kConstruct } = __nccwpck_require__(73043)
 
 // Cache & CacheStorage are tightly coupled with fetch. Even if it may run
 // in an older version of Node, it doesn't have any use without fetch.
 module.exports.caches = new CacheStorage(kConstruct)
 
-const { deleteCookie, getCookies, getSetCookies, setCookie } = __nccwpck_require__(31015)
+const { deleteCookie, getCookies, getSetCookies, setCookie } = __nccwpck_require__(58723)
 
 module.exports.deleteCookie = deleteCookie
 module.exports.getCookies = getCookies
 module.exports.getSetCookies = getSetCookies
 module.exports.setCookie = setCookie
 
-const { parseMIMEType, serializeAMimeType } = __nccwpck_require__(18806)
+const { parseMIMEType, serializeAMimeType } = __nccwpck_require__(73290)
 
 module.exports.parseMIMEType = parseMIMEType
 module.exports.serializeAMimeType = serializeAMimeType
 
-const { CloseEvent, ErrorEvent, MessageEvent } = __nccwpck_require__(7270)
-module.exports.WebSocket = __nccwpck_require__(78176).WebSocket
+const { CloseEvent, ErrorEvent, MessageEvent } = __nccwpck_require__(29498)
+module.exports.WebSocket = __nccwpck_require__(15212).WebSocket
 module.exports.CloseEvent = CloseEvent
 module.exports.ErrorEvent = ErrorEvent
 module.exports.MessageEvent = MessageEvent
@@ -101679,18 +104722,18 @@ module.exports.MockPool = MockPool
 module.exports.MockAgent = MockAgent
 module.exports.mockErrors = mockErrors
 
-const { EventSource } = __nccwpck_require__(31952)
+const { EventSource } = __nccwpck_require__(95628)
 
 module.exports.EventSource = EventSource
 
 
 /***/ }),
 
-/***/ 24456:
+/***/ 79620:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const { addAbortListener } = __nccwpck_require__(50226)
-const { RequestAbortedError } = __nccwpck_require__(96137)
+const { addAbortListener } = __nccwpck_require__(28094)
+const { RequestAbortedError } = __nccwpck_require__(88909)
 
 const kListener = Symbol('kListener')
 const kSignal = Symbol('kSignal')
@@ -101750,7 +104793,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 4054:
+/***/ 46874:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -101758,9 +104801,9 @@ module.exports = {
 
 const assert = __nccwpck_require__(34589)
 const { AsyncResource } = __nccwpck_require__(16698)
-const { InvalidArgumentError, SocketError } = __nccwpck_require__(96137)
-const util = __nccwpck_require__(50226)
-const { addSignal, removeSignal } = __nccwpck_require__(24456)
+const { InvalidArgumentError, SocketError } = __nccwpck_require__(88909)
+const util = __nccwpck_require__(28094)
+const { addSignal, removeSignal } = __nccwpck_require__(79620)
 
 class ConnectHandler extends AsyncResource {
   constructor (opts, callback) {
@@ -101866,7 +104909,7 @@ module.exports = connect
 
 /***/ }),
 
-/***/ 60444:
+/***/ 12496:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -101881,10 +104924,10 @@ const {
   InvalidArgumentError,
   InvalidReturnValueError,
   RequestAbortedError
-} = __nccwpck_require__(96137)
-const util = __nccwpck_require__(50226)
+} = __nccwpck_require__(88909)
+const util = __nccwpck_require__(28094)
 const { AsyncResource } = __nccwpck_require__(16698)
-const { addSignal, removeSignal } = __nccwpck_require__(24456)
+const { addSignal, removeSignal } = __nccwpck_require__(79620)
 const assert = __nccwpck_require__(34589)
 
 const kResume = Symbol('resume')
@@ -102125,17 +105168,17 @@ module.exports = pipeline
 
 /***/ }),
 
-/***/ 7369:
+/***/ 98741:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const assert = __nccwpck_require__(34589)
-const { Readable } = __nccwpck_require__(67953)
-const { InvalidArgumentError, RequestAbortedError } = __nccwpck_require__(96137)
-const util = __nccwpck_require__(50226)
-const { getResolveErrorBodyCallback } = __nccwpck_require__(48465)
+const { Readable } = __nccwpck_require__(30333)
+const { InvalidArgumentError, RequestAbortedError } = __nccwpck_require__(88909)
+const util = __nccwpck_require__(28094)
+const { getResolveErrorBodyCallback } = __nccwpck_require__(69669)
 const { AsyncResource } = __nccwpck_require__(16698)
 
 class RequestHandler extends AsyncResource {
@@ -102204,7 +105247,7 @@ class RequestHandler extends AsyncResource {
         this.removeAbortListener = util.addAbortListener(this.signal, () => {
           this.reason = this.signal.reason ?? new RequestAbortedError()
           if (this.res) {
-            util.destroy(this.res, this.reason)
+            util.destroy(this.res.on('error', util.nop), this.reason)
           } else if (this.abort) {
             this.abort(this.reason)
           }
@@ -102347,7 +105390,7 @@ module.exports.RequestHandler = RequestHandler
 
 /***/ }),
 
-/***/ 61146:
+/***/ 45094:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -102355,11 +105398,11 @@ module.exports.RequestHandler = RequestHandler
 
 const assert = __nccwpck_require__(34589)
 const { finished, PassThrough } = __nccwpck_require__(57075)
-const { InvalidArgumentError, InvalidReturnValueError } = __nccwpck_require__(96137)
-const util = __nccwpck_require__(50226)
-const { getResolveErrorBodyCallback } = __nccwpck_require__(48465)
+const { InvalidArgumentError, InvalidReturnValueError } = __nccwpck_require__(88909)
+const util = __nccwpck_require__(28094)
+const { getResolveErrorBodyCallback } = __nccwpck_require__(69669)
 const { AsyncResource } = __nccwpck_require__(16698)
-const { addSignal, removeSignal } = __nccwpck_require__(24456)
+const { addSignal, removeSignal } = __nccwpck_require__(79620)
 
 class StreamHandler extends AsyncResource {
   constructor (opts, factory, callback) {
@@ -102575,16 +105618,16 @@ module.exports = stream
 
 /***/ }),
 
-/***/ 18856:
+/***/ 41124:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { InvalidArgumentError, SocketError } = __nccwpck_require__(96137)
+const { InvalidArgumentError, SocketError } = __nccwpck_require__(88909)
 const { AsyncResource } = __nccwpck_require__(16698)
-const util = __nccwpck_require__(50226)
-const { addSignal, removeSignal } = __nccwpck_require__(24456)
+const util = __nccwpck_require__(28094)
+const { addSignal, removeSignal } = __nccwpck_require__(79620)
 const assert = __nccwpck_require__(34589)
 
 class UpgradeHandler extends AsyncResource {
@@ -102631,9 +105674,9 @@ class UpgradeHandler extends AsyncResource {
   }
 
   onUpgrade (statusCode, rawHeaders, socket) {
-    const { callback, opaque, context } = this
+    assert(statusCode === 101)
 
-    assert.strictEqual(statusCode, 101)
+    const { callback, opaque, context } = this
 
     removeSignal(this)
 
@@ -102691,22 +105734,22 @@ module.exports = upgrade
 
 /***/ }),
 
-/***/ 46601:
+/***/ 12821:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-module.exports.request = __nccwpck_require__(7369)
-module.exports.stream = __nccwpck_require__(61146)
-module.exports.pipeline = __nccwpck_require__(60444)
-module.exports.upgrade = __nccwpck_require__(18856)
-module.exports.connect = __nccwpck_require__(4054)
+module.exports.request = __nccwpck_require__(98741)
+module.exports.stream = __nccwpck_require__(45094)
+module.exports.pipeline = __nccwpck_require__(12496)
+module.exports.upgrade = __nccwpck_require__(41124)
+module.exports.connect = __nccwpck_require__(46874)
 
 
 /***/ }),
 
-/***/ 67953:
+/***/ 30333:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -102716,9 +105759,9 @@ module.exports.connect = __nccwpck_require__(4054)
 
 const assert = __nccwpck_require__(34589)
 const { Readable } = __nccwpck_require__(57075)
-const { RequestAbortedError, NotSupportedError, InvalidArgumentError, AbortError } = __nccwpck_require__(96137)
-const util = __nccwpck_require__(50226)
-const { ReadableStreamFrom } = __nccwpck_require__(50226)
+const { RequestAbortedError, NotSupportedError, InvalidArgumentError, AbortError } = __nccwpck_require__(88909)
+const util = __nccwpck_require__(28094)
+const { ReadableStreamFrom } = __nccwpck_require__(28094)
 
 const kConsume = Symbol('kConsume')
 const kReading = Symbol('kReading')
@@ -102831,6 +105874,11 @@ class BodyReadable extends Readable {
   // https://fetch.spec.whatwg.org/#dom-body-blob
   async blob () {
     return consume(this, 'blob')
+  }
+
+  // https://fetch.spec.whatwg.org/#dom-body-bytes
+  async bytes () {
+    return consume(this, 'bytes')
   }
 
   // https://fetch.spec.whatwg.org/#dom-body-arraybuffer
@@ -103018,6 +106066,31 @@ function chunksDecode (chunks, length) {
   return buffer.utf8Slice(start, bufferLength)
 }
 
+/**
+ * @param {Buffer[]} chunks
+ * @param {number} length
+ * @returns {Uint8Array}
+ */
+function chunksConcat (chunks, length) {
+  if (chunks.length === 0 || length === 0) {
+    return new Uint8Array(0)
+  }
+  if (chunks.length === 1) {
+    // fast-path
+    return new Uint8Array(chunks[0])
+  }
+  const buffer = new Uint8Array(Buffer.allocUnsafeSlow(length).buffer)
+
+  let offset = 0
+  for (let i = 0; i < chunks.length; ++i) {
+    const chunk = chunks[i]
+    buffer.set(chunk, offset)
+    offset += chunk.length
+  }
+
+  return buffer
+}
+
 function consumeEnd (consume) {
   const { type, body, resolve, stream, length } = consume
 
@@ -103027,17 +106100,11 @@ function consumeEnd (consume) {
     } else if (type === 'json') {
       resolve(JSON.parse(chunksDecode(body, length)))
     } else if (type === 'arrayBuffer') {
-      const dst = new Uint8Array(length)
-
-      let pos = 0
-      for (const buf of body) {
-        dst.set(buf, pos)
-        pos += buf.byteLength
-      }
-
-      resolve(dst.buffer)
+      resolve(chunksConcat(body, length).buffer)
     } else if (type === 'blob') {
       resolve(new Blob(body, { type: stream[kContentType] }))
+    } else if (type === 'bytes') {
+      resolve(chunksConcat(body, length))
     }
 
     consumeFinish(consume)
@@ -103075,15 +106142,15 @@ module.exports = { Readable: BodyReadable, chunksDecode }
 
 /***/ }),
 
-/***/ 48465:
+/***/ 69669:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 const assert = __nccwpck_require__(34589)
 const {
   ResponseStatusCodeError
-} = __nccwpck_require__(96137)
+} = __nccwpck_require__(88909)
 
-const { chunksDecode } = __nccwpck_require__(67953)
+const { chunksDecode } = __nccwpck_require__(30333)
 const CHUNK_LIMIT = 128 * 1024
 
 async function getResolveErrorBodyCallback ({ callback, body, contentType, statusCode, statusMessage, headers }) {
@@ -103175,7 +106242,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 49994:
+/***/ 82734:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -103183,8 +106250,11 @@ module.exports = {
 
 const net = __nccwpck_require__(77030)
 const assert = __nccwpck_require__(34589)
-const util = __nccwpck_require__(50226)
-const { InvalidArgumentError, ConnectTimeoutError } = __nccwpck_require__(96137)
+const util = __nccwpck_require__(28094)
+const { InvalidArgumentError, ConnectTimeoutError } = __nccwpck_require__(88909)
+const timers = __nccwpck_require__(69381)
+
+function noop () {}
 
 let tls // include tls conditionally since it is not always available
 
@@ -103272,9 +106342,11 @@ function buildConnector ({ allowH2, maxCachedSessions, socketPath, timeout, sess
       servername = servername || options.servername || util.getServerName(host) || null
 
       const sessionKey = servername || hostname
+      assert(sessionKey)
+
       const session = customSession || sessionCache.get(sessionKey) || null
 
-      assert(sessionKey)
+      port = port || 443
 
       socket = tls.connect({
         highWaterMark: 16384, // TLS in node can't have bigger HWM anyway...
@@ -103285,7 +106357,7 @@ function buildConnector ({ allowH2, maxCachedSessions, socketPath, timeout, sess
         // TODO(HTTP/2): Add support for h2c
         ALPNProtocols: allowH2 ? ['http/1.1', 'h2'] : ['http/1.1'],
         socket: httpSocket, // upgrade socket connection
-        port: port || 443,
+        port,
         host: hostname
       })
 
@@ -103296,11 +106368,14 @@ function buildConnector ({ allowH2, maxCachedSessions, socketPath, timeout, sess
         })
     } else {
       assert(!httpSocket, 'httpSocket can only be sent on TLS update')
+
+      port = port || 80
+
       socket = net.connect({
         highWaterMark: 64 * 1024, // Same as nodejs fs streams.
         ...options,
         localAddress,
-        port: port || 80,
+        port,
         host: hostname
       })
     }
@@ -103311,12 +106386,12 @@ function buildConnector ({ allowH2, maxCachedSessions, socketPath, timeout, sess
       socket.setKeepAlive(true, keepAliveInitialDelay)
     }
 
-    const cancelTimeout = setupTimeout(() => onConnectTimeout(socket), timeout)
+    const clearConnectTimeout = setupConnectTimeout(new WeakRef(socket), { timeout, hostname, port })
 
     socket
       .setNoDelay(true)
       .once(protocol === 'https:' ? 'secureConnect' : 'connect', function () {
-        cancelTimeout()
+        queueMicrotask(clearConnectTimeout)
 
         if (callback) {
           const cb = callback
@@ -103325,7 +106400,7 @@ function buildConnector ({ allowH2, maxCachedSessions, socketPath, timeout, sess
         }
       })
       .on('error', function (err) {
-        cancelTimeout()
+        queueMicrotask(clearConnectTimeout)
 
         if (callback) {
           const cb = callback
@@ -103338,36 +106413,75 @@ function buildConnector ({ allowH2, maxCachedSessions, socketPath, timeout, sess
   }
 }
 
-function setupTimeout (onConnectTimeout, timeout) {
-  if (!timeout) {
-    return () => {}
-  }
-
-  let s1 = null
-  let s2 = null
-  const timeoutId = setTimeout(() => {
-    // setImmediate is added to make sure that we prioritize socket error events over timeouts
-    s1 = setImmediate(() => {
-      if (process.platform === 'win32') {
-        // Windows needs an extra setImmediate probably due to implementation differences in the socket logic
-        s2 = setImmediate(() => onConnectTimeout())
-      } else {
-        onConnectTimeout()
+/**
+ * @param {WeakRef<net.Socket>} socketWeakRef
+ * @param {object} opts
+ * @param {number} opts.timeout
+ * @param {string} opts.hostname
+ * @param {number} opts.port
+ * @returns {() => void}
+ */
+const setupConnectTimeout = process.platform === 'win32'
+  ? (socketWeakRef, opts) => {
+      if (!opts.timeout) {
+        return noop
       }
-    })
-  }, timeout)
-  return () => {
-    clearTimeout(timeoutId)
-    clearImmediate(s1)
-    clearImmediate(s2)
-  }
-}
 
-function onConnectTimeout (socket) {
+      let s1 = null
+      let s2 = null
+      const fastTimer = timers.setFastTimeout(() => {
+      // setImmediate is added to make sure that we prioritize socket error events over timeouts
+        s1 = setImmediate(() => {
+        // Windows needs an extra setImmediate probably due to implementation differences in the socket logic
+          s2 = setImmediate(() => onConnectTimeout(socketWeakRef.deref(), opts))
+        })
+      }, opts.timeout)
+      return () => {
+        timers.clearFastTimeout(fastTimer)
+        clearImmediate(s1)
+        clearImmediate(s2)
+      }
+    }
+  : (socketWeakRef, opts) => {
+      if (!opts.timeout) {
+        return noop
+      }
+
+      let s1 = null
+      const fastTimer = timers.setFastTimeout(() => {
+      // setImmediate is added to make sure that we prioritize socket error events over timeouts
+        s1 = setImmediate(() => {
+          onConnectTimeout(socketWeakRef.deref(), opts)
+        })
+      }, opts.timeout)
+      return () => {
+        timers.clearFastTimeout(fastTimer)
+        clearImmediate(s1)
+      }
+    }
+
+/**
+ * @param {net.Socket} socket
+ * @param {object} opts
+ * @param {number} opts.timeout
+ * @param {string} opts.hostname
+ * @param {number} opts.port
+ */
+function onConnectTimeout (socket, opts) {
+  // The socket could be already garbage collected
+  if (socket == null) {
+    return
+  }
+
   let message = 'Connect Timeout Error'
   if (Array.isArray(socket.autoSelectFamilyAttemptedAddresses)) {
-    message += ` (attempted addresses: ${socket.autoSelectFamilyAttemptedAddresses.join(', ')})`
+    message += ` (attempted addresses: ${socket.autoSelectFamilyAttemptedAddresses.join(', ')},`
+  } else {
+    message += ` (attempted address: ${opts.hostname}:${opts.port},`
   }
+
+  message += ` timeout: ${opts.timeout}ms)`
+
   util.destroy(socket, new ConnectTimeoutError(message))
 }
 
@@ -103376,7 +106490,7 @@ module.exports = buildConnector
 
 /***/ }),
 
-/***/ 49501:
+/***/ 35905:
 /***/ ((module) => {
 
 "use strict";
@@ -103502,7 +106616,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 90188:
+/***/ 24240:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -103712,7 +106826,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 96137:
+/***/ 88909:
 /***/ ((module) => {
 
 "use strict";
@@ -103913,6 +107027,18 @@ class RequestRetryError extends UndiciError {
   }
 }
 
+class ResponseError extends UndiciError {
+  constructor (message, code, { headers, data }) {
+    super(message)
+    this.name = 'ResponseError'
+    this.message = message || 'Response error'
+    this.code = 'UND_ERR_RESPONSE'
+    this.statusCode = code
+    this.data = data
+    this.headers = headers
+  }
+}
+
 class SecureProxyConnectionError extends UndiciError {
   constructor (cause, message, options) {
     super(message, { cause, ...(options ?? {}) })
@@ -103945,13 +107071,14 @@ module.exports = {
   BalancedPoolMissingUpstreamError,
   ResponseExceededMaxSizeError,
   RequestRetryError,
+  ResponseError,
   SecureProxyConnectionError
 }
 
 
 /***/ }),
 
-/***/ 64453:
+/***/ 9425:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -103960,7 +107087,7 @@ module.exports = {
 const {
   InvalidArgumentError,
   NotSupportedError
-} = __nccwpck_require__(96137)
+} = __nccwpck_require__(88909)
 const assert = __nccwpck_require__(34589)
 const {
   isValidHTTPToken,
@@ -103975,9 +107102,9 @@ const {
   validateHandler,
   getServerName,
   normalizedMethodRecords
-} = __nccwpck_require__(50226)
-const { channels } = __nccwpck_require__(90188)
-const { headerNameLowerCasedRecord } = __nccwpck_require__(49501)
+} = __nccwpck_require__(28094)
+const { channels } = __nccwpck_require__(24240)
+const { headerNameLowerCasedRecord } = __nccwpck_require__(35905)
 
 // Verifies that a given path is valid does not contain control chars \x00 to \x20
 const invalidPathRegex = /[^\u0021-\u00ff]/
@@ -104354,7 +107481,7 @@ module.exports = Request
 
 /***/ }),
 
-/***/ 77817:
+/***/ 81869:
 /***/ ((module) => {
 
 module.exports = {
@@ -104428,7 +107555,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 53542:
+/***/ 47634:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -104437,7 +107564,7 @@ module.exports = {
 const {
   wellknownHeaderNames,
   headerNameLowerCasedRecord
-} = __nccwpck_require__(49501)
+} = __nccwpck_require__(35905)
 
 class TstNode {
   /** @type {any} */
@@ -104588,14 +107715,14 @@ module.exports = {
 
 /***/ }),
 
-/***/ 50226:
+/***/ 28094:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const assert = __nccwpck_require__(34589)
-const { kDestroyed, kBodyUsed, kListeners, kBody } = __nccwpck_require__(77817)
+const { kDestroyed, kBodyUsed, kListeners, kBody } = __nccwpck_require__(81869)
 const { IncomingMessage } = __nccwpck_require__(37067)
 const stream = __nccwpck_require__(57075)
 const net = __nccwpck_require__(77030)
@@ -104603,9 +107730,9 @@ const { Blob } = __nccwpck_require__(4573)
 const nodeUtil = __nccwpck_require__(57975)
 const { stringify } = __nccwpck_require__(41792)
 const { EventEmitter: EE } = __nccwpck_require__(78474)
-const { InvalidArgumentError } = __nccwpck_require__(96137)
-const { headerNameLowerCasedRecord } = __nccwpck_require__(49501)
-const { tree } = __nccwpck_require__(53542)
+const { InvalidArgumentError } = __nccwpck_require__(88909)
+const { headerNameLowerCasedRecord } = __nccwpck_require__(35905)
+const { tree } = __nccwpck_require__(47634)
 
 const [nodeMajor, nodeMinor] = process.versions.node.split('.').map(v => Number(v))
 
@@ -104827,7 +107954,7 @@ function getServerName (host) {
     return null
   }
 
-  assert.strictEqual(typeof host, 'string')
+  assert(typeof host === 'string')
 
   const servername = getHostname(host)
   if (net.isIP(servername)) {
@@ -105315,19 +108442,19 @@ module.exports = {
 
 /***/ }),
 
-/***/ 97147:
+/***/ 65103:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { InvalidArgumentError } = __nccwpck_require__(96137)
-const { kClients, kRunning, kClose, kDestroy, kDispatch, kInterceptors } = __nccwpck_require__(77817)
-const DispatcherBase = __nccwpck_require__(42155)
-const Pool = __nccwpck_require__(26694)
-const Client = __nccwpck_require__(23319)
-const util = __nccwpck_require__(50226)
-const createRedirectInterceptor = __nccwpck_require__(51426)
+const { InvalidArgumentError } = __nccwpck_require__(88909)
+const { kClients, kRunning, kClose, kDestroy, kDispatch, kInterceptors } = __nccwpck_require__(81869)
+const DispatcherBase = __nccwpck_require__(25159)
+const Pool = __nccwpck_require__(60618)
+const Client = __nccwpck_require__(29939)
+const util = __nccwpck_require__(28094)
+const createRedirectInterceptor = __nccwpck_require__(35542)
 
 const kOnConnect = Symbol('onConnect')
 const kOnDisconnect = Symbol('onDisconnect')
@@ -105452,7 +108579,7 @@ module.exports = Agent
 
 /***/ }),
 
-/***/ 44895:
+/***/ 65219:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -105461,7 +108588,7 @@ module.exports = Agent
 const {
   BalancedPoolMissingUpstreamError,
   InvalidArgumentError
-} = __nccwpck_require__(96137)
+} = __nccwpck_require__(88909)
 const {
   PoolBase,
   kClients,
@@ -105469,10 +108596,10 @@ const {
   kAddClient,
   kRemoveClient,
   kGetDispatcher
-} = __nccwpck_require__(54582)
-const Pool = __nccwpck_require__(26694)
-const { kUrl, kInterceptors } = __nccwpck_require__(77817)
-const { parseOrigin } = __nccwpck_require__(50226)
+} = __nccwpck_require__(57218)
+const Pool = __nccwpck_require__(60618)
+const { kUrl, kInterceptors } = __nccwpck_require__(81869)
+const { parseOrigin } = __nccwpck_require__(28094)
 const kFactory = Symbol('factory')
 
 const kOptions = Symbol('options')
@@ -105669,7 +108796,7 @@ module.exports = BalancedPool
 
 /***/ }),
 
-/***/ 17888:
+/***/ 9199:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -105678,9 +108805,9 @@ module.exports = BalancedPool
 /* global WebAssembly */
 
 const assert = __nccwpck_require__(34589)
-const util = __nccwpck_require__(50226)
-const { channels } = __nccwpck_require__(90188)
-const timers = __nccwpck_require__(15425)
+const util = __nccwpck_require__(28094)
+const { channels } = __nccwpck_require__(24240)
+const timers = __nccwpck_require__(69381)
 const {
   RequestContentLengthMismatchError,
   ResponseContentLengthMismatchError,
@@ -105692,7 +108819,7 @@ const {
   BodyTimeoutError,
   HTTPParserError,
   ResponseExceededMaxSizeError
-} = __nccwpck_require__(96137)
+} = __nccwpck_require__(88909)
 const {
   kUrl,
   kReset,
@@ -105725,9 +108852,9 @@ const {
   kOnError,
   kResume,
   kHTTPContext
-} = __nccwpck_require__(77817)
+} = __nccwpck_require__(81869)
 
-const constants = __nccwpck_require__(93482)
+const constants = __nccwpck_require__(1150)
 const EMPTY_BUF = Buffer.alloc(0)
 const FastBuffer = Buffer[Symbol.species]
 const addListener = util.addListener
@@ -105736,11 +108863,11 @@ const removeAllListeners = util.removeAllListeners
 let extractBody
 
 async function lazyllhttp () {
-  const llhttpWasmData = process.env.JEST_WORKER_ID ? __nccwpck_require__(62064) : undefined
+  const llhttpWasmData = process.env.JEST_WORKER_ID ? __nccwpck_require__(74628) : undefined
 
   let mod
   try {
-    mod = await WebAssembly.compile(__nccwpck_require__(62808))
+    mod = await WebAssembly.compile(__nccwpck_require__(49852))
   } catch (e) {
     /* istanbul ignore next */
 
@@ -105748,7 +108875,7 @@ async function lazyllhttp () {
     // being enabled, but the occurring of this other error
     // * https://github.com/emscripten-core/emscripten/issues/11495
     // got me to remove that check to avoid breaking Node 12.
-    mod = await WebAssembly.compile(llhttpWasmData || __nccwpck_require__(62064))
+    mod = await WebAssembly.compile(llhttpWasmData || __nccwpck_require__(74628))
   }
 
   return await WebAssembly.instantiate(mod, {
@@ -105760,35 +108887,35 @@ async function lazyllhttp () {
         return 0
       },
       wasm_on_status: (p, at, len) => {
-        assert.strictEqual(currentParser.ptr, p)
+        assert(currentParser.ptr === p)
         const start = at - currentBufferPtr + currentBufferRef.byteOffset
         return currentParser.onStatus(new FastBuffer(currentBufferRef.buffer, start, len)) || 0
       },
       wasm_on_message_begin: (p) => {
-        assert.strictEqual(currentParser.ptr, p)
+        assert(currentParser.ptr === p)
         return currentParser.onMessageBegin() || 0
       },
       wasm_on_header_field: (p, at, len) => {
-        assert.strictEqual(currentParser.ptr, p)
+        assert(currentParser.ptr === p)
         const start = at - currentBufferPtr + currentBufferRef.byteOffset
         return currentParser.onHeaderField(new FastBuffer(currentBufferRef.buffer, start, len)) || 0
       },
       wasm_on_header_value: (p, at, len) => {
-        assert.strictEqual(currentParser.ptr, p)
+        assert(currentParser.ptr === p)
         const start = at - currentBufferPtr + currentBufferRef.byteOffset
         return currentParser.onHeaderValue(new FastBuffer(currentBufferRef.buffer, start, len)) || 0
       },
       wasm_on_headers_complete: (p, statusCode, upgrade, shouldKeepAlive) => {
-        assert.strictEqual(currentParser.ptr, p)
+        assert(currentParser.ptr === p)
         return currentParser.onHeadersComplete(statusCode, Boolean(upgrade), Boolean(shouldKeepAlive)) || 0
       },
       wasm_on_body: (p, at, len) => {
-        assert.strictEqual(currentParser.ptr, p)
+        assert(currentParser.ptr === p)
         const start = at - currentBufferPtr + currentBufferRef.byteOffset
         return currentParser.onBody(new FastBuffer(currentBufferRef.buffer, start, len)) || 0
       },
       wasm_on_message_complete: (p) => {
-        assert.strictEqual(currentParser.ptr, p)
+        assert(currentParser.ptr === p)
         return currentParser.onMessageComplete() || 0
       }
 
@@ -105806,9 +108933,17 @@ let currentBufferRef = null
 let currentBufferSize = 0
 let currentBufferPtr = null
 
-const TIMEOUT_HEADERS = 1
-const TIMEOUT_BODY = 2
-const TIMEOUT_IDLE = 3
+const USE_NATIVE_TIMER = 0
+const USE_FAST_TIMER = 1
+
+// Use fast timers for headers and body to take eventual event loop
+// latency into account.
+const TIMEOUT_HEADERS = 2 | USE_FAST_TIMER
+const TIMEOUT_BODY = 4 | USE_FAST_TIMER
+
+// Use native timers to ignore event loop latency for keep-alive
+// handling.
+const TIMEOUT_KEEP_ALIVE = 8 | USE_NATIVE_TIMER
 
 class Parser {
   constructor (client, socket, { exports }) {
@@ -105839,26 +108974,39 @@ class Parser {
     this.maxResponseSize = client[kMaxResponseSize]
   }
 
-  setTimeout (value, type) {
-    this.timeoutType = type
-    if (value !== this.timeoutValue) {
-      timers.clearTimeout(this.timeout)
-      if (value) {
-        this.timeout = timers.setTimeout(onParserTimeout, value, this)
-        // istanbul ignore else: only for jest
-        if (this.timeout.unref) {
-          this.timeout.unref()
-        }
-      } else {
+  setTimeout (delay, type) {
+    // If the existing timer and the new timer are of different timer type
+    // (fast or native) or have different delay, we need to clear the existing
+    // timer and set a new one.
+    if (
+      delay !== this.timeoutValue ||
+      (type & USE_FAST_TIMER) ^ (this.timeoutType & USE_FAST_TIMER)
+    ) {
+      // If a timeout is already set, clear it with clearTimeout of the fast
+      // timer implementation, as it can clear fast and native timers.
+      if (this.timeout) {
+        timers.clearTimeout(this.timeout)
         this.timeout = null
       }
-      this.timeoutValue = value
+
+      if (delay) {
+        if (type & USE_FAST_TIMER) {
+          this.timeout = timers.setFastTimeout(onParserTimeout, delay, new WeakRef(this))
+        } else {
+          this.timeout = setTimeout(onParserTimeout, delay, new WeakRef(this))
+          this.timeout.unref()
+        }
+      }
+
+      this.timeoutValue = delay
     } else if (this.timeout) {
       // istanbul ignore else: only for jest
       if (this.timeout.refresh) {
         this.timeout.refresh()
       }
     }
+
+    this.timeoutType = type
   }
 
   resume () {
@@ -105963,7 +109111,7 @@ class Parser {
     this.llhttp.llhttp_free(this.ptr)
     this.ptr = null
 
-    timers.clearTimeout(this.timeout)
+    this.timeout && timers.clearTimeout(this.timeout)
     this.timeout = null
     this.timeoutValue = null
     this.timeoutType = null
@@ -106038,20 +109186,19 @@ class Parser {
     const { upgrade, client, socket, headers, statusCode } = this
 
     assert(upgrade)
+    assert(client[kSocket] === socket)
+    assert(!socket.destroyed)
+    assert(!this.paused)
+    assert((headers.length & 1) === 0)
 
     const request = client[kQueue][client[kRunningIdx]]
     assert(request)
-
-    assert(!socket.destroyed)
-    assert(socket === client[kSocket])
-    assert(!this.paused)
     assert(request.upgrade || request.method === 'CONNECT')
 
     this.statusCode = null
     this.statusText = ''
     this.shouldKeepAlive = null
 
-    assert(this.headers.length % 2 === 0)
     this.headers = []
     this.headersSize = 0
 
@@ -106108,7 +109255,7 @@ class Parser {
       return -1
     }
 
-    assert.strictEqual(this.timeoutType, TIMEOUT_HEADERS)
+    assert(this.timeoutType === TIMEOUT_HEADERS)
 
     this.statusCode = statusCode
     this.shouldKeepAlive = (
@@ -106141,7 +109288,7 @@ class Parser {
       return 2
     }
 
-    assert(this.headers.length % 2 === 0)
+    assert((this.headers.length & 1) === 0)
     this.headers = []
     this.headersSize = 0
 
@@ -106198,7 +109345,7 @@ class Parser {
     const request = client[kQueue][client[kRunningIdx]]
     assert(request)
 
-    assert.strictEqual(this.timeoutType, TIMEOUT_BODY)
+    assert(this.timeoutType === TIMEOUT_BODY)
     if (this.timeout) {
       // istanbul ignore else: only for jest
       if (this.timeout.refresh) {
@@ -106231,10 +109378,11 @@ class Parser {
       return
     }
 
+    assert(statusCode >= 100)
+    assert((this.headers.length & 1) === 0)
+
     const request = client[kQueue][client[kRunningIdx]]
     assert(request)
-
-    assert(statusCode >= 100)
 
     this.statusCode = null
     this.statusText = ''
@@ -106243,7 +109391,6 @@ class Parser {
     this.keepAlive = ''
     this.connection = ''
 
-    assert(this.headers.length % 2 === 0)
     this.headers = []
     this.headersSize = 0
 
@@ -106262,7 +109409,7 @@ class Parser {
     client[kQueue][client[kRunningIdx]++] = null
 
     if (socket[kWriting]) {
-      assert.strictEqual(client[kRunning], 0)
+      assert(client[kRunning] === 0)
       // Response completed before request.
       util.destroy(socket, new InformationalError('reset'))
       return constants.ERROR.PAUSED
@@ -106288,19 +109435,19 @@ class Parser {
 }
 
 function onParserTimeout (parser) {
-  const { socket, timeoutType, client } = parser
+  const { socket, timeoutType, client, paused } = parser.deref()
 
   /* istanbul ignore else */
   if (timeoutType === TIMEOUT_HEADERS) {
     if (!socket[kWriting] || socket.writableNeedDrain || client[kRunning] > 1) {
-      assert(!parser.paused, 'cannot be paused while waiting for headers')
+      assert(!paused, 'cannot be paused while waiting for headers')
       util.destroy(socket, new HeadersTimeoutError())
     }
   } else if (timeoutType === TIMEOUT_BODY) {
-    if (!parser.paused) {
+    if (!paused) {
       util.destroy(socket, new BodyTimeoutError())
     }
-  } else if (timeoutType === TIMEOUT_IDLE) {
+  } else if (timeoutType === TIMEOUT_KEEP_ALIVE) {
     assert(client[kRunning] === 0 && client[kKeepAliveTimeoutValue])
     util.destroy(socket, new InformationalError('socket idle timeout'))
   }
@@ -106321,9 +109468,9 @@ async function connectH1 (client, socket) {
   socket[kParser] = new Parser(client, socket, llhttpInstance)
 
   addListener(socket, 'error', function (err) {
-    const parser = this[kParser]
-
     assert(err.code !== 'ERR_TLS_CERT_ALTNAME_INVALID')
+
+    const parser = this[kParser]
 
     // On Mac OS, we get an ECONNRESET even if there is a full body to be forwarded
     // to the user.
@@ -106478,8 +109625,8 @@ function resumeH1 (client) {
     }
 
     if (client[kSize] === 0) {
-      if (socket[kParser].timeoutType !== TIMEOUT_IDLE) {
-        socket[kParser].setTimeout(client[kKeepAliveTimeoutValue], TIMEOUT_IDLE)
+      if (socket[kParser].timeoutType !== TIMEOUT_KEEP_ALIVE) {
+        socket[kParser].setTimeout(client[kKeepAliveTimeoutValue], TIMEOUT_KEEP_ALIVE)
       }
     } else if (client[kRunning] > 0 && socket[kParser].statusCode < 200) {
       if (socket[kParser].timeoutType !== TIMEOUT_HEADERS) {
@@ -106515,12 +109662,15 @@ function writeH1 (client, request) {
   const expectsPayload = (
     method === 'PUT' ||
     method === 'POST' ||
-    method === 'PATCH'
+    method === 'PATCH' ||
+    method === 'QUERY' ||
+    method === 'PROPFIND' ||
+    method === 'PROPPATCH'
   )
 
   if (util.isFormDataLike(body)) {
     if (!extractBody) {
-      extractBody = (__nccwpck_require__(79178).extractBody)
+      extractBody = (__nccwpck_require__(60902).extractBody)
     }
 
     const [bodyStream, contentType] = extractBody(body)
@@ -106794,7 +109944,7 @@ function writeBuffer (abort, body, client, request, socket, contentLength, heade
       socket.uncork()
       request.onBodySent(body)
 
-      if (!expectsPayload) {
+      if (!expectsPayload && request.reset !== false) {
         socket[kReset] = true
       }
     }
@@ -106824,7 +109974,7 @@ async function writeBlob (abort, body, client, request, socket, contentLength, h
     request.onBodySent(buffer)
     request.onRequestSent()
 
-    if (!expectsPayload) {
+    if (!expectsPayload && request.reset !== false) {
       socket[kReset] = true
     }
 
@@ -106925,7 +110075,7 @@ class AsyncWriter {
     socket.cork()
 
     if (bytesWritten === 0) {
-      if (!expectsPayload) {
+      if (!expectsPayload && request.reset !== false) {
         socket[kReset] = true
       }
 
@@ -107024,7 +110174,7 @@ module.exports = connectH1
 
 /***/ }),
 
-/***/ 18390:
+/***/ 11714:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -107032,13 +110182,13 @@ module.exports = connectH1
 
 const assert = __nccwpck_require__(34589)
 const { pipeline } = __nccwpck_require__(57075)
-const util = __nccwpck_require__(50226)
+const util = __nccwpck_require__(28094)
 const {
   RequestContentLengthMismatchError,
   RequestAbortedError,
   SocketError,
   InformationalError
-} = __nccwpck_require__(96137)
+} = __nccwpck_require__(88909)
 const {
   kUrl,
   kReset,
@@ -107054,10 +110204,14 @@ const {
   kOnError,
   kMaxConcurrentStreams,
   kHTTP2Session,
-  kResume
-} = __nccwpck_require__(77817)
+  kResume,
+  kSize,
+  kHTTPContext
+} = __nccwpck_require__(81869)
 
 const kOpenStreams = Symbol('open streams')
+
+let extractBody
 
 // Experimental
 let h2ExperimentalWarned = false
@@ -107190,11 +110344,10 @@ async function connectH2 (client, socket) {
     version: 'h2',
     defaultPipelining: Infinity,
     write (...args) {
-      // TODO (fix): return
-      writeH2(client, ...args)
+      return writeH2(client, ...args)
     },
     resume () {
-
+      resumeH2(client)
     },
     destroy (err, callback) {
       if (closed) {
@@ -107209,6 +110362,20 @@ async function connectH2 (client, socket) {
     },
     busy () {
       return false
+    }
+  }
+}
+
+function resumeH2 (client) {
+  const socket = client[kSocket]
+
+  if (socket?.destroyed === false) {
+    if (client[kSize] === 0 && client[kMaxConcurrentStreams] === 0) {
+      socket.unref()
+      client[kHTTP2Session].unref()
+    } else {
+      socket.ref()
+      client[kHTTP2Session].ref()
     }
   }
 }
@@ -107240,17 +110407,33 @@ function onHttp2SessionEnd () {
  * along with the socket right away
  */
 function onHTTP2GoAway (code) {
-  const err = new RequestAbortedError(`HTTP/2: "GOAWAY" frame received with code ${code}`)
+  // We cannot recover, so best to close the session and the socket
+  const err = this[kError] || new SocketError(`HTTP/2: "GOAWAY" frame received with code ${code}`, util.getSocketInfo(this))
+  const client = this[kClient]
 
-  // We need to trigger the close cycle right away
-  // We need to destroy the session and the socket
-  // Requests should be failed with the error after the current one is handled
-  this[kSocket][kError] = err
-  this[kClient][kOnError](err)
+  client[kSocket] = null
+  client[kHTTPContext] = null
 
-  this.unref()
+  if (this[kHTTP2Session] != null) {
+    this[kHTTP2Session].destroy(err)
+    this[kHTTP2Session] = null
+  }
 
   util.destroy(this[kSocket], err)
+
+  // Fail head of pipeline.
+  if (client[kRunningIdx] < client[kQueue].length) {
+    const request = client[kQueue][client[kRunningIdx]]
+    client[kQueue][client[kRunningIdx]++] = null
+    util.errorRequest(client, request, err)
+    client[kPendingIdx] = client[kRunningIdx]
+  }
+
+  assert(client[kRunning] === 0)
+
+  client.emit('disconnect', client[kUrl], [client], err)
+
+  client[kResume]()
 }
 
 // https://www.rfc-editor.org/rfc/rfc7230#section-3.3.2
@@ -107260,14 +110443,11 @@ function shouldSendContentLength (method) {
 
 function writeH2 (client, request) {
   const session = client[kHTTP2Session]
-  const { body, method, path, host, upgrade, expectContinue, signal, headers: reqHeaders } = request
+  const { method, path, host, upgrade, expectContinue, signal, headers: reqHeaders } = request
+  let { body } = request
 
   if (upgrade) {
     util.errorRequest(client, request, new Error('Upgrade not supported for H2'))
-    return false
-  }
-
-  if (request.aborted) {
     return false
   }
 
@@ -107313,6 +110493,8 @@ function writeH2 (client, request) {
     // We do not destroy the socket as we can continue using the session
     // the stream get's destroyed and the session remains to create new streams
     util.destroy(body, err)
+    client[kQueue][client[kRunningIdx]++] = null
+    client[kResume]()
   }
 
   try {
@@ -107321,6 +110503,10 @@ function writeH2 (client, request) {
     request.onConnect(abort)
   } catch (err) {
     util.errorRequest(client, request, err)
+  }
+
+  if (request.aborted) {
+    return false
   }
 
   if (method === 'CONNECT') {
@@ -107334,10 +110520,12 @@ function writeH2 (client, request) {
     if (stream.id && !stream.pending) {
       request.onUpgrade(null, null, stream)
       ++session[kOpenStreams]
+      client[kQueue][client[kRunningIdx]++] = null
     } else {
       stream.once('ready', () => {
         request.onUpgrade(null, null, stream)
         ++session[kOpenStreams]
+        client[kQueue][client[kRunningIdx]++] = null
       })
     }
 
@@ -107376,6 +110564,16 @@ function writeH2 (client, request) {
   }
 
   let contentLength = util.bodyLength(body)
+
+  if (util.isFormDataLike(body)) {
+    extractBody ??= (__nccwpck_require__(60902).extractBody)
+
+    const [bodyStream, contentType] = extractBody(body)
+    headers['content-type'] = contentType
+
+    body = bodyStream.stream
+    contentLength = bodyStream.length
+  }
 
   if (contentLength == null) {
     contentLength = request.contentLength
@@ -107458,17 +110656,20 @@ function writeH2 (client, request) {
     // Present specially when using pipeline or stream
     if (stream.state?.state == null || stream.state.state < 6) {
       request.onComplete([])
-      return
     }
 
-    // Stream is closed or half-closed-remote (6), decrement counter and cleanup
-    // It does not have sense to continue working with the stream as we do not
-    // have yet RST_STREAM support on client-side
     if (session[kOpenStreams] === 0) {
+      // Stream is closed or half-closed-remote (6), decrement counter and cleanup
+      // It does not have sense to continue working with the stream as we do not
+      // have yet RST_STREAM support on client-side
+
       session.unref()
     }
 
     abort(new InformationalError('HTTP/2: stream half-closed (remote)'))
+    client[kQueue][client[kRunningIdx]++] = null
+    client[kPendingIdx] = client[kRunningIdx]
+    client[kResume]()
   })
 
   stream.once('close', () => {
@@ -107725,7 +110926,7 @@ module.exports = connectH2
 
 /***/ }),
 
-/***/ 23319:
+/***/ 29939:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -107736,16 +110937,16 @@ module.exports = connectH2
 const assert = __nccwpck_require__(34589)
 const net = __nccwpck_require__(77030)
 const http = __nccwpck_require__(37067)
-const util = __nccwpck_require__(50226)
-const { channels } = __nccwpck_require__(90188)
-const Request = __nccwpck_require__(64453)
-const DispatcherBase = __nccwpck_require__(42155)
+const util = __nccwpck_require__(28094)
+const { channels } = __nccwpck_require__(24240)
+const Request = __nccwpck_require__(9425)
+const DispatcherBase = __nccwpck_require__(25159)
 const {
   InvalidArgumentError,
   InformationalError,
   ClientDestroyedError
-} = __nccwpck_require__(96137)
-const buildConnector = __nccwpck_require__(49994)
+} = __nccwpck_require__(88909)
+const buildConnector = __nccwpck_require__(82734)
 const {
   kUrl,
   kServerName,
@@ -107787,12 +110988,14 @@ const {
   kHTTPContext,
   kMaxConcurrentStreams,
   kResume
-} = __nccwpck_require__(77817)
-const connectH1 = __nccwpck_require__(17888)
-const connectH2 = __nccwpck_require__(18390)
+} = __nccwpck_require__(81869)
+const connectH1 = __nccwpck_require__(9199)
+const connectH2 = __nccwpck_require__(11714)
 let deprecatedInterceptorWarned = false
 
 const kClosedResolve = Symbol('kClosedResolve')
+
+const noop = () => {}
 
 function getPipelining (client) {
   return client[kPipelining] ?? client[kHTTPContext]?.defaultPipelining ?? 1
@@ -108093,7 +111296,7 @@ class Client extends DispatcherBase {
   }
 }
 
-const createRedirectInterceptor = __nccwpck_require__(51426)
+const createRedirectInterceptor = __nccwpck_require__(35542)
 
 function onError (client, err) {
   if (
@@ -108116,6 +111319,10 @@ function onError (client, err) {
   }
 }
 
+/**
+ * @param {Client} client
+ * @returns
+ */
 async function connect (client) {
   assert(!client[kConnecting])
   assert(!client[kHTTPContext])
@@ -108169,7 +111376,7 @@ async function connect (client) {
     })
 
     if (client.destroyed) {
-      util.destroy(socket.on('error', () => {}), new ClientDestroyedError())
+      util.destroy(socket.on('error', noop), new ClientDestroyedError())
       return
     }
 
@@ -108180,7 +111387,7 @@ async function connect (client) {
         ? await connectH2(client, socket)
         : await connectH1(client, socket)
     } catch (err) {
-      socket.destroy().on('error', () => {})
+      socket.destroy().on('error', noop)
       throw err
     }
 
@@ -108349,19 +111556,19 @@ module.exports = Client
 
 /***/ }),
 
-/***/ 42155:
+/***/ 25159:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Dispatcher = __nccwpck_require__(5489)
+const Dispatcher = __nccwpck_require__(29877)
 const {
   ClientDestroyedError,
   ClientClosedError,
   InvalidArgumentError
-} = __nccwpck_require__(96137)
-const { kDestroy, kClose, kClosed, kDestroyed, kDispatch, kInterceptors } = __nccwpck_require__(77817)
+} = __nccwpck_require__(88909)
+const { kDestroy, kClose, kClosed, kDestroyed, kDispatch, kInterceptors } = __nccwpck_require__(81869)
 
 const kOnDestroyed = Symbol('onDestroyed')
 const kOnClosed = Symbol('onClosed')
@@ -108547,7 +111754,7 @@ module.exports = DispatcherBase
 
 /***/ }),
 
-/***/ 5489:
+/***/ 29877:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -108620,16 +111827,16 @@ module.exports = Dispatcher
 
 /***/ }),
 
-/***/ 50547:
+/***/ 28743:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const DispatcherBase = __nccwpck_require__(42155)
-const { kClose, kDestroy, kClosed, kDestroyed, kDispatch, kNoProxyAgent, kHttpProxyAgent, kHttpsProxyAgent } = __nccwpck_require__(77817)
-const ProxyAgent = __nccwpck_require__(30534)
-const Agent = __nccwpck_require__(97147)
+const DispatcherBase = __nccwpck_require__(25159)
+const { kClose, kDestroy, kClosed, kDestroyed, kDispatch, kNoProxyAgent, kHttpProxyAgent, kHttpsProxyAgent } = __nccwpck_require__(81869)
+const ProxyAgent = __nccwpck_require__(57322)
+const Agent = __nccwpck_require__(65103)
 
 const DEFAULT_PORTS = {
   'http:': 80,
@@ -108788,7 +111995,7 @@ module.exports = EnvHttpProxyAgent
 
 /***/ }),
 
-/***/ 61398:
+/***/ 92778:
 /***/ ((module) => {
 
 "use strict";
@@ -108913,16 +112120,16 @@ module.exports = class FixedQueue {
 
 /***/ }),
 
-/***/ 54582:
+/***/ 57218:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const DispatcherBase = __nccwpck_require__(42155)
-const FixedQueue = __nccwpck_require__(61398)
-const { kConnected, kSize, kRunning, kPending, kQueued, kBusy, kFree, kUrl, kClose, kDestroy, kDispatch } = __nccwpck_require__(77817)
-const PoolStats = __nccwpck_require__(18424)
+const DispatcherBase = __nccwpck_require__(25159)
+const FixedQueue = __nccwpck_require__(92778)
+const { kConnected, kSize, kRunning, kPending, kQueued, kBusy, kFree, kUrl, kClose, kDestroy, kDispatch } = __nccwpck_require__(81869)
+const PoolStats = __nccwpck_require__(99268)
 
 const kClients = Symbol('clients')
 const kNeedDrain = Symbol('needDrain')
@@ -109032,9 +112239,9 @@ class PoolBase extends DispatcherBase {
 
   async [kClose] () {
     if (this[kQueue].isEmpty()) {
-      return Promise.all(this[kClients].map(c => c.close()))
+      await Promise.all(this[kClients].map(c => c.close()))
     } else {
-      return new Promise((resolve) => {
+      await new Promise((resolve) => {
         this[kClosedResolve] = resolve
       })
     }
@@ -109049,7 +112256,7 @@ class PoolBase extends DispatcherBase {
       item.handler.onError(err)
     }
 
-    return Promise.all(this[kClients].map(c => c.destroy(err)))
+    await Promise.all(this[kClients].map(c => c.destroy(err)))
   }
 
   [kDispatch] (opts, handler) {
@@ -109115,10 +112322,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ 18424:
+/***/ 99268:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const { kFree, kConnected, kPending, kQueued, kRunning, kSize } = __nccwpck_require__(77817)
+const { kFree, kConnected, kPending, kQueued, kRunning, kSize } = __nccwpck_require__(81869)
 const kPool = Symbol('pool')
 
 class PoolStats {
@@ -109156,7 +112363,7 @@ module.exports = PoolStats
 
 /***/ }),
 
-/***/ 26694:
+/***/ 60618:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -109168,14 +112375,14 @@ const {
   kNeedDrain,
   kAddClient,
   kGetDispatcher
-} = __nccwpck_require__(54582)
-const Client = __nccwpck_require__(23319)
+} = __nccwpck_require__(57218)
+const Client = __nccwpck_require__(29939)
 const {
   InvalidArgumentError
-} = __nccwpck_require__(96137)
-const util = __nccwpck_require__(50226)
-const { kUrl, kInterceptors } = __nccwpck_require__(77817)
-const buildConnector = __nccwpck_require__(49994)
+} = __nccwpck_require__(88909)
+const util = __nccwpck_require__(28094)
+const { kUrl, kInterceptors } = __nccwpck_require__(81869)
+const buildConnector = __nccwpck_require__(82734)
 
 const kOptions = Symbol('options')
 const kConnections = Symbol('connections')
@@ -109257,19 +112464,19 @@ module.exports = Pool
 
 /***/ }),
 
-/***/ 30534:
+/***/ 57322:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { kProxy, kClose, kDestroy, kInterceptors } = __nccwpck_require__(77817)
+const { kProxy, kClose, kDestroy, kInterceptors } = __nccwpck_require__(81869)
 const { URL } = __nccwpck_require__(73136)
-const Agent = __nccwpck_require__(97147)
-const Pool = __nccwpck_require__(26694)
-const DispatcherBase = __nccwpck_require__(42155)
-const { InvalidArgumentError, RequestAbortedError, SecureProxyConnectionError } = __nccwpck_require__(96137)
-const buildConnector = __nccwpck_require__(49994)
+const Agent = __nccwpck_require__(65103)
+const Pool = __nccwpck_require__(60618)
+const DispatcherBase = __nccwpck_require__(25159)
+const { InvalidArgumentError, RequestAbortedError, SecureProxyConnectionError } = __nccwpck_require__(88909)
+const buildConnector = __nccwpck_require__(82734)
 
 const kAgent = Symbol('proxy agent')
 const kClient = Symbol('proxy client')
@@ -109285,6 +112492,8 @@ function defaultProtocolPort (protocol) {
 function defaultFactory (origin, opts) {
   return new Pool(origin, opts)
 }
+
+const noop = () => {}
 
 class ProxyAgent extends DispatcherBase {
   constructor (opts) {
@@ -109344,7 +112553,7 @@ class ProxyAgent extends DispatcherBase {
             servername: this[kProxyTls]?.servername || proxyHostname
           })
           if (statusCode !== 200) {
-            socket.on('error', () => {}).destroy()
+            socket.on('error', noop).destroy()
             callback(new RequestAbortedError(`Proxy response (${statusCode}) !== 200 when HTTP Tunneling`))
           }
           if (opts.protocol !== 'https:') {
@@ -109455,14 +112664,14 @@ module.exports = ProxyAgent
 
 /***/ }),
 
-/***/ 72720:
+/***/ 44700:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Dispatcher = __nccwpck_require__(5489)
-const RetryHandler = __nccwpck_require__(98542)
+const Dispatcher = __nccwpck_require__(29877)
+const RetryHandler = __nccwpck_require__(82442)
 
 class RetryAgent extends Dispatcher {
   #agent = null
@@ -109498,7 +112707,7 @@ module.exports = RetryAgent
 
 /***/ }),
 
-/***/ 2959:
+/***/ 68131:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -109507,8 +112716,8 @@ module.exports = RetryAgent
 // We include a version number for the Dispatcher API. In case of breaking changes,
 // this version number must be increased to avoid conflicts.
 const globalDispatcher = Symbol.for('undici.globalDispatcher.1')
-const { InvalidArgumentError } = __nccwpck_require__(96137)
-const Agent = __nccwpck_require__(97147)
+const { InvalidArgumentError } = __nccwpck_require__(88909)
+const Agent = __nccwpck_require__(65103)
 
 if (getGlobalDispatcher() === undefined) {
   setGlobalDispatcher(new Agent())
@@ -109538,7 +112747,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 17069:
+/***/ 9633:
 /***/ ((module) => {
 
 "use strict";
@@ -109590,16 +112799,16 @@ module.exports = class DecoratorHandler {
 
 /***/ }),
 
-/***/ 75608:
+/***/ 99596:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const util = __nccwpck_require__(50226)
-const { kBodyUsed } = __nccwpck_require__(77817)
+const util = __nccwpck_require__(28094)
+const { kBodyUsed } = __nccwpck_require__(81869)
 const assert = __nccwpck_require__(34589)
-const { InvalidArgumentError } = __nccwpck_require__(96137)
+const { InvalidArgumentError } = __nccwpck_require__(88909)
 const EE = __nccwpck_require__(78474)
 
 const redirectableStatusCodes = [300, 301, 302, 303, 307, 308]
@@ -109830,21 +113039,21 @@ module.exports = RedirectHandler
 
 /***/ }),
 
-/***/ 98542:
+/***/ 82442:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 const assert = __nccwpck_require__(34589)
 
-const { kRetryHandlerDefaultRetry } = __nccwpck_require__(77817)
-const { RequestRetryError } = __nccwpck_require__(96137)
+const { kRetryHandlerDefaultRetry } = __nccwpck_require__(81869)
+const { RequestRetryError } = __nccwpck_require__(88909)
 const {
   isDisturbed,
   parseHeaders,
   parseRangeHeader,
   wrapRequestBody
-} = __nccwpck_require__(50226)
+} = __nccwpck_require__(28094)
 
 function calculateRetryAfterHeader (retryAfter) {
   const current = Date.now()
@@ -110028,8 +113237,18 @@ class RetryHandler {
     if (this.resume != null) {
       this.resume = null
 
-      if (statusCode !== 206) {
-        return true
+      // Only Partial Content 206 supposed to provide Content-Range,
+      // any other status code that partially consumed the payload
+      // should not be retry because it would result in downstream
+      // wrongly concatanete multiple responses.
+      if (statusCode !== 206 && (this.start > 0 || statusCode !== 200)) {
+        this.abort(
+          new RequestRetryError('server does not support the range header and the payload was partially consumed', statusCode, {
+            headers,
+            data: { count: this.retryCount }
+          })
+        )
+        return false
       }
 
       const contentRange = parseRangeHeader(headers['content-range'])
@@ -110055,7 +113274,7 @@ class RetryHandler {
         return false
       }
 
-      const { start, size, end = size } = contentRange
+      const { start, size, end = size - 1 } = contentRange
 
       assert(this.start === start, 'content-range mismatch')
       assert(this.end == null || this.end === end, 'content-range mismatch')
@@ -110078,7 +113297,7 @@ class RetryHandler {
           )
         }
 
-        const { start, size, end = size } = range
+        const { start, size, end = size - 1 } = range
         assert(
           start != null && Number.isFinite(start),
           'content-range mismatch'
@@ -110092,7 +113311,7 @@ class RetryHandler {
       // We make our best to checkpoint the body for further range headers
       if (this.end == null) {
         const contentLength = headers['content-length']
-        this.end = contentLength != null ? Number(contentLength) : null
+        this.end = contentLength != null ? Number(contentLength) - 1 : null
       }
 
       assert(Number.isFinite(this.start))
@@ -110202,15 +113421,398 @@ module.exports = RetryHandler
 
 /***/ }),
 
-/***/ 74914:
+/***/ 64257:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+const { isIP } = __nccwpck_require__(77030)
+const { lookup } = __nccwpck_require__(40610)
+const DecoratorHandler = __nccwpck_require__(9633)
+const { InvalidArgumentError, InformationalError } = __nccwpck_require__(88909)
+const maxInt = Math.pow(2, 31) - 1
+
+class DNSInstance {
+  #maxTTL = 0
+  #maxItems = 0
+  #records = new Map()
+  dualStack = true
+  affinity = null
+  lookup = null
+  pick = null
+
+  constructor (opts) {
+    this.#maxTTL = opts.maxTTL
+    this.#maxItems = opts.maxItems
+    this.dualStack = opts.dualStack
+    this.affinity = opts.affinity
+    this.lookup = opts.lookup ?? this.#defaultLookup
+    this.pick = opts.pick ?? this.#defaultPick
+  }
+
+  get full () {
+    return this.#records.size === this.#maxItems
+  }
+
+  runLookup (origin, opts, cb) {
+    const ips = this.#records.get(origin.hostname)
+
+    // If full, we just return the origin
+    if (ips == null && this.full) {
+      cb(null, origin.origin)
+      return
+    }
+
+    const newOpts = {
+      affinity: this.affinity,
+      dualStack: this.dualStack,
+      lookup: this.lookup,
+      pick: this.pick,
+      ...opts.dns,
+      maxTTL: this.#maxTTL,
+      maxItems: this.#maxItems
+    }
+
+    // If no IPs we lookup
+    if (ips == null) {
+      this.lookup(origin, newOpts, (err, addresses) => {
+        if (err || addresses == null || addresses.length === 0) {
+          cb(err ?? new InformationalError('No DNS entries found'))
+          return
+        }
+
+        this.setRecords(origin, addresses)
+        const records = this.#records.get(origin.hostname)
+
+        const ip = this.pick(
+          origin,
+          records,
+          newOpts.affinity
+        )
+
+        let port
+        if (typeof ip.port === 'number') {
+          port = `:${ip.port}`
+        } else if (origin.port !== '') {
+          port = `:${origin.port}`
+        } else {
+          port = ''
+        }
+
+        cb(
+          null,
+          `${origin.protocol}//${
+            ip.family === 6 ? `[${ip.address}]` : ip.address
+          }${port}`
+        )
+      })
+    } else {
+      // If there's IPs we pick
+      const ip = this.pick(
+        origin,
+        ips,
+        newOpts.affinity
+      )
+
+      // If no IPs we lookup - deleting old records
+      if (ip == null) {
+        this.#records.delete(origin.hostname)
+        this.runLookup(origin, opts, cb)
+        return
+      }
+
+      let port
+      if (typeof ip.port === 'number') {
+        port = `:${ip.port}`
+      } else if (origin.port !== '') {
+        port = `:${origin.port}`
+      } else {
+        port = ''
+      }
+
+      cb(
+        null,
+        `${origin.protocol}//${
+          ip.family === 6 ? `[${ip.address}]` : ip.address
+        }${port}`
+      )
+    }
+  }
+
+  #defaultLookup (origin, opts, cb) {
+    lookup(
+      origin.hostname,
+      {
+        all: true,
+        family: this.dualStack === false ? this.affinity : 0,
+        order: 'ipv4first'
+      },
+      (err, addresses) => {
+        if (err) {
+          return cb(err)
+        }
+
+        const results = new Map()
+
+        for (const addr of addresses) {
+          // On linux we found duplicates, we attempt to remove them with
+          // the latest record
+          results.set(`${addr.address}:${addr.family}`, addr)
+        }
+
+        cb(null, results.values())
+      }
+    )
+  }
+
+  #defaultPick (origin, hostnameRecords, affinity) {
+    let ip = null
+    const { records, offset } = hostnameRecords
+
+    let family
+    if (this.dualStack) {
+      if (affinity == null) {
+        // Balance between ip families
+        if (offset == null || offset === maxInt) {
+          hostnameRecords.offset = 0
+          affinity = 4
+        } else {
+          hostnameRecords.offset++
+          affinity = (hostnameRecords.offset & 1) === 1 ? 6 : 4
+        }
+      }
+
+      if (records[affinity] != null && records[affinity].ips.length > 0) {
+        family = records[affinity]
+      } else {
+        family = records[affinity === 4 ? 6 : 4]
+      }
+    } else {
+      family = records[affinity]
+    }
+
+    // If no IPs we return null
+    if (family == null || family.ips.length === 0) {
+      return ip
+    }
+
+    if (family.offset == null || family.offset === maxInt) {
+      family.offset = 0
+    } else {
+      family.offset++
+    }
+
+    const position = family.offset % family.ips.length
+    ip = family.ips[position] ?? null
+
+    if (ip == null) {
+      return ip
+    }
+
+    if (Date.now() - ip.timestamp > ip.ttl) { // record TTL is already in ms
+      // We delete expired records
+      // It is possible that they have different TTL, so we manage them individually
+      family.ips.splice(position, 1)
+      return this.pick(origin, hostnameRecords, affinity)
+    }
+
+    return ip
+  }
+
+  setRecords (origin, addresses) {
+    const timestamp = Date.now()
+    const records = { records: { 4: null, 6: null } }
+    for (const record of addresses) {
+      record.timestamp = timestamp
+      if (typeof record.ttl === 'number') {
+        // The record TTL is expected to be in ms
+        record.ttl = Math.min(record.ttl, this.#maxTTL)
+      } else {
+        record.ttl = this.#maxTTL
+      }
+
+      const familyRecords = records.records[record.family] ?? { ips: [] }
+
+      familyRecords.ips.push(record)
+      records.records[record.family] = familyRecords
+    }
+
+    this.#records.set(origin.hostname, records)
+  }
+
+  getHandler (meta, opts) {
+    return new DNSDispatchHandler(this, meta, opts)
+  }
+}
+
+class DNSDispatchHandler extends DecoratorHandler {
+  #state = null
+  #opts = null
+  #dispatch = null
+  #handler = null
+  #origin = null
+
+  constructor (state, { origin, handler, dispatch }, opts) {
+    super(handler)
+    this.#origin = origin
+    this.#handler = handler
+    this.#opts = { ...opts }
+    this.#state = state
+    this.#dispatch = dispatch
+  }
+
+  onError (err) {
+    switch (err.code) {
+      case 'ETIMEDOUT':
+      case 'ECONNREFUSED': {
+        if (this.#state.dualStack) {
+          // We delete the record and retry
+          this.#state.runLookup(this.#origin, this.#opts, (err, newOrigin) => {
+            if (err) {
+              return this.#handler.onError(err)
+            }
+
+            const dispatchOpts = {
+              ...this.#opts,
+              origin: newOrigin
+            }
+
+            this.#dispatch(dispatchOpts, this)
+          })
+
+          // if dual-stack disabled, we error out
+          return
+        }
+
+        this.#handler.onError(err)
+        return
+      }
+      case 'ENOTFOUND':
+        this.#state.deleteRecord(this.#origin)
+      // eslint-disable-next-line no-fallthrough
+      default:
+        this.#handler.onError(err)
+        break
+    }
+  }
+}
+
+module.exports = interceptorOpts => {
+  if (
+    interceptorOpts?.maxTTL != null &&
+    (typeof interceptorOpts?.maxTTL !== 'number' || interceptorOpts?.maxTTL < 0)
+  ) {
+    throw new InvalidArgumentError('Invalid maxTTL. Must be a positive number')
+  }
+
+  if (
+    interceptorOpts?.maxItems != null &&
+    (typeof interceptorOpts?.maxItems !== 'number' ||
+      interceptorOpts?.maxItems < 1)
+  ) {
+    throw new InvalidArgumentError(
+      'Invalid maxItems. Must be a positive number and greater than zero'
+    )
+  }
+
+  if (
+    interceptorOpts?.affinity != null &&
+    interceptorOpts?.affinity !== 4 &&
+    interceptorOpts?.affinity !== 6
+  ) {
+    throw new InvalidArgumentError('Invalid affinity. Must be either 4 or 6')
+  }
+
+  if (
+    interceptorOpts?.dualStack != null &&
+    typeof interceptorOpts?.dualStack !== 'boolean'
+  ) {
+    throw new InvalidArgumentError('Invalid dualStack. Must be a boolean')
+  }
+
+  if (
+    interceptorOpts?.lookup != null &&
+    typeof interceptorOpts?.lookup !== 'function'
+  ) {
+    throw new InvalidArgumentError('Invalid lookup. Must be a function')
+  }
+
+  if (
+    interceptorOpts?.pick != null &&
+    typeof interceptorOpts?.pick !== 'function'
+  ) {
+    throw new InvalidArgumentError('Invalid pick. Must be a function')
+  }
+
+  const dualStack = interceptorOpts?.dualStack ?? true
+  let affinity
+  if (dualStack) {
+    affinity = interceptorOpts?.affinity ?? null
+  } else {
+    affinity = interceptorOpts?.affinity ?? 4
+  }
+
+  const opts = {
+    maxTTL: interceptorOpts?.maxTTL ?? 10e3, // Expressed in ms
+    lookup: interceptorOpts?.lookup ?? null,
+    pick: interceptorOpts?.pick ?? null,
+    dualStack,
+    affinity,
+    maxItems: interceptorOpts?.maxItems ?? Infinity
+  }
+
+  const instance = new DNSInstance(opts)
+
+  return dispatch => {
+    return function dnsInterceptor (origDispatchOpts, handler) {
+      const origin =
+        origDispatchOpts.origin.constructor === URL
+          ? origDispatchOpts.origin
+          : new URL(origDispatchOpts.origin)
+
+      if (isIP(origin.hostname) !== 0) {
+        return dispatch(origDispatchOpts, handler)
+      }
+
+      instance.runLookup(origin, origDispatchOpts, (err, newOrigin) => {
+        if (err) {
+          return handler.onError(err)
+        }
+
+        let dispatchOpts = null
+        dispatchOpts = {
+          ...origDispatchOpts,
+          servername: origin.hostname, // For SNI on TLS
+          origin: newOrigin,
+          headers: {
+            host: origin.hostname,
+            ...origDispatchOpts.headers
+          }
+        }
+
+        dispatch(
+          dispatchOpts,
+          instance.getHandler({ origin, dispatch, handler }, origDispatchOpts)
+        )
+      })
+
+      return true
+    }
+  }
+}
+
+
+/***/ }),
+
+/***/ 82822:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const util = __nccwpck_require__(50226)
-const { InvalidArgumentError, RequestAbortedError } = __nccwpck_require__(96137)
-const DecoratorHandler = __nccwpck_require__(17069)
+const util = __nccwpck_require__(28094)
+const { InvalidArgumentError, RequestAbortedError } = __nccwpck_require__(88909)
+const DecoratorHandler = __nccwpck_require__(9633)
 
 class DumpHandler extends DecoratorHandler {
   #maxSize = 1024 * 1024
@@ -110333,13 +113935,13 @@ module.exports = createDumpInterceptor
 
 /***/ }),
 
-/***/ 51426:
+/***/ 35542:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const RedirectHandler = __nccwpck_require__(75608)
+const RedirectHandler = __nccwpck_require__(99596)
 
 function createRedirectInterceptor ({ maxRedirections: defaultMaxRedirections }) {
   return (dispatch) => {
@@ -110362,12 +113964,12 @@ module.exports = createRedirectInterceptor
 
 /***/ }),
 
-/***/ 9076:
+/***/ 85872:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
-const RedirectHandler = __nccwpck_require__(75608)
+const RedirectHandler = __nccwpck_require__(99596)
 
 module.exports = opts => {
   const globalMaxRedirections = opts?.maxRedirections
@@ -110394,12 +113996,12 @@ module.exports = opts => {
 
 /***/ }),
 
-/***/ 8092:
+/***/ 50768:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
-const RetryHandler = __nccwpck_require__(98542)
+const RetryHandler = __nccwpck_require__(82442)
 
 module.exports = globalOpts => {
   return dispatch => {
@@ -110421,14 +114023,14 @@ module.exports = globalOpts => {
 
 /***/ }),
 
-/***/ 93482:
+/***/ 1150:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.SPECIAL_HEADERS = exports.HEADER_STATE = exports.MINOR = exports.MAJOR = exports.CONNECTION_TOKEN_CHARS = exports.HEADER_CHARS = exports.TOKEN = exports.STRICT_TOKEN = exports.HEX = exports.URL_CHAR = exports.STRICT_URL_CHAR = exports.USERINFO_CHARS = exports.MARK = exports.ALPHANUM = exports.NUM = exports.HEX_MAP = exports.NUM_MAP = exports.ALPHA = exports.FINISH = exports.H_METHOD_MAP = exports.METHOD_MAP = exports.METHODS_RTSP = exports.METHODS_ICE = exports.METHODS_HTTP = exports.METHODS = exports.LENIENT_FLAGS = exports.FLAGS = exports.TYPE = exports.ERROR = void 0;
-const utils_1 = __nccwpck_require__(59698);
+const utils_1 = __nccwpck_require__(15558);
 // C headers
 var ERROR;
 (function (ERROR) {
@@ -110706,7 +114308,7 @@ exports.SPECIAL_HEADERS = {
 
 /***/ }),
 
-/***/ 62064:
+/***/ 74628:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -110719,7 +114321,7 @@ module.exports = Buffer.from('AGFzbQEAAAABJwdgAX8Bf2ADf39/AX9gAX8AYAJ/fwBgBH9/f3
 
 /***/ }),
 
-/***/ 62808:
+/***/ 49852:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -110732,7 +114334,7 @@ module.exports = Buffer.from('AGFzbQEAAAABJwdgAX8Bf2ADf39/AX9gAX8AYAJ/fwBgBH9/f3
 
 /***/ }),
 
-/***/ 59698:
+/***/ 15558:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -110754,14 +114356,14 @@ exports.enumToMap = enumToMap;
 
 /***/ }),
 
-/***/ 16163:
+/***/ 41455:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { kClients } = __nccwpck_require__(77817)
-const Agent = __nccwpck_require__(97147)
+const { kClients } = __nccwpck_require__(81869)
+const Agent = __nccwpck_require__(65103)
 const {
   kAgent,
   kMockAgentSet,
@@ -110772,14 +114374,14 @@ const {
   kGetNetConnect,
   kOptions,
   kFactory
-} = __nccwpck_require__(28931)
-const MockClient = __nccwpck_require__(6479)
-const MockPool = __nccwpck_require__(27678)
-const { matchValue, buildMockOptions } = __nccwpck_require__(26679)
-const { InvalidArgumentError, UndiciError } = __nccwpck_require__(96137)
-const Dispatcher = __nccwpck_require__(5489)
-const Pluralizer = __nccwpck_require__(95439)
-const PendingInterceptorsFormatter = __nccwpck_require__(64284)
+} = __nccwpck_require__(72871)
+const MockClient = __nccwpck_require__(44179)
+const MockPool = __nccwpck_require__(87210)
+const { matchValue, buildMockOptions } = __nccwpck_require__(51163)
+const { InvalidArgumentError, UndiciError } = __nccwpck_require__(88909)
+const Dispatcher = __nccwpck_require__(29877)
+const Pluralizer = __nccwpck_require__(1539)
+const PendingInterceptorsFormatter = __nccwpck_require__(22120)
 
 class MockAgent extends Dispatcher {
   constructor (opts) {
@@ -110922,15 +114524,15 @@ module.exports = MockAgent
 
 /***/ }),
 
-/***/ 6479:
+/***/ 44179:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { promisify } = __nccwpck_require__(57975)
-const Client = __nccwpck_require__(23319)
-const { buildMockDispatch } = __nccwpck_require__(26679)
+const Client = __nccwpck_require__(29939)
+const { buildMockDispatch } = __nccwpck_require__(51163)
 const {
   kDispatches,
   kMockAgent,
@@ -110939,10 +114541,10 @@ const {
   kOrigin,
   kOriginalDispatch,
   kConnected
-} = __nccwpck_require__(28931)
-const { MockInterceptor } = __nccwpck_require__(70985)
-const Symbols = __nccwpck_require__(77817)
-const { InvalidArgumentError } = __nccwpck_require__(96137)
+} = __nccwpck_require__(72871)
+const { MockInterceptor } = __nccwpck_require__(1573)
+const Symbols = __nccwpck_require__(81869)
+const { InvalidArgumentError } = __nccwpck_require__(88909)
 
 /**
  * MockClient provides an API that extends the Client to influence the mockDispatches.
@@ -110989,13 +114591,13 @@ module.exports = MockClient
 
 /***/ }),
 
-/***/ 59211:
+/***/ 80431:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { UndiciError } = __nccwpck_require__(96137)
+const { UndiciError } = __nccwpck_require__(88909)
 
 class MockNotMatchedError extends UndiciError {
   constructor (message) {
@@ -111014,13 +114616,13 @@ module.exports = {
 
 /***/ }),
 
-/***/ 70985:
+/***/ 1573:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { getResponseData, buildKey, addMockDispatch } = __nccwpck_require__(26679)
+const { getResponseData, buildKey, addMockDispatch } = __nccwpck_require__(51163)
 const {
   kDispatches,
   kDispatchKey,
@@ -111028,9 +114630,9 @@ const {
   kDefaultTrailers,
   kContentLength,
   kMockDispatch
-} = __nccwpck_require__(28931)
-const { InvalidArgumentError } = __nccwpck_require__(96137)
-const { buildURL } = __nccwpck_require__(50226)
+} = __nccwpck_require__(72871)
+const { InvalidArgumentError } = __nccwpck_require__(88909)
+const { buildURL } = __nccwpck_require__(28094)
 
 /**
  * Defines the scope API for an interceptor reply
@@ -111229,15 +114831,15 @@ module.exports.MockScope = MockScope
 
 /***/ }),
 
-/***/ 27678:
+/***/ 87210:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { promisify } = __nccwpck_require__(57975)
-const Pool = __nccwpck_require__(26694)
-const { buildMockDispatch } = __nccwpck_require__(26679)
+const Pool = __nccwpck_require__(60618)
+const { buildMockDispatch } = __nccwpck_require__(51163)
 const {
   kDispatches,
   kMockAgent,
@@ -111246,10 +114848,10 @@ const {
   kOrigin,
   kOriginalDispatch,
   kConnected
-} = __nccwpck_require__(28931)
-const { MockInterceptor } = __nccwpck_require__(70985)
-const Symbols = __nccwpck_require__(77817)
-const { InvalidArgumentError } = __nccwpck_require__(96137)
+} = __nccwpck_require__(72871)
+const { MockInterceptor } = __nccwpck_require__(1573)
+const Symbols = __nccwpck_require__(81869)
+const { InvalidArgumentError } = __nccwpck_require__(88909)
 
 /**
  * MockPool provides an API that extends the Pool to influence the mockDispatches.
@@ -111296,7 +114898,7 @@ module.exports = MockPool
 
 /***/ }),
 
-/***/ 28931:
+/***/ 72871:
 /***/ ((module) => {
 
 "use strict";
@@ -111327,21 +114929,21 @@ module.exports = {
 
 /***/ }),
 
-/***/ 26679:
+/***/ 51163:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { MockNotMatchedError } = __nccwpck_require__(59211)
+const { MockNotMatchedError } = __nccwpck_require__(80431)
 const {
   kDispatches,
   kMockAgent,
   kOriginalDispatch,
   kOrigin,
   kGetNetConnect
-} = __nccwpck_require__(28931)
-const { buildURL } = __nccwpck_require__(50226)
+} = __nccwpck_require__(72871)
+const { buildURL } = __nccwpck_require__(28094)
 const { STATUS_CODES } = __nccwpck_require__(37067)
 const {
   types: {
@@ -111450,6 +115052,10 @@ function matchKey (mockDispatch, { path, method, body, headers }) {
 
 function getResponseData (data) {
   if (Buffer.isBuffer(data)) {
+    return data
+  } else if (data instanceof Uint8Array) {
+    return data
+  } else if (data instanceof ArrayBuffer) {
     return data
   } else if (typeof data === 'object') {
     return JSON.stringify(data)
@@ -111698,7 +115304,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 64284:
+/***/ 22120:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -111749,7 +115355,7 @@ module.exports = class PendingInterceptorsFormatter {
 
 /***/ }),
 
-/***/ 95439:
+/***/ 1539:
 /***/ ((module) => {
 
 "use strict";
@@ -111786,128 +115392,452 @@ module.exports = class Pluralizer {
 
 /***/ }),
 
-/***/ 15425:
+/***/ 69381:
 /***/ ((module) => {
 
 "use strict";
 
 
-const TICK_MS = 499
+/**
+ * This module offers an optimized timer implementation designed for scenarios
+ * where high precision is not critical.
+ *
+ * The timer achieves faster performance by using a low-resolution approach,
+ * with an accuracy target of within 500ms. This makes it particularly useful
+ * for timers with delays of 1 second or more, where exact timing is less
+ * crucial.
+ *
+ * It's important to note that Node.js timers are inherently imprecise, as
+ * delays can occur due to the event loop being blocked by other operations.
+ * Consequently, timers may trigger later than their scheduled time.
+ */
 
-let fastNow = Date.now()
+/**
+ * The fastNow variable contains the internal fast timer clock value.
+ *
+ * @type {number}
+ */
+let fastNow = 0
+
+/**
+ * RESOLUTION_MS represents the target resolution time in milliseconds.
+ *
+ * @type {number}
+ * @default 1000
+ */
+const RESOLUTION_MS = 1e3
+
+/**
+ * TICK_MS defines the desired interval in milliseconds between each tick.
+ * The target value is set to half the resolution time, minus 1 ms, to account
+ * for potential event loop overhead.
+ *
+ * @type {number}
+ * @default 499
+ */
+const TICK_MS = (RESOLUTION_MS >> 1) - 1
+
+/**
+ * fastNowTimeout is a Node.js timer used to manage and process
+ * the FastTimers stored in the `fastTimers` array.
+ *
+ * @type {NodeJS.Timeout}
+ */
 let fastNowTimeout
 
+/**
+ * The kFastTimer symbol is used to identify FastTimer instances.
+ *
+ * @type {Symbol}
+ */
+const kFastTimer = Symbol('kFastTimer')
+
+/**
+ * The fastTimers array contains all active FastTimers.
+ *
+ * @type {FastTimer[]}
+ */
 const fastTimers = []
 
-function onTimeout () {
-  fastNow = Date.now()
+/**
+ * These constants represent the various states of a FastTimer.
+ */
 
-  let len = fastTimers.length
+/**
+ * The `NOT_IN_LIST` constant indicates that the FastTimer is not included
+ * in the `fastTimers` array. Timers with this status will not be processed
+ * during the next tick by the `onTick` function.
+ *
+ * A FastTimer can be re-added to the `fastTimers` array by invoking the
+ * `refresh` method on the FastTimer instance.
+ *
+ * @type {-2}
+ */
+const NOT_IN_LIST = -2
+
+/**
+ * The `TO_BE_CLEARED` constant indicates that the FastTimer is scheduled
+ * for removal from the `fastTimers` array. A FastTimer in this state will
+ * be removed in the next tick by the `onTick` function and will no longer
+ * be processed.
+ *
+ * This status is also set when the `clear` method is called on the FastTimer instance.
+ *
+ * @type {-1}
+ */
+const TO_BE_CLEARED = -1
+
+/**
+ * The `PENDING` constant signifies that the FastTimer is awaiting processing
+ * in the next tick by the `onTick` function. Timers with this status will have
+ * their `_idleStart` value set and their status updated to `ACTIVE` in the next tick.
+ *
+ * @type {0}
+ */
+const PENDING = 0
+
+/**
+ * The `ACTIVE` constant indicates that the FastTimer is active and waiting
+ * for its timer to expire. During the next tick, the `onTick` function will
+ * check if the timer has expired, and if so, it will execute the associated callback.
+ *
+ * @type {1}
+ */
+const ACTIVE = 1
+
+/**
+ * The onTick function processes the fastTimers array.
+ *
+ * @returns {void}
+ */
+function onTick () {
+  /**
+   * Increment the fastNow value by the TICK_MS value, despite the actual time
+   * that has passed since the last tick. This approach ensures independence
+   * from the system clock and delays caused by a blocked event loop.
+   *
+   * @type {number}
+   */
+  fastNow += TICK_MS
+
+  /**
+   * The `idx` variable is used to iterate over the `fastTimers` array.
+   * Expired timers are removed by replacing them with the last element in the array.
+   * Consequently, `idx` is only incremented when the current element is not removed.
+   *
+   * @type {number}
+   */
   let idx = 0
+
+  /**
+   * The len variable will contain the length of the fastTimers array
+   * and will be decremented when a FastTimer should be removed from the
+   * fastTimers array.
+   *
+   * @type {number}
+   */
+  let len = fastTimers.length
+
   while (idx < len) {
+    /**
+     * @type {FastTimer}
+     */
     const timer = fastTimers[idx]
 
-    if (timer.state === 0) {
-      timer.state = fastNow + timer.delay - TICK_MS
-    } else if (timer.state > 0 && fastNow >= timer.state) {
-      timer.state = -1
-      timer.callback(timer.opaque)
+    // If the timer is in the ACTIVE state and the timer has expired, it will
+    // be processed in the next tick.
+    if (timer._state === PENDING) {
+      // Set the _idleStart value to the fastNow value minus the TICK_MS value
+      // to account for the time the timer was in the PENDING state.
+      timer._idleStart = fastNow - TICK_MS
+      timer._state = ACTIVE
+    } else if (
+      timer._state === ACTIVE &&
+      fastNow >= timer._idleStart + timer._idleTimeout
+    ) {
+      timer._state = TO_BE_CLEARED
+      timer._idleStart = -1
+      timer._onTimeout(timer._timerArg)
     }
 
-    if (timer.state === -1) {
-      timer.state = -2
-      if (idx !== len - 1) {
-        fastTimers[idx] = fastTimers.pop()
-      } else {
-        fastTimers.pop()
+    if (timer._state === TO_BE_CLEARED) {
+      timer._state = NOT_IN_LIST
+
+      // Move the last element to the current index and decrement len if it is
+      // not the only element in the array.
+      if (--len !== 0) {
+        fastTimers[idx] = fastTimers[len]
       }
-      len -= 1
     } else {
-      idx += 1
+      ++idx
     }
   }
 
-  if (fastTimers.length > 0) {
+  // Set the length of the fastTimers array to the new length and thus
+  // removing the excess FastTimers elements from the array.
+  fastTimers.length = len
+
+  // If there are still active FastTimers in the array, refresh the Timer.
+  // If there are no active FastTimers, the timer will be refreshed again
+  // when a new FastTimer is instantiated.
+  if (fastTimers.length !== 0) {
     refreshTimeout()
   }
 }
 
 function refreshTimeout () {
-  if (fastNowTimeout?.refresh) {
+  // If the fastNowTimeout is already set, refresh it.
+  if (fastNowTimeout) {
     fastNowTimeout.refresh()
+  // fastNowTimeout is not instantiated yet, create a new Timer.
   } else {
     clearTimeout(fastNowTimeout)
-    fastNowTimeout = setTimeout(onTimeout, TICK_MS)
+    fastNowTimeout = setTimeout(onTick, TICK_MS)
+
+    // If the Timer has an unref method, call it to allow the process to exit if
+    // there are no other active handles.
     if (fastNowTimeout.unref) {
       fastNowTimeout.unref()
     }
   }
 }
 
-class Timeout {
-  constructor (callback, delay, opaque) {
-    this.callback = callback
-    this.delay = delay
-    this.opaque = opaque
+/**
+ * The `FastTimer` class is a data structure designed to store and manage
+ * timer information.
+ */
+class FastTimer {
+  [kFastTimer] = true
 
-    //  -2 not in timer list
-    //  -1 in timer list but inactive
-    //   0 in timer list waiting for time
-    // > 0 in timer list waiting for time to expire
-    this.state = -2
+  /**
+   * The state of the timer, which can be one of the following:
+   * - NOT_IN_LIST (-2)
+   * - TO_BE_CLEARED (-1)
+   * - PENDING (0)
+   * - ACTIVE (1)
+   *
+   * @type {-2|-1|0|1}
+   * @private
+   */
+  _state = NOT_IN_LIST
+
+  /**
+   * The number of milliseconds to wait before calling the callback.
+   *
+   * @type {number}
+   * @private
+   */
+  _idleTimeout = -1
+
+  /**
+   * The time in milliseconds when the timer was started. This value is used to
+   * calculate when the timer should expire.
+   *
+   * @type {number}
+   * @default -1
+   * @private
+   */
+  _idleStart = -1
+
+  /**
+   * The function to be executed when the timer expires.
+   * @type {Function}
+   * @private
+   */
+  _onTimeout
+
+  /**
+   * The argument to be passed to the callback when the timer expires.
+   *
+   * @type {*}
+   * @private
+   */
+  _timerArg
+
+  /**
+   * @constructor
+   * @param {Function} callback A function to be executed after the timer
+   * expires.
+   * @param {number} delay The time, in milliseconds that the timer should wait
+   * before the specified function or code is executed.
+   * @param {*} arg
+   */
+  constructor (callback, delay, arg) {
+    this._onTimeout = callback
+    this._idleTimeout = delay
+    this._timerArg = arg
 
     this.refresh()
   }
 
+  /**
+   * Sets the timer's start time to the current time, and reschedules the timer
+   * to call its callback at the previously specified duration adjusted to the
+   * current time.
+   * Using this on a timer that has already called its callback will reactivate
+   * the timer.
+   *
+   * @returns {void}
+   */
   refresh () {
-    if (this.state === -2) {
+    // In the special case that the timer is not in the list of active timers,
+    // add it back to the array to be processed in the next tick by the onTick
+    // function.
+    if (this._state === NOT_IN_LIST) {
       fastTimers.push(this)
-      if (!fastNowTimeout || fastTimers.length === 1) {
-        refreshTimeout()
-      }
     }
 
-    this.state = 0
+    // If the timer is the only active timer, refresh the fastNowTimeout for
+    // better resolution.
+    if (!fastNowTimeout || fastTimers.length === 1) {
+      refreshTimeout()
+    }
+
+    // Setting the state to PENDING will cause the timer to be reset in the
+    // next tick by the onTick function.
+    this._state = PENDING
   }
 
+  /**
+   * The `clear` method cancels the timer, preventing it from executing.
+   *
+   * @returns {void}
+   * @private
+   */
   clear () {
-    this.state = -1
+    // Set the state to TO_BE_CLEARED to mark the timer for removal in the next
+    // tick by the onTick function.
+    this._state = TO_BE_CLEARED
+
+    // Reset the _idleStart value to -1 to indicate that the timer is no longer
+    // active.
+    this._idleStart = -1
   }
 }
 
+/**
+ * This module exports a setTimeout and clearTimeout function that can be
+ * used as a drop-in replacement for the native functions.
+ */
 module.exports = {
-  setTimeout (callback, delay, opaque) {
-    return delay <= 1e3
-      ? setTimeout(callback, delay, opaque)
-      : new Timeout(callback, delay, opaque)
+  /**
+   * The setTimeout() method sets a timer which executes a function once the
+   * timer expires.
+   * @param {Function} callback A function to be executed after the timer
+   * expires.
+   * @param {number} delay The time, in milliseconds that the timer should
+   * wait before the specified function or code is executed.
+   * @param {*} [arg] An optional argument to be passed to the callback function
+   * when the timer expires.
+   * @returns {NodeJS.Timeout|FastTimer}
+   */
+  setTimeout (callback, delay, arg) {
+    // If the delay is less than or equal to the RESOLUTION_MS value return a
+    // native Node.js Timer instance.
+    return delay <= RESOLUTION_MS
+      ? setTimeout(callback, delay, arg)
+      : new FastTimer(callback, delay, arg)
   },
+  /**
+   * The clearTimeout method cancels an instantiated Timer previously created
+   * by calling setTimeout.
+   *
+   * @param {NodeJS.Timeout|FastTimer} timeout
+   */
   clearTimeout (timeout) {
-    if (timeout instanceof Timeout) {
+    // If the timeout is a FastTimer, call its own clear method.
+    if (timeout[kFastTimer]) {
+      /**
+       * @type {FastTimer}
+       */
       timeout.clear()
+      // Otherwise it is an instance of a native NodeJS.Timeout, so call the
+      // Node.js native clearTimeout function.
     } else {
       clearTimeout(timeout)
     }
-  }
+  },
+  /**
+   * The setFastTimeout() method sets a fastTimer which executes a function once
+   * the timer expires.
+   * @param {Function} callback A function to be executed after the timer
+   * expires.
+   * @param {number} delay The time, in milliseconds that the timer should
+   * wait before the specified function or code is executed.
+   * @param {*} [arg] An optional argument to be passed to the callback function
+   * when the timer expires.
+   * @returns {FastTimer}
+   */
+  setFastTimeout (callback, delay, arg) {
+    return new FastTimer(callback, delay, arg)
+  },
+  /**
+   * The clearTimeout method cancels an instantiated FastTimer previously
+   * created by calling setFastTimeout.
+   *
+   * @param {FastTimer} timeout
+   */
+  clearFastTimeout (timeout) {
+    timeout.clear()
+  },
+  /**
+   * The now method returns the value of the internal fast timer clock.
+   *
+   * @returns {number}
+   */
+  now () {
+    return fastNow
+  },
+  /**
+   * Trigger the onTick function to process the fastTimers array.
+   * Exported for testing purposes only.
+   * Marking as deprecated to discourage any use outside of testing.
+   * @deprecated
+   * @param {number} [delay=0] The delay in milliseconds to add to the now value.
+   */
+  tick (delay = 0) {
+    fastNow += delay - RESOLUTION_MS + 1
+    onTick()
+    onTick()
+  },
+  /**
+   * Reset FastTimers.
+   * Exported for testing purposes only.
+   * Marking as deprecated to discourage any use outside of testing.
+   * @deprecated
+   */
+  reset () {
+    fastNow = 0
+    fastTimers.length = 0
+    clearTimeout(fastNowTimeout)
+    fastNowTimeout = null
+  },
+  /**
+   * Exporting for testing purposes only.
+   * Marking as deprecated to discourage any use outside of testing.
+   * @deprecated
+   */
+  kFastTimer
 }
 
 
 /***/ }),
 
-/***/ 66380:
+/***/ 5544:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { kConstruct } = __nccwpck_require__(35239)
-const { urlEquals, getFieldValues } = __nccwpck_require__(60500)
-const { kEnumerableProperty, isDisturbed } = __nccwpck_require__(50226)
-const { webidl } = __nccwpck_require__(67227)
-const { Response, cloneResponse, fromInnerResponse } = __nccwpck_require__(46717)
-const { Request, fromInnerRequest } = __nccwpck_require__(13241)
-const { kState } = __nccwpck_require__(25621)
-const { fetching } = __nccwpck_require__(75988)
-const { urlIsHttpHttpsScheme, createDeferredPromise, readAllBytes } = __nccwpck_require__(52118)
+const { kConstruct } = __nccwpck_require__(73043)
+const { urlEquals, getFieldValues } = __nccwpck_require__(47032)
+const { kEnumerableProperty, isDisturbed } = __nccwpck_require__(28094)
+const { webidl } = __nccwpck_require__(67335)
+const { Response, cloneResponse, fromInnerResponse } = __nccwpck_require__(51657)
+const { Request, fromInnerRequest } = __nccwpck_require__(57341)
+const { kState } = __nccwpck_require__(72977)
+const { fetching } = __nccwpck_require__(95504)
+const { urlIsHttpHttpsScheme, createDeferredPromise, readAllBytes } = __nccwpck_require__(57562)
 const assert = __nccwpck_require__(34589)
 
 /**
@@ -111936,6 +115866,7 @@ class Cache {
       webidl.illegalConstructor()
     }
 
+    webidl.util.markAsUncloneable(this)
     this.#relevantRequestResponseList = arguments[1]
   }
 
@@ -112759,16 +116690,16 @@ module.exports = {
 
 /***/ }),
 
-/***/ 57171:
+/***/ 24391:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { kConstruct } = __nccwpck_require__(35239)
-const { Cache } = __nccwpck_require__(66380)
-const { webidl } = __nccwpck_require__(67227)
-const { kEnumerableProperty } = __nccwpck_require__(50226)
+const { kConstruct } = __nccwpck_require__(73043)
+const { Cache } = __nccwpck_require__(5544)
+const { webidl } = __nccwpck_require__(67335)
+const { kEnumerableProperty } = __nccwpck_require__(28094)
 
 class CacheStorage {
   /**
@@ -112781,6 +116712,8 @@ class CacheStorage {
     if (arguments[0] !== kConstruct) {
       webidl.illegalConstructor()
     }
+
+    webidl.util.markAsUncloneable(this)
   }
 
   async match (request, options = {}) {
@@ -112917,28 +116850,28 @@ module.exports = {
 
 /***/ }),
 
-/***/ 35239:
+/***/ 73043:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 module.exports = {
-  kConstruct: (__nccwpck_require__(77817).kConstruct)
+  kConstruct: (__nccwpck_require__(81869).kConstruct)
 }
 
 
 /***/ }),
 
-/***/ 60500:
+/***/ 47032:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const assert = __nccwpck_require__(34589)
-const { URLSerializer } = __nccwpck_require__(18806)
-const { isValidHeaderName } = __nccwpck_require__(52118)
+const { URLSerializer } = __nccwpck_require__(73290)
+const { isValidHeaderName } = __nccwpck_require__(57562)
 
 /**
  * @see https://url.spec.whatwg.org/#concept-url-equals
@@ -112983,7 +116916,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 43466:
+/***/ 3462:
 /***/ ((module) => {
 
 "use strict";
@@ -113003,16 +116936,16 @@ module.exports = {
 
 /***/ }),
 
-/***/ 31015:
+/***/ 58723:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { parseSetCookie } = __nccwpck_require__(84992)
-const { stringify } = __nccwpck_require__(79847)
-const { webidl } = __nccwpck_require__(67227)
-const { Headers } = __nccwpck_require__(10422)
+const { parseSetCookie } = __nccwpck_require__(3900)
+const { stringify } = __nccwpck_require__(21067)
+const { webidl } = __nccwpck_require__(67335)
+const { Headers } = __nccwpck_require__(90834)
 
 /**
  * @typedef {Object} Cookie
@@ -113195,15 +117128,15 @@ module.exports = {
 
 /***/ }),
 
-/***/ 84992:
+/***/ 3900:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { maxNameValuePairSize, maxAttributeValueSize } = __nccwpck_require__(43466)
-const { isCTLExcludingHtab } = __nccwpck_require__(79847)
-const { collectASequenceOfCodePointsFast } = __nccwpck_require__(18806)
+const { maxNameValuePairSize, maxAttributeValueSize } = __nccwpck_require__(3462)
+const { isCTLExcludingHtab } = __nccwpck_require__(21067)
+const { collectASequenceOfCodePointsFast } = __nccwpck_require__(73290)
 const assert = __nccwpck_require__(34589)
 
 /**
@@ -113520,7 +117453,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 79847:
+/***/ 21067:
 /***/ ((module) => {
 
 "use strict";
@@ -113810,13 +117743,13 @@ module.exports = {
 
 /***/ }),
 
-/***/ 46741:
+/***/ 1657:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 const { Transform } = __nccwpck_require__(57075)
-const { isASCIINumber, isValidLastEventId } = __nccwpck_require__(15689)
+const { isASCIINumber, isValidLastEventId } = __nccwpck_require__(12005)
 
 /**
  * @type {number[]} BOM
@@ -114216,23 +118149,23 @@ module.exports = {
 
 /***/ }),
 
-/***/ 31952:
+/***/ 95628:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { pipeline } = __nccwpck_require__(57075)
-const { fetching } = __nccwpck_require__(75988)
-const { makeRequest } = __nccwpck_require__(13241)
-const { webidl } = __nccwpck_require__(67227)
-const { EventSourceStream } = __nccwpck_require__(46741)
-const { parseMIMEType } = __nccwpck_require__(18806)
-const { createFastMessageEvent } = __nccwpck_require__(7270)
-const { isNetworkError } = __nccwpck_require__(46717)
-const { delay } = __nccwpck_require__(15689)
-const { kEnumerableProperty } = __nccwpck_require__(50226)
-const { environmentSettingsObject } = __nccwpck_require__(52118)
+const { fetching } = __nccwpck_require__(95504)
+const { makeRequest } = __nccwpck_require__(57341)
+const { webidl } = __nccwpck_require__(67335)
+const { EventSourceStream } = __nccwpck_require__(1657)
+const { parseMIMEType } = __nccwpck_require__(73290)
+const { createFastMessageEvent } = __nccwpck_require__(29498)
+const { isNetworkError } = __nccwpck_require__(51657)
+const { delay } = __nccwpck_require__(12005)
+const { kEnumerableProperty } = __nccwpck_require__(28094)
+const { environmentSettingsObject } = __nccwpck_require__(57562)
 
 let experimentalWarned = false
 
@@ -114326,6 +118259,8 @@ class EventSource extends EventTarget {
   constructor (url, eventSourceInitDict = {}) {
     // 1. Let ev be a new EventSource object.
     super()
+
+    webidl.util.markAsUncloneable(this)
 
     const prefix = 'EventSource constructor'
     webidl.argumentLengthCheck(arguments, 1, prefix)
@@ -114702,7 +118637,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 15689:
+/***/ 12005:
 /***/ ((module) => {
 
 "use strict";
@@ -114747,13 +118682,13 @@ module.exports = {
 
 /***/ }),
 
-/***/ 79178:
+/***/ 60902:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const util = __nccwpck_require__(50226)
+const util = __nccwpck_require__(28094)
 const {
   ReadableStreamFrom,
   isBlobLike,
@@ -114763,16 +118698,24 @@ const {
   fullyReadBody,
   extractMimeType,
   utf8DecodeBytes
-} = __nccwpck_require__(52118)
-const { FormData } = __nccwpck_require__(4192)
-const { kState } = __nccwpck_require__(25621)
-const { webidl } = __nccwpck_require__(67227)
+} = __nccwpck_require__(57562)
+const { FormData } = __nccwpck_require__(89828)
+const { kState } = __nccwpck_require__(72977)
+const { webidl } = __nccwpck_require__(67335)
 const { Blob } = __nccwpck_require__(4573)
 const assert = __nccwpck_require__(34589)
 const { isErrored, isDisturbed } = __nccwpck_require__(57075)
 const { isArrayBuffer } = __nccwpck_require__(73429)
-const { serializeAMimeType } = __nccwpck_require__(18806)
-const { multipartFormDataParser } = __nccwpck_require__(69150)
+const { serializeAMimeType } = __nccwpck_require__(73290)
+const { multipartFormDataParser } = __nccwpck_require__(36906)
+let random
+
+try {
+  const crypto = __nccwpck_require__(77598)
+  random = (max) => crypto.randomInt(0, max)
+} catch {
+  random = (max) => Math.floor(Math.random(max))
+}
 
 const textEncoder = new TextEncoder()
 function noop () {}
@@ -114866,7 +118809,7 @@ function extractBody (object, keepalive = false) {
     // Set source to a copy of the bytes held by object.
     source = new Uint8Array(object.buffer.slice(object.byteOffset, object.byteOffset + object.byteLength))
   } else if (util.isFormDataLike(object)) {
-    const boundary = `----formdata-undici-0${`${Math.floor(Math.random() * 1e11)}`.padStart(11, '0')}`
+    const boundary = `----formdata-undici-0${`${random(1e11)}`.padStart(11, '0')}`
     const prefix = `--${boundary}\r\nContent-Disposition: form-data`
 
     /*! formdata-polyfill. MIT License. Jimmy Wärting <https://jimmy.warting.se/opensource> */
@@ -115277,34 +119220,37 @@ module.exports = {
 
 /***/ }),
 
-/***/ 66041:
+/***/ 31845:
 /***/ ((module) => {
 
 "use strict";
 
 
-const corsSafeListedMethods = ['GET', 'HEAD', 'POST']
+const corsSafeListedMethods = /** @type {const} */ (['GET', 'HEAD', 'POST'])
 const corsSafeListedMethodsSet = new Set(corsSafeListedMethods)
 
-const nullBodyStatus = [101, 204, 205, 304]
+const nullBodyStatus = /** @type {const} */ ([101, 204, 205, 304])
 
-const redirectStatus = [301, 302, 303, 307, 308]
+const redirectStatus = /** @type {const} */ ([301, 302, 303, 307, 308])
 const redirectStatusSet = new Set(redirectStatus)
 
-// https://fetch.spec.whatwg.org/#block-bad-port
-const badPorts = [
+/**
+ * @see https://fetch.spec.whatwg.org/#block-bad-port
+ */
+const badPorts = /** @type {const} */ ([
   '1', '7', '9', '11', '13', '15', '17', '19', '20', '21', '22', '23', '25', '37', '42', '43', '53', '69', '77', '79',
   '87', '95', '101', '102', '103', '104', '109', '110', '111', '113', '115', '117', '119', '123', '135', '137',
   '139', '143', '161', '179', '389', '427', '465', '512', '513', '514', '515', '526', '530', '531', '532',
   '540', '548', '554', '556', '563', '587', '601', '636', '989', '990', '993', '995', '1719', '1720', '1723',
   '2049', '3659', '4045', '4190', '5060', '5061', '6000', '6566', '6665', '6666', '6667', '6668', '6669', '6679',
   '6697', '10080'
-]
-
+])
 const badPortsSet = new Set(badPorts)
 
-// https://w3c.github.io/webappsec-referrer-policy/#referrer-policies
-const referrerPolicy = [
+/**
+ * @see https://w3c.github.io/webappsec-referrer-policy/#referrer-policies
+ */
+const referrerPolicy = /** @type {const} */ ([
   '',
   'no-referrer',
   'no-referrer-when-downgrade',
@@ -115314,29 +119260,31 @@ const referrerPolicy = [
   'origin-when-cross-origin',
   'strict-origin-when-cross-origin',
   'unsafe-url'
-]
+])
 const referrerPolicySet = new Set(referrerPolicy)
 
-const requestRedirect = ['follow', 'manual', 'error']
+const requestRedirect = /** @type {const} */ (['follow', 'manual', 'error'])
 
-const safeMethods = ['GET', 'HEAD', 'OPTIONS', 'TRACE']
+const safeMethods = /** @type {const} */ (['GET', 'HEAD', 'OPTIONS', 'TRACE'])
 const safeMethodsSet = new Set(safeMethods)
 
-const requestMode = ['navigate', 'same-origin', 'no-cors', 'cors']
+const requestMode = /** @type {const} */ (['navigate', 'same-origin', 'no-cors', 'cors'])
 
-const requestCredentials = ['omit', 'same-origin', 'include']
+const requestCredentials = /** @type {const} */ (['omit', 'same-origin', 'include'])
 
-const requestCache = [
+const requestCache = /** @type {const} */ ([
   'default',
   'no-store',
   'reload',
   'no-cache',
   'force-cache',
   'only-if-cached'
-]
+])
 
-// https://fetch.spec.whatwg.org/#request-body-header-name
-const requestBodyHeader = [
+/**
+ * @see https://fetch.spec.whatwg.org/#request-body-header-name
+ */
+const requestBodyHeader = /** @type {const} */ ([
   'content-encoding',
   'content-language',
   'content-location',
@@ -115346,18 +119294,22 @@ const requestBodyHeader = [
   // removed in the Headers implementation. However, undici doesn't
   // filter out headers, so we add it here.
   'content-length'
-]
+])
 
-// https://fetch.spec.whatwg.org/#enumdef-requestduplex
-const requestDuplex = [
+/**
+ * @see https://fetch.spec.whatwg.org/#enumdef-requestduplex
+ */
+const requestDuplex = /** @type {const} */ ([
   'half'
-]
+])
 
-// http://fetch.spec.whatwg.org/#forbidden-method
-const forbiddenMethods = ['CONNECT', 'TRACE', 'TRACK']
+/**
+ * @see http://fetch.spec.whatwg.org/#forbidden-method
+ */
+const forbiddenMethods = /** @type {const} */ (['CONNECT', 'TRACE', 'TRACK'])
 const forbiddenMethodsSet = new Set(forbiddenMethods)
 
-const subresource = [
+const subresource = /** @type {const} */ ([
   'audio',
   'audioworklet',
   'font',
@@ -115370,7 +119322,7 @@ const subresource = [
   'video',
   'xslt',
   ''
-]
+])
 const subresourceSet = new Set(subresource)
 
 module.exports = {
@@ -115400,7 +119352,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 18806:
+/***/ 73290:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -116152,13 +120104,13 @@ module.exports = {
 
 /***/ }),
 
-/***/ 22783:
+/***/ 57483:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { kConnected, kSize } = __nccwpck_require__(77817)
+const { kConnected, kSize } = __nccwpck_require__(81869)
 
 class CompatWeakRef {
   constructor (value) {
@@ -116206,15 +120158,15 @@ module.exports = function () {
 
 /***/ }),
 
-/***/ 14220:
+/***/ 47520:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { Blob, File } = __nccwpck_require__(4573)
-const { kState } = __nccwpck_require__(25621)
-const { webidl } = __nccwpck_require__(67227)
+const { kState } = __nccwpck_require__(72977)
+const { webidl } = __nccwpck_require__(67335)
 
 // TODO(@KhafraDev): remove
 class FileLike {
@@ -116340,17 +120292,17 @@ module.exports = { FileLike, isFileLike }
 
 /***/ }),
 
-/***/ 69150:
+/***/ 36906:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { isUSVString, bufferToLowerCasedHeaderName } = __nccwpck_require__(50226)
-const { utf8DecodeBytes } = __nccwpck_require__(52118)
-const { HTTP_TOKEN_CODEPOINTS, isomorphicDecode } = __nccwpck_require__(18806)
-const { isFileLike } = __nccwpck_require__(14220)
-const { makeEntry } = __nccwpck_require__(4192)
+const { isUSVString, bufferToLowerCasedHeaderName } = __nccwpck_require__(28094)
+const { utf8DecodeBytes } = __nccwpck_require__(57562)
+const { HTTP_TOKEN_CODEPOINTS, isomorphicDecode } = __nccwpck_require__(73290)
+const { isFileLike } = __nccwpck_require__(47520)
+const { makeEntry } = __nccwpck_require__(89828)
 const assert = __nccwpck_require__(34589)
 const { File: NodeFile } = __nccwpck_require__(4573)
 
@@ -116433,9 +120385,19 @@ function multipartFormDataParser (input, mimeType) {
   //    the first byte.
   const position = { position: 0 }
 
-  // Note: undici addition, allow \r\n before the body.
-  if (input[0] === 0x0d && input[1] === 0x0a) {
+  // Note: undici addition, allows leading and trailing CRLFs.
+  while (input[position.position] === 0x0d && input[position.position + 1] === 0x0a) {
     position.position += 2
+  }
+
+  let trailing = input.length
+
+  while (input[trailing - 1] === 0x0a && input[trailing - 2] === 0x0d) {
+    trailing -= 2
+  }
+
+  if (trailing !== input.length) {
+    input = input.subarray(0, trailing)
   }
 
   // 5. While true:
@@ -116812,17 +120774,17 @@ module.exports = {
 
 /***/ }),
 
-/***/ 4192:
+/***/ 89828:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { isBlobLike, iteratorMixin } = __nccwpck_require__(52118)
-const { kState } = __nccwpck_require__(25621)
-const { kEnumerableProperty } = __nccwpck_require__(50226)
-const { FileLike, isFileLike } = __nccwpck_require__(14220)
-const { webidl } = __nccwpck_require__(67227)
+const { isBlobLike, iteratorMixin } = __nccwpck_require__(57562)
+const { kState } = __nccwpck_require__(72977)
+const { kEnumerableProperty } = __nccwpck_require__(28094)
+const { FileLike, isFileLike } = __nccwpck_require__(47520)
+const { webidl } = __nccwpck_require__(67335)
 const { File: NativeFile } = __nccwpck_require__(4573)
 const nodeUtil = __nccwpck_require__(57975)
 
@@ -116832,6 +120794,8 @@ const File = globalThis.File ?? NativeFile
 // https://xhr.spec.whatwg.org/#formdata
 class FormData {
   constructor (form) {
+    webidl.util.markAsUncloneable(this)
+
     if (form !== undefined) {
       throw webidl.errors.conversionFailed({
         prefix: 'FormData constructor',
@@ -117070,7 +121034,7 @@ module.exports = { FormData, makeEntry }
 
 /***/ }),
 
-/***/ 7773:
+/***/ 51689:
 /***/ ((module) => {
 
 "use strict";
@@ -117118,7 +121082,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 10422:
+/***/ 90834:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -117126,14 +121090,14 @@ module.exports = {
 
 
 
-const { kConstruct } = __nccwpck_require__(77817)
-const { kEnumerableProperty } = __nccwpck_require__(50226)
+const { kConstruct } = __nccwpck_require__(81869)
+const { kEnumerableProperty } = __nccwpck_require__(28094)
 const {
   iteratorMixin,
   isValidHeaderName,
   isValidHeaderValue
-} = __nccwpck_require__(52118)
-const { webidl } = __nccwpck_require__(67227)
+} = __nccwpck_require__(57562)
+const { webidl } = __nccwpck_require__(67335)
 const assert = __nccwpck_require__(34589)
 const util = __nccwpck_require__(57975)
 
@@ -117483,6 +121447,8 @@ class Headers {
   #headersList
 
   constructor (init = undefined) {
+    webidl.util.markAsUncloneable(this)
+
     if (init === kConstruct) {
       return
     }
@@ -117811,7 +121777,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 75988:
+/***/ 95504:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -117825,9 +121791,9 @@ const {
   filterResponse,
   makeResponse,
   fromInnerResponse
-} = __nccwpck_require__(46717)
-const { HeadersList } = __nccwpck_require__(10422)
-const { Request, cloneRequest } = __nccwpck_require__(13241)
+} = __nccwpck_require__(51657)
+const { HeadersList } = __nccwpck_require__(90834)
+const { Request, cloneRequest } = __nccwpck_require__(57341)
 const zlib = __nccwpck_require__(38522)
 const {
   bytesMatch,
@@ -117863,23 +121829,23 @@ const {
   buildContentRange,
   createInflate,
   extractMimeType
-} = __nccwpck_require__(52118)
-const { kState, kDispatcher } = __nccwpck_require__(25621)
+} = __nccwpck_require__(57562)
+const { kState, kDispatcher } = __nccwpck_require__(72977)
 const assert = __nccwpck_require__(34589)
-const { safelyExtractBody, extractBody } = __nccwpck_require__(79178)
+const { safelyExtractBody, extractBody } = __nccwpck_require__(60902)
 const {
   redirectStatusSet,
   nullBodyStatus,
   safeMethodsSet,
   requestBodyHeader,
   subresourceSet
-} = __nccwpck_require__(66041)
+} = __nccwpck_require__(31845)
 const EE = __nccwpck_require__(78474)
 const { Readable, pipeline, finished } = __nccwpck_require__(57075)
-const { addAbortListener, isErrored, isReadable, bufferToLowerCasedHeaderName } = __nccwpck_require__(50226)
-const { dataURLProcessor, serializeAMimeType, minimizeSupportedMimeType } = __nccwpck_require__(18806)
-const { getGlobalDispatcher } = __nccwpck_require__(2959)
-const { webidl } = __nccwpck_require__(67227)
+const { addAbortListener, isErrored, isReadable, bufferToLowerCasedHeaderName } = __nccwpck_require__(28094)
+const { dataURLProcessor, serializeAMimeType, minimizeSupportedMimeType } = __nccwpck_require__(73290)
+const { getGlobalDispatcher } = __nccwpck_require__(68131)
+const { webidl } = __nccwpck_require__(67335)
 const { STATUS_CODES } = __nccwpck_require__(37067)
 const GET_OR_HEAD = ['GET', 'HEAD']
 
@@ -119954,7 +123920,7 @@ async function httpNetworkFetch (
 
           // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Encoding
           if (codings.length !== 0 && request.method !== 'HEAD' && request.method !== 'CONNECT' && !nullBodyStatus.includes(status) && !willFollow) {
-            for (let i = 0; i < codings.length; ++i) {
+            for (let i = codings.length - 1; i >= 0; --i) {
               const coding = codings[i]
               // https://www.rfc-editor.org/rfc/rfc9112.html#section-7.2
               if (coding === 'x-gzip' || coding === 'gzip') {
@@ -119967,9 +123933,15 @@ async function httpNetworkFetch (
                   finishFlush: zlib.constants.Z_SYNC_FLUSH
                 }))
               } else if (coding === 'deflate') {
-                decoders.push(createInflate())
+                decoders.push(createInflate({
+                  flush: zlib.constants.Z_SYNC_FLUSH,
+                  finishFlush: zlib.constants.Z_SYNC_FLUSH
+                }))
               } else if (coding === 'br') {
-                decoders.push(zlib.createBrotliDecompress())
+                decoders.push(zlib.createBrotliDecompress({
+                  flush: zlib.constants.BROTLI_OPERATION_FLUSH,
+                  finishFlush: zlib.constants.BROTLI_OPERATION_FLUSH
+                }))
               } else {
                 decoders.length = 0
                 break
@@ -119977,13 +123949,19 @@ async function httpNetworkFetch (
             }
           }
 
+          const onError = this.onError.bind(this)
+
           resolve({
             status,
             statusText,
             headersList,
             body: decoders.length
-              ? pipeline(this.body, ...decoders, () => { })
-              : this.body.on('error', () => { })
+              ? pipeline(this.body, ...decoders, (err) => {
+                if (err) {
+                  this.onError(err)
+                }
+              }).on('error', onError)
+              : this.body.on('error', onError)
           })
 
           return true
@@ -120073,7 +124051,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 13241:
+/***/ 57341:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -120081,16 +124059,16 @@ module.exports = {
 
 
 
-const { extractBody, mixinBody, cloneBody, bodyUnusable } = __nccwpck_require__(79178)
-const { Headers, fill: fillHeaders, HeadersList, setHeadersGuard, getHeadersGuard, setHeadersList, getHeadersList } = __nccwpck_require__(10422)
-const { FinalizationRegistry } = __nccwpck_require__(22783)()
-const util = __nccwpck_require__(50226)
+const { extractBody, mixinBody, cloneBody, bodyUnusable } = __nccwpck_require__(60902)
+const { Headers, fill: fillHeaders, HeadersList, setHeadersGuard, getHeadersGuard, setHeadersList, getHeadersList } = __nccwpck_require__(90834)
+const { FinalizationRegistry } = __nccwpck_require__(57483)()
+const util = __nccwpck_require__(28094)
 const nodeUtil = __nccwpck_require__(57975)
 const {
   isValidHTTPToken,
   sameOrigin,
   environmentSettingsObject
-} = __nccwpck_require__(52118)
+} = __nccwpck_require__(57562)
 const {
   forbiddenMethodsSet,
   corsSafeListedMethodsSet,
@@ -120100,12 +124078,12 @@ const {
   requestCredentials,
   requestCache,
   requestDuplex
-} = __nccwpck_require__(66041)
+} = __nccwpck_require__(31845)
 const { kEnumerableProperty, normalizedMethodRecordsBase, normalizedMethodRecords } = util
-const { kHeaders, kSignal, kState, kDispatcher } = __nccwpck_require__(25621)
-const { webidl } = __nccwpck_require__(67227)
-const { URLSerializer } = __nccwpck_require__(18806)
-const { kConstruct } = __nccwpck_require__(77817)
+const { kHeaders, kSignal, kState, kDispatcher } = __nccwpck_require__(72977)
+const { webidl } = __nccwpck_require__(67335)
+const { URLSerializer } = __nccwpck_require__(73290)
+const { kConstruct } = __nccwpck_require__(81869)
 const assert = __nccwpck_require__(34589)
 const { getMaxListeners, setMaxListeners, getEventListeners, defaultMaxListeners } = __nccwpck_require__(78474)
 
@@ -120161,6 +124139,7 @@ let patchMethodWarning = false
 class Request {
   // https://fetch.spec.whatwg.org/#dom-request
   constructor (input, init = {}) {
+    webidl.util.markAsUncloneable(this)
     if (input === kConstruct) {
       return
     }
@@ -121117,15 +125096,15 @@ module.exports = { Request, makeRequest, fromInnerRequest, cloneRequest }
 
 /***/ }),
 
-/***/ 46717:
+/***/ 51657:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { Headers, HeadersList, fill, getHeadersGuard, setHeadersGuard, setHeadersList } = __nccwpck_require__(10422)
-const { extractBody, cloneBody, mixinBody, hasFinalizationRegistry, streamRegistry, bodyUnusable } = __nccwpck_require__(79178)
-const util = __nccwpck_require__(50226)
+const { Headers, HeadersList, fill, getHeadersGuard, setHeadersGuard, setHeadersList } = __nccwpck_require__(90834)
+const { extractBody, cloneBody, mixinBody, hasFinalizationRegistry, streamRegistry, bodyUnusable } = __nccwpck_require__(60902)
+const util = __nccwpck_require__(28094)
 const nodeUtil = __nccwpck_require__(57975)
 const { kEnumerableProperty } = util
 const {
@@ -121137,16 +125116,16 @@ const {
   isErrorLike,
   isomorphicEncode,
   environmentSettingsObject: relevantRealm
-} = __nccwpck_require__(52118)
+} = __nccwpck_require__(57562)
 const {
   redirectStatusSet,
   nullBodyStatus
-} = __nccwpck_require__(66041)
-const { kState, kHeaders } = __nccwpck_require__(25621)
-const { webidl } = __nccwpck_require__(67227)
-const { FormData } = __nccwpck_require__(4192)
-const { URLSerializer } = __nccwpck_require__(18806)
-const { kConstruct } = __nccwpck_require__(77817)
+} = __nccwpck_require__(31845)
+const { kState, kHeaders } = __nccwpck_require__(72977)
+const { webidl } = __nccwpck_require__(67335)
+const { FormData } = __nccwpck_require__(89828)
+const { URLSerializer } = __nccwpck_require__(73290)
+const { kConstruct } = __nccwpck_require__(81869)
 const assert = __nccwpck_require__(34589)
 const { types } = __nccwpck_require__(57975)
 
@@ -121233,6 +125212,7 @@ class Response {
 
   // https://fetch.spec.whatwg.org/#dom-response
   constructor (body = null, init = {}) {
+    webidl.util.markAsUncloneable(this)
     if (body === kConstruct) {
       return
     }
@@ -121729,7 +125709,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 25621:
+/***/ 72977:
 /***/ ((module) => {
 
 "use strict";
@@ -121746,7 +125726,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 52118:
+/***/ 57562:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -121754,14 +125734,14 @@ module.exports = {
 
 const { Transform } = __nccwpck_require__(57075)
 const zlib = __nccwpck_require__(38522)
-const { redirectStatusSet, referrerPolicySet: referrerPolicyTokens, badPortsSet } = __nccwpck_require__(66041)
-const { getGlobalOrigin } = __nccwpck_require__(7773)
-const { collectASequenceOfCodePoints, collectAnHTTPQuotedString, removeChars, parseMIMEType } = __nccwpck_require__(18806)
+const { redirectStatusSet, referrerPolicySet: referrerPolicyTokens, badPortsSet } = __nccwpck_require__(31845)
+const { getGlobalOrigin } = __nccwpck_require__(51689)
+const { collectASequenceOfCodePoints, collectAnHTTPQuotedString, removeChars, parseMIMEType } = __nccwpck_require__(73290)
 const { performance } = __nccwpck_require__(643)
-const { isBlobLike, ReadableStreamFrom, isValidHTTPToken, normalizedMethodRecordsBase } = __nccwpck_require__(50226)
+const { isBlobLike, ReadableStreamFrom, isValidHTTPToken, normalizedMethodRecordsBase } = __nccwpck_require__(28094)
 const assert = __nccwpck_require__(34589)
 const { isUint8Array } = __nccwpck_require__(73429)
-const { webidl } = __nccwpck_require__(67227)
+const { webidl } = __nccwpck_require__(67335)
 
 let supportedHashes = []
 
@@ -123092,6 +127072,14 @@ function buildContentRange (rangeStart, rangeEnd, fullLength) {
 // interpreted as a zlib stream, otherwise it's interpreted as a
 // raw deflate stream.
 class InflateStream extends Transform {
+  #zlibOptions
+
+  /** @param {zlib.ZlibOptions} [zlibOptions] */
+  constructor (zlibOptions) {
+    super()
+    this.#zlibOptions = zlibOptions
+  }
+
   _transform (chunk, encoding, callback) {
     if (!this._inflateStream) {
       if (chunk.length === 0) {
@@ -123099,8 +127087,8 @@ class InflateStream extends Transform {
         return
       }
       this._inflateStream = (chunk[0] & 0x0F) === 0x08
-        ? zlib.createInflate()
-        : zlib.createInflateRaw()
+        ? zlib.createInflate(this.#zlibOptions)
+        : zlib.createInflateRaw(this.#zlibOptions)
 
       this._inflateStream.on('data', this.push.bind(this))
       this._inflateStream.on('end', () => this.push(null))
@@ -123119,8 +127107,12 @@ class InflateStream extends Transform {
   }
 }
 
-function createInflate () {
-  return new InflateStream()
+/**
+ * @param {zlib.ZlibOptions} [zlibOptions]
+ * @returns {InflateStream}
+ */
+function createInflate (zlibOptions) {
+  return new InflateStream(zlibOptions)
 }
 
 /**
@@ -123374,14 +127366,15 @@ module.exports = {
 
 /***/ }),
 
-/***/ 67227:
+/***/ 67335:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { types, inspect } = __nccwpck_require__(57975)
-const { toUSVString } = __nccwpck_require__(50226)
+const { markAsUncloneable } = __nccwpck_require__(75919)
+const { toUSVString } = __nccwpck_require__(28094)
 
 /** @type {import('../../../types/webidl').Webidl} */
 const webidl = {}
@@ -123466,6 +127459,7 @@ webidl.util.Type = function (V) {
   }
 }
 
+webidl.util.markAsUncloneable = markAsUncloneable || (() => {})
 // https://webidl.spec.whatwg.org/#abstract-opdef-converttoint
 webidl.util.ConvertToInt = function (V, bitLength, signedness, opts) {
   let upperBound
@@ -124075,7 +128069,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 88261:
+/***/ 85345:
 /***/ ((module) => {
 
 "use strict";
@@ -124373,7 +128367,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 89273:
+/***/ 36197:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -124383,16 +128377,16 @@ const {
   staticPropertyDescriptors,
   readOperation,
   fireAProgressEvent
-} = __nccwpck_require__(54812)
+} = __nccwpck_require__(67504)
 const {
   kState,
   kError,
   kResult,
   kEvents,
   kAborted
-} = __nccwpck_require__(82751)
-const { webidl } = __nccwpck_require__(67227)
-const { kEnumerableProperty } = __nccwpck_require__(50226)
+} = __nccwpck_require__(88091)
+const { webidl } = __nccwpck_require__(67335)
+const { kEnumerableProperty } = __nccwpck_require__(28094)
 
 class FileReader extends EventTarget {
   constructor () {
@@ -124725,13 +128719,13 @@ module.exports = {
 
 /***/ }),
 
-/***/ 99875:
+/***/ 81255:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { webidl } = __nccwpck_require__(67227)
+const { webidl } = __nccwpck_require__(67335)
 
 const kState = Symbol('ProgressEvent state')
 
@@ -124811,7 +128805,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 82751:
+/***/ 88091:
 /***/ ((module) => {
 
 "use strict";
@@ -124829,7 +128823,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 54812:
+/***/ 67504:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -124841,10 +128835,10 @@ const {
   kResult,
   kAborted,
   kLastProgressEventFired
-} = __nccwpck_require__(82751)
-const { ProgressEvent } = __nccwpck_require__(99875)
-const { getEncoding } = __nccwpck_require__(88261)
-const { serializeAMimeType, parseMIMEType } = __nccwpck_require__(18806)
+} = __nccwpck_require__(88091)
+const { ProgressEvent } = __nccwpck_require__(81255)
+const { getEncoding } = __nccwpck_require__(85345)
+const { serializeAMimeType, parseMIMEType } = __nccwpck_require__(73290)
 const { types } = __nccwpck_require__(57975)
 const { StringDecoder } = __nccwpck_require__(13193)
 const { btoa } = __nccwpck_require__(4573)
@@ -125228,28 +129222,28 @@ module.exports = {
 
 /***/ }),
 
-/***/ 17107:
+/***/ 70103:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { uid, states, sentCloseFrameState, emptyBuffer, opcodes } = __nccwpck_require__(88242)
+const { uid, states, sentCloseFrameState, emptyBuffer, opcodes } = __nccwpck_require__(88558)
 const {
   kReadyState,
   kSentClose,
   kByteParser,
   kReceivedClose,
   kResponse
-} = __nccwpck_require__(96530)
-const { fireEvent, failWebsocketConnection, isClosing, isClosed, isEstablished, parseExtensions } = __nccwpck_require__(18095)
-const { channels } = __nccwpck_require__(90188)
-const { CloseEvent } = __nccwpck_require__(7270)
-const { makeRequest } = __nccwpck_require__(13241)
-const { fetching } = __nccwpck_require__(75988)
-const { Headers, getHeadersList } = __nccwpck_require__(10422)
-const { getDecodeSplit } = __nccwpck_require__(52118)
-const { WebsocketFrameSend } = __nccwpck_require__(38170)
+} = __nccwpck_require__(81086)
+const { fireEvent, failWebsocketConnection, isClosing, isClosed, isEstablished, parseExtensions } = __nccwpck_require__(90451)
+const { channels } = __nccwpck_require__(24240)
+const { CloseEvent } = __nccwpck_require__(29498)
+const { makeRequest } = __nccwpck_require__(57341)
+const { fetching } = __nccwpck_require__(95504)
+const { Headers, getHeadersList } = __nccwpck_require__(90834)
+const { getDecodeSplit } = __nccwpck_require__(57562)
+const { WebsocketFrameSend } = __nccwpck_require__(65366)
 
 /** @type {import('crypto')} */
 let crypto
@@ -125607,7 +129601,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 88242:
+/***/ 88558:
 /***/ ((module) => {
 
 "use strict";
@@ -125681,15 +129675,15 @@ module.exports = {
 
 /***/ }),
 
-/***/ 7270:
+/***/ 29498:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { webidl } = __nccwpck_require__(67227)
-const { kEnumerableProperty } = __nccwpck_require__(50226)
-const { kConstruct } = __nccwpck_require__(77817)
+const { webidl } = __nccwpck_require__(67335)
+const { kEnumerableProperty } = __nccwpck_require__(28094)
+const { kConstruct } = __nccwpck_require__(81869)
 const { MessagePort } = __nccwpck_require__(75919)
 
 /**
@@ -125701,6 +129695,7 @@ class MessageEvent extends Event {
   constructor (type, eventInitDict = {}) {
     if (type === kConstruct) {
       super(arguments[1], arguments[2])
+      webidl.util.markAsUncloneable(this)
       return
     }
 
@@ -125713,6 +129708,7 @@ class MessageEvent extends Event {
     super(type, eventInitDict)
 
     this.#eventInit = eventInitDict
+    webidl.util.markAsUncloneable(this)
   }
 
   get data () {
@@ -125799,6 +129795,7 @@ class CloseEvent extends Event {
     super(type, eventInitDict)
 
     this.#eventInit = eventInitDict
+    webidl.util.markAsUncloneable(this)
   }
 
   get wasClean () {
@@ -125829,6 +129826,7 @@ class ErrorEvent extends Event {
     webidl.argumentLengthCheck(arguments, 1, prefix)
 
     super(type, eventInitDict)
+    webidl.util.markAsUncloneable(this)
 
     type = webidl.converters.DOMString(type, prefix, 'type')
     eventInitDict = webidl.converters.ErrorEventInit(eventInitDict ?? {})
@@ -126014,13 +130012,13 @@ module.exports = {
 
 /***/ }),
 
-/***/ 38170:
+/***/ 65366:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { maxUnsigned16Bit } = __nccwpck_require__(88242)
+const { maxUnsigned16Bit } = __nccwpck_require__(88558)
 
 const BUFFER_SIZE = 16386
 
@@ -126118,14 +130116,14 @@ module.exports = {
 
 /***/ }),
 
-/***/ 36167:
+/***/ 1075:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { createInflateRaw, Z_DEFAULT_WINDOWBITS } = __nccwpck_require__(38522)
-const { isValidClientWindowBits } = __nccwpck_require__(18095)
+const { isValidClientWindowBits } = __nccwpck_require__(90451)
 
 const tail = Buffer.from([0x00, 0x00, 0xff, 0xff])
 const kBuffer = Symbol('kBuffer')
@@ -126196,7 +130194,7 @@ module.exports = { PerMessageDeflate }
 
 /***/ }),
 
-/***/ 80842:
+/***/ 70758:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -126204,9 +130202,9 @@ module.exports = { PerMessageDeflate }
 
 const { Writable } = __nccwpck_require__(57075)
 const assert = __nccwpck_require__(34589)
-const { parserStates, opcodes, states, emptyBuffer, sentCloseFrameState } = __nccwpck_require__(88242)
-const { kReadyState, kSentClose, kResponse, kReceivedClose } = __nccwpck_require__(96530)
-const { channels } = __nccwpck_require__(90188)
+const { parserStates, opcodes, states, emptyBuffer, sentCloseFrameState } = __nccwpck_require__(88558)
+const { kReadyState, kSentClose, kResponse, kReceivedClose } = __nccwpck_require__(81086)
+const { channels } = __nccwpck_require__(24240)
 const {
   isValidStatusCode,
   isValidOpcode,
@@ -126216,10 +130214,10 @@ const {
   isControlFrame,
   isTextBinaryFrame,
   isContinuationFrame
-} = __nccwpck_require__(18095)
-const { WebsocketFrameSend } = __nccwpck_require__(38170)
-const { closeWebSocketConnection } = __nccwpck_require__(17107)
-const { PerMessageDeflate } = __nccwpck_require__(36167)
+} = __nccwpck_require__(90451)
+const { WebsocketFrameSend } = __nccwpck_require__(65366)
+const { closeWebSocketConnection } = __nccwpck_require__(70103)
+const { PerMessageDeflate } = __nccwpck_require__(1075)
 
 // This code was influenced by ws released under the MIT license.
 // Copyright (c) 2011 Einar Otto Stangvik <einaros@gmail.com>
@@ -126628,15 +130626,15 @@ module.exports = {
 
 /***/ }),
 
-/***/ 35774:
+/***/ 96746:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { WebsocketFrameSend } = __nccwpck_require__(38170)
-const { opcodes, sendHints } = __nccwpck_require__(88242)
-const FixedQueue = __nccwpck_require__(61398)
+const { WebsocketFrameSend } = __nccwpck_require__(65366)
+const { opcodes, sendHints } = __nccwpck_require__(88558)
+const FixedQueue = __nccwpck_require__(92778)
 
 /** @type {typeof Uint8Array} */
 const FastBuffer = Buffer[Symbol.species]
@@ -126740,7 +130738,7 @@ module.exports = { SendQueue }
 
 /***/ }),
 
-/***/ 96530:
+/***/ 81086:
 /***/ ((module) => {
 
 "use strict";
@@ -126760,17 +130758,17 @@ module.exports = {
 
 /***/ }),
 
-/***/ 18095:
+/***/ 90451:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { kReadyState, kController, kResponse, kBinaryType, kWebSocketURL } = __nccwpck_require__(96530)
-const { states, opcodes } = __nccwpck_require__(88242)
-const { ErrorEvent, createFastMessageEvent } = __nccwpck_require__(7270)
+const { kReadyState, kController, kResponse, kBinaryType, kWebSocketURL } = __nccwpck_require__(81086)
+const { states, opcodes } = __nccwpck_require__(88558)
+const { ErrorEvent, createFastMessageEvent } = __nccwpck_require__(29498)
 const { isUtf8 } = __nccwpck_require__(4573)
-const { collectASequenceOfCodePointsFast, removeHTTPWhitespace } = __nccwpck_require__(18806)
+const { collectASequenceOfCodePointsFast, removeHTTPWhitespace } = __nccwpck_require__(73290)
 
 /* globals Blob */
 
@@ -127082,16 +131080,16 @@ module.exports = {
 
 /***/ }),
 
-/***/ 78176:
+/***/ 15212:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { webidl } = __nccwpck_require__(67227)
-const { URLSerializer } = __nccwpck_require__(18806)
-const { environmentSettingsObject } = __nccwpck_require__(52118)
-const { staticPropertyDescriptors, states, sentCloseFrameState, sendHints } = __nccwpck_require__(88242)
+const { webidl } = __nccwpck_require__(67335)
+const { URLSerializer } = __nccwpck_require__(73290)
+const { environmentSettingsObject } = __nccwpck_require__(57562)
+const { staticPropertyDescriptors, states, sentCloseFrameState, sendHints } = __nccwpck_require__(88558)
 const {
   kWebSocketURL,
   kReadyState,
@@ -127100,21 +131098,21 @@ const {
   kResponse,
   kSentClose,
   kByteParser
-} = __nccwpck_require__(96530)
+} = __nccwpck_require__(81086)
 const {
   isConnecting,
   isEstablished,
   isClosing,
   isValidSubprotocol,
   fireEvent
-} = __nccwpck_require__(18095)
-const { establishWebSocketConnection, closeWebSocketConnection } = __nccwpck_require__(17107)
-const { ByteParser } = __nccwpck_require__(80842)
-const { kEnumerableProperty, isBlobLike } = __nccwpck_require__(50226)
-const { getGlobalDispatcher } = __nccwpck_require__(2959)
+} = __nccwpck_require__(90451)
+const { establishWebSocketConnection, closeWebSocketConnection } = __nccwpck_require__(70103)
+const { ByteParser } = __nccwpck_require__(70758)
+const { kEnumerableProperty, isBlobLike } = __nccwpck_require__(28094)
+const { getGlobalDispatcher } = __nccwpck_require__(68131)
 const { types } = __nccwpck_require__(57975)
-const { ErrorEvent, CloseEvent } = __nccwpck_require__(7270)
-const { SendQueue } = __nccwpck_require__(35774)
+const { ErrorEvent, CloseEvent } = __nccwpck_require__(29498)
+const { SendQueue } = __nccwpck_require__(96746)
 
 // https://websockets.spec.whatwg.org/#interface-definition
 class WebSocket extends EventTarget {
@@ -127138,6 +131136,8 @@ class WebSocket extends EventTarget {
    */
   constructor (url, protocols = []) {
     super()
+
+    webidl.util.markAsUncloneable(this)
 
     const prefix = 'WebSocket constructor'
     webidl.argumentLengthCheck(arguments, 1, prefix)
@@ -127676,18 +131676,18 @@ module.exports = {
 
 /***/ }),
 
-/***/ 48099:
+/***/ 54018:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const WebSocket = __nccwpck_require__(42631);
+const WebSocket = __nccwpck_require__(12978);
 
-WebSocket.createWebSocketStream = __nccwpck_require__(391);
-WebSocket.Server = __nccwpck_require__(56186);
-WebSocket.Receiver = __nccwpck_require__(93198);
-WebSocket.Sender = __nccwpck_require__(94994);
+WebSocket.createWebSocketStream = __nccwpck_require__(2665);
+WebSocket.Server = __nccwpck_require__(33316);
+WebSocket.Receiver = __nccwpck_require__(21384);
+WebSocket.Sender = __nccwpck_require__(5616);
 
 WebSocket.WebSocket = WebSocket;
 WebSocket.WebSocketServer = WebSocket.Server;
@@ -127697,13 +131697,13 @@ module.exports = WebSocket;
 
 /***/ }),
 
-/***/ 73914:
+/***/ 35328:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { EMPTY_BUFFER } = __nccwpck_require__(53190);
+const { EMPTY_BUFFER } = __nccwpck_require__(67876);
 
 const FastBuffer = Buffer[Symbol.species];
 
@@ -127836,7 +131836,7 @@ if (!process.env.WS_NO_BUFFER_UTIL) {
 
 /***/ }),
 
-/***/ 53190:
+/***/ 67876:
 /***/ ((module) => {
 
 "use strict";
@@ -127862,13 +131862,13 @@ module.exports = {
 
 /***/ }),
 
-/***/ 50789:
+/***/ 22703:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { kForOnEventAttribute, kListener } = __nccwpck_require__(53190);
+const { kForOnEventAttribute, kListener } = __nccwpck_require__(67876);
 
 const kCode = Symbol('kCode');
 const kData = Symbol('kData');
@@ -128162,13 +132162,13 @@ function callListener(listener, thisArg, event) {
 
 /***/ }),
 
-/***/ 34966:
+/***/ 46772:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { tokenChars } = __nccwpck_require__(54408);
+const { tokenChars } = __nccwpck_require__(17718);
 
 /**
  * Adds an offer to the map of extension offers or a parameter to the map of
@@ -128373,7 +132373,7 @@ module.exports = { format, parse };
 
 /***/ }),
 
-/***/ 37207:
+/***/ 63721:
 /***/ ((module) => {
 
 "use strict";
@@ -128436,7 +132436,7 @@ module.exports = Limiter;
 
 /***/ }),
 
-/***/ 66843:
+/***/ 73313:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -128444,9 +132444,9 @@ module.exports = Limiter;
 
 const zlib = __nccwpck_require__(43106);
 
-const bufferUtil = __nccwpck_require__(73914);
-const Limiter = __nccwpck_require__(37207);
-const { kStatusCode } = __nccwpck_require__(53190);
+const bufferUtil = __nccwpck_require__(35328);
+const Limiter = __nccwpck_require__(63721);
+const { kStatusCode } = __nccwpck_require__(67876);
 
 const FastBuffer = Buffer[Symbol.species];
 const TRAILER = Buffer.from([0x00, 0x00, 0xff, 0xff]);
@@ -128936,6 +132936,14 @@ function inflateOnData(chunk) {
   this[kError].code = 'WS_ERR_UNSUPPORTED_MESSAGE_LENGTH';
   this[kError][kStatusCode] = 1009;
   this.removeListener('data', inflateOnData);
+
+  //
+  // The choice to employ `zlib.reset()` over `zlib.close()` is dictated by the
+  // fact that in Node.js versions prior to 13.10.0, the callback for
+  // `zlib.flush()` is not called if `zlib.close()` is used. Utilizing
+  // `zlib.reset()` ensures that either the callback is invoked or an error is
+  // emitted.
+  //
   this.reset();
 }
 
@@ -128951,6 +132959,12 @@ function inflateOnError(err) {
   // closed when an error is emitted.
   //
   this[kPerMessageDeflate]._inflate = null;
+
+  if (this[kError]) {
+    this[kCallback](this[kError]);
+    return;
+  }
+
   err[kStatusCode] = 1007;
   this[kCallback](err);
 }
@@ -128958,7 +132972,7 @@ function inflateOnError(err) {
 
 /***/ }),
 
-/***/ 93198:
+/***/ 21384:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -128966,15 +132980,15 @@ function inflateOnError(err) {
 
 const { Writable } = __nccwpck_require__(2203);
 
-const PerMessageDeflate = __nccwpck_require__(66843);
+const PerMessageDeflate = __nccwpck_require__(73313);
 const {
   BINARY_TYPES,
   EMPTY_BUFFER,
   kStatusCode,
   kWebSocket
-} = __nccwpck_require__(53190);
-const { concat, toArrayBuffer, unmask } = __nccwpck_require__(73914);
-const { isValidStatusCode, isValidUTF8 } = __nccwpck_require__(54408);
+} = __nccwpck_require__(67876);
+const { concat, toArrayBuffer, unmask } = __nccwpck_require__(35328);
+const { isValidStatusCode, isValidUTF8 } = __nccwpck_require__(17718);
 
 const FastBuffer = Buffer[Symbol.species];
 
@@ -129672,7 +133686,7 @@ module.exports = Receiver;
 
 /***/ }),
 
-/***/ 94994:
+/***/ 5616:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -129683,10 +133697,10 @@ module.exports = Receiver;
 const { Duplex } = __nccwpck_require__(2203);
 const { randomFillSync } = __nccwpck_require__(76982);
 
-const PerMessageDeflate = __nccwpck_require__(66843);
-const { EMPTY_BUFFER, kWebSocket, NOOP } = __nccwpck_require__(53190);
-const { isBlob, isValidStatusCode } = __nccwpck_require__(54408);
-const { mask: applyMask, toBuffer } = __nccwpck_require__(73914);
+const PerMessageDeflate = __nccwpck_require__(73313);
+const { EMPTY_BUFFER, kWebSocket, NOOP } = __nccwpck_require__(67876);
+const { isBlob, isValidStatusCode } = __nccwpck_require__(17718);
+const { mask: applyMask, toBuffer } = __nccwpck_require__(35328);
 
 const kByteLength = Symbol('kByteLength');
 const maskBuffer = Buffer.alloc(4);
@@ -130229,7 +134243,7 @@ class Sender {
   /**
    * Sends a frame.
    *
-   * @param {Buffer[]} list The frame to send
+   * @param {(Buffer | String)[]} list The frame to send
    * @param {Function} [cb] Callback
    * @private
    */
@@ -130282,12 +134296,14 @@ function onError(sender, err, cb) {
 
 /***/ }),
 
-/***/ 391:
+/***/ 2665:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
+/* eslint no-unused-vars: ["error", { "varsIgnorePattern": "^WebSocket$" }] */
 
 
+const WebSocket = __nccwpck_require__(12978);
 const { Duplex } = __nccwpck_require__(2203);
 
 /**
@@ -130449,13 +134465,13 @@ module.exports = createWebSocketStream;
 
 /***/ }),
 
-/***/ 14189:
+/***/ 42375:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { tokenChars } = __nccwpck_require__(54408);
+const { tokenChars } = __nccwpck_require__(17718);
 
 /**
  * Parses the `Sec-WebSocket-Protocol` header into a set of subprotocol names.
@@ -130519,7 +134535,7 @@ module.exports = { parse };
 
 /***/ }),
 
-/***/ 54408:
+/***/ 17718:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -130527,7 +134543,7 @@ module.exports = { parse };
 
 const { isUtf8 } = __nccwpck_require__(20181);
 
-const { hasBlob } = __nccwpck_require__(53190);
+const { hasBlob } = __nccwpck_require__(67876);
 
 //
 // Allowed token characters:
@@ -130679,7 +134695,7 @@ if (isUtf8) {
 
 /***/ }),
 
-/***/ 56186:
+/***/ 33316:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -130692,11 +134708,11 @@ const http = __nccwpck_require__(58611);
 const { Duplex } = __nccwpck_require__(2203);
 const { createHash } = __nccwpck_require__(76982);
 
-const extension = __nccwpck_require__(34966);
-const PerMessageDeflate = __nccwpck_require__(66843);
-const subprotocol = __nccwpck_require__(14189);
-const WebSocket = __nccwpck_require__(42631);
-const { GUID, kWebSocket } = __nccwpck_require__(53190);
+const extension = __nccwpck_require__(46772);
+const PerMessageDeflate = __nccwpck_require__(73313);
+const subprotocol = __nccwpck_require__(42375);
+const WebSocket = __nccwpck_require__(12978);
+const { GUID, kWebSocket } = __nccwpck_require__(67876);
 
 const keyRegex = /^[+/0-9A-Za-z]{22}==$/;
 
@@ -131227,7 +135243,7 @@ function abortHandshakeOrEmitwsClientError(server, req, socket, code, message) {
 
 /***/ }),
 
-/***/ 42631:
+/***/ 12978:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -131244,10 +135260,10 @@ const { randomBytes, createHash } = __nccwpck_require__(76982);
 const { Duplex, Readable } = __nccwpck_require__(2203);
 const { URL } = __nccwpck_require__(87016);
 
-const PerMessageDeflate = __nccwpck_require__(66843);
-const Receiver = __nccwpck_require__(93198);
-const Sender = __nccwpck_require__(94994);
-const { isBlob } = __nccwpck_require__(54408);
+const PerMessageDeflate = __nccwpck_require__(73313);
+const Receiver = __nccwpck_require__(21384);
+const Sender = __nccwpck_require__(5616);
+const { isBlob } = __nccwpck_require__(17718);
 
 const {
   BINARY_TYPES,
@@ -131258,12 +135274,12 @@ const {
   kStatusCode,
   kWebSocket,
   NOOP
-} = __nccwpck_require__(53190);
+} = __nccwpck_require__(67876);
 const {
   EventTarget: { addEventListener, removeEventListener }
-} = __nccwpck_require__(50789);
-const { format, parse } = __nccwpck_require__(34966);
-const { toBuffer } = __nccwpck_require__(73914);
+} = __nccwpck_require__(22703);
+const { format, parse } = __nccwpck_require__(46772);
+const { toBuffer } = __nccwpck_require__(35328);
 
 const closeTimeout = 30 * 1000;
 const kAborted = Symbol('kAborted');
@@ -131941,7 +135957,7 @@ function initAsClient(websocket, address, protocols, options) {
   if (parsedUrl.protocol !== 'ws:' && !isSecure && !isIpcUrl) {
     invalidUrlMessage =
       'The URL\'s protocol must be one of "ws:", "wss:", ' +
-      '"http:", "https", or "ws+unix:"';
+      '"http:", "https:", or "ws+unix:"';
   } else if (isIpcUrl && !parsedUrl.pathname) {
     invalidUrlMessage = "The URL's pathname is empty";
   } else if (parsedUrl.hash) {
@@ -135198,7 +139214,7 @@ exports.run = run;
 const core = __importStar(__nccwpck_require__(59999));
 const yup_1 = __nccwpck_require__(52828);
 const column_1 = __nccwpck_require__(19915);
-const discord_js_1 = __nccwpck_require__(12381);
+const discord_js_1 = __nccwpck_require__(12183);
 class DiscordBotClient {
     #token;
     #channelId;
@@ -135325,6 +139341,7 @@ async function run() {
     }
     catch (err) {
         core.error(err.message);
+        core.error(err);
         core.setFailed(err.message);
     }
     finally {
@@ -135516,6 +139533,14 @@ module.exports = require("node:crypto");
 
 "use strict";
 module.exports = require("node:diagnostics_channel");
+
+/***/ }),
+
+/***/ 40610:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("node:dns");
 
 /***/ }),
 
@@ -140785,7 +144810,7 @@ exports.setGlobalValidationEnabled = setGlobalValidationEnabled;
 
 /***/ }),
 
-/***/ 88062:
+/***/ 65681:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -141583,11 +145608,11 @@ __name(handleMaybeAsync, "handleMaybeAsync");
 
 /***/ }),
 
-/***/ 38276:
+/***/ 27638:
 /***/ ((module) => {
 
 "use strict";
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://json.schemastore.org/package.json","name":"discord.js","version":"14.17.3","description":"A powerful library for interacting with the Discord API","main":"./src/index.js","types":"./typings/index.d.ts","exports":{".":{"import":{"types":"./typings/index.d.mts","default":"./src/index.js"},"require":{"types":"./typings/index.d.ts","default":"./src/index.js"}}},"directories":{"lib":"src","test":"test"},"files":["src","typings"],"contributors":["Crawl <icrawltogo@gmail.com>","Amish Shah <amishshah.2k@gmail.com>","Vlad Frangu <me@vladfrangu.dev>","SpaceEEC <spaceeec@yahoo.com>","Aura Román <kyradiscord@gmail.com>"],"license":"Apache-2.0","keywords":["discord","api","bot","client","node","discordapp"],"repository":{"type":"git","url":"https://github.com/discordjs/discord.js.git","directory":"packages/discord.js"},"bugs":{"url":"https://github.com/discordjs/discord.js/issues"},"homepage":"https://discord.js.org","funding":"https://github.com/discordjs/discord.js?sponsor","dependencies":{"@discordjs/builders":"^1.10.0","@discordjs/collection":"1.5.3","@discordjs/formatters":"^0.6.0","@discordjs/ws":"^1.2.0","@sapphire/snowflake":"3.5.3","discord-api-types":"^0.37.114","fast-deep-equal":"3.1.3","lodash.snakecase":"4.1.1","tslib":"^2.6.3","undici":"6.19.8","@discordjs/rest":"^2.4.2","@discordjs/util":"^1.1.1"},"devDependencies":{"@favware/cliff-jumper":"^4.1.0","@types/node":"^16.18.105","@typescript-eslint/eslint-plugin":"^8.2.0","@typescript-eslint/parser":"^8.2.0","cross-env":"^7.0.3","dtslint":"4.2.1","eslint":"^8.57.0","eslint-formatter-pretty":"^5.0.0","jest":"29.7.0","prettier":"^3.3.3","tsd":"^0.31.1","tslint":"6.1.3","turbo":"^2.0.14","typescript":"~5.5.4","@discordjs/api-extractor":"^7.38.1","@discordjs/docgen":"^0.12.1","@discordjs/scripts":"^0.1.0"},"engines":{"node":">=18"},"publishConfig":{"provenance":true},"scripts":{"test":"pnpm run docs:test && pnpm run test:typescript","test:typescript":"tsc --noEmit && tsd","lint":"prettier --check . && tslint typings/index.d.ts && cross-env ESLINT_USE_FLAT_CONFIG=false eslint --format=pretty src typings","format":"prettier --write . && cross-env ESLINT_USE_FLAT_CONFIG=false eslint --fix --format=pretty src","fmt":"pnpm run format","docs":"docgen -i \\"./src/*.js\\" \\"./src/**/*.js\\" -c ./docs/index.json -r ../../ -o ./docs/docs.json && pnpm run docs:new","docs:test":"docgen -i \\"./src/*.js\\" \\"./src/**/*.js\\" -c ./docs/index.json -r ../../","docs:new":"api-extractor run --local --minify && generate-split-documentation","changelog":"git cliff --prepend ./CHANGELOG.md -u -c ./cliff.toml -r ../../ --include-path \'packages/discord.js/*\'","release":"cliff-jumper"}}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://json.schemastore.org/package.json","name":"discord.js","version":"14.19.3","description":"A powerful library for interacting with the Discord API","main":"./src/index.js","types":"./typings/index.d.ts","exports":{".":{"import":{"types":"./typings/index.d.mts","default":"./src/index.js"},"require":{"types":"./typings/index.d.ts","default":"./src/index.js"}}},"directories":{"lib":"src","test":"test"},"files":["src","typings"],"contributors":["Crawl <icrawltogo@gmail.com>","Amish Shah <amishshah.2k@gmail.com>","Vlad Frangu <me@vladfrangu.dev>","SpaceEEC <spaceeec@yahoo.com>","Aura Román <kyradiscord@gmail.com>"],"license":"Apache-2.0","keywords":["discord","api","bot","client","node","discordapp"],"repository":{"type":"git","url":"https://github.com/discordjs/discord.js.git","directory":"packages/discord.js"},"bugs":{"url":"https://github.com/discordjs/discord.js/issues"},"homepage":"https://discord.js.org","funding":"https://github.com/discordjs/discord.js?sponsor","dependencies":{"@discordjs/builders":"^1.11.2","@discordjs/collection":"1.5.3","@discordjs/formatters":"^0.6.1","@discordjs/ws":"^1.2.2","@sapphire/snowflake":"3.5.3","discord-api-types":"^0.38.1","fast-deep-equal":"3.1.3","lodash.snakecase":"4.1.1","magic-bytes.js":"^1.10.0","tslib":"^2.6.3","undici":"6.21.1","@discordjs/rest":"^2.5.0","@discordjs/util":"^1.1.1"},"devDependencies":{"@favware/cliff-jumper":"^4.1.0","@types/node":"^16.18.105","@typescript-eslint/eslint-plugin":"^8.2.0","@typescript-eslint/parser":"^8.2.0","cross-env":"^7.0.3","dtslint":"4.2.1","eslint":"^8.57.0","eslint-formatter-pretty":"^5.0.0","jest":"29.7.0","prettier":"^3.3.3","tsd":"^0.31.1","tslint":"6.1.3","turbo":"^2.0.14","typescript":"~5.5.4","@discordjs/api-extractor":"^7.38.1","@discordjs/docgen":"^0.12.1","@discordjs/scripts":"^0.1.0"},"engines":{"node":">=18"},"publishConfig":{"provenance":true},"scripts":{"test":"pnpm run docs:test && pnpm run test:typescript","test:typescript":"tsc --noEmit && tsd","lint":"prettier --check . && tslint typings/index.d.ts && cross-env ESLINT_USE_FLAT_CONFIG=false eslint --format=pretty src typings","format":"prettier --write . && cross-env ESLINT_USE_FLAT_CONFIG=false eslint --fix --format=pretty src","fmt":"pnpm run format","docs":"docgen -i \\"./src/*.js\\" \\"./src/**/*.js\\" -c ./docs/index.json -r ../../ -o ./docs/docs.json && pnpm run docs:new","docs:test":"docgen -i \\"./src/*.js\\" \\"./src/**/*.js\\" -c ./docs/index.json -r ../../","docs:new":"api-extractor run --local --minify && generate-split-documentation","changelog":"git cliff --prepend ./CHANGELOG.md -u -c ./cliff.toml -r ../../ --include-path \'packages/discord.js/*\'","release":"cliff-jumper"}}');
 
 /***/ })
 
