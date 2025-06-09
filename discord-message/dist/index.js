@@ -3645,7 +3645,7 @@ __export(Assertions_exports2, {
   validateRequiredSelectMenuParameters: () => validateRequiredSelectMenuParameters
 });
 var import_shapeshift2 = __nccwpck_require__(50141);
-var import_v10 = __nccwpck_require__(94104);
+var import_v10 = __nccwpck_require__(90178);
 
 // src/components/selectMenu/StringSelectMenuOption.ts
 var StringSelectMenuOptionBuilder = class {
@@ -3802,7 +3802,7 @@ function validateRequiredButtonParameters(style, label, emoji, customId, skuId, 
 __name(validateRequiredButtonParameters, "validateRequiredButtonParameters");
 
 // src/components/ActionRow.ts
-var import_v1019 = __nccwpck_require__(94104);
+var import_v1019 = __nccwpck_require__(90178);
 
 // src/components/Component.ts
 var ComponentBuilder = class {
@@ -3840,10 +3840,10 @@ var ComponentBuilder = class {
 };
 
 // src/components/Components.ts
-var import_v1018 = __nccwpck_require__(94104);
+var import_v1018 = __nccwpck_require__(90178);
 
 // src/components/button/Button.ts
-var import_v102 = __nccwpck_require__(94104);
+var import_v102 = __nccwpck_require__(90178);
 var ButtonBuilder = class extends ComponentBuilder {
   static {
     __name(this, "ButtonBuilder");
@@ -3967,7 +3967,7 @@ var ButtonBuilder = class extends ComponentBuilder {
 };
 
 // src/components/selectMenu/ChannelSelectMenu.ts
-var import_v103 = __nccwpck_require__(94104);
+var import_v103 = __nccwpck_require__(90178);
 
 // src/components/selectMenu/BaseSelectMenu.ts
 var BaseSelectMenuBuilder = class extends ComponentBuilder {
@@ -4126,7 +4126,7 @@ var ChannelSelectMenuBuilder = class extends BaseSelectMenuBuilder {
 };
 
 // src/components/selectMenu/MentionableSelectMenu.ts
-var import_v104 = __nccwpck_require__(94104);
+var import_v104 = __nccwpck_require__(90178);
 var MentionableSelectMenuBuilder = class extends BaseSelectMenuBuilder {
   static {
     __name(this, "MentionableSelectMenuBuilder");
@@ -4216,7 +4216,7 @@ var MentionableSelectMenuBuilder = class extends BaseSelectMenuBuilder {
 };
 
 // src/components/selectMenu/RoleSelectMenu.ts
-var import_v105 = __nccwpck_require__(94104);
+var import_v105 = __nccwpck_require__(90178);
 var RoleSelectMenuBuilder = class extends BaseSelectMenuBuilder {
   static {
     __name(this, "RoleSelectMenuBuilder");
@@ -4280,7 +4280,7 @@ var RoleSelectMenuBuilder = class extends BaseSelectMenuBuilder {
 };
 
 // src/components/selectMenu/StringSelectMenu.ts
-var import_v106 = __nccwpck_require__(94104);
+var import_v106 = __nccwpck_require__(90178);
 var StringSelectMenuBuilder = class extends BaseSelectMenuBuilder {
   static {
     __name(this, "StringSelectMenuBuilder");
@@ -4402,7 +4402,7 @@ var StringSelectMenuBuilder = class extends BaseSelectMenuBuilder {
 };
 
 // src/components/selectMenu/UserSelectMenu.ts
-var import_v107 = __nccwpck_require__(94104);
+var import_v107 = __nccwpck_require__(90178);
 var UserSelectMenuBuilder = class extends BaseSelectMenuBuilder {
   static {
     __name(this, "UserSelectMenuBuilder");
@@ -4467,7 +4467,7 @@ var UserSelectMenuBuilder = class extends BaseSelectMenuBuilder {
 
 // src/components/textInput/TextInput.ts
 var import_util = __nccwpck_require__(1004);
-var import_v109 = __nccwpck_require__(94104);
+var import_v109 = __nccwpck_require__(90178);
 var import_fast_deep_equal = __toESM(__nccwpck_require__(4711));
 
 // src/components/textInput/Assertions.ts
@@ -4483,7 +4483,7 @@ __export(Assertions_exports3, {
   valueValidator: () => valueValidator
 });
 var import_shapeshift3 = __nccwpck_require__(50141);
-var import_v108 = __nccwpck_require__(94104);
+var import_v108 = __nccwpck_require__(90178);
 var textInputStyleValidator = import_shapeshift3.s.nativeEnum(import_v108.TextInputStyle);
 var minLengthValidator = import_shapeshift3.s.number().int().greaterThanOrEqual(0).lessThanOrEqual(4e3).setValidationEnabled(isValidationEnabled);
 var maxLengthValidator = import_shapeshift3.s.number().int().greaterThanOrEqual(1).lessThanOrEqual(4e3).setValidationEnabled(isValidationEnabled);
@@ -4622,7 +4622,7 @@ var TextInputBuilder = class extends ComponentBuilder {
 };
 
 // src/components/v2/Container.ts
-var import_v1015 = __nccwpck_require__(94104);
+var import_v1015 = __nccwpck_require__(90178);
 
 // src/components/v2/Assertions.ts
 var Assertions_exports4 = {};
@@ -4640,10 +4640,10 @@ __export(Assertions_exports4, {
   validateComponentArray: () => validateComponentArray
 });
 var import_shapeshift4 = __nccwpck_require__(50141);
-var import_v1011 = __nccwpck_require__(94104);
+var import_v1011 = __nccwpck_require__(90178);
 
 // src/components/v2/Thumbnail.ts
-var import_v1010 = __nccwpck_require__(94104);
+var import_v1010 = __nccwpck_require__(90178);
 var ThumbnailBuilder = class extends ComponentBuilder {
   static {
     __name(this, "ThumbnailBuilder");
@@ -4750,7 +4750,7 @@ function validateComponentArray(input, min, max, ExpectedInstanceOf) {
 __name(validateComponentArray, "validateComponentArray");
 
 // src/components/v2/File.ts
-var import_v1012 = __nccwpck_require__(94104);
+var import_v1012 = __nccwpck_require__(90178);
 var FileBuilder = class extends ComponentBuilder {
   static {
     __name(this, "FileBuilder");
@@ -4811,7 +4811,7 @@ var FileBuilder = class extends ComponentBuilder {
 };
 
 // src/components/v2/Separator.ts
-var import_v1013 = __nccwpck_require__(94104);
+var import_v1013 = __nccwpck_require__(90178);
 var SeparatorBuilder = class extends ComponentBuilder {
   static {
     __name(this, "SeparatorBuilder");
@@ -4877,7 +4877,7 @@ var SeparatorBuilder = class extends ComponentBuilder {
 };
 
 // src/components/v2/TextDisplay.ts
-var import_v1014 = __nccwpck_require__(94104);
+var import_v1014 = __nccwpck_require__(90178);
 var TextDisplayBuilder = class extends ComponentBuilder {
   static {
     __name(this, "TextDisplayBuilder");
@@ -5089,7 +5089,7 @@ var ContainerBuilder = class extends ComponentBuilder {
 };
 
 // src/components/v2/MediaGallery.ts
-var import_v1016 = __nccwpck_require__(94104);
+var import_v1016 = __nccwpck_require__(90178);
 
 // src/components/v2/MediaGalleryItem.ts
 var MediaGalleryItemBuilder = class {
@@ -5269,7 +5269,7 @@ var MediaGalleryBuilder = class extends ComponentBuilder {
 };
 
 // src/components/v2/Section.ts
-var import_v1017 = __nccwpck_require__(94104);
+var import_v1017 = __nccwpck_require__(90178);
 var SectionBuilder = class extends ComponentBuilder {
   static {
     __name(this, "SectionBuilder");
@@ -5631,7 +5631,7 @@ __export(Assertions_exports6, {
   validateRequiredParameters: () => validateRequiredParameters3
 });
 var import_shapeshift6 = __nccwpck_require__(50141);
-var import_v1020 = __nccwpck_require__(94104);
+var import_v1020 = __nccwpck_require__(90178);
 var namePredicate = import_shapeshift6.s.string().lengthGreaterThanOrEqual(1).lengthLessThanOrEqual(32).regex(/^[\p{Ll}\p{Lm}\p{Lo}\p{N}\p{sc=Devanagari}\p{sc=Thai}_-]+$/u).setValidationEnabled(isValidationEnabled);
 function validateName(name) {
   namePredicate.parse(name);
@@ -5823,7 +5823,7 @@ var SharedNameAndDescription = class {
 };
 
 // src/interactions/slashCommands/mixins/SharedSlashCommand.ts
-var import_v1021 = __nccwpck_require__(94104);
+var import_v1021 = __nccwpck_require__(90178);
 var SharedSlashCommand = class {
   static {
     __name(this, "SharedSlashCommand");
@@ -5935,7 +5935,7 @@ var SharedSlashCommand = class {
 };
 
 // src/interactions/slashCommands/options/attachment.ts
-var import_v1022 = __nccwpck_require__(94104);
+var import_v1022 = __nccwpck_require__(90178);
 
 // src/interactions/slashCommands/mixins/ApplicationCommandOptionBase.ts
 var ApplicationCommandOptionBase = class extends SharedNameAndDescription {
@@ -5988,7 +5988,7 @@ var SlashCommandAttachmentOption = class extends ApplicationCommandOptionBase {
 };
 
 // src/interactions/slashCommands/options/boolean.ts
-var import_v1023 = __nccwpck_require__(94104);
+var import_v1023 = __nccwpck_require__(90178);
 var SlashCommandBooleanOption = class extends ApplicationCommandOptionBase {
   static {
     __name(this, "SlashCommandBooleanOption");
@@ -6007,12 +6007,12 @@ var SlashCommandBooleanOption = class extends ApplicationCommandOptionBase {
 };
 
 // src/interactions/slashCommands/options/channel.ts
-var import_v1025 = __nccwpck_require__(94104);
+var import_v1025 = __nccwpck_require__(90178);
 var import_ts_mixer = __nccwpck_require__(41556);
 
 // src/interactions/slashCommands/mixins/ApplicationCommandOptionChannelTypesMixin.ts
 var import_shapeshift7 = __nccwpck_require__(50141);
-var import_v1024 = __nccwpck_require__(94104);
+var import_v1024 = __nccwpck_require__(90178);
 var allowedChannelTypes = [
   import_v1024.ChannelType.GuildText,
   import_v1024.ChannelType.GuildVoice,
@@ -6069,7 +6069,7 @@ SlashCommandChannelOption = __decorateClass([
 
 // src/interactions/slashCommands/options/integer.ts
 var import_shapeshift10 = __nccwpck_require__(50141);
-var import_v1027 = __nccwpck_require__(94104);
+var import_v1027 = __nccwpck_require__(90178);
 var import_ts_mixer2 = __nccwpck_require__(41556);
 
 // src/interactions/slashCommands/mixins/ApplicationCommandNumericOptionMinMaxValueMixin.ts
@@ -6121,7 +6121,7 @@ var ApplicationCommandOptionWithAutocompleteMixin = class {
 
 // src/interactions/slashCommands/mixins/ApplicationCommandOptionWithChoicesMixin.ts
 var import_shapeshift9 = __nccwpck_require__(50141);
-var import_v1026 = __nccwpck_require__(94104);
+var import_v1026 = __nccwpck_require__(90178);
 var stringPredicate = import_shapeshift9.s.string().lengthGreaterThanOrEqual(1).lengthLessThanOrEqual(100);
 var numberPredicate = import_shapeshift9.s.number().greaterThan(Number.NEGATIVE_INFINITY).lessThan(Number.POSITIVE_INFINITY);
 var choicesPredicate = import_shapeshift9.s.object({
@@ -6229,7 +6229,7 @@ SlashCommandIntegerOption = __decorateClass([
 ], SlashCommandIntegerOption);
 
 // src/interactions/slashCommands/options/mentionable.ts
-var import_v1028 = __nccwpck_require__(94104);
+var import_v1028 = __nccwpck_require__(90178);
 var SlashCommandMentionableOption = class extends ApplicationCommandOptionBase {
   static {
     __name(this, "SlashCommandMentionableOption");
@@ -6249,7 +6249,7 @@ var SlashCommandMentionableOption = class extends ApplicationCommandOptionBase {
 
 // src/interactions/slashCommands/options/number.ts
 var import_shapeshift11 = __nccwpck_require__(50141);
-var import_v1029 = __nccwpck_require__(94104);
+var import_v1029 = __nccwpck_require__(90178);
 var import_ts_mixer3 = __nccwpck_require__(41556);
 var numberValidator2 = import_shapeshift11.s.number();
 var SlashCommandNumberOption = class extends ApplicationCommandOptionBase {
@@ -6294,7 +6294,7 @@ SlashCommandNumberOption = __decorateClass([
 ], SlashCommandNumberOption);
 
 // src/interactions/slashCommands/options/role.ts
-var import_v1030 = __nccwpck_require__(94104);
+var import_v1030 = __nccwpck_require__(90178);
 var SlashCommandRoleOption = class extends ApplicationCommandOptionBase {
   static {
     __name(this, "SlashCommandRoleOption");
@@ -6314,7 +6314,7 @@ var SlashCommandRoleOption = class extends ApplicationCommandOptionBase {
 
 // src/interactions/slashCommands/options/string.ts
 var import_shapeshift12 = __nccwpck_require__(50141);
-var import_v1031 = __nccwpck_require__(94104);
+var import_v1031 = __nccwpck_require__(90178);
 var import_ts_mixer4 = __nccwpck_require__(41556);
 var minLengthValidator2 = import_shapeshift12.s.number().greaterThanOrEqual(0).lessThanOrEqual(6e3);
 var maxLengthValidator2 = import_shapeshift12.s.number().greaterThanOrEqual(1).lessThanOrEqual(6e3);
@@ -6368,7 +6368,7 @@ SlashCommandStringOption = __decorateClass([
 ], SlashCommandStringOption);
 
 // src/interactions/slashCommands/options/user.ts
-var import_v1032 = __nccwpck_require__(94104);
+var import_v1032 = __nccwpck_require__(90178);
 var SlashCommandUserOption = class extends ApplicationCommandOptionBase {
   static {
     __name(this, "SlashCommandUserOption");
@@ -6482,7 +6482,7 @@ var SharedSlashCommandOptions = class {
 };
 
 // src/interactions/slashCommands/SlashCommandSubcommands.ts
-var import_v1033 = __nccwpck_require__(94104);
+var import_v1033 = __nccwpck_require__(90178);
 var import_ts_mixer5 = __nccwpck_require__(41556);
 var SlashCommandSubcommandGroupBuilder = class {
   /**
@@ -6676,7 +6676,7 @@ __export(Assertions_exports7, {
   validateType: () => validateType
 });
 var import_shapeshift13 = __nccwpck_require__(50141);
-var import_v1034 = __nccwpck_require__(94104);
+var import_v1034 = __nccwpck_require__(90178);
 var namePredicate2 = import_shapeshift13.s.string().lengthGreaterThanOrEqual(1).lengthLessThanOrEqual(32).regex(/^( *[\p{P}\p{L}\p{N}\p{sc=Devanagari}\p{sc=Thai}]+ *)+$/u).setValidationEnabled(isValidationEnabled);
 var typePredicate = import_shapeshift13.s.union([import_shapeshift13.s.literal(import_v1034.ApplicationCommandType.User), import_shapeshift13.s.literal(import_v1034.ApplicationCommandType.Message)]).setValidationEnabled(isValidationEnabled);
 var booleanPredicate3 = import_shapeshift13.s.boolean();
@@ -8564,11 +8564,11 @@ async function resolveBody(body) {
 __name(resolveBody, "resolveBody");
 
 // src/lib/CDN.ts
-var import_v102 = __nccwpck_require__(94104);
+var import_v102 = __nccwpck_require__(90178);
 
 // src/lib/utils/constants.ts
 var import_util = __nccwpck_require__(1004);
-var import_v10 = __nccwpck_require__(94104);
+var import_v10 = __nccwpck_require__(90178);
 var DefaultUserAgent = `DiscordBot (https://discord.js.org, 2.5.0)`;
 var DefaultUserAgentAppendix = (0, import_util.getUserAgentAppendix)();
 var DefaultRestOptions = {
@@ -9116,7 +9116,7 @@ var HTTPError = class _HTTPError extends Error {
 
 // src/lib/REST.ts
 var import_collection = __nccwpck_require__(61841);
-var import_snowflake = __nccwpck_require__(65681);
+var import_snowflake = __nccwpck_require__(88062);
 var import_async_event_emitter = __nccwpck_require__(54080);
 var import_magic_bytes = __nccwpck_require__(33224);
 
@@ -10534,14 +10534,14 @@ var import_collection5 = __nccwpck_require__(61841);
 var import_util2 = __nccwpck_require__(1004);
 var import_async_queue2 = __nccwpck_require__(83898);
 var import_async_event_emitter = __nccwpck_require__(54080);
-var import_v102 = __nccwpck_require__(94104);
+var import_v102 = __nccwpck_require__(90178);
 var import_ws = __nccwpck_require__(54018);
 
 // src/utils/constants.ts
 var import_node_process = __toESM(__nccwpck_require__(932));
 var import_collection4 = __nccwpck_require__(61841);
 var import_util = __nccwpck_require__(1004);
-var import_v10 = __nccwpck_require__(94104);
+var import_v10 = __nccwpck_require__(90178);
 
 // src/throttling/SimpleIdentifyThrottler.ts
 var import_promises = __nccwpck_require__(16460);
@@ -11429,7 +11429,7 @@ var WorkerBootstrapper = class {
 var import_util3 = __nccwpck_require__(1004);
 var import_util4 = __nccwpck_require__(1004);
 var import_async_event_emitter2 = __nccwpck_require__(54080);
-var import_v103 = __nccwpck_require__(94104);
+var import_v103 = __nccwpck_require__(90178);
 (0, import_util4.polyfillDispose)();
 var WebSocketManager = class extends import_async_event_emitter2.AsyncEventEmitter {
   static {
@@ -11553,41 +11553,16 @@ var version = "1.2.2";
 
 /***/ }),
 
-/***/ 61261:
+/***/ 68047:
 /***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=common.js.map
-
-/***/ }),
-
-/***/ 3097:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
 
 /**
  * Types extracted from https://discord.com/developers/docs/topics/gateway
  */
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __exportStar = (this && this.__exportStar) || function(m, exports) {
-    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
-};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.VoiceChannelEffectSendAnimationType = exports.GatewayDispatchEvents = exports.GatewayIntentBits = exports.GatewayCloseCodes = exports.GatewayOpcodes = exports.GatewayVersion = void 0;
-__exportStar(__nccwpck_require__(61261), exports);
 exports.GatewayVersion = '10';
 /**
  * @see {@link https://discord.com/developers/docs/topics/opcodes-and-status-codes#gateway-gateway-opcodes}
@@ -11861,7 +11836,7 @@ var VoiceChannelEffectSendAnimationType;
 
 /***/ }),
 
-/***/ 18979:
+/***/ 99337:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -11911,9 +11886,7 @@ exports.FormattingPatterns = {
      *
      * The `fullName` (possibly including `name`, `subcommandOrGroup` and `subcommand`) and `id` group properties are present on the `exec` result of this expression
      */
-    SlashCommand: 
-    // eslint-disable-next-line unicorn/no-unsafe-regex
-    /<\/(?<fullName>(?<name>[-_\p{Letter}\p{Number}\p{sc=Deva}\p{sc=Thai}]{1,32})(?: (?<subcommandOrGroup>[-_\p{Letter}\p{Number}\p{sc=Deva}\p{sc=Thai}]{1,32}))?(?: (?<subcommand>[-_\p{Letter}\p{Number}\p{sc=Deva}\p{sc=Thai}]{1,32}))?):(?<id>\d{17,20})>/u,
+    SlashCommand: /<\/(?<fullName>(?<name>[-_\p{Letter}\p{Number}\p{sc=Deva}\p{sc=Thai}]{1,32})(?: (?<subcommandOrGroup>[-_\p{Letter}\p{Number}\p{sc=Deva}\p{sc=Thai}]{1,32}))?(?: (?<subcommand>[-_\p{Letter}\p{Number}\p{sc=Deva}\p{sc=Thai}]{1,32}))?):(?<id>\d{17,20})>/u,
     /**
      * Regular expression for matching a custom emoji, either static or animated
      *
@@ -11974,7 +11947,7 @@ Object.freeze(exports.FormattingPatterns);
 
 /***/ }),
 
-/***/ 93170:
+/***/ 50628:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -11998,7 +11971,6 @@ exports.PermissionFlagsBits = {
     /**
      * Allows kicking members
      */
-    // eslint-disable-next-line sonarjs/no-identical-expressions
     KickMembers: 1n << 1n,
     /**
      * Allows banning members
@@ -12280,87 +12252,7 @@ Object.freeze(exports.PermissionFlagsBits);
 
 /***/ }),
 
-/***/ 15313:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=attachment.js.map
-
-/***/ }),
-
-/***/ 89769:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=base.js.map
-
-/***/ }),
-
-/***/ 66130:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=boolean.js.map
-
-/***/ }),
-
-/***/ 60413:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=channel.js.map
-
-/***/ }),
-
-/***/ 33248:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=integer.js.map
-
-/***/ }),
-
-/***/ 81308:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=mentionable.js.map
-
-/***/ }),
-
-/***/ 73069:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=number.js.map
-
-/***/ }),
-
-/***/ 33924:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=role.js.map
-
-/***/ }),
-
-/***/ 56021:
+/***/ 6291:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -12388,47 +12280,7 @@ var ApplicationCommandOptionType;
 
 /***/ }),
 
-/***/ 81361:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=string.js.map
-
-/***/ }),
-
-/***/ 81843:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=subcommand.js.map
-
-/***/ }),
-
-/***/ 4540:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=subcommandGroup.js.map
-
-/***/ }),
-
-/***/ 44951:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=user.js.map
-
-/***/ }),
-
-/***/ 11672:
+/***/ 42726:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -12448,54 +12300,12 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-__exportStar(__nccwpck_require__(15313), exports);
-__exportStar(__nccwpck_require__(89769), exports);
-__exportStar(__nccwpck_require__(66130), exports);
-__exportStar(__nccwpck_require__(60413), exports);
-__exportStar(__nccwpck_require__(33248), exports);
-__exportStar(__nccwpck_require__(81308), exports);
-__exportStar(__nccwpck_require__(73069), exports);
-__exportStar(__nccwpck_require__(33924), exports);
-__exportStar(__nccwpck_require__(56021), exports);
-__exportStar(__nccwpck_require__(81361), exports);
-__exportStar(__nccwpck_require__(81843), exports);
-__exportStar(__nccwpck_require__(4540), exports);
-__exportStar(__nccwpck_require__(44951), exports);
+__exportStar(__nccwpck_require__(6291), exports);
 //# sourceMappingURL=chatInput.js.map
 
 /***/ }),
 
-/***/ 88726:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=contextMenu.js.map
-
-/***/ }),
-
-/***/ 34522:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=entryPoint.js.map
-
-/***/ }),
-
-/***/ 2256:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=internals.js.map
-
-/***/ }),
-
-/***/ 6502:
+/***/ 524:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -12523,7 +12333,7 @@ exports.APIApplicationCommandPermissionsConstant = {
 
 /***/ }),
 
-/***/ 19292:
+/***/ 8838:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -12544,11 +12354,8 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.EntryPointCommandHandlerType = exports.InteractionContextType = exports.ApplicationIntegrationType = exports.ApplicationCommandType = void 0;
-__exportStar(__nccwpck_require__(11672), exports);
-__exportStar(__nccwpck_require__(88726), exports);
-__exportStar(__nccwpck_require__(6502), exports);
-__exportStar(__nccwpck_require__(34522), exports);
-__exportStar(__nccwpck_require__(2256), exports);
+__exportStar(__nccwpck_require__(42726), exports);
+__exportStar(__nccwpck_require__(524), exports);
 /**
  * @see {@link https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-types}
  */
@@ -12622,57 +12429,7 @@ var EntryPointCommandHandlerType;
 
 /***/ }),
 
-/***/ 15170:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=autocomplete.js.map
-
-/***/ }),
-
-/***/ 7291:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=base.js.map
-
-/***/ }),
-
-/***/ 93251:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=messageComponents.js.map
-
-/***/ }),
-
-/***/ 30861:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=modalSubmit.js.map
-
-/***/ }),
-
-/***/ 86230:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=ping.js.map
-
-/***/ }),
-
-/***/ 77336:
+/***/ 75318:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -12742,7 +12499,7 @@ var InteractionResponseType;
 
 /***/ }),
 
-/***/ 62837:
+/***/ 39535:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -12887,7 +12644,7 @@ var ApplicationWebhookEventStatus;
 
 /***/ }),
 
-/***/ 88264:
+/***/ 55178:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -12978,7 +12735,7 @@ var AuditLogOptionsType;
 
 /***/ }),
 
-/***/ 83040:
+/***/ 20990:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -13073,7 +12830,7 @@ var AutoModerationActionType;
 
 /***/ }),
 
-/***/ 57948:
+/***/ 54502:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -13647,20 +13404,7 @@ var ChannelFlags;
 
 /***/ }),
 
-/***/ 933:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-/**
- * Types extracted from https://discord.com/developers/docs/resources/emoji
- */
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=emoji.js.map
-
-/***/ }),
-
-/***/ 21765:
+/***/ 46675:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -13750,7 +13494,7 @@ var ActivityFlags;
 
 /***/ }),
 
-/***/ 94260:
+/***/ 97934:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -14135,7 +13879,7 @@ var GuildOnboardingPromptType;
 
 /***/ }),
 
-/***/ 84749:
+/***/ 33311:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -14216,7 +13960,7 @@ var GuildScheduledEventPrivacyLevel;
 
 /***/ }),
 
-/***/ 7839:
+/***/ 40281:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -14236,34 +13980,30 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-__exportStar(__nccwpck_require__(93170), exports);
-__exportStar(__nccwpck_require__(62837), exports);
-__exportStar(__nccwpck_require__(88264), exports);
-__exportStar(__nccwpck_require__(83040), exports);
-__exportStar(__nccwpck_require__(57948), exports);
-__exportStar(__nccwpck_require__(933), exports);
-__exportStar(__nccwpck_require__(21765), exports);
-__exportStar(__nccwpck_require__(94260), exports);
-__exportStar(__nccwpck_require__(84749), exports);
-__exportStar(__nccwpck_require__(918), exports);
-__exportStar(__nccwpck_require__(88062), exports);
-__exportStar(__nccwpck_require__(68862), exports);
-__exportStar(__nccwpck_require__(81880), exports);
-__exportStar(__nccwpck_require__(3359), exports);
-__exportStar(__nccwpck_require__(10602), exports);
-__exportStar(__nccwpck_require__(99178), exports);
-__exportStar(__nccwpck_require__(34974), exports);
-__exportStar(__nccwpck_require__(95536), exports);
-__exportStar(__nccwpck_require__(40133), exports);
-__exportStar(__nccwpck_require__(46025), exports);
-__exportStar(__nccwpck_require__(40468), exports);
-__exportStar(__nccwpck_require__(40633), exports);
-__exportStar(__nccwpck_require__(90534), exports);
+__exportStar(__nccwpck_require__(50628), exports);
+__exportStar(__nccwpck_require__(39535), exports);
+__exportStar(__nccwpck_require__(55178), exports);
+__exportStar(__nccwpck_require__(20990), exports);
+__exportStar(__nccwpck_require__(54502), exports);
+__exportStar(__nccwpck_require__(46675), exports);
+__exportStar(__nccwpck_require__(97934), exports);
+__exportStar(__nccwpck_require__(33311), exports);
+__exportStar(__nccwpck_require__(71504), exports);
+__exportStar(__nccwpck_require__(79680), exports);
+__exportStar(__nccwpck_require__(48132), exports);
+__exportStar(__nccwpck_require__(5714), exports);
+__exportStar(__nccwpck_require__(62661), exports);
+__exportStar(__nccwpck_require__(69952), exports);
+__exportStar(__nccwpck_require__(37052), exports);
+__exportStar(__nccwpck_require__(30894), exports);
+__exportStar(__nccwpck_require__(1479), exports);
+__exportStar(__nccwpck_require__(17918), exports);
+__exportStar(__nccwpck_require__(29688), exports);
 //# sourceMappingURL=index.js.map
 
 /***/ }),
 
-/***/ 918:
+/***/ 71504:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -14283,18 +14023,13 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-__exportStar(__nccwpck_require__(19292), exports);
-__exportStar(__nccwpck_require__(15170), exports);
-__exportStar(__nccwpck_require__(7291), exports);
-__exportStar(__nccwpck_require__(93251), exports);
-__exportStar(__nccwpck_require__(30861), exports);
-__exportStar(__nccwpck_require__(86230), exports);
-__exportStar(__nccwpck_require__(77336), exports);
+__exportStar(__nccwpck_require__(8838), exports);
+__exportStar(__nccwpck_require__(75318), exports);
 //# sourceMappingURL=interactions.js.map
 
 /***/ }),
 
-/***/ 88062:
+/***/ 79680:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -14325,7 +14060,7 @@ var InviteTargetType;
 
 /***/ }),
 
-/***/ 68862:
+/***/ 48132:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -14433,7 +14168,7 @@ var SubscriptionStatus;
 
 /***/ }),
 
-/***/ 81880:
+/***/ 5714:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -14588,7 +14323,7 @@ var OAuth2Scopes;
 
 /***/ }),
 
-/***/ 3359:
+/***/ 62661:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -14612,7 +14347,7 @@ var RoleFlags;
 
 /***/ }),
 
-/***/ 10602:
+/***/ 69952:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -14636,20 +14371,7 @@ var PollLayoutType;
 
 /***/ }),
 
-/***/ 99178:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-/**
- * Types extracted from https://discord.com/developers/docs/resources/soundboard
- */
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=soundboard.js.map
-
-/***/ }),
-
-/***/ 34974:
+/***/ 37052:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -14677,7 +14399,7 @@ var StageInstancePrivacyLevel;
 
 /***/ }),
 
-/***/ 95536:
+/***/ 30894:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -14715,7 +14437,7 @@ var StickerFormatType;
 
 /***/ }),
 
-/***/ 40133:
+/***/ 1479:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -14746,20 +14468,7 @@ var TeamMemberRole;
 
 /***/ }),
 
-/***/ 46025:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-/**
- * Types extracted from https://discord.com/developers/docs/resources/guild-template
- */
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=template.js.map
-
-/***/ }),
-
-/***/ 40468:
+/***/ 17918:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -14938,20 +14647,7 @@ var ConnectionVisibility;
 
 /***/ }),
 
-/***/ 40633:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-/**
- * Types extracted from https://discord.com/developers/docs/resources/voice
- */
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=voice.js.map
-
-/***/ }),
-
-/***/ 90534:
+/***/ 29688:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -14985,6 +14681,12 @@ var ApplicationWebhookEventType;
      */
     ApplicationWebhookEventType["ApplicationAuthorized"] = "APPLICATION_AUTHORIZED";
     /**
+     * Sent when an app was deauthorized by a user
+     *
+     * @unstable
+     */
+    ApplicationWebhookEventType["ApplicationDeauthorized"] = "APPLICATION_DEAUTHORIZED";
+    /**
      * Entitlement was created
      */
     ApplicationWebhookEventType["EntitlementCreate"] = "ENTITLEMENT_CREATE";
@@ -15015,7 +14717,7 @@ var WebhookType;
 
 /***/ }),
 
-/***/ 93765:
+/***/ 85407:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -15294,37 +14996,7 @@ var Locale;
 
 /***/ }),
 
-/***/ 79608:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=application.js.map
-
-/***/ }),
-
-/***/ 53767:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=auditLog.js.map
-
-/***/ }),
-
-/***/ 1079:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=autoModeration.js.map
-
-/***/ }),
-
-/***/ 32061:
+/***/ 53951:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -15343,47 +15015,7 @@ var ReactionType;
 
 /***/ }),
 
-/***/ 49836:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=emoji.js.map
-
-/***/ }),
-
-/***/ 32568:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=gateway.js.map
-
-/***/ }),
-
-/***/ 75289:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=guild.js.map
-
-/***/ }),
-
-/***/ 51564:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=guildScheduledEvent.js.map
-
-/***/ }),
-
-/***/ 1610:
+/***/ 7492:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -15404,28 +15036,10 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.OAuth2Routes = exports.RouteBases = exports.CDNRoutes = exports.ImageFormat = exports.StickerPackApplicationId = exports.Routes = exports.APIVersion = void 0;
-const internals_1 = __nccwpck_require__(45919);
-__exportStar(__nccwpck_require__(93765), exports);
-__exportStar(__nccwpck_require__(79608), exports);
-__exportStar(__nccwpck_require__(53767), exports);
-__exportStar(__nccwpck_require__(1079), exports);
-__exportStar(__nccwpck_require__(32061), exports);
-__exportStar(__nccwpck_require__(49836), exports);
-__exportStar(__nccwpck_require__(32568), exports);
-__exportStar(__nccwpck_require__(75289), exports);
-__exportStar(__nccwpck_require__(51564), exports);
-__exportStar(__nccwpck_require__(8897), exports);
-__exportStar(__nccwpck_require__(63025), exports);
-__exportStar(__nccwpck_require__(3157), exports);
-__exportStar(__nccwpck_require__(47311), exports);
-__exportStar(__nccwpck_require__(75877), exports);
-__exportStar(__nccwpck_require__(47229), exports);
-__exportStar(__nccwpck_require__(73547), exports);
-__exportStar(__nccwpck_require__(52073), exports);
-__exportStar(__nccwpck_require__(74338), exports);
-__exportStar(__nccwpck_require__(45015), exports);
-__exportStar(__nccwpck_require__(10188), exports);
-__exportStar(__nccwpck_require__(8139), exports);
+const internals_1 = __nccwpck_require__(29725);
+__exportStar(__nccwpck_require__(85407), exports);
+__exportStar(__nccwpck_require__(53951), exports);
+__exportStar(__nccwpck_require__(59411), exports);
 exports.APIVersion = '10';
 exports.Routes = {
     /**
@@ -16639,27 +16253,7 @@ Object.freeze(exports.OAuth2Routes);
 
 /***/ }),
 
-/***/ 8897:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=interactions.js.map
-
-/***/ }),
-
-/***/ 63025:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=invite.js.map
-
-/***/ }),
-
-/***/ 3157:
+/***/ 59411:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -16678,97 +16272,7 @@ var EntitlementOwnerType;
 
 /***/ }),
 
-/***/ 47311:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=oauth2.js.map
-
-/***/ }),
-
-/***/ 75877:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=poll.js.map
-
-/***/ }),
-
-/***/ 47229:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=soundboard.js.map
-
-/***/ }),
-
-/***/ 73547:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=stageInstance.js.map
-
-/***/ }),
-
-/***/ 52073:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=sticker.js.map
-
-/***/ }),
-
-/***/ 74338:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=template.js.map
-
-/***/ }),
-
-/***/ 45015:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=user.js.map
-
-/***/ }),
-
-/***/ 10188:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=voice.js.map
-
-/***/ }),
-
-/***/ 8139:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=webhook.js.map
-
-/***/ }),
-
-/***/ 96542:
+/***/ 84844:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -17015,7 +16519,7 @@ var RPCCloseEventCodes;
 
 /***/ }),
 
-/***/ 26812:
+/***/ 89858:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -17036,7 +16540,7 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.RPCEvents = exports.RPCCommands = exports.RPCVersion = void 0;
-__exportStar(__nccwpck_require__(96542), exports);
+__exportStar(__nccwpck_require__(84844), exports);
 exports.RPCVersion = '1';
 /**
  * @see {@link https://discord.com/developers/docs/topics/rpc#commands-and-events-rpc-commands}
@@ -17321,7 +16825,7 @@ var RPCEvents;
 
 /***/ }),
 
-/***/ 45919:
+/***/ 29725:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -17341,7 +16845,7 @@ exports.urlSafeCharacters = {
 
 /***/ }),
 
-/***/ 19786:
+/***/ 16428:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
@@ -17360,7 +16864,7 @@ exports.isMessageComponentButtonInteraction = isMessageComponentButtonInteractio
 exports.isMessageComponentSelectMenuInteraction = isMessageComponentSelectMenuInteraction;
 exports.isChatInputApplicationCommandInteraction = isChatInputApplicationCommandInteraction;
 exports.isContextMenuApplicationCommandInteraction = isContextMenuApplicationCommandInteraction;
-const index_1 = __nccwpck_require__(7839);
+const index_1 = __nccwpck_require__(40281);
 // Interactions
 /**
  * A type-guard check for DM interactions
@@ -17495,7 +16999,7 @@ function isContextMenuApplicationCommandInteraction(interaction) {
 
 /***/ }),
 
-/***/ 94104:
+/***/ 90178:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -17516,13 +17020,13 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.Utils = void 0;
-__exportStar(__nccwpck_require__(3097), exports);
-__exportStar(__nccwpck_require__(18979), exports);
-__exportStar(__nccwpck_require__(7839), exports);
-__exportStar(__nccwpck_require__(1610), exports);
-__exportStar(__nccwpck_require__(26812), exports);
-__exportStar(__nccwpck_require__(45919), exports);
-exports.Utils = __nccwpck_require__(19786);
+__exportStar(__nccwpck_require__(68047), exports);
+__exportStar(__nccwpck_require__(99337), exports);
+__exportStar(__nccwpck_require__(40281), exports);
+__exportStar(__nccwpck_require__(7492), exports);
+__exportStar(__nccwpck_require__(89858), exports);
+__exportStar(__nccwpck_require__(29725), exports);
+exports.Utils = __nccwpck_require__(16428);
 //# sourceMappingURL=v10.js.map
 
 /***/ }),
@@ -17535,7 +17039,7 @@ exports.Utils = __nccwpck_require__(19786);
 
 const EventEmitter = __nccwpck_require__(78474);
 const { REST } = __nccwpck_require__(81374);
-const { Routes } = __nccwpck_require__(94104);
+const { Routes } = __nccwpck_require__(90178);
 const { DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(6119);
 const Options = __nccwpck_require__(61710);
 const { flatten } = __nccwpck_require__(21754);
@@ -17664,7 +17168,7 @@ module.exports = BaseClient;
 const process = __nccwpck_require__(1708);
 const { Collection } = __nccwpck_require__(41514);
 const { makeURLSearchParams } = __nccwpck_require__(81374);
-const { OAuth2Scopes, Routes } = __nccwpck_require__(94104);
+const { OAuth2Scopes, Routes } = __nccwpck_require__(90178);
 const BaseClient = __nccwpck_require__(31037);
 const ActionsManager = __nccwpck_require__(37181);
 const ClientVoiceManager = __nccwpck_require__(24510);
@@ -20011,7 +19515,7 @@ module.exports = GuildUpdateAction;
 "use strict";
 
 
-const { InteractionType, ComponentType, ApplicationCommandType } = __nccwpck_require__(94104);
+const { InteractionType, ComponentType, ApplicationCommandType } = __nccwpck_require__(90178);
 const Action = __nccwpck_require__(12605);
 const AutocompleteInteraction = __nccwpck_require__(12094);
 const ButtonInteraction = __nccwpck_require__(13594);
@@ -21297,7 +20801,7 @@ const {
   CompressionMethod,
   CloseCodes,
 } = __nccwpck_require__(83952);
-const { GatewayCloseCodes, GatewayDispatchEvents } = __nccwpck_require__(94104);
+const { GatewayCloseCodes, GatewayDispatchEvents } = __nccwpck_require__(90178);
 const WebSocketShard = __nccwpck_require__(26934);
 const PacketHandlers = __nccwpck_require__(36665);
 const { DiscordjsError, ErrorCodes } = __nccwpck_require__(6119);
@@ -21688,7 +21192,7 @@ module.exports = WebSocketManager;
 const EventEmitter = __nccwpck_require__(78474);
 const process = __nccwpck_require__(1708);
 const { setTimeout, clearTimeout } = __nccwpck_require__(87997);
-const { GatewayIntentBits } = __nccwpck_require__(94104);
+const { GatewayIntentBits } = __nccwpck_require__(90178);
 const Status = __nccwpck_require__(20852);
 const WebSocketShardEvents = __nccwpck_require__(38090);
 
@@ -23877,7 +23381,7 @@ exports.RoleFlagsBitField = __nccwpck_require__(14550);
 exports.ShardEvents = __nccwpck_require__(69745);
 exports.SKUFlagsBitField = __nccwpck_require__(72107).SKUFlagsBitField;
 exports.Status = __nccwpck_require__(20852);
-exports.SnowflakeUtil = __nccwpck_require__(65681).DiscordSnowflake;
+exports.SnowflakeUtil = __nccwpck_require__(88062).DiscordSnowflake;
 exports.Sweepers = __nccwpck_require__(14610);
 exports.SystemChannelFlagsBitField = __nccwpck_require__(8024);
 exports.ThreadMemberFlagsBitField = __nccwpck_require__(22752);
@@ -24075,7 +23579,7 @@ exports.WelcomeChannel = __nccwpck_require__(39095);
 exports.WelcomeScreen = __nccwpck_require__(25302);
 
 // External
-__exportStar(__nccwpck_require__(94104), exports);
+__exportStar(__nccwpck_require__(90178), exports);
 __exportStar(__nccwpck_require__(25722), exports);
 __exportStar(__nccwpck_require__(71188), exports);
 __exportStar(__nccwpck_require__(81374), exports);
@@ -24094,7 +23598,7 @@ __exportStar(__nccwpck_require__(83952), exports);
 const { Collection } = __nccwpck_require__(41514);
 const { makeURLSearchParams } = __nccwpck_require__(81374);
 const { isJSONEncodable } = __nccwpck_require__(1004);
-const { Routes } = __nccwpck_require__(94104);
+const { Routes } = __nccwpck_require__(90178);
 const ApplicationCommandPermissionsManager = __nccwpck_require__(42882);
 const CachedManager = __nccwpck_require__(501);
 const { DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(6119);
@@ -24368,7 +23872,7 @@ module.exports = ApplicationCommandManager;
 
 
 const { Collection } = __nccwpck_require__(41514);
-const { ApplicationCommandPermissionType, RESTJSONErrorCodes, Routes } = __nccwpck_require__(94104);
+const { ApplicationCommandPermissionType, RESTJSONErrorCodes, Routes } = __nccwpck_require__(90178);
 const BaseManager = __nccwpck_require__(86780);
 const { DiscordjsError, DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(6119);
 
@@ -24804,7 +24308,7 @@ module.exports = ApplicationCommandPermissionsManager;
 
 
 const { Collection } = __nccwpck_require__(41514);
-const { Routes } = __nccwpck_require__(94104);
+const { Routes } = __nccwpck_require__(90178);
 const CachedManager = __nccwpck_require__(501);
 const { DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(6119);
 const ApplicationEmoji = __nccwpck_require__(81068);
@@ -24954,7 +24458,7 @@ module.exports = ApplicationEmojiManager;
 
 
 const { Collection } = __nccwpck_require__(41514);
-const { Routes } = __nccwpck_require__(94104);
+const { Routes } = __nccwpck_require__(90178);
 const CachedManager = __nccwpck_require__(501);
 const AutoModerationRule = __nccwpck_require__(2593);
 
@@ -25533,7 +25037,7 @@ module.exports = CategoryChannelChildManager;
 
 
 const process = __nccwpck_require__(1708);
-const { Routes } = __nccwpck_require__(94104);
+const { Routes } = __nccwpck_require__(90178);
 const CachedManager = __nccwpck_require__(501);
 const { BaseChannel } = __nccwpck_require__(25234);
 const { createChannel } = __nccwpck_require__(30966);
@@ -25764,7 +25268,7 @@ module.exports = DataManager;
 
 const { Collection } = __nccwpck_require__(41514);
 const { makeURLSearchParams } = __nccwpck_require__(81374);
-const { Routes, EntitlementOwnerType } = __nccwpck_require__(94104);
+const { Routes, EntitlementOwnerType } = __nccwpck_require__(90178);
 const CachedManager = __nccwpck_require__(501);
 const { ErrorCodes, DiscordjsTypeError } = __nccwpck_require__(6119);
 const { Entitlement } = __nccwpck_require__(88237);
@@ -25983,7 +25487,7 @@ module.exports = GuildApplicationCommandManager;
 const process = __nccwpck_require__(1708);
 const { Collection } = __nccwpck_require__(41514);
 const { makeURLSearchParams } = __nccwpck_require__(81374);
-const { Routes } = __nccwpck_require__(94104);
+const { Routes } = __nccwpck_require__(90178);
 const CachedManager = __nccwpck_require__(501);
 const { DiscordjsTypeError, DiscordjsError, ErrorCodes } = __nccwpck_require__(6119);
 const GuildBan = __nccwpck_require__(54096);
@@ -26239,7 +25743,7 @@ module.exports = GuildBanManager;
 
 const process = __nccwpck_require__(1708);
 const { Collection } = __nccwpck_require__(41514);
-const { ChannelType, Routes } = __nccwpck_require__(94104);
+const { ChannelType, Routes } = __nccwpck_require__(90178);
 const CachedManager = __nccwpck_require__(501);
 const GuildTextThreadManager = __nccwpck_require__(62993);
 const { DiscordjsError, DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(6119);
@@ -26765,7 +26269,7 @@ module.exports = GuildChannelManager;
 
 
 const { Collection } = __nccwpck_require__(41514);
-const { Routes, PermissionFlagsBits } = __nccwpck_require__(94104);
+const { Routes, PermissionFlagsBits } = __nccwpck_require__(90178);
 const BaseGuildEmojiManager = __nccwpck_require__(75873);
 const { DiscordjsError, DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(6119);
 const { resolveImage } = __nccwpck_require__(80176);
@@ -27072,7 +26576,7 @@ module.exports = GuildEmojiRoleManager;
 "use strict";
 
 
-const { Routes } = __nccwpck_require__(94104);
+const { Routes } = __nccwpck_require__(90178);
 const ThreadManager = __nccwpck_require__(47735);
 const { DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(6119);
 const MessagePayload = __nccwpck_require__(99143);
@@ -27164,7 +26668,7 @@ module.exports = GuildForumThreadManager;
 
 
 const { Collection } = __nccwpck_require__(41514);
-const { Routes } = __nccwpck_require__(94104);
+const { Routes } = __nccwpck_require__(90178);
 const CachedManager = __nccwpck_require__(501);
 const { DiscordjsError, ErrorCodes } = __nccwpck_require__(6119);
 const Invite = __nccwpck_require__(33225);
@@ -27390,7 +26894,7 @@ const process = __nccwpck_require__(1708);
 const { setTimeout, clearTimeout } = __nccwpck_require__(87997);
 const { Collection } = __nccwpck_require__(41514);
 const { makeURLSearchParams } = __nccwpck_require__(81374);
-const { GatewayOpcodes, Routes, RouteBases } = __nccwpck_require__(94104);
+const { GatewayOpcodes, Routes, RouteBases } = __nccwpck_require__(90178);
 const CachedManager = __nccwpck_require__(501);
 const { ErrorCodes, DiscordjsError } = __nccwpck_require__(6119);
 const ShardClientUtil = __nccwpck_require__(65163);
@@ -27804,8 +27308,8 @@ module.exports = GuildManager;
 const { setTimeout, clearTimeout } = __nccwpck_require__(87997);
 const { Collection } = __nccwpck_require__(41514);
 const { makeURLSearchParams } = __nccwpck_require__(81374);
-const { DiscordSnowflake } = __nccwpck_require__(65681);
-const { Routes, GatewayOpcodes } = __nccwpck_require__(94104);
+const { DiscordSnowflake } = __nccwpck_require__(88062);
+const { Routes, GatewayOpcodes } = __nccwpck_require__(90178);
 const CachedManager = __nccwpck_require__(501);
 const { DiscordjsError, DiscordjsTypeError, DiscordjsRangeError, ErrorCodes } = __nccwpck_require__(6119);
 const BaseGuildVoiceChannel = __nccwpck_require__(56115);
@@ -28370,7 +27874,7 @@ module.exports = GuildMemberManager;
 
 
 const { Collection } = __nccwpck_require__(41514);
-const { Routes } = __nccwpck_require__(94104);
+const { Routes } = __nccwpck_require__(90178);
 const DataManager = __nccwpck_require__(26915);
 const { DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(6119);
 const { Role } = __nccwpck_require__(7788);
@@ -28612,7 +28116,7 @@ module.exports = GuildMessageManager;
 
 const { Collection } = __nccwpck_require__(41514);
 const { makeURLSearchParams } = __nccwpck_require__(81374);
-const { GuildScheduledEventEntityType, Routes } = __nccwpck_require__(94104);
+const { GuildScheduledEventEntityType, Routes } = __nccwpck_require__(90178);
 const CachedManager = __nccwpck_require__(501);
 const { DiscordjsTypeError, DiscordjsError, ErrorCodes } = __nccwpck_require__(6119);
 const { GuildScheduledEvent } = __nccwpck_require__(82548);
@@ -28935,7 +28439,7 @@ module.exports = GuildScheduledEventManager;
 
 const { Collection } = __nccwpck_require__(41514);
 const { lazy } = __nccwpck_require__(1004);
-const { Routes } = __nccwpck_require__(94104);
+const { Routes } = __nccwpck_require__(90178);
 const CachedManager = __nccwpck_require__(501);
 const { DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(6119);
 const { SoundboardSound } = __nccwpck_require__(39082);
@@ -29156,7 +28660,7 @@ exports.GuildSoundboardSoundManager = GuildSoundboardSoundManager;
 
 
 const { Collection } = __nccwpck_require__(41514);
-const { Routes } = __nccwpck_require__(94104);
+const { Routes } = __nccwpck_require__(90178);
 const CachedManager = __nccwpck_require__(501);
 const { DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(6119);
 const MessagePayload = __nccwpck_require__(99143);
@@ -29345,7 +28849,7 @@ module.exports = GuildStickerManager;
 "use strict";
 
 
-const { ChannelType, Routes } = __nccwpck_require__(94104);
+const { ChannelType, Routes } = __nccwpck_require__(90178);
 const ThreadManager = __nccwpck_require__(47735);
 const { DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(6119);
 
@@ -29446,7 +28950,7 @@ module.exports = GuildTextThreadManager;
 
 const { Collection } = __nccwpck_require__(41514);
 const { makeURLSearchParams } = __nccwpck_require__(81374);
-const { Routes } = __nccwpck_require__(94104);
+const { Routes } = __nccwpck_require__(90178);
 const CachedManager = __nccwpck_require__(501);
 const { DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(6119);
 const { Message } = __nccwpck_require__(12053);
@@ -29780,7 +29284,7 @@ module.exports = PartialGroupDMMessageManager;
 
 const process = __nccwpck_require__(1708);
 const { Collection } = __nccwpck_require__(41514);
-const { OverwriteType, Routes } = __nccwpck_require__(94104);
+const { OverwriteType, Routes } = __nccwpck_require__(90178);
 const CachedManager = __nccwpck_require__(501);
 const { DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(6119);
 const PermissionOverwrites = __nccwpck_require__(86625);
@@ -30018,7 +29522,7 @@ module.exports = PresenceManager;
 "use strict";
 
 
-const { Routes } = __nccwpck_require__(94104);
+const { Routes } = __nccwpck_require__(90178);
 const CachedManager = __nccwpck_require__(501);
 const MessageReaction = __nccwpck_require__(40486);
 
@@ -30096,7 +29600,7 @@ module.exports = ReactionManager;
 
 const { Collection } = __nccwpck_require__(41514);
 const { makeURLSearchParams } = __nccwpck_require__(81374);
-const { ReactionType, Routes } = __nccwpck_require__(94104);
+const { ReactionType, Routes } = __nccwpck_require__(90178);
 const CachedManager = __nccwpck_require__(501);
 const { DiscordjsError, ErrorCodes } = __nccwpck_require__(6119);
 const User = __nccwpck_require__(40287);
@@ -30183,7 +29687,7 @@ module.exports = ReactionUserManager;
 const process = __nccwpck_require__(1708);
 const { Collection } = __nccwpck_require__(41514);
 const { DiscordAPIError } = __nccwpck_require__(81374);
-const { RESTJSONErrorCodes, Routes } = __nccwpck_require__(94104);
+const { RESTJSONErrorCodes, Routes } = __nccwpck_require__(90178);
 const CachedManager = __nccwpck_require__(501);
 const { DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(6119);
 const { Role } = __nccwpck_require__(7788);
@@ -30562,7 +30066,7 @@ module.exports = RoleManager;
 "use strict";
 
 
-const { Routes } = __nccwpck_require__(94104);
+const { Routes } = __nccwpck_require__(90178);
 const CachedManager = __nccwpck_require__(501);
 const { DiscordjsTypeError, DiscordjsError, ErrorCodes } = __nccwpck_require__(6119);
 const { StageInstance } = __nccwpck_require__(51347);
@@ -30731,7 +30235,7 @@ module.exports = StageInstanceManager;
 
 const { Collection } = __nccwpck_require__(41514);
 const { makeURLSearchParams } = __nccwpck_require__(81374);
-const { Routes } = __nccwpck_require__(94104);
+const { Routes } = __nccwpck_require__(90178);
 const CachedManager = __nccwpck_require__(501);
 const { DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(6119);
 const { Subscription } = __nccwpck_require__(82097);
@@ -30820,7 +30324,7 @@ exports.SubscriptionManager = SubscriptionManager;
 
 const { Collection } = __nccwpck_require__(41514);
 const { makeURLSearchParams } = __nccwpck_require__(81374);
-const { Routes } = __nccwpck_require__(94104);
+const { Routes } = __nccwpck_require__(90178);
 const CachedManager = __nccwpck_require__(501);
 const { DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(6119);
 const ThreadChannel = __nccwpck_require__(1669);
@@ -31022,7 +30526,7 @@ module.exports = ThreadManager;
 const process = __nccwpck_require__(1708);
 const { Collection } = __nccwpck_require__(41514);
 const { makeURLSearchParams } = __nccwpck_require__(81374);
-const { Routes } = __nccwpck_require__(94104);
+const { Routes } = __nccwpck_require__(90178);
 const CachedManager = __nccwpck_require__(501);
 const { DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(6119);
 const ThreadMember = __nccwpck_require__(19642);
@@ -31231,7 +30735,7 @@ module.exports = ThreadMemberManager;
 "use strict";
 
 
-const { ChannelType, Routes } = __nccwpck_require__(94104);
+const { ChannelType, Routes } = __nccwpck_require__(90178);
 const CachedManager = __nccwpck_require__(501);
 const { DiscordjsError, ErrorCodes } = __nccwpck_require__(6119);
 const { GuildMember } = __nccwpck_require__(10159);
@@ -31385,7 +30889,7 @@ module.exports = UserManager;
 "use strict";
 
 
-const { Routes } = __nccwpck_require__(94104);
+const { Routes } = __nccwpck_require__(90178);
 const CachedManager = __nccwpck_require__(501);
 const VoiceState = __nccwpck_require__(68903);
 
@@ -32783,8 +32287,8 @@ module.exports = AnonymousGuild;
 "use strict";
 
 
-const { DiscordSnowflake } = __nccwpck_require__(65681);
-const { ApplicationCommandOptionType } = __nccwpck_require__(94104);
+const { DiscordSnowflake } = __nccwpck_require__(88062);
+const { ApplicationCommandOptionType } = __nccwpck_require__(90178);
 const isEqual = __nccwpck_require__(4711);
 const Base = __nccwpck_require__(7441);
 const ApplicationCommandPermissionsManager = __nccwpck_require__(42882);
@@ -34302,7 +33806,7 @@ module.exports = AutoModerationRule;
 "use strict";
 
 
-const { InteractionResponseType, Routes } = __nccwpck_require__(94104);
+const { InteractionResponseType, Routes } = __nccwpck_require__(90178);
 const BaseInteraction = __nccwpck_require__(56881);
 const CommandInteractionOptionResolver = __nccwpck_require__(76676);
 const { DiscordjsError, ErrorCodes } = __nccwpck_require__(6119);
@@ -34464,8 +33968,8 @@ module.exports = Base;
 
 
 const { channelLink, channelMention } = __nccwpck_require__(71188);
-const { DiscordSnowflake } = __nccwpck_require__(65681);
-const { ChannelType, Routes } = __nccwpck_require__(94104);
+const { DiscordSnowflake } = __nccwpck_require__(88062);
+const { ChannelType, Routes } = __nccwpck_require__(90178);
 const Base = __nccwpck_require__(7441);
 const ChannelFlagsBitField = __nccwpck_require__(90913);
 const { ThreadChannelTypes } = __nccwpck_require__(92645);
@@ -34643,8 +34147,8 @@ exports.BaseChannel = BaseChannel;
 
 
 const { makeURLSearchParams } = __nccwpck_require__(81374);
-const { DiscordSnowflake } = __nccwpck_require__(65681);
-const { Routes, GuildFeature } = __nccwpck_require__(94104);
+const { DiscordSnowflake } = __nccwpck_require__(88062);
+const { Routes, GuildFeature } = __nccwpck_require__(90178);
 const Base = __nccwpck_require__(7441);
 
 /**
@@ -35057,7 +34561,7 @@ module.exports = BaseGuildTextChannel;
 
 
 const { Collection } = __nccwpck_require__(41514);
-const { PermissionFlagsBits } = __nccwpck_require__(94104);
+const { PermissionFlagsBits } = __nccwpck_require__(90178);
 const GuildChannel = __nccwpck_require__(31442);
 const TextBasedChannel = __nccwpck_require__(89874);
 const GuildMessageManager = __nccwpck_require__(41641);
@@ -35300,8 +34804,8 @@ module.exports = BaseGuildVoiceChannel;
 
 const { deprecate } = __nccwpck_require__(57975);
 const { Collection } = __nccwpck_require__(41514);
-const { DiscordSnowflake } = __nccwpck_require__(65681);
-const { InteractionType, ApplicationCommandType, ComponentType } = __nccwpck_require__(94104);
+const { DiscordSnowflake } = __nccwpck_require__(88062);
+const { InteractionType, ApplicationCommandType, ComponentType } = __nccwpck_require__(90178);
 const Base = __nccwpck_require__(7441);
 const { SelectMenuTypes } = __nccwpck_require__(92645);
 const PermissionsBitField = __nccwpck_require__(57613);
@@ -36059,7 +35563,7 @@ module.exports = ChatInputCommandInteraction;
 
 
 const { Collection } = __nccwpck_require__(41514);
-const { Routes } = __nccwpck_require__(94104);
+const { Routes } = __nccwpck_require__(90178);
 const { ApplicationRoleConnectionMetadata } = __nccwpck_require__(22149);
 const { SKU } = __nccwpck_require__(275);
 const Team = __nccwpck_require__(17941);
@@ -36470,7 +35974,7 @@ module.exports = ClientApplication;
 "use strict";
 
 
-const { GatewayOpcodes, ActivityType } = __nccwpck_require__(94104);
+const { GatewayOpcodes, ActivityType } = __nccwpck_require__(90178);
 const { Presence } = __nccwpck_require__(88101);
 const { DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(6119);
 
@@ -36562,7 +36066,7 @@ module.exports = ClientPresence;
 "use strict";
 
 
-const { Routes } = __nccwpck_require__(94104);
+const { Routes } = __nccwpck_require__(90178);
 const User = __nccwpck_require__(40287);
 const { resolveImage } = __nccwpck_require__(80176);
 
@@ -36946,7 +36450,7 @@ module.exports = CommandInteraction;
 "use strict";
 
 
-const { ApplicationCommandOptionType } = __nccwpck_require__(94104);
+const { ApplicationCommandOptionType } = __nccwpck_require__(90178);
 const { DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(6119);
 
 /**
@@ -37395,7 +36899,7 @@ module.exports = ContainerComponent;
 
 
 const { lazy } = __nccwpck_require__(1004);
-const { ApplicationCommandOptionType } = __nccwpck_require__(94104);
+const { ApplicationCommandOptionType } = __nccwpck_require__(90178);
 const CommandInteraction = __nccwpck_require__(59343);
 const CommandInteractionOptionResolver = __nccwpck_require__(76676);
 const { transformResolved } = __nccwpck_require__(21754);
@@ -37468,7 +36972,7 @@ module.exports = ContextMenuCommandInteraction;
 
 
 const { userMention } = __nccwpck_require__(71188);
-const { ChannelType } = __nccwpck_require__(94104);
+const { ChannelType } = __nccwpck_require__(90178);
 const { BaseChannel } = __nccwpck_require__(25234);
 const TextBasedChannel = __nccwpck_require__(89874);
 const DMMessageManager = __nccwpck_require__(38055);
@@ -37953,7 +37457,7 @@ module.exports = EmbedBuilder;
 
 const process = __nccwpck_require__(1708);
 const { formatEmoji } = __nccwpck_require__(71188);
-const { DiscordSnowflake } = __nccwpck_require__(65681);
+const { DiscordSnowflake } = __nccwpck_require__(88062);
 const Base = __nccwpck_require__(7441);
 
 let deprecationEmittedForURL = false;
@@ -38350,8 +37854,8 @@ module.exports = ForumChannel;
 
 const { Collection } = __nccwpck_require__(41514);
 const { makeURLSearchParams } = __nccwpck_require__(81374);
-const { DiscordSnowflake } = __nccwpck_require__(65681);
-const { ChannelType, GuildPremiumTier, Routes, GuildFeature } = __nccwpck_require__(94104);
+const { DiscordSnowflake } = __nccwpck_require__(88062);
+const { ChannelType, GuildPremiumTier, Routes, GuildFeature } = __nccwpck_require__(90178);
 const AnonymousGuild = __nccwpck_require__(54236);
 const GuildAuditLogs = __nccwpck_require__(37285);
 const { GuildOnboarding } = __nccwpck_require__(43640);
@@ -39958,8 +39462,8 @@ module.exports = GuildAuditLogs;
 "use strict";
 
 
-const { DiscordSnowflake } = __nccwpck_require__(65681);
-const { AuditLogOptionsType, AuditLogEvent } = __nccwpck_require__(94104);
+const { DiscordSnowflake } = __nccwpck_require__(88062);
+const { AuditLogOptionsType, AuditLogEvent } = __nccwpck_require__(90178);
 const AutoModerationRule = __nccwpck_require__(2593);
 const { GuildOnboardingPrompt } = __nccwpck_require__(87058);
 const { GuildScheduledEvent } = __nccwpck_require__(82548);
@@ -40560,8 +40064,8 @@ module.exports = GuildBan;
 "use strict";
 
 
-const { Snowflake } = __nccwpck_require__(65681);
-const { PermissionFlagsBits, ChannelType } = __nccwpck_require__(94104);
+const { Snowflake } = __nccwpck_require__(88062);
+const { PermissionFlagsBits, ChannelType } = __nccwpck_require__(90178);
 const { BaseChannel } = __nccwpck_require__(25234);
 const { DiscordjsError, ErrorCodes } = __nccwpck_require__(6119);
 const PermissionOverwriteManager = __nccwpck_require__(28041);
@@ -41043,7 +40547,7 @@ module.exports = GuildChannel;
 "use strict";
 
 
-const { PermissionFlagsBits } = __nccwpck_require__(94104);
+const { PermissionFlagsBits } = __nccwpck_require__(90178);
 const BaseGuildEmoji = __nccwpck_require__(30402);
 const { DiscordjsError, ErrorCodes } = __nccwpck_require__(6119);
 const GuildEmojiRoleManager = __nccwpck_require__(67574);
@@ -41199,7 +40703,7 @@ module.exports = GuildEmoji;
 "use strict";
 
 
-const { PermissionFlagsBits } = __nccwpck_require__(94104);
+const { PermissionFlagsBits } = __nccwpck_require__(90178);
 const Base = __nccwpck_require__(7441);
 const VoiceState = __nccwpck_require__(68903);
 const TextBasedChannel = __nccwpck_require__(89874);
@@ -42008,8 +41512,8 @@ exports.GuildOnboardingPromptOption = GuildOnboardingPromptOption;
 
 
 const { Collection } = __nccwpck_require__(41514);
-const { DiscordSnowflake } = __nccwpck_require__(65681);
-const { Routes } = __nccwpck_require__(94104);
+const { DiscordSnowflake } = __nccwpck_require__(88062);
+const { Routes } = __nccwpck_require__(90178);
 const Base = __nccwpck_require__(7441);
 const GuildPreviewEmoji = __nccwpck_require__(76979);
 const { Sticker } = __nccwpck_require__(97633);
@@ -42243,8 +41747,8 @@ module.exports = GuildPreviewEmoji;
 "use strict";
 
 
-const { DiscordSnowflake } = __nccwpck_require__(65681);
-const { GuildScheduledEventStatus, GuildScheduledEventEntityType, RouteBases } = __nccwpck_require__(94104);
+const { DiscordSnowflake } = __nccwpck_require__(88062);
+const { GuildScheduledEventStatus, GuildScheduledEventEntityType, RouteBases } = __nccwpck_require__(90178);
 const Base = __nccwpck_require__(7441);
 const { DiscordjsError, ErrorCodes } = __nccwpck_require__(6119);
 
@@ -42786,7 +42290,7 @@ exports.GuildScheduledEvent = GuildScheduledEvent;
 
 
 const { setTimeout, clearTimeout } = __nccwpck_require__(87997);
-const { RouteBases, Routes } = __nccwpck_require__(94104);
+const { RouteBases, Routes } = __nccwpck_require__(90178);
 const Base = __nccwpck_require__(7441);
 const { resolveImage } = __nccwpck_require__(80176);
 const Events = __nccwpck_require__(88131);
@@ -43034,7 +42538,7 @@ module.exports = GuildTemplate;
 "use strict";
 
 
-const { Routes } = __nccwpck_require__(94104);
+const { Routes } = __nccwpck_require__(90178);
 const Base = __nccwpck_require__(7441);
 const IntegrationApplication = __nccwpck_require__(67280);
 
@@ -43355,7 +42859,7 @@ module.exports = IntegrationApplication;
 "use strict";
 
 
-const { DiscordSnowflake } = __nccwpck_require__(65681);
+const { DiscordSnowflake } = __nccwpck_require__(88062);
 
 /**
  * Represents an interaction callback response from Discord
@@ -43815,8 +43319,8 @@ module.exports = InteractionCollector;
 "use strict";
 
 
-const { DiscordSnowflake } = __nccwpck_require__(65681);
-const { InteractionType } = __nccwpck_require__(94104);
+const { DiscordSnowflake } = __nccwpck_require__(88062);
+const { InteractionType } = __nccwpck_require__(90178);
 const { DiscordjsError, ErrorCodes } = __nccwpck_require__(6119);
 
 /**
@@ -43992,7 +43496,7 @@ module.exports = InteractionWebhook;
 "use strict";
 
 
-const { RouteBases, Routes, PermissionFlagsBits } = __nccwpck_require__(94104);
+const { RouteBases, Routes, PermissionFlagsBits } = __nccwpck_require__(90178);
 const Base = __nccwpck_require__(7441);
 const { GuildScheduledEvent } = __nccwpck_require__(82548);
 const IntegrationApplication = __nccwpck_require__(67280);
@@ -44711,7 +44215,7 @@ module.exports = MentionableSelectMenuInteraction;
 
 const { Collection } = __nccwpck_require__(41514);
 const { messageLink } = __nccwpck_require__(71188);
-const { DiscordSnowflake } = __nccwpck_require__(65681);
+const { DiscordSnowflake } = __nccwpck_require__(88062);
 const {
   InteractionType,
   ChannelType,
@@ -44719,7 +44223,7 @@ const {
   MessageFlags,
   PermissionFlagsBits,
   MessageReferenceType,
-} = __nccwpck_require__(94104);
+} = __nccwpck_require__(90178);
 const Attachment = __nccwpck_require__(22217);
 const Base = __nccwpck_require__(7441);
 const ClientApplication = __nccwpck_require__(56981);
@@ -46142,7 +45646,7 @@ module.exports = MessageContextMenuCommandInteraction;
 
 
 const { Collection } = __nccwpck_require__(41514);
-const { FormattingPatterns } = __nccwpck_require__(94104);
+const { FormattingPatterns } = __nccwpck_require__(90178);
 const { flatten } = __nccwpck_require__(21754);
 
 /**
@@ -46448,8 +45952,8 @@ module.exports = MessageMentions;
 
 const { Buffer } = __nccwpck_require__(4573);
 const { lazy, isJSONEncodable } = __nccwpck_require__(1004);
-const { DiscordSnowflake } = __nccwpck_require__(65681);
-const { MessageFlags, MessageReferenceType } = __nccwpck_require__(94104);
+const { DiscordSnowflake } = __nccwpck_require__(88062);
+const { MessageFlags, MessageReferenceType } = __nccwpck_require__(90178);
 const { DiscordjsError, DiscordjsRangeError, ErrorCodes } = __nccwpck_require__(6119);
 const { resolveFile } = __nccwpck_require__(80176);
 const MessageFlagsBitField = __nccwpck_require__(35377);
@@ -46798,7 +46302,7 @@ module.exports = MessagePayload;
 "use strict";
 
 
-const { Routes } = __nccwpck_require__(94104);
+const { Routes } = __nccwpck_require__(90178);
 const ApplicationEmoji = __nccwpck_require__(81068);
 const GuildEmoji = __nccwpck_require__(67935);
 const ReactionEmoji = __nccwpck_require__(7449);
@@ -47051,7 +46555,7 @@ module.exports = ModalBuilder;
 
 
 const { Collection } = __nccwpck_require__(41514);
-const { ComponentType } = __nccwpck_require__(94104);
+const { ComponentType } = __nccwpck_require__(90178);
 const { DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(6119);
 
 /**
@@ -47247,7 +46751,7 @@ module.exports = ModalSubmitInteraction;
 "use strict";
 
 
-const { Routes } = __nccwpck_require__(94104);
+const { Routes } = __nccwpck_require__(90178);
 const BaseGuildTextChannel = __nccwpck_require__(45590);
 const { DiscordjsError, ErrorCodes } = __nccwpck_require__(6119);
 
@@ -47462,7 +46966,7 @@ module.exports = PartialGroupDMChannel;
 "use strict";
 
 
-const { OverwriteType } = __nccwpck_require__(94104);
+const { OverwriteType } = __nccwpck_require__(90178);
 const Base = __nccwpck_require__(7441);
 const { Role } = __nccwpck_require__(7788);
 const { DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(6119);
@@ -48553,8 +48057,8 @@ module.exports = ReactionEmoji;
 
 
 const { roleMention } = __nccwpck_require__(71188);
-const { DiscordSnowflake } = __nccwpck_require__(65681);
-const { PermissionFlagsBits } = __nccwpck_require__(94104);
+const { DiscordSnowflake } = __nccwpck_require__(88062);
+const { PermissionFlagsBits } = __nccwpck_require__(90178);
 const Base = __nccwpck_require__(7441);
 const { DiscordjsError, ErrorCodes } = __nccwpck_require__(6119);
 const PermissionsBitField = __nccwpck_require__(57613);
@@ -49372,7 +48876,7 @@ module.exports = SelectMenuOptionBuilder;
 "use strict";
 
 
-const { SeparatorSpacingSize } = __nccwpck_require__(94104);
+const { SeparatorSpacingSize } = __nccwpck_require__(90178);
 const Component = __nccwpck_require__(72329);
 
 /**
@@ -49410,7 +48914,7 @@ module.exports = SeparatorComponent;
 "use strict";
 
 
-const { DiscordSnowflake } = __nccwpck_require__(65681);
+const { DiscordSnowflake } = __nccwpck_require__(88062);
 const Base = __nccwpck_require__(7441);
 const { Emoji } = __nccwpck_require__(79268);
 const { DiscordjsError, ErrorCodes } = __nccwpck_require__(6119);
@@ -49742,7 +49246,7 @@ module.exports = StageChannel;
 "use strict";
 
 
-const { DiscordSnowflake } = __nccwpck_require__(65681);
+const { DiscordSnowflake } = __nccwpck_require__(88062);
 const Base = __nccwpck_require__(7441);
 
 /**
@@ -49917,8 +49421,8 @@ exports.StageInstance = StageInstance;
 "use strict";
 
 
-const { DiscordSnowflake } = __nccwpck_require__(65681);
-const { Routes } = __nccwpck_require__(94104);
+const { DiscordSnowflake } = __nccwpck_require__(88062);
+const { Routes } = __nccwpck_require__(90178);
 const Base = __nccwpck_require__(7441);
 const { DiscordjsError, ErrorCodes } = __nccwpck_require__(6119);
 const { StickerFormatExtensionMap } = __nccwpck_require__(92645);
@@ -50194,7 +49698,7 @@ exports.Sticker = Sticker;
 
 
 const { Collection } = __nccwpck_require__(41514);
-const { DiscordSnowflake } = __nccwpck_require__(65681);
+const { DiscordSnowflake } = __nccwpck_require__(88062);
 const Base = __nccwpck_require__(7441);
 const { Sticker } = __nccwpck_require__(97633);
 
@@ -50623,7 +50127,7 @@ exports.Subscription = Subscription;
 
 
 const { Collection } = __nccwpck_require__(41514);
-const { DiscordSnowflake } = __nccwpck_require__(65681);
+const { DiscordSnowflake } = __nccwpck_require__(88062);
 const Base = __nccwpck_require__(7441);
 const TeamMember = __nccwpck_require__(58979);
 
@@ -50981,7 +50485,7 @@ module.exports = TextInputComponent;
 
 const { DiscordAPIError } = __nccwpck_require__(81374);
 const { lazy } = __nccwpck_require__(1004);
-const { RESTJSONErrorCodes, ChannelFlags, ChannelType, PermissionFlagsBits, Routes } = __nccwpck_require__(94104);
+const { RESTJSONErrorCodes, ChannelFlags, ChannelType, PermissionFlagsBits, Routes } = __nccwpck_require__(90178);
 const { BaseChannel } = __nccwpck_require__(25234);
 const getThreadOnlyChannel = lazy(() => __nccwpck_require__(24339));
 const TextBasedChannel = __nccwpck_require__(89874);
@@ -52165,7 +51669,7 @@ module.exports = UnfurledMediaItem;
 
 const { userMention } = __nccwpck_require__(71188);
 const { calculateUserDefaultAvatarIndex } = __nccwpck_require__(81374);
-const { DiscordSnowflake } = __nccwpck_require__(65681);
+const { DiscordSnowflake } = __nccwpck_require__(88062);
 const Base = __nccwpck_require__(7441);
 const TextBasedChannel = __nccwpck_require__(89874);
 const UserFlagsBitField = __nccwpck_require__(26387);
@@ -52736,7 +52240,7 @@ module.exports = UserSelectMenuInteraction;
 "use strict";
 
 
-const { PermissionFlagsBits, Routes } = __nccwpck_require__(94104);
+const { PermissionFlagsBits, Routes } = __nccwpck_require__(90178);
 const BaseGuildVoiceChannel = __nccwpck_require__(56115);
 
 /**
@@ -53000,7 +52504,7 @@ module.exports = VoiceRegion;
 "use strict";
 
 
-const { ChannelType, Routes } = __nccwpck_require__(94104);
+const { ChannelType, Routes } = __nccwpck_require__(90178);
 const Base = __nccwpck_require__(7441);
 const { DiscordjsError, DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(6119);
 
@@ -53322,8 +52826,8 @@ module.exports = VoiceState;
 
 const { makeURLSearchParams } = __nccwpck_require__(81374);
 const { lazy } = __nccwpck_require__(1004);
-const { DiscordSnowflake } = __nccwpck_require__(65681);
-const { Routes, WebhookType } = __nccwpck_require__(94104);
+const { DiscordSnowflake } = __nccwpck_require__(88062);
+const { Routes, WebhookType } = __nccwpck_require__(90178);
 const MessagePayload = __nccwpck_require__(99143);
 const { DiscordjsError, ErrorCodes } = __nccwpck_require__(6119);
 const { resolveImage } = __nccwpck_require__(80176);
@@ -53886,7 +53390,7 @@ module.exports = WelcomeChannel;
 
 
 const { Collection } = __nccwpck_require__(41514);
-const { GuildFeature } = __nccwpck_require__(94104);
+const { GuildFeature } = __nccwpck_require__(90178);
 const Base = __nccwpck_require__(7441);
 const WelcomeChannel = __nccwpck_require__(39095);
 
@@ -53943,7 +53447,7 @@ module.exports = WelcomeScreen;
 
 
 const { Collection } = __nccwpck_require__(41514);
-const { Routes } = __nccwpck_require__(94104);
+const { Routes } = __nccwpck_require__(90178);
 const Base = __nccwpck_require__(7441);
 const WidgetMember = __nccwpck_require__(70402);
 
@@ -54154,7 +53658,7 @@ module.exports = WidgetMember;
 "use strict";
 
 
-const { DiscordSnowflake } = __nccwpck_require__(65681);
+const { DiscordSnowflake } = __nccwpck_require__(88062);
 const Base = __nccwpck_require__(7441);
 
 /**
@@ -54667,7 +54171,7 @@ const process = __nccwpck_require__(1708);
 const { deprecate } = __nccwpck_require__(57975);
 const { makeURLSearchParams } = __nccwpck_require__(81374);
 const { isJSONEncodable } = __nccwpck_require__(1004);
-const { InteractionResponseType, MessageFlags, Routes, InteractionType } = __nccwpck_require__(94104);
+const { InteractionResponseType, MessageFlags, Routes, InteractionType } = __nccwpck_require__(90178);
 const { DiscordjsError, ErrorCodes } = __nccwpck_require__(6119);
 const MessageFlagsBitField = __nccwpck_require__(35377);
 const InteractionCallbackResponse = __nccwpck_require__(38486);
@@ -55147,8 +54651,8 @@ module.exports = InteractionResponses;
 
 
 const { Collection } = __nccwpck_require__(41514);
-const { DiscordSnowflake } = __nccwpck_require__(65681);
-const { InteractionType, Routes } = __nccwpck_require__(94104);
+const { DiscordSnowflake } = __nccwpck_require__(88062);
+const { InteractionType, Routes } = __nccwpck_require__(90178);
 const { DiscordjsTypeError, DiscordjsError, ErrorCodes } = __nccwpck_require__(6119);
 const { MaxBulkDeletableMessageAge } = __nccwpck_require__(92645);
 const InteractionCollector = __nccwpck_require__(22683);
@@ -55601,7 +55105,7 @@ const GuildMessageManager = __nccwpck_require__(41641);
 "use strict";
 
 
-const { ActivityFlags } = __nccwpck_require__(94104);
+const { ActivityFlags } = __nccwpck_require__(90178);
 const BitField = __nccwpck_require__(82267);
 
 /**
@@ -55635,7 +55139,7 @@ module.exports = ActivityFlagsBitField;
 "use strict";
 
 
-const { ApplicationFlags } = __nccwpck_require__(94104);
+const { ApplicationFlags } = __nccwpck_require__(90178);
 const BitField = __nccwpck_require__(82267);
 
 /**
@@ -55684,7 +55188,7 @@ module.exports = ApplicationFlagsBitField;
 "use strict";
 
 
-const { AttachmentFlags } = __nccwpck_require__(94104);
+const { AttachmentFlags } = __nccwpck_require__(90178);
 const BitField = __nccwpck_require__(82267);
 
 /**
@@ -55904,7 +55408,7 @@ module.exports = BitField;
 "use strict";
 
 
-const { ChannelFlags } = __nccwpck_require__(94104);
+const { ChannelFlags } = __nccwpck_require__(90178);
 const BitField = __nccwpck_require__(82267);
 
 /**
@@ -55954,7 +55458,7 @@ module.exports = ChannelFlagsBitField;
 
 
 const { lazy } = __nccwpck_require__(1004);
-const { ChannelType } = __nccwpck_require__(94104);
+const { ChannelType } = __nccwpck_require__(90178);
 
 const getCategoryChannel = lazy(() => __nccwpck_require__(3113));
 const getDMChannel = lazy(() => __nccwpck_require__(18176));
@@ -56204,7 +55708,7 @@ module.exports = {
 
 
 const { ComponentBuilder } = __nccwpck_require__(25722);
-const { ComponentType } = __nccwpck_require__(94104);
+const { ComponentType } = __nccwpck_require__(90178);
 
 /**
  * @typedef {Object} BaseComponentData
@@ -56487,7 +55991,7 @@ const UserSelectMenuComponent = __nccwpck_require__(46429);
 "use strict";
 
 
-const { ChannelType, MessageType, ComponentType, ImageFormat, StickerFormatType } = __nccwpck_require__(94104);
+const { ChannelType, MessageType, ComponentType, ImageFormat, StickerFormatType } = __nccwpck_require__(90178);
 
 /**
  * Max bulk deletable message age
@@ -57552,7 +57056,7 @@ module.exports = Formatters;
 "use strict";
 
 
-const { GuildMemberFlags } = __nccwpck_require__(94104);
+const { GuildMemberFlags } = __nccwpck_require__(90178);
 const BitField = __nccwpck_require__(82267);
 
 /**
@@ -57600,7 +57104,7 @@ exports.GuildMemberFlagsBitField = GuildMemberFlagsBitField;
 
 "use strict";
 
-const { GatewayIntentBits } = __nccwpck_require__(94104);
+const { GatewayIntentBits } = __nccwpck_require__(90178);
 const BitField = __nccwpck_require__(82267);
 
 /**
@@ -57719,7 +57223,7 @@ module.exports = LimitedCollection;
 "use strict";
 
 
-const { MessageFlags } = __nccwpck_require__(94104);
+const { MessageFlags } = __nccwpck_require__(90178);
 const BitField = __nccwpck_require__(82267);
 
 /**
@@ -58069,7 +57573,7 @@ module.exports = createEnum([
 "use strict";
 
 
-const { PermissionFlagsBits } = __nccwpck_require__(94104);
+const { PermissionFlagsBits } = __nccwpck_require__(90178);
 const BitField = __nccwpck_require__(82267);
 
 /**
@@ -58181,7 +57685,7 @@ module.exports = PermissionsBitField;
 "use strict";
 
 
-const { RoleFlags } = __nccwpck_require__(94104);
+const { RoleFlags } = __nccwpck_require__(90178);
 const BitField = __nccwpck_require__(82267);
 
 /**
@@ -58215,7 +57719,7 @@ module.exports = RoleFlagsBitField;
 "use strict";
 
 
-const { SKUFlags } = __nccwpck_require__(94104);
+const { SKUFlags } = __nccwpck_require__(90178);
 const BitField = __nccwpck_require__(82267);
 
 /**
@@ -58833,7 +58337,7 @@ exports.MakeCacheOverrideSymbol = Symbol('djs.managers.makeCacheOverride');
 "use strict";
 
 
-const { GuildSystemChannelFlags } = __nccwpck_require__(94104);
+const { GuildSystemChannelFlags } = __nccwpck_require__(90178);
 const BitField = __nccwpck_require__(82267);
 
 /**
@@ -59027,7 +58531,7 @@ module.exports = {
 "use strict";
 
 
-const { UserFlags } = __nccwpck_require__(94104);
+const { UserFlags } = __nccwpck_require__(90178);
 const BitField = __nccwpck_require__(82267);
 
 /**
@@ -59070,7 +58574,7 @@ module.exports = UserFlagsBitField;
 const { parse } = __nccwpck_require__(76760);
 const process = __nccwpck_require__(1708);
 const { Collection } = __nccwpck_require__(41514);
-const { ChannelType, RouteBases, Routes } = __nccwpck_require__(94104);
+const { ChannelType, RouteBases, Routes } = __nccwpck_require__(90178);
 const { fetch } = __nccwpck_require__(30794);
 const Colors = __nccwpck_require__(1874);
 const { DiscordjsError, DiscordjsRangeError, DiscordjsTypeError, ErrorCodes } = __nccwpck_require__(6119);
@@ -144810,7 +144314,7 @@ exports.setGlobalValidationEnabled = setGlobalValidationEnabled;
 
 /***/ }),
 
-/***/ 65681:
+/***/ 88062:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";

@@ -16,3 +16,6 @@ inputs:
   topic:
     type: string
     description: Thread ID
+  endpoint:
+    type: string
+    description: Telegram API endpoint, default is `https://api.telegram.org`
