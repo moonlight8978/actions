@@ -38,7 +38,8 @@ export async function run(): Promise<void> {
     columns: string().required().trim(),
     groupId: string().required().trim(),
     token: string().required().trim(),
-    topic: string().optional()
+    topic: string().optional(),
+    endpoint: string()
   })
 
   const inputs = schema.cast({
@@ -46,7 +47,8 @@ export async function run(): Promise<void> {
     columns: core.getInput('columns', { required: true }),
     groupId: core.getInput('group', { required: true }),
     token: core.getInput('token', { required: true }),
-    topic: core.getInput('topic')
+    topic: core.getInput('topic'),
+    endpoint: core.getInput('endpoint', { required: false })
   })
 
   const columns = parseColumns(inputs.columns)
@@ -70,7 +72,7 @@ export async function run(): Promise<void> {
 
   try {
     await axios.post(
-      `https://api.telegram.org/bot${inputs.token}/sendMessage`,
+      `${inputs.endpoint}/bot${inputs.token}/sendMessage`,
       {
         chat_id: inputs.groupId,
         text: message,
