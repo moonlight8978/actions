@@ -14,12 +14,14 @@ outputs:
   user-id:
     description: GitHub App User ID
     value: ${{ steps.get-user-id.outputs.user-id }}
-  name:
+  bot-name:
     description: bot username
     value: '${{ steps.ghapp-auth.outputs.app-slug }}[bot]'
-  email:
+  bot-email:
     description: bot email
-    value: '${{ steps.get-user-id.outputs.user-id }}+${{ steps.ghapp-auth.outputs.app-slug }}[bot]@users.noreply.github.com'
+    value:
+      '${{ steps.get-user-id.outputs.user-id }}+${{
+      steps.ghapp-auth.outputs.app-slug }}[bot]@users.noreply.github.com'
 runs:
   using: composite
   steps:
