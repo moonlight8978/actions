@@ -1,0 +1,39 @@
+name: github-app-login
+description: Login to GitHub App
+inputs:
+  app-id:
+    description: GitHub App ID
+    required: true
+  private-key:
+    description: GitHub App Private Key
+    required: true
+outputs:
+  token:
+    description: GitHub App Token
+    value: ${{ steps.ghapp-auth.outputs.token }}
+  user-id:
+    description: GitHub App User ID
+    value: ${{ steps.get-user-id.outputs.user-id }}
+  name:
+    description: bot username
+    value: '${{ steps.ghapp-auth.outputs.app-slug }}[bot]'
+  email:
+    description: bot email
+    value: '${{ steps.get-user-id.outputs.user-id }}+${{ steps.ghapp-auth.outputs.app-slug }}[bot]@users.noreply.github.com'
+runs:
+  using: composite
+  steps:
+    - name: Login to GitHub App
+      id: ghapp-auth
+      uses: actions/create-github-app-token@v3
+      with:
+        app-id: ${{ inputs.app-id }}
+        private-key: ${{ inputs.private-key }}
+
+    - name: Get GitHub App User ID
+      id: get-user-id
+      shell: bash
+      run: |
+        echo "user-id=$(gh api "/users/${{ steps.ghapp-auth.outputs.app-slug }}[bot]" --jq .id)" >> "$GITHUB_OUTPUT"
+      env:
+        GH_TOKEN: ${{ steps.ghapp-auth.outputs.token }}
