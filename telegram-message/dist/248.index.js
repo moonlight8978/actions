@@ -1,9 +1,9 @@
 "use strict";
-exports.id = 391;
-exports.ids = [391];
+exports.id = 248;
+exports.ids = [248];
 exports.modules = {
 
-/***/ 6772:
+/***/ 3248:
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 
@@ -12,7 +12,7 @@ __webpack_require__.d(__webpack_exports__, {
   "default": () => (/* binding */ query_string)
 });
 
-// NAMESPACE OBJECT: ./node_modules/.pnpm/query-string@9.2.0/node_modules/query-string/base.js
+// NAMESPACE OBJECT: ./node_modules/.pnpm/query-string@9.3.1/node_modules/query-string/base.js
 var base_namespaceObject = {};
 __webpack_require__.r(base_namespaceObject);
 __webpack_require__.d(base_namespaceObject, {
@@ -175,7 +175,7 @@ function splitOnFirst(string, separator) {
 	];
 }
 
-;// CONCATENATED MODULE: ./node_modules/.pnpm/query-string@9.2.0/node_modules/query-string/base.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/query-string@9.3.1/node_modules/query-string/base.js
 
 
 
@@ -380,9 +380,7 @@ function parserForArrayFormat(options) {
 		case 'separator': {
 			return (key, value, accumulator) => {
 				const isArray = typeof value === 'string' && value.includes(options.arrayFormatSeparator);
-				const isEncodedArray = (typeof value === 'string' && !isArray && base_decode(value, options).includes(options.arrayFormatSeparator));
-				value = isEncodedArray ? base_decode(value, options) : value;
-				const newValue = isArray || isEncodedArray ? value.split(options.arrayFormatSeparator).map(item => base_decode(item, options)) : (value === null ? value : base_decode(value, options));
+				const newValue = isArray ? value.split(options.arrayFormatSeparator).map(item => base_decode(item, options)) : (value === null ? value : base_decode(value, options));
 				accumulator[key] = newValue;
 			};
 		}
@@ -487,6 +485,10 @@ function parseValue(value, options, type) {
 		return type(value);
 	}
 
+	if (type === 'boolean' && value === null) {
+		return true;
+	}
+
 	if (type === 'boolean' && value !== null && (value.toLowerCase() === 'true' || value.toLowerCase() === 'false')) {
 		return value.toLowerCase() === 'true';
 	}
@@ -579,7 +581,8 @@ function parse(query, options) {
 	for (const [key, value] of Object.entries(returnValue)) {
 		if (typeof value === 'object' && value !== null && options.types[key] !== 'string') {
 			for (const [key2, value2] of Object.entries(value)) {
-				const type = options.types[key] ? options.types[key].replace('[]', '') : undefined;
+				const typeOption = options.types[key];
+				const type = typeof typeOption === 'function' ? typeOption : (typeOption ? typeOption.replace('[]', '') : undefined);
 				value[key2] = parseValue(value2, options, type);
 			}
 		} else if (typeof value === 'object' && value !== null && options.types[key] === 'string') {
@@ -639,7 +642,17 @@ function stringify(object, options) {
 	}
 
 	return keys.map(key => {
-		const value = object[key];
+		let value = object[key];
+
+		// Apply replacer function if provided
+		if (options.replacer) {
+			value = options.replacer(key, value);
+
+			// If replacer returns undefined, skip this key
+			if (value === undefined) {
+				return '';
+			}
+		}
 
 		if (value === undefined) {
 			return '';
@@ -654,7 +667,16 @@ function stringify(object, options) {
 				return encode(key, options) + '[]';
 			}
 
-			return value
+			// Apply replacer to array elements if provided
+			// Note: We don't re-apply replacer to the array itself, only to elements
+			let processedArray = value;
+			if (options.replacer) {
+				processedArray = value.map((item, index) =>
+					options.replacer(`${key}[${index}]`, item),
+				).filter(item => item !== undefined);
+			}
+
+			return processedArray
 				.reduce(formatter(key), [])
 				.join('&');
 		}
@@ -694,7 +716,7 @@ function stringifyUrl(object, options) {
 	const queryFromUrl = extract(object.url);
 
 	const query = {
-		...parse(queryFromUrl, {sort: false}),
+		...parse(queryFromUrl, {sort: false, ...options}),
 		...object.query,
 	};
 
@@ -733,7 +755,7 @@ function exclude(input, filter, options) {
 	return pick(input, exclusionFilter, options);
 }
 
-;// CONCATENATED MODULE: ./node_modules/.pnpm/query-string@9.2.0/node_modules/query-string/index.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/query-string@9.3.1/node_modules/query-string/index.js
 
 
 /* harmony default export */ const query_string = (base_namespaceObject);
@@ -743,4 +765,4 @@ function exclude(input, filter, options) {
 
 };
 ;
-//# sourceMappingURL=391.index.js.map
+//# sourceMappingURL=248.index.js.map
